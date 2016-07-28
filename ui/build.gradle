@@ -25,7 +25,8 @@ targetCompatibility = 1.8
 dependencies {
     compile group: 'org.webjars', name: 'bootstrap', version:'2.1.1'
     compile 'org.webjars:angularjs:1.5.7'
-
+    compile 'org.webjars:angular-ui-router:1.0.0-beta.1'
+    
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
