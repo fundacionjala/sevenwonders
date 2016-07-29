@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <link rel="stylesheet/less" href="style/loguin.less"/>
+    <script type="text/javascript" src="lib/less-v2.7.js"></script>
+    <script type="text/javascript" src="lib/lodash-4.14.0.js"></script>
     <link rel='stylesheet' href='webjars/bootstrap/2.1.1/css/bootstrap.min.css'>
     <link rel='stylesheet' href='styles/styleGameRoom.css'>
     <script type='text/javascript' src='webjars/jquery/1.8.2/jquery.min.js'></script>
@@ -14,22 +17,8 @@
 <body ng-app="mainModule">
     <div ng-controller="mainController">
         <div class="logo"></div>
-        <!-- <h3>1. Template</h3>
-    <div ngh-template-dir>
-        <strong>This content will be replaced</strong>
-        <div>
-            This one will be replaced too
-        </div>
-    </div>
-    <br />
-    <h3>2. TemplateUrl</h3>
-    <div ngh-template-url-dir>
-        <strong>This content will be replaced</strong>
-        <div>
-            This one will be replaced too
-        </div>
-    </div>-->
         <div ui-view></div>
+        <button class="submit" id="submit" >Login</button>
     </div>
     
 </body>

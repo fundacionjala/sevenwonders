@@ -1,0 +1,12 @@
+<di class="form-1">
+    <h1>{{gameroom.name}}</h1>
+    <h3>Number players: {{gameroom.numberPlayers}}</h3>
+   
+    <div class="container">
+        <div ng-repeat="player in players" class="child">
+            <img class="image-user" src="{{'images/'+player.user+'.png'}}"/>
+            <p>{{player.username}}</p>
+        </div>
+    </div>
+    <div ui-view></div>
+</div>
