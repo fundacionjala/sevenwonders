@@ -1,0 +1,10 @@
+apply plugin: 'java'
+
+ext {
+//    project.name = "sevenwonders"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
+
