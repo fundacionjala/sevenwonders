@@ -30,15 +30,14 @@ angular.module("mainModule", ['ui.router'])
           $scope.players = ["3", "4", "5", "6", "7","8"];
 
           $scope.createRoomGame = function() {
-          roomcreated = {name: $scope.room,
-          numberPlayers: $scope.player};
-          $http.post('http://demo9056918.mockable.io/gameroom/1', roomCreated).
-            success(function(data) {
-               console.log(data);
-          });
-  };
-    
-});
+          roomcreated = { name: $scope.room,
+                          numberPlayers: $scope.player
+                        };
+            $http.post('http://demo9056918.mockable.io/gameroom/1', roomCreated).
+                success(function(data) {
+                console.log(data);
+            });
+          };
         }
       })
-  });
+ });
