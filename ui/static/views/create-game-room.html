@@ -1,0 +1,18 @@
+<div ng-controller="CreateRoomController">
+    <div class = "box">
+      <h1 class = "title">CREATE A GAME ROOM</h1>
+      <form>
+        <label>Name Your Room</label></br>
+        <input type="text" ng-model="room" placeholder="name"></br>
+        <label>Number Of Players</label></br>
+        <div class="styled-select slate">
+        <select ng-model="player">
+          <option ng-repeat= "player in players" value="{{player}}" 
+          >{{player}}
+          </option>
+        </select>
+        </div>
+      </form>
+    </div>
+    <button class="button" ng-click= "createRoomGame()">create</button>
+  </div>
