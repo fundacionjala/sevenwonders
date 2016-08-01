@@ -8,6 +8,12 @@
 	left: 30%;
 	top: 20%;
 	text-align: center;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 12px;
+    border: 1px solid white;
 }
 
 .title {
@@ -24,6 +30,9 @@ h3 {
 }
 
 input[type="text"] {
+    border-radius: 12px;
+    background: transparent;
+    position: relative;
 	padding: 10px;
 	border: solid 2px #dcdcdc;
 	transition: box-shadow 0.3s, border 0.3s;
@@ -36,6 +45,7 @@ input[type="text"].focus {
 }
 
 .styled-select {
+   position: relative;
    height: 34px;
    width: 100px;
    margin-top: 0px;
@@ -45,7 +55,9 @@ input[type="text"].focus {
 }
 
 .styled-select select {
-   border: 1px solid #ccc;
+	border: solid 2px #dcdcdc;
+	border-radius: 12px;
+	background: transparent;
    font-size: 16px;
    font-family: arial;
    height: 34px;
