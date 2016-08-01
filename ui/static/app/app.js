@@ -7,38 +7,16 @@ angular.module("mainModule", ['ui.router'])
       .state('login', {
         url: "/",
         templateUrl: "views/login.html",
-        controller: function ($scope) { }
+        controller: 'createGameRoomCtrl'
       })
       .state('game-room', {
         url: "/game-room",
         templateUrl: "views/game-room.html",
-        controller: function ($scope, $http) {
-          $http.get('https://demo9730175.mockable.io/game-room/1/players').
-            success(function (data) {
-              $scope.players = data;
-            });
-          $http.get('https://demo9730175.mockable.io/game-room/1').
-            success(function (data) {
-              $scope.gameroom = data;
-            });
-        }
+        controller: 'gameRoomCtrl'
       })
       .state('create-game-room', {
         url: "/create-game-room",
         templateUrl: "views/create-game-room.html",
-        controller: function ($scope, $http) {
-
-          $scope.maxPlayers = ["3", "4", "5", "6", "7","8"];
-
-          $scope.createRoomGame = function() {
-          roomcreated = { name: $scope.room,
-                          numberPlayers: $scope.player
-                        };
-            $http.post('https://demo9730175.mockable.io/game-room/1', roomCreated).
-                success(function(data) {
-                console.log(data);
-            });
-          };
-        }
+        controller: 'createGameRoomCtrl'
       })
- });
+  });
