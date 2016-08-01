@@ -13,14 +13,14 @@
 .title {
 	font-family: "arial";
 	color: white;
-	margin-top: 8%;
+	margin-top: 5%;
 }
 
-label {
+h3 {
 	font-family: "arial";
 	color: white;
-	font-size: 22pt;
-	margin-top: 3%;
+	font-size: 20pt;
+	margin-top: 2%;
 }
 
 input[type="text"] {
@@ -38,8 +38,8 @@ input[type="text"].focus {
 .styled-select {
    height: 34px;
    width: 100px;
-   margin-top: 10px;
-   margin-bottom: 20px;
+   margin-top: 0px;
+   margin-bottom: 18px;
    margin-right: 50px;
    margin-left: 220px;
 }
