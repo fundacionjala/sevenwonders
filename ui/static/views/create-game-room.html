@@ -1,12 +1,12 @@
 <div class="box" ng-controller="createGameRoomCtrl">
   <h1 class="title">Create Game Room</h1>
   <form>
-    <h3>Name Your Room</h3>
+    <h3 class="subtitle">Name Your Room</h3>
     </br>
     <input type="text" ng-model="room" placeholder="name"></br>
-    <h3>Number Of Players</h3>
+    <h3 class="subtitle">Number Of Players</h3>
     </br>
-    <div class="styled-select">
+    <div>
       <select ng-model="player">
           <option ng-repeat= "player in maxPlayers" value="{{player}}"
           >{{player}}

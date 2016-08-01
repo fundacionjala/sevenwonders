@@ -11,7 +11,7 @@ angular.module('mainModule')
     })
     .controller("createGameRoomCtrl", function ($scope, $http) {
 
-        $scope.maxPlayers = ["3", "4", "5", "6", "7", "8"];
+        $scope.maxPlayers = ["3", "4", "5", "6", "7"];
 
         $scope.createRoomGame = function () {
             var roomCreated = {
