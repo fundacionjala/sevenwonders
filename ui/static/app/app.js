@@ -27,7 +27,8 @@ angular.module("mainModule", ['ui.router'])
         url: "/create-game-room",
         templateUrl: "views/create-game-room.html",
         controller: function ($scope, $http) {
-          $scope.players = ["3", "4", "5", "6", "7","8"];
+
+          $scope.maxPlayers = ["3", "4", "5", "6", "7","8"];
 
           $scope.createRoomGame = function() {
           roomcreated = { name: $scope.room,
