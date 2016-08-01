@@ -1,5 +1,6 @@
 @color_1: rgba(255, 255, 255, 0.4);
 @color_2: white;
+@color_welcome: #9c8468;
 @font-family_1: Raleway;
 
 html,body {
@@ -7,11 +8,32 @@ html,body {
   margin: 0;
   padding: 0;
   width: 100%;
-    background: url('/images/index3.jpg') no-repeat center center fixed;
+    background: url('/images/index3.png') no-repeat center center fixed;
     background-size: cover;
     background-position:50%;
     -webkit-font-smoothing:antialiased;
 }
+.welcome {
+  height: 35%;
+  width: 20%;
+  left: 40%;
+  top: 65%;
+  position: absolute;
+  text-align: center;
+  h1 {
+	  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+	  color: @color_welcome;
+	  opacity: 0.3;
+    font-family: @font-family_1;
+  }
+  h2 {
+     text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
+	   color: @color_welcome;
+	   opacity: 0.3;
+     font-family: @font-family_1;
+  }
+}
+
 
 .top-image {
   height: 30%;

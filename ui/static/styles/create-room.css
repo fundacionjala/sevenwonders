@@ -1,0 +1,86 @@
+.box {
+   	display: block;
+   	position: absolute;
+   	background-color: black;
+	opacity: 0.6;
+	height: 50%;
+	width: 40%;
+	left: 30%;
+	top: 20%;
+	text-align: center;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-radius: 12px;
+    border: 1px solid white;
+}
+
+.title {
+	font-family: "arial";
+	color: white;
+	margin-top: 5%;
+}
+
+h3 {
+	font-family: "arial";
+	color: white;
+	font-size: 20pt;
+	margin-top: 2%;
+}
+
+input[type="text"] {
+    border-radius: 12px;
+    background: transparent;
+    position: relative;
+	padding: 10px;
+	border: solid 2px #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="text"].focus {
+	border: solid 1px #707070;
+	box-shadow: 0 0 5px 1px #969696;
+}
+
+.styled-select {
+   position: relative;
+   height: 34px;
+   width: 100px;
+   margin-top: 0px;
+   margin-bottom: 18px;
+   margin-right: 50px;
+   margin-left: 220px;
+}
+
+.styled-select select {
+	border: solid 2px #dcdcdc;
+	border-radius: 12px;
+	background: transparent;
+   font-size: 16px;
+   font-family: arial;
+   height: 34px;
+   width: 100px;
+   text-align: center;
+}
+
+.button {
+    background-color: #FF8000;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 500px;
+    margin-bottom: 50px;
+    margin-right: 300px;
+    margin-left: 630px;
+    cursor: pointer;
+}
+.button:hover {
+	border: solid 2px #FFBF00;
+	box-shadow: 0 0 5px 2px #FFBF00; 
+}
+

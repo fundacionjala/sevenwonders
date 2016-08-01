@@ -5,8 +5,12 @@
     <div class="forceColor"></div>
     <div class="topbar">
         <div class="spanColor"></div>
-        <input type="" class="input" placeholder="Name" />
+        <input type="" class="input" placeholder="Name" ng-model="user" />
     </div>
-    <button class="submit" id="submit">Login</button>
+    <button class="submit" id="submit" ui-sref="create-game-room">Login</button>
+</div>
+<div class="welcome">
+    <h1>WELCOME</h1>
+    <h2>{{user}}</h2>
 </div>
 </div>
