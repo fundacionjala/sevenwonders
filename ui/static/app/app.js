@@ -34,7 +34,7 @@ angular.module("mainModule", ['ui.router'])
           roomcreated = { name: $scope.room,
                           numberPlayers: $scope.player
                         };
-            $http.post('http://demo9056918.mockable.io/gameroom/1', roomCreated).
+            $http.post('https://demo9730175.mockable.io/game-room/1', roomCreated).
                 success(function(data) {
                 console.log(data);
             });

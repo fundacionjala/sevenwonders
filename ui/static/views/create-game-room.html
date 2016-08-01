@@ -1,10 +1,9 @@
-<div ng-controller="CreateRoomController">
     <div class = "box">
-      <h1 class = "title">CREATE A GAME ROOM</h1>
+      <h1 class = "title">Create Game Room</h1>
       <form>
-        <label>Name Your Room</label></br>
+        <h3>Name Your Room</h3></br>
         <input type="text" ng-model="room" placeholder="name"></br>
-        <label>Number Of Players</label></br>
+        <h3>Number Of Players</h3></br>
         <div class="styled-select slate">
         <select ng-model="player">
           <option ng-repeat= "player in maxPlayers" value="{{player}}"
@@ -15,4 +14,3 @@
       </form>
     </div>
     <button class="button" ng-click= "createRoomGame()">create</button>
-  </div>
