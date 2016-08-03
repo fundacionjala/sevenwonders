@@ -1,4 +1,4 @@
-angular.module('sevenWonder')
+angular.module('mainModule')
     .controller('gameRoomCtrl', function ($scope, $http) {
         $http.get('https://demo9730175.mockable.io/game-room/1/players').
             success(function (data) {
@@ -11,7 +11,7 @@ angular.module('sevenWonder')
     })
     .controller("createGameRoomCtrl", function ($scope, $http) {
 
-        $scope.maxPlayers = ["3", "4", "5", "6", "7"];
+        $scope.maxPlayers = ["3", "4", "5", "6", "7", "8"];
 
         $scope.createRoomGame = function () {
             var roomCreated = {
