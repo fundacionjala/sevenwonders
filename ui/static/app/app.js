@@ -1,4 +1,4 @@
-angular.module("mainModule", ['ui.router'])
+angular.module("sevenWonder", ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, send to /
     $urlRouterProvider.otherwise("/")

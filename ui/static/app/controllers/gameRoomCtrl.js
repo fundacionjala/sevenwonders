@@ -1,4 +1,4 @@
-angular.module('mainModule')
+angular.module('sevenWonder')
     .controller('gameRoomCtrl', function ($scope, $http) {
         $http.get('https://demo9730175.mockable.io/game-room/1/players').
             success(function (data) {
