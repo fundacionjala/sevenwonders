@@ -1,4 +1,4 @@
-angular.module("mainModule", ['ui.router'])
+angular.module("sevenWonder", ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
     // For any unmatched url, send to /
     $urlRouterProvider.otherwise("/")
@@ -7,20 +7,16 @@ angular.module("mainModule", ['ui.router'])
       .state('login', {
         url: "/",
         templateUrl: "views/login.html",
-        controller: function ($scope) { }
+        controller: 'createGameRoomCtrl'
       })
       .state('game-room', {
         url: "/game-room",
         templateUrl: "views/game-room.html",
-        controller: function ($scope, $http) {
-          $http.get('https://demo9730175.mockable.io/game-room/1/players').
-            success(function (data) {
-              $scope.players = data;
-            });
-          $http.get('https://demo9730175.mockable.io/game-room/1').
-            success(function (data) {
-              $scope.gameroom = data;
-            });
-        }
+        controller: 'gameRoomCtrl'
+      })
+      .state('create-game-room', {
+        url: "/create-game-room",
+        templateUrl: "views/create-game-room.html",
+        controller: 'createGameRoomCtrl'
       })
   });
