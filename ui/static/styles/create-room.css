@@ -1,0 +1,70 @@
+.box {
+   	display: block;
+   	position: absolute;
+   	background-color: black;
+	opacity: 0.6;
+	height: 50%;
+	width: 40%;
+	left: 30%;
+	top: 20%;
+	text-align: center;
+    border-radius: 12px;
+    border: 1px solid white;
+}
+
+.title {
+	font-family: "arial";
+	color: white;
+}
+
+.subtitle {
+	font-family: "arial";
+	color: white;
+}
+
+input[type="text"] {
+    border-radius: 12px;
+    background: transparent;
+	width: 345px;
+	height: 37px ;
+	border: solid 2px #dcdcdc;
+	transition: box-shadow 0.3s, border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="text"].focus {
+	border: solid 1px #707070;
+	box-shadow: 0 0 5px 1px #969696;
+}
+
+.players {
+   border: solid 2px #dcdcdc;
+   border-radius: 12px;
+   background: transparent;
+   font-size: 16px;
+   font-family: arial;
+   height: 34px;
+   width: 100px;
+   text-align: center;
+}
+
+.create {
+    background-color: #FF8000;
+    border: none;
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    position: absolute;
+    height: 40px;
+    width: 150px;
+    top: 80%;
+    left: 45%;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.create:hover {
+	border: solid 2px #FFBF00;
+	box-shadow: 0 0 5px 2px #FFBF00; 
+}
+

@@ -1,19 +1,22 @@
-angular.module("mainModule", [])
-  .controller("mainController", function ($scope)
-  {
-    $scope.myScopeVar = "the scope variable value";
-  })
-  // 1. Directive with a template specified inline
-  .directive("nghTemplateDir", function ()
-  {
-    return {
-      template: 'This is <strong>nghTemplateDir</strong> directive printing <em>{{myScopeVar}}</em>'
-    };
-  })
-  // 2. Directive with a template loaded from a URL
-  .directive("nghTemplateUrlDir", function ()
-  {
-    return {
-      templateUrl: 'templates/nghTemplateUrlDirBody.html'
-    };
+angular.module("sevenWonder", ['ui.router'])
+  .config(function ($stateProvider, $urlRouterProvider) {
+    // For any unmatched url, send to /
+    $urlRouterProvider.otherwise("/")
+
+    $stateProvider
+      .state('login', {
+        url: "/",
+        templateUrl: "views/login.html",
+        controller: 'createGameRoomCtrl'
+      })
+      .state('game-room', {
+        url: "/game-room",
+        templateUrl: "views/game-room.html",
+        controller: 'gameRoomCtrl'
+      })
+      .state('create-game-room', {
+        url: "/create-game-room",
+        templateUrl: "views/create-game-room.html",
+        controller: 'createGameRoomCtrl'
+      })
   });
