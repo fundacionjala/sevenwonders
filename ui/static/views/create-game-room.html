@@ -3,9 +3,8 @@
   <form>
     <h3 class="subtitle">Name Your Room</h3>
     </br>
-    <input type="text" ng-model="room" placeholder="name"></br>
+    <input type="text" class = "name" ng-model="room" placeholder="name"></br>
     <h3 class="subtitle">Number Of Players</h3>
-    </br>
     <div>
       <select class = "players" ng-model="player">
           <option ng-repeat= "player in maxPlayers" value="{{player}}"
@@ -13,9 +12,12 @@
           </option>
         </select>
     </div>
+    </br>
+    <div ng-if= "room && player">
+      <button class="create" ui-sref="game-room" ng-click="createRoomGame()">create</button>
+    </div>
   </form>
 </div>
-<button class="create" ui-sref="game-room" ng-click="createRoomGame()">create</button>
 <div style="float: left;" ng-model="user">
   {{user}}
 </div>
