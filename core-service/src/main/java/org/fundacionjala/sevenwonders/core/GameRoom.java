@@ -4,6 +4,8 @@
  */
 package org.fundacionjala.sevenwonders.core;
 
+import com.google.common.base.Preconditions;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -48,6 +50,7 @@ public class GameRoom {
      * @param player assigned a item of players.
      */
     public void addPlayer(org.fundacionjala.sevenwonders.core.rest.Player player) {
+        Preconditions.checkArgument(!(maxPlayers == players.size()));
         this.players.add(player);
     }
 

@@ -75,7 +75,7 @@ public class GameBuilder {
         }
         List<Predicate<? super Card>> filters = new ArrayList<>();
         filters.add(card -> card instanceof Building);
-        filters.add(card -> ((Building) card).getPlayersNeeded() == players.size());
+        filters.add(card -> ((Building) card).getPlayersNeeded() <= players.size());
         filters.add(card -> ((Building) card).getAge() == 1);
 
         players.stream().forEach(
