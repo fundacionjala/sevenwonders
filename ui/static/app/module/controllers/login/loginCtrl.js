@@ -1,10 +1,10 @@
-angular.module('mainModule')
-    .controller("loginController", function ($scope, $http) {
+angular.module('sevenWonder')
+    .controller("loginCtrl", function ($scope, $http) {
             var player = {
                 name: $scope.user,
                 isAdmin: false
             };
-            $http.post('http://demo9586009.mockable.io/user', player.name).
+            $http.post('https://demo9730175.mockable.io/user', player.name).
                 success(function (data) {
                     console.log(data);
                 });

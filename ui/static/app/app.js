@@ -1,4 +1,4 @@
-angular.module("mainModule", ['ui.router'])
+angular.module("sevenWonder", ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/")
 
@@ -6,7 +6,7 @@ angular.module("mainModule", ['ui.router'])
       .state('login', {
         url: "/",
         templateUrl: "app/module/directives/login/login.html",
-        controller: 'createGameRoomCtrl'
+        controller: 'loginCtrl'
       })
       .state('game-room', {
         url: "/game-room",
