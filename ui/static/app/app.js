@@ -1,27 +1,26 @@
-angular.module("mainModule", ['ui.router'])
+angular.module("sevenWonder", ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
-    // For any unmatched url, send to /
     $urlRouterProvider.otherwise("/")
 
     $stateProvider
       .state('login', {
         url: "/",
-        templateUrl: "views/login.html",
+        templateUrl: "app/module/directives/login/login.html",
         controller: 'createGameRoomCtrl'
       })
       .state('game-room', {
         url: "/game-room",
-        templateUrl: "views/game-room.html",
+        templateUrl: "app/module/directives/game-room/game-room.html",
         controller: 'gameRoomCtrl'
       })
       .state('create-game-room', {
         url: "/create-game-room",
-        templateUrl: "views/create-game-room.html",
+        templateUrl: "app/module/directives/form-game-room/create-game-room.html",
         controller: 'createGameRoomCtrl'
       })
       .state('join-room', {
         url: "/join-room",
-        templateUrl: "views/join.html",
-        controller: 'ExampleController'
+        templateUrl: "app/module/directives/join-room/join.html",
+        controller: 'joinRoomCtrl'
       })
   });

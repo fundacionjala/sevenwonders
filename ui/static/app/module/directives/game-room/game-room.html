@@ -5,7 +5,7 @@
 
     <div class="container">
         <div ng-repeat="player in players" class="child">
-            <img class="image-user" ng-src="{{'images/'+player.user+'.png'}}" />
+            <img class="image-user" ng-src="{{'/resources/images/'+player.user+'.png'}}" />
             <p>{{player.username}}</p>
         </div>
     </div>
