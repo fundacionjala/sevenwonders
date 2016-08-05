@@ -1,6 +1,5 @@
 angular.module('mainModule')
     .controller("loginController", function ($scope, $http) {
-
             var player = {
                 name: $scope.user,
                 isAdmin: false
