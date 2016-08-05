@@ -50,7 +50,7 @@ public class WonderTest {
     
     @Test(expected = NullPointerException.class)
     public void testIfListStageIsNull() {
-        wonder = new Wonder(null);
+        wonder = new Wonder("");
         List<Stage> result = wonder.getBuildingsStages();
     }
 }
