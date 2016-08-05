@@ -1,4 +1,4 @@
-angular.module('mainModule')
+angular.module('sevenWonder')
     .controller("createGameRoomCtrl", function ($scope) {
         //to-do
     });
