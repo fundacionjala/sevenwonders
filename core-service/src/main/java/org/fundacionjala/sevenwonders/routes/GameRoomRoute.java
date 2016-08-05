@@ -4,11 +4,9 @@ import org.apache.camel.BeanInject;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
-import org.fundacionjala.sevenwonders.beans.GameService;
-import org.fundacionjala.sevenwonders.core.GameBuilder;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
-import org.fundacionjala.sevenwonders.core.Wonder;
+import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.springframework.stereotype.Component;
 
 /**
@@ -38,7 +36,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
         rest("/gameRoom").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
-                .post().description("Create a new game room").type(org.fundacionjala.sevenwonders.core.rest.GameRoom.class)
+                .post().description("Create a new game room").type(GameRoomModel.class)
                 .to("bean:gameRoomService?method=createGameRoom")
 
                 .post("/player").description("Add Player to lobby game").type(Player.class)

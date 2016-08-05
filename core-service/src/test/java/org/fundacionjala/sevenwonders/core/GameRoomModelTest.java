@@ -14,7 +14,7 @@ import org.junit.Test;
  *
  * @author Juan Manuel Barahona
  */
-public class GameRoomTest {
+public class GameRoomModelTest {
 
     @Test
     public void testAddPlayer(){

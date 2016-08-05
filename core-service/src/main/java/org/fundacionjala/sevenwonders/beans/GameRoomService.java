@@ -4,10 +4,7 @@
  */
 package org.fundacionjala.sevenwonders.beans;
 
-import org.fundacionjala.sevenwonders.core.*;
 import org.fundacionjala.sevenwonders.core.GameRoom;
-import org.fundacionjala.sevenwonders.core.Player;
-import org.fundacionjala.sevenwonders.core.StoragePoint;
 import org.fundacionjala.sevenwonders.core.rest.*;
 import org.springframework.stereotype.Component;
 
@@ -22,12 +19,12 @@ import java.util.*;
 
 @Component
 public class GameRoomService {
-    private final Map<String, GameRoom> gameRooms = new TreeMap<>();
+    private final Map<Integer, GameRoom> gameRooms = new TreeMap<>();
     private GameService gameService;
-    private String autoIncrementId;
+    private int autoIncrementId;
 
     public GameRoomService(){
-        autoIncrementId = 1 + "";
+        autoIncrementId = 1;
         gameService = new GameService();
     }
 
@@ -35,14 +32,14 @@ public class GameRoomService {
     /**
      * POST: Create a game room with the information sent in post petition.
      *
-     * @param restGameRoom
+     * @param restGameRoomModel
      */
-    public void createGameRoom(org.fundacionjala.sevenwonders.core.rest.GameRoom restGameRoom){
-        GameRoom gameRoom = new GameRoom(restGameRoom.getMaxPlayers());
+    public void createGameRoom(GameRoomModel restGameRoomModel){
+        GameRoom gameRoom = new GameRoom(restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
-        restGameRoom.getOwner().setRoomId(autoIncrementId);
-        autoIncrementId = (Integer.parseInt(autoIncrementId) + 1) + "";
-        gameRoom.addPlayer(restGameRoom.getOwner());
+        restGameRoomModel.getOwner().setRoomId(autoIncrementId);
+        autoIncrementId++;
+        gameRoom.addPlayer(restGameRoomModel.getOwner());
     }
 
     /**
@@ -51,8 +48,8 @@ public class GameRoomService {
      * @param id identifier of game room
      * @return game room with owner and max of players
      */
-    public org.fundacionjala.sevenwonders.core.rest.GameRoom getGameRoom(String id){
-        org.fundacionjala.sevenwonders.core.rest.GameRoom room = new org.fundacionjala.sevenwonders.core.rest.GameRoom();
+    public GameRoomModel getGameRoom(int id){
+        GameRoomModel room = new GameRoomModel();
         room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
         room.setOwner(gameRooms.get(id).getPlayers().get(0));
         room.setPlayers(gameRooms.get(id).getPlayers());
@@ -64,18 +61,18 @@ public class GameRoomService {
      *
      * @return GameRooms
      */
-    public Collection<org.fundacionjala.sevenwonders.core.rest.GameRoom> listGameRooms(){
+    public Collection<GameRoomModel> listGameRooms(){
 
-        List<org.fundacionjala.sevenwonders.core.rest.GameRoom> currentGameRooms = new ArrayList<>();
+        List<GameRoomModel> currentGameRoomModels = new ArrayList<>();
         gameRooms.values().stream().forEach(gameRoom -> {
-            org.fundacionjala.sevenwonders.core.rest.GameRoom room = new org.fundacionjala.sevenwonders.core.rest.GameRoom();
+            GameRoomModel room = new GameRoomModel();
             room.setMaxPlayers(gameRoom.getMaxPlayers());
             room.setOwner(gameRoom.getPlayers().get(1));
             room.setPlayers(gameRoom.getPlayers());
-            currentGameRooms.add(room);
+            currentGameRoomModels.add(room);
         });
 
-        return currentGameRooms;
+        return currentGameRoomModels;
     }
 
     /**
@@ -84,7 +81,7 @@ public class GameRoomService {
      * @param id game room identifier
      * @return player
      */
-    public Collection<org.fundacionjala.sevenwonders.core.rest.Player> getPlayers(String id){
+    public Collection<PlayerModel> getPlayers(String id){
         return gameRooms.get(id).getPlayers();
     }
 
@@ -94,7 +91,7 @@ public class GameRoomService {
      * @param player
      */
 
-    public void addPlayer(org.fundacionjala.sevenwonders.core.rest.Player player){
+    public void addPlayer(PlayerModel player){
         GameRoom current = gameRooms.get(player.getRoomId());
         current.addPlayer(player);
 

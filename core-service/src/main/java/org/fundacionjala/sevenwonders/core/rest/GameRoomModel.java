@@ -9,16 +9,16 @@ import java.util.List;
 /**
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
-public class GameRoom {
+public class GameRoomModel {
     private int maxPlayers;
-    private Player owner;
-    private List<Player> players;
+    private PlayerModel owner;
+    private List<PlayerModel> players;
 
-    public List<Player> getPlayers() {
+    public List<PlayerModel> getPlayers() {
         return players;
     }
 
-    public void setPlayers(List<Player> players) {
+    public void setPlayers(List<PlayerModel> players) {
         this.players = players;
     }
 
@@ -30,11 +30,11 @@ public class GameRoom {
         this.maxPlayers = maxPlayers;
     }
 
-    public Player getOwner() {
+    public PlayerModel getOwner() {
         return owner;
     }
 
-    public void setOwner(Player owner) {
+    public void setOwner(PlayerModel owner) {
         this.owner = owner;
     }
 }

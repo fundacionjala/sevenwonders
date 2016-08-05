@@ -7,15 +7,15 @@ package org.fundacionjala.sevenwonders.core.rest;
 /**
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
-public class Player {
+public class PlayerModel {
     private String name;
-    private String roomId;
+    private int roomId;
 
-    public String getRoomId() {
+    public int getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 
