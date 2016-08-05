@@ -10,7 +10,10 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 /**
- * Created by Juan Manuel Barahona on 04/08/2016.
+ * Has the basic functionality that permit to rest service access and generate
+ * data without obtain unusable information about game room data.
+ *
+ * @author Juan Barahona
  */
 
 @Component
@@ -24,13 +27,12 @@ public class GameRoomService {
         gameService = new GameService();
     }
 
-    public org.fundacionjala.sevenwonders.core.rest.GameRoom getGameRoom(String id){
-        org.fundacionjala.sevenwonders.core.rest.GameRoom room = new org.fundacionjala.sevenwonders.core.rest.GameRoom();
-        room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
-        room.setOwner(gameRooms.get(id).getPlayers().get(0));
-        return room;
-    }
 
+    /**
+     * POST: Create a game room with the information sent in post petition.
+     *
+     * @param restGameRoom
+     */
     public void createGameRoom(org.fundacionjala.sevenwonders.core.rest.GameRoom restGameRoom){
         GameRoom gameRoom = new GameRoom(restGameRoom.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
@@ -39,6 +41,24 @@ public class GameRoomService {
         gameRoom.addPlayer(restGameRoom.getOwner());
     }
 
+    /**
+     * GET: Send a game room
+     *
+     * @param id identifier of game room
+     * @return game room with owner and max of players
+     */
+    public org.fundacionjala.sevenwonders.core.rest.GameRoom getGameRoom(String id){
+        org.fundacionjala.sevenwonders.core.rest.GameRoom room = new org.fundacionjala.sevenwonders.core.rest.GameRoom();
+        room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
+        room.setOwner(gameRooms.get(id).getPlayers().get(0));
+        return room;
+    }
+
+    /**
+     * Get: Send a list of game rooms
+     *
+     * @return GameRooms
+     */
     public Collection<org.fundacionjala.sevenwonders.core.rest.GameRoom> listGameRooms(){
 
         List<org.fundacionjala.sevenwonders.core.rest.GameRoom> currentGameRooms = new ArrayList<>();
@@ -52,9 +72,21 @@ public class GameRoomService {
         return currentGameRooms;
     }
 
+    /**
+     * Get: Get a player of a game room
+     *
+     * @param id game room identifier
+     * @return player
+     */
     public Collection<org.fundacionjala.sevenwonders.core.rest.Player> getPlayers(String id){
         return gameRooms.get(id).getPlayers();
     }
+
+    /**
+     * Post: Add player to a game room
+     *
+     * @param player
+     */
 
     public void addPlayer(org.fundacionjala.sevenwonders.core.rest.Player player){
         GameRoom current = gameRooms.get(player.getRoomId());

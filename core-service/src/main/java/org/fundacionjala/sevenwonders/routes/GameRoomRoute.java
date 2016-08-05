@@ -12,7 +12,9 @@ import org.fundacionjala.sevenwonders.core.Wonder;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by Juan Manuel Barahona on 04/08/2016.
+ * This registry the principal routes(GET, SET, PUT, DELETE) of game rooms
+ *
+ * @author Juan Barahona
  */
 
 @Component

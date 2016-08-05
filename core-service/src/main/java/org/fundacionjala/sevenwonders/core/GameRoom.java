@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.core;
 
 import java.util.ArrayList;
@@ -5,7 +9,10 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * Created by Juan Manuel Barahona on 04/08/2016.
+ * Has the basic functionality for add players, set some settings and start the game when
+ * the game room is full.
+ *
+ * @author Juan Barahona
  */
 public class GameRoom {
     public static final int NUMBER_OF_AGES = 3;
