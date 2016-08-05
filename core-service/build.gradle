@@ -17,6 +17,8 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-tx', version: '4.2.5.RELEASE'
     compile group: 'org.springframework', name: 'spring-expression', version: '4.2.5.RELEASE'
     compile group: 'org.apache.camel', name: 'camel-core', version: '2.17.2'
+    compile group: 'org.apache.camel', name: 'camel-jackson', version: '2.17.2'
+    compile group: 'org.apache.camel', name: 'camel-jetty', version: '2.17.2'
     compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.17.2') {
         exclude(module: 'spring-tx')
         exclude(module: 'spring-aop')
