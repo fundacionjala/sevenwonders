@@ -20,7 +20,7 @@ angular.module("sevenWonder", ['ui.router'])
       })
       .state('join-room', {
         url: "/join-room",
-        templateUrl: "app/module/directives/join-room/join.html",
+        templateUrl: "views/join.html",
         controller: 'joinRoomCtrl'
       })
   });
