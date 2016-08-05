@@ -55,6 +55,7 @@ public class GameRoomService {
         org.fundacionjala.sevenwonders.core.rest.GameRoom room = new org.fundacionjala.sevenwonders.core.rest.GameRoom();
         room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
         room.setOwner(gameRooms.get(id).getPlayers().get(0));
+        room.setPlayers(gameRooms.get(id).getPlayers());
         return room;
     }
 
@@ -70,6 +71,7 @@ public class GameRoomService {
             org.fundacionjala.sevenwonders.core.rest.GameRoom room = new org.fundacionjala.sevenwonders.core.rest.GameRoom();
             room.setMaxPlayers(gameRoom.getMaxPlayers());
             room.setOwner(gameRoom.getPlayers().get(1));
+            room.setPlayers(gameRoom.getPlayers());
             currentGameRooms.add(room);
         });
 
@@ -99,5 +101,13 @@ public class GameRoomService {
         if(current.getMaxPlayers() == current.getPlayers().size()){
             gameService.createGame(current.createGame());
         }
+    }
+
+    public GameService getGameService() {
+        return gameService;
+    }
+
+    public void setGameService(GameService gameService) {
+        this.gameService = gameService;
     }
 }

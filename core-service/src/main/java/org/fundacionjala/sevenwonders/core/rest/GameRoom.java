@@ -4,12 +4,23 @@
  */
 package org.fundacionjala.sevenwonders.core.rest;
 
+import java.util.List;
+
 /**
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
 public class GameRoom {
     private int maxPlayers;
     private Player owner;
+    private List<Player> players;
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
 
     public int getMaxPlayers() {
         return maxPlayers;

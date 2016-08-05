@@ -8,6 +8,8 @@ import org.fundacionjala.sevenwonders.core.Game;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -37,5 +39,9 @@ public class GameService {
     public void createGame(Game game) {
         games.put(autoIncrementId, game);
         autoIncrementId = (Integer.parseInt(autoIncrementId) + 1) + "";
+    }
+
+    public Collection<Game> getGames(){
+        return games.values();
     }
 }
