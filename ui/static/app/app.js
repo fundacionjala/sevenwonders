@@ -19,4 +19,9 @@ angular.module("mainModule", ['ui.router'])
         templateUrl: "views/create-game-room.html",
         controller: 'createGameRoomCtrl'
       })
+      .state('join-room', {
+        url: "/join-room",
+        templateUrl: "views/join.html",
+        controller: 'ExampleController'
+      })
   });
