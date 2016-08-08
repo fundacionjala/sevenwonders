@@ -1,5 +1,5 @@
 <div class="box" ng-controller="createGameRoomCtrl">
-  <h1 class="title">Create Game Room</h1>
+  <h1 class="title">{{user}}'s Game Room </h1>
   <form>
     <h3 class="subtitle">Name Your Room</h3></br>
     <input type="text" class="name" ng-model="room" placeholder="name"></br>
@@ -15,6 +15,4 @@
     </div>
   </form>
 </div>
-<div style="float: left;" ng-model="user">
-  {{user}}
-</div>
+<button class="create" ui-sref="game-room" ng-click="createRoomGame()">create</button>
