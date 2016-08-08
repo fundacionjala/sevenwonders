@@ -6,7 +6,7 @@ angular.module("sevenWonder", ['ui.router'])
       .state('login', {
         url: "/",
         templateUrl: "app/module/directives/login/login.html",
-        controller: 'createGameRoomCtrl'
+        controller: 'loginCtrl'
       })
       .state('game-room', {
         url: "/game-room",
