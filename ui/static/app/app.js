@@ -23,4 +23,9 @@ angular.module("sevenWonder", ['ui.router'])
         templateUrl: "views/join.html",
         controller: 'joinRoomCtrl'
       })
+      .state('choose-wonder', {
+        url: "/choose-wonder",
+        templateUrl: "views/choose.html",
+        controller: 'wonderCtrl'
+      })
   });
