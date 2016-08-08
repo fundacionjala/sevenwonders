@@ -13,7 +13,7 @@ import com.google.common.base.Preconditions;
  * @author Juan Barahona
  */
 public class Player {
-
+    private String name;
     private Deck deck;
     private City city;
 
@@ -23,6 +23,16 @@ public class Player {
      * @param city
      */
     public Player(City city) {
+        this.city = city;
+    }
+
+    /**
+     * Initialize a new instance of {@link Player}, assigned a {@link City} and name.
+     * @param name name of player
+     * @param city city of player
+     */
+    public Player(String name, City city) {
+        this.name = name;
         this.city = city;
     }
 
