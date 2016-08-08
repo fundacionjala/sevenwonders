@@ -1,18 +1,15 @@
 <div class="box" ng-controller="createGameRoomCtrl">
   <h1 class="title">Create Game Room</h1>
   <form>
-    <h3 class="subtitle">Name Your Room</h3>
-    </br>
+    <h3 class="subtitle">Name Your Room</h3></br>
     <input type="text" class = "name" ng-model="room" placeholder="name"></br>
     <h3 class="subtitle">Number Of Players</h3>
     <div>
       <select class = "players" ng-model="player">
-          <option ng-repeat= "player in maxPlayers" value="{{player}}"
-          >{{player}}
+          <option ng-repeat= "player in maxPlayers" value="{{player}}">{{player}}
           </option>
         </select>
-    </div>
-    </br>
+    </div></br>
     <div ng-if= "room && player">
       <button class="create" ui-sref="game-room" ng-click="createRoomGame()">create</button>
     </div>
