@@ -9,9 +9,10 @@ angular.module('sevenWonder')
                 $scope.gameroom = data;
             });
     })
-    .controller("createGameRoomCtrl", function ($scope, $http) {
+    .controller("createGameRoomCtrl", function ($scope, $http, swLogin ) {
 
         $scope.maxPlayers = ["3", "4", "5", "6", "7", "8"];
+        $scope.user = swLogin.user;
 
         $scope.createRoomGame = function () {
             var roomCreated = {
