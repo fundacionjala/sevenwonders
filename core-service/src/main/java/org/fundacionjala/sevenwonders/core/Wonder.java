@@ -23,6 +23,10 @@ public class Wonder {
         this.stages = stages;
     }
 
+    public Wonder(String name ){
+        this.name = name;
+    }
+
     public Effect getEffect() {
         return effect;
     }
