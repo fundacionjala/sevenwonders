@@ -8,11 +8,19 @@ html,body {
   margin: 0;
   padding: 0;
   width: 100%;
-    background: url('/resources/images/index3.png') no-repeat center center fixed;
-    background-size: cover;
-    background-position:50%;
-    -webkit-font-smoothing:antialiased;
+  background: url('/resources/images/index3.png') no-repeat center center fixed;
+  background-size: cover;
+  background-position:50%;
+  -webkit-font-smoothing:antialiased;
 }
+
+.join-list {
+  height: 35%;
+  width: 20%;
+  left: 70%;
+  top: 65%;
+}
+
 .welcome {
   height: 35%;
   width: 20%;
@@ -29,7 +37,7 @@ html,body {
   h2 {
      text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
 	   color: @color_welcome;
-	   opacity: 0.3;
+	   opacity: 0.3;listopenedrooms
      font-family: @font-family_1;
   }
 }
@@ -143,7 +151,25 @@ html,body {
       }
     }
   }
-  .submit {
+}
+.joinformleft {
+  margin: 0 auto;
+  position: fixed;
+  left: 20%;
+  -moz-transform: translate3d(-50%, 0, 0);
+  -ms-transform: translate3d(-50%, 0, 0);
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+  width: 50%;
+  top: 20%;
+  background-color: black;
+  background: inherit;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+}
+
+.submit {
     padding: 10px 20px;
     width: 100%;
     font-size: 1.2rem;
@@ -166,4 +192,49 @@ html,body {
       border: 1px solid white;
     }
   }
+.joinformrigth {
+  margin: 0 auto;
+  position: fixed;
+  left: 70%;
+  -moz-transform: translate3d(-50%, 0, 0);
+  -ms-transform: translate3d(-50%, 0, 0);
+  -webkit-transform: translate3d(-50%, 0, 0);
+  transform: translate3d(-50%, 0, 0);
+  width: 40%;
+  background-color: black;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: inherit;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  border-radius: 12px;
+  top: 20%;
+  height: 370px;
+  h2 {
+    margin: 22%;
+    position: relative;
+    width: 200%;
+  }
+  h3 {
+    left: 33%;
+    position: relative;
+    color: rgb(51, 51, 51);
+    font-family: Raleway;
+    font-size: 24px;
+    width: 300%;
+  }
+  .submit {
+    margin: 22%;
+    width: 300%;
+  }
+}
+
+.listopenedrooms {
+  background: inherit;
+  font-family: @font-family_1;
+  color: #c99b2d;
+  font-size: 18px;
+  left: 44%;
+  position: relative;
+  margin: 10%;
+  width: 300%;
 }
