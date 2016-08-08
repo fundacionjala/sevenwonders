@@ -1,13 +1,14 @@
 <div class="top-image">
     <img class="image-title" ng-src="resources/images/3.png" />
 </div>
-<div class="form">
+<div class="form" name="form" novalidate>
     <div class="forceColor"></div>
     <div class="topbar">
         <div class="spanColor"></div>
-        <input type="" class="input" placeholder="Name" ng-model="user" />
+        <input name="user" type="text" class="input" placeholder="Name" ng-model="user" required/>
+
+        <button class="submit" id="submit" type="submit" ng-disabled="form.user.$invalid" ui-sref="create-game-room" ng-click="login()">Login</button>
     </div>
-    <button class="submit" id="submit" ui-sref="create-game-room" ng-click="login()">Login</button>
 </div>
 <div class="welcome">
     <h1>WELCOME</h1>
