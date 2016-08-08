@@ -4,7 +4,68 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/jasmine-html.min.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/2.3.3/boot.min.js"></script>
-	</head>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular.js"></script>
+        <script type="text/javascript" src="https://code.angularjs.org/1.4.0-rc.2/angular-mocks.js"></script>
+    </head>
 	<body>
+	<script type="text/javascript">
+            angular.module('sevenWonder',[])
+            .controller("createGameRoomCtrl", function createGameRoomCtrl ($scope, $http) {
+
+                $scope.maxPlayers = ["3", "4", "5", "6", "7"];
+
+                $scope.createRoomGame = function () {
+                    var roomCreated = {
+                        name: $scope.room,
+                        numberPlayers: $scope.player
+                    };
+                    $http.post('https://demo9730175.mockable.io/game-room/1', roomCreated).
+                        success(function (data) {
+                            console.log(data);
+                        });
+                };
+            });
+
+            describe('createGameRoom', function () {
+
+            beforeEach(angular.mock.module('sevenWonder'),[]);
+
+            var $controller;
+            var $http;
+
+            beforeEach(angular.mock.inject(function(_$controller_, _$httpBackend_){
+              $controller = _$controller_;
+              $httpBackend = _$httpBackend_;
+            }));
+
+            describe('createGameRoom', function () {
+                it('should post data (function)', inject(function($http) {
+                    var $scope = {};
+
+                $http.post('https://demo9730175.mockable.io/game-room/1', {
+                      name: 'battle blood',
+                      numberPlayers : 5
+                })
+                .success(function(data, status, headers, config) {
+                        $scope.room = data;
+                 });
+
+                $httpBackend
+                    .when('POST', 'https://demo9730175.mockable.io/game-room/1',
+                          { name: 'battle blood', numberPlayers : 5
+                    })
+                    .respond({
+                            name: 'battle blood'
+                    });
+
+                $httpBackend.flush();
+
+                expect($scope.room).toEqual({ name: 'battle blood' });
+
+                }));
+            });
+
+        });
+	</script>
 	</body>
 </html>

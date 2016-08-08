@@ -1,9 +1,15 @@
+@box: black;
+@form: transparent;
+@button: #B07615;
+@font-family_2: Raleway;
+@label: white;
+
 .box {
    	display: block;
    	position: absolute;
-   	background-color: black;
+   	background-color: @box;
 	opacity: 0.6;
-	height: 50%;
+	height: 53%;
 	width: 40%;
 	left: 30%;
 	top: 20%;
@@ -13,52 +19,50 @@
 }
 
 .title {
-	font-family: "arial";
-	color: white;
+	font-family: @font-family_2;
+	color: @label;
 }
 
 .subtitle {
-	font-family: "arial";
-	color: white;
+	font-family: @font-family_2;
+	color: @label;
 }
 
-input[type="text"] {
+input.name {
     border-radius: 12px;
-    background: transparent;
+    border:none;
+    background-color: transparent;
 	width: 345px;
-	height: 37px ;
+	height: 40px ;
+	border: solid 1px #dcdcdc;
+    font-family: @font-family_2;
+}
+
+input.name:hover{
+    border-radius: 12px;
+    border:none;
+    background-color: transparent;
 	border: solid 2px #dcdcdc;
-	transition: box-shadow 0.3s, border 0.3s;
+	font-color: @label;
 }
-
-input[type="text"]:focus,
-input[type="text"].focus {
-	border: solid 1px #707070;
-	box-shadow: 0 0 5px 1px #969696;
-}
-
 .players {
    border: solid 2px #dcdcdc;
    border-radius: 12px;
-   background: transparent;
+   background: @form;
    font-size: 16px;
-   font-family: arial;
+   font-family: @font-family_2;
    height: 34px;
    width: 100px;
    text-align: center;
 }
 
 .create {
-    background-color: #FF8000;
+    background-color: @button;
     border: none;
     color: white;
     border-radius: 12px;
-    text-align: center;
-    position: absolute;
     height: 40px;
     width: 150px;
-    top: 80%;
-    left: 45%;
     font-size: 16px;
     cursor: pointer;
 }
