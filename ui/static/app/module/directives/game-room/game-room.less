@@ -1,0 +1,47 @@
+div.sw-game-room-directive {
+    & div.body {
+	    color: white;
+	    height: 80%;
+	    left: 15%;
+	    position: absolute;
+        text-align: center;
+        top: 10%;
+        width: 70%;
+
+        & div.container {
+            -ms-flex-wrap: wrap;
+            display: flex;
+            flex-wrap: wrap;
+            height: 70%;
+            justify-content: center;
+            margin: 1% 5% 5%;
+            position: absolute;
+            vertical-align: middle;
+            width: 90%;
+        
+            & div.child {
+                background-color: black;
+                border-radius: 12px;
+                border: 1px solid white;
+                filter: alpha(opacity=60);
+                height: 15%;
+                margin: auto;
+                opacity: 0.6;
+                width: 40%;
+                img {
+                    border-radius: 25px;
+                    float: left;
+                    height: 50%;
+                    left: 10%;
+                    position: relative;
+                    top: 25%;
+                    width: 15%;
+                }
+                p {
+                    position: relative;
+                    top: 5%;
+                }
+            }
+        }
+    }
+}
