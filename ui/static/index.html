@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <link rel='stylesheet/less' href='app/module/directives/form-game-room/create-room.less' />
-    <link rel="stylesheet/less" href="app/module/directives/login/login.less" />
-    <link rel="stylesheet/less" href="app/module/directives/choose-wonder/swWonder.less" />
-    <link rel="stylesheet/less" href="app/module/directives/stage/swStage.less" />
+    <link rel='stylesheet/less' href='app/commons/components.less'/>
+    <link rel='stylesheet/less' href='app/module/directives/form-game-room/create-room.less'/>
+    <link rel="stylesheet/less" href="app/module/directives/login/login.less"/>
+    <link rel="stylesheet/less" href="app/module/directives/choose-wonder/swWonder.less"/>
+    <link rel="stylesheet/less" href="app/module/directives/stage/swStage.less"/>
     <script type="text/javascript" src="lib/less-v2.7.js"></script>
     <script type="text/javascript" src="lib/lodash-4.14.0.js"></script>
     <link rel='stylesheet' href='app/module/directives/game-room/game-room.css'>
@@ -30,10 +31,10 @@
     <script src="app/module/services/loginService.js"></script>
 </head>
 
-<body ng-app="sevenWonder">
-    <div>
-        <div ui-view></div>
-    </div>
+<body class="sw-background" ng-app="sevenWonder">
+<div>
+    <div ui-view></div>
+</div>
 </body>
 
 </html>
