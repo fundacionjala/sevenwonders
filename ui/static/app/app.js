@@ -15,7 +15,7 @@ angular.module("sevenWonder", ['ui.router'])
       })
       .state('create-game-room', {
         url: "/create-game-room",
-        templateUrl: "app/module/directives/form-game-room/create-game-room.html",
+        templateUrl: "app/module/directives/create-game-room/create-game-room.html",
         controller: 'createGameRoomCtrl'
       })
       .state('join-room', {

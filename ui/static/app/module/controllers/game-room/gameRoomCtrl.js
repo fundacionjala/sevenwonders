@@ -11,7 +11,7 @@ angular.module('sevenWonder')
     })
     .controller("createGameRoomCtrl", function ($scope, $http, swLogin ) {
 
-        $scope.maxPlayers = ["3", "4", "5", "6", "7", "8"];
+        $scope.maxPlayers = ["3", "4", "5", "6", "7"];
         $scope.user = swLogin.user;
 
         $scope.createRoomGame = function () {
