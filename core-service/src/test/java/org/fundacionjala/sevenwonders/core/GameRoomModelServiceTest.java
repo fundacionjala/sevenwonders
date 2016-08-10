@@ -6,7 +6,7 @@ package org.fundacionjala.sevenwonders.core;
 
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
-import org.fundacionjala.sevenwonders.core.rest.Player;
+import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ public class GameRoomModelServiceTest {
     public void postAndGetGameRoomTest(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
-        org.fundacionjala.sevenwonders.core.rest.Player player = new Player();
+        PlayerModel player = new PlayerModel();
 
         player.setName("Juan");
         gameRoomModel.setMaxPlayers(3);
@@ -29,14 +29,14 @@ public class GameRoomModelServiceTest {
 
         gameRoomService.createGameRoom(gameRoomModel);
 
-        Assert.assertEquals("1", gameRoomService.getGameRoom("1").getOwner().getRoomId());
+        Assert.assertEquals("1", gameRoomService.getGameRoom(1).getOwner().getRoomId());
     }
 
     @Test
     public void addPlayerToGameRoomTest(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
-        org.fundacionjala.sevenwonders.core.rest.Player player = new Player();
+        PlayerModel player = new PlayerModel();
         player.setName("Juan");
 
         gameRoomModel.setMaxPlayers(3);
@@ -44,20 +44,20 @@ public class GameRoomModelServiceTest {
 
         gameRoomService.createGameRoom(gameRoomModel);
 
-        org.fundacionjala.sevenwonders.core.rest.Player playerOne = new Player();
+        PlayerModel playerOne = new PlayerModel();
         playerOne.setName("Dwits");
-        playerOne.setRoomId("1");
+        playerOne.setRoomId(1);
 
         gameRoomService.addPlayer(playerOne);
 
-        Assert.assertEquals(2, gameRoomService.getGameRoom("1").getPlayers().size());
+        Assert.assertEquals(2, gameRoomService.getGameRoom(1).getPlayers().size());
     }
 
     @Test
     public void automaticCreateGameWhenFullRoom(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
-        org.fundacionjala.sevenwonders.core.rest.Player player = new Player();
+        PlayerModel player = new PlayerModel();
         player.setName("Juan");
 
         gameRoomModel.setMaxPlayers(3);
@@ -65,17 +65,17 @@ public class GameRoomModelServiceTest {
 
         gameRoomService.createGameRoom(gameRoomModel);
 
-        org.fundacionjala.sevenwonders.core.rest.Player playerOne = new Player();
+        PlayerModel playerOne = new PlayerModel();
         playerOne.setName("Dwits");
-        playerOne.setRoomId("1");
+        playerOne.setRoomId(1);
 
         gameRoomService.addPlayer(playerOne);
 
         Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
 
-        org.fundacionjala.sevenwonders.core.rest.Player playerTwo = new Player();
+        PlayerModel playerTwo = new PlayerModel();
         playerTwo.setName("Lucero");
-        playerTwo.setRoomId("1");
+        playerTwo.setRoomId(1);
 
         gameRoomService.addPlayer(playerTwo);
 

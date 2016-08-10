@@ -5,7 +5,6 @@
 package org.fundacionjala.sevenwonders.core;
 
 import org.fundacionjala.sevenwonders.core.rest.*;
-import org.fundacionjala.sevenwonders.core.rest.Player;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -21,8 +20,8 @@ public class GameRoomModelTest {
         int maxPlayers = 2;
         GameRoom gameRoom = new GameRoom(maxPlayers);
 
-        gameRoom.addPlayer(new Player());
-        gameRoom.addPlayer(new Player());
+        gameRoom.addPlayer(new PlayerModel());
+        gameRoom.addPlayer(new PlayerModel());
 
         Assert.assertEquals(2, gameRoom.getPlayers().size());
         Assert.assertFalse(gameRoom.getMaxPlayers() > gameRoom.getPlayers().size());
@@ -33,9 +32,9 @@ public class GameRoomModelTest {
         int maxPlayers = 2;
         GameRoom gameRoom = new GameRoom(maxPlayers);
 
-        gameRoom.addPlayer(new Player());
-        gameRoom.addPlayer(new Player());
-        gameRoom.addPlayer(new Player());
+        gameRoom.addPlayer(new PlayerModel());
+        gameRoom.addPlayer(new PlayerModel());
+        gameRoom.addPlayer(new PlayerModel());
         Assert.fail();
     }
 
@@ -44,9 +43,9 @@ public class GameRoomModelTest {
         int maxPlayers = 3;
         GameRoom gameRoom = new GameRoom(maxPlayers);
 
-        gameRoom.addPlayer(new Player());
-        gameRoom.addPlayer(new Player());
-        gameRoom.addPlayer(new Player());
+        gameRoom.addPlayer(new PlayerModel());
+        gameRoom.addPlayer(new PlayerModel());
+        gameRoom.addPlayer(new PlayerModel());
 
         Game game = gameRoom.createGame();
 
