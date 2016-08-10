@@ -81,7 +81,7 @@ public class GameRoomService {
      * @param id game room identifier
      * @return player
      */
-    public Collection<PlayerModel> getPlayers(String id){
+    public Collection<PlayerModel> getPlayers(int id){
         return gameRooms.get(id).getPlayers();
     }
 

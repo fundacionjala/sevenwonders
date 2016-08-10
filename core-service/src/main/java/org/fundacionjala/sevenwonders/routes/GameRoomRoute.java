@@ -7,6 +7,7 @@ import org.fundacionjala.sevenwonders.beans.GameRoomService;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
+import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.springframework.stereotype.Component;
 
 /**
@@ -39,7 +40,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .post().description("Create a new game room").type(GameRoomModel.class)
                 .to("bean:gameRoomService?method=createGameRoom")
 
-                .post("/player").description("Add Player to lobby game").type(Player.class)
+                .post("/player").description("Add Player to lobby game").type(PlayerModel.class)
                 .to("bean:gameRoomService?method=addPlayer")
 
                 .get("/players/{id}").description("Get list of players").outTypeList(Player.class)
