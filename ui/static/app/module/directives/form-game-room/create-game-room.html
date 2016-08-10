@@ -1,17 +1,18 @@
-<div class="box" ng-controller="createGameRoomCtrl">
-  <h1 class="title">{{user}}'s Game Room </h1>
-  <form>
-    <h3 class="subtitle">Name Your Room</h3></br>
-    <input type="text" class="name" ng-model="room" placeholder="name"></br>
-    <h3 class="subtitle">Number Of Players</h3>
-    <div>
-      <select class="players" ng-model="player">
-          <option ng-repeat="player in maxPlayers" value="{{player}}">{{player}}
-          </option>
-        </select>
-    </div></br>
-    <div ng-if="room && player">
-      <button class="create" ui-sref="game-room" ng-click="createRoomGame()">create</button>
-    </div>
-  </form>
+<div class="sw-logo"></div>
+<div class="create-game-section sw-box box" ng-controller="createGameRoomCtrl">
+    <h1 class="sw-title">{{user}}'s Game Room </h1>
+    <form class="create">
+        <h2 class="sw-title">Name Your Room</h2>
+        <input type="text" class="sw-input" ng-model="room" placeholder="name" required>
+        <h2 class="sw-title">Number Of Players</h2>
+        <div>
+            <select class="sw-players" ng-model="player">
+                <option ng-repeat="player in maxPlayers" value="{{player}}">{{player}}
+                </option>
+            </select>
+        </div>
+        </br>
+        <button class="sw-button" ui-sref="game-room" ng-disabled="create.$invalid" ng-click="createRoomGame()">create
+        </button>
+    </form>
 </div>
