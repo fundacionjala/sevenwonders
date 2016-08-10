@@ -10,7 +10,7 @@ angular.module("sevenWonder", ['ui.router'])
       })
       .state('game-room', {
         url: "/game-room",
-        templateUrl: "app/module/directives/game-room/game-room.html",
+        templateUrl: "views/game-room.html",
         controller: 'gameRoomCtrl'
       })
       .state('create-game-room', {
