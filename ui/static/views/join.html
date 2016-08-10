@@ -1,0 +1,25 @@
+<div class="logo"></div>
+<div class="joinformleft">
+	<div class="form" ng-controller="joinRoomCtrl">
+		<h1>{{gameroom.name}}</h1>
+		<div>
+			<h2>Create Game</h2>
+			<button class="submit" id="submit-Create" ui-sref="create-game-room">Create Game</button>
+		</div>
+	</div>
+</div>
+
+<div class="joinformrigth">
+	<div class="join-list" ng-controller="joinRoomCtrl">
+  	<form>
+  		<h2>Join Game</h2>
+    	<h3> Opened Rooms: </h3>
+    	<select class="listopenedrooms" name="repeatSelect" id="repeatSelect" ng-model="roomselected" multiple>
+      		<option ng-repeat="data in rooms" value="{{data.name}}">{{data.name}}</option>
+    	</select>
+    	<br>
+		<button class="submit" id="submit-Join" ui-sref="game-room">Join {{roomselected[0]}}</button>
+		
+  	</form>
+</div>
+</div>
