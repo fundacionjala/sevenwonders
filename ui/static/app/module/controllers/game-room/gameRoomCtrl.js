@@ -9,19 +9,18 @@ angular.module('sevenWonder')
                 $scope.gameroom = data;
             });
     })
-    .controller("createGameRoomCtrl", function ($scope, $http, swLogin ) {
+    .controller("createGameRoomCtrl", function ($scope, $http, swLogin, swCreateGameRoom) {
 
         $scope.maxPlayers = ["3", "4", "5", "6", "7"];
         $scope.user = swLogin.user;
 
-        $scope.createRoomGame = function () {
+        $scope.createGameRoom = function () {
             var roomCreated = {
                 name: $scope.room,
                 numberPlayers: $scope.player
             };
-            $http.post('https://demo9730175.mockable.io/game-room/1', roomCreated).
-                success(function (data) {
-                    console.log(data);
-                });
+
+         swCreateGameRoom.saveGameRoom(roomCreated);
+
         };
     });
