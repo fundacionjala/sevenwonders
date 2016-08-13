@@ -1,0 +1,17 @@
+<div>
+    <div class="join-list">
+        <form>
+            <h2>Join Game</h2>
+            <h3> Opened Rooms: </h3>
+            <select class="listopenedrooms" name="repeatSelect" id="repeatSelect" ng-model="roomselected" multiple>
+      		<option ng-repeat="game in $ctrl.games" value="{{game.name}}">{{game.name}}</option>
+    		</select> --{{ $ctrl.games}} --
+            <ul>
+                <li ng-repeat="game in $ctrl.games">{{game}}</li>
+            </ul>
+            <br>
+            <button class="submit" id="submit-Join" ui-sref="game-room">Join {{roomselected[0]}}</button>
+
+        </form>
+    </div>
+</div>

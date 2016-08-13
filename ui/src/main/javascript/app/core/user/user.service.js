@@ -1,15 +1,14 @@
 'use strict';
 
 angular.
-  module('sevenWonders.core.user').
-  factory('User', ['$resource',
+module('sevenWonders.core.user').
+factory('User', ['$resource',
     function($resource) {
-      var Login = $resource("http://demo1976057.mockable.io/login");
-      //var Login = $resource("login");
-      return {
-        login: function(user) {
-            return Login.save().$promise;
+        var Login = $resource("http://demo8039957.mockable.io/login");
+        return {
+            login: function(user) {
+                return Login.save().$promise;
+            }
         }
-      }
     }
-  ]);
+]);

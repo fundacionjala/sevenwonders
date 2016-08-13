@@ -1,15 +1,18 @@
 angular.module("sevenWonder")
-.config(['$locationProvider' ,'$routeProvider',
-    function config($locationProvider, $routeProvider) {
-      $locationProvider.hashPrefix('!');
+    .config(['$locationProvider', '$routeProvider',
+        function config($locationProvider, $routeProvider) {
+            //      $locationProvider.hashPrefix('!');
 
-      $routeProvider.
-        when('/login', {
-          template: '<login></login>'
-        })
-        .otherwise('/login');
-    }
-  ]);
+            $routeProvider
+                .when('/login', {
+                    template: '<login></login>'
+                })
+                .when('/lobby', {
+                    template: '<lobby></lobby>'
+                })
+                .otherwise('/login');
+        }
+    ]);
 
 /*  .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/")
@@ -19,7 +22,8 @@ angular.module("sevenWonder")
         url: "/",
         templateUrl: "<login></login>",
       })
-     *//* .state('game-room', {
+     */
+/* .state('game-room', {
         url: "/game-room",
         templateUrl: "app/module/directives/game-room/game-room.html",
         controller: 'gameRoomCtrl'
@@ -38,5 +42,6 @@ angular.module("sevenWonder")
         url: "/choose-wonder",
         templateUrl: "views/choose.html",
         controller: 'wonderCtrl'
-      })*//*
+      })*/
+/*
   });*/

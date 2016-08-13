@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <link rel='stylesheet/less' href='app.less'/>
+    <link rel='stylesheet/less' href='app.less' />
     <script type='text/javascript' src='vendor/less/dist/less.js'></script>
     <script type='text/javascript' src='vendor/angularjs/angular.js'></script>
     <script type='text/javascript' src='vendor/angularjs/angular-resource.js'></script>
@@ -10,8 +11,12 @@
 
     <script src="core/user/user.module.js"></script>
     <script src="core/user/user.service.js"></script>
+    <script src="core/game/game.module.js"></script>
+    <script src="core/game/game.service.js"></script>
     <script src="login/login.module.js"></script>
     <script src="login/login.component.js"></script>
+    <script src="lobby/lobby.module.js"></script>
+    <script src="lobby/lobby.component.js"></script>
 
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
@@ -19,9 +24,10 @@
 </head>
 
 <body class="sw-background" ng-app="sevenWonder">
-<div>
-    <!--<div ui-view></div>-->
-    <div ng-view></div>
-</div>
+    <div>
+        <!--<div ui-view></div>-->
+        <div ng-view></div>
+    </div>
 </body>
+
 </html>

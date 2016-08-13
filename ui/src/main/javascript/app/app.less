@@ -3,115 +3,115 @@
 @color_welcome: #9c8468;
 @font-family_1: Raleway;
 @box: black;
-
-html,body {
+html, body {
   height: 100%;
   margin: 0;
   padding: 0;
   width: 100%;
   background: url('/resources/images/index3.png') no-repeat center center fixed;
   background-size: cover;
-  background-position:50%;
-  -webkit-font-smoothing:antialiased;
+  background-position: 50%;
+  -webkit-font-smoothing: antialiased;
 }
 
 .sw-background {
-    height: 100%;
-    width: 100%;
-    background: url('/resources/images/index3.png') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  height: 100%;
+  width: 100%;
+  background: url('/resources/images/index3.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .sw-box {
-   	position: absolute;
-   	background-color: @box;
-	opacity: 0.6;
-    border-radius: 12px;
-    border: 1px solid white;
-    padding: 20px;
-    overflow: hidden;
+  position: absolute;
+  background-color: @box;
+  opacity: 0.6;
+  border-radius: 12px;
+  border: 1px solid white;
+  padding: 20px;
+  overflow: hidden;
 }
 
 .sw-logo {
-    background: url('/resources/images/3.png') no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    position: absolute;
-    width: 11%;
-    height: 8%;
-    left:2%;
-    top:2%;
+  background: url('/resources/images/3.png') no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  width: 11%;
+  height: 8%;
+  left: 2%;
+  top: 2%;
 }
 
 .sw-title {
-	font-family: @font-family_1;
-	color: @color_2;
+  font-family: @font-family_1;
+  color: @color_2;
 }
 
 button.sw-button {
-    padding: 10px 20px;
-    width: 100%;
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: @font-family_1;
+  font-weight: 200;
+  display: block;
+  color: @color_2;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    color: @color_2;
+    border: 1px solid white;
+  }
+}
+
+input.sw-input {
+  display: block;
+  width: 92%;
+  position: relative;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  font-size: 1rem;
+  background: transparent;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+  margin-bottom: 25px;
+  color: @color_1;
+  padding: 10px 20px;
+  &::-webkit-input-placeholder {
+    color: @color_2;
     font-size: 1.2rem;
     font-family: @font-family_1;
+    line-height: 1.3rem;
     font-weight: 200;
-    display: block;
-    color: @color_2;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.5);
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      color: @color_2;
-      border: 1px solid white;
-    }
   }
+  &:focus {
+    outline: none;
+    color: @color_2;
+    border: 1px solid white;
+  }
+  &:hover {
+    border: 1px solid white;
+  }
+}
 
-  input.sw-input {
-        display: block;
-        width: 92%;
-        position: relative;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
-        font-size: 1rem;
-        background: transparent;
-        border-top: 1px solid rgba(255, 255, 255, 0.4);
-        border-left: 1px solid rgba(255, 255, 255, 0.4);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        border-right: 1px solid rgba(255, 255, 255, 0.4);
-        margin-bottom: 25px;
-        color: @color_1;
-        padding: 10px 20px;
-        &::-webkit-input-placeholder {
-          color: @color_2;
-          font-size: 1.2rem;
-          font-family: @font-family_1;
-          line-height: 1.3rem;
-          font-weight: 200;
-        }
-        &:focus {
-          outline: none;
-          color: @color_2;
-          border: 1px solid white;
-        }
-        &:hover {
-          border: 1px solid white;
-        }
-      }
-      .input.disabled {
-        &:hover {
-          border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-      }
+.input.disabled {
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+}
