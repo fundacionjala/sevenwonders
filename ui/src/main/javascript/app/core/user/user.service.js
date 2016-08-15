@@ -2,11 +2,12 @@
 
 angular.
 module('sevenWonders.core.user').
-factory('User', ['$resource',
-    function($resource) {
-        var Login = $resource("http://demo8039957.mockable.io/login");
+factory('User', ['Restangular',
+    function(Restangular) {
+        var Login = Restangular.service('user');
         return {
             login: function(user) {
+
                 return Login.save().$promise;
             }
         }

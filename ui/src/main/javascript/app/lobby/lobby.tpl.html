@@ -1,17 +1,26 @@
-<div>
+<div class="logo">
+</div>
+<div class="joinformleft">
+    <div class="form">
+        <h1>{{gameroom.name}}</h1>
+        <div>
+            <h2>Create Game</h2>
+            <input ng-model="gameroom.name"></input>
+            <input ng-model="gameroom.players"></input>
+            <button class="submit" type="submit" id="submit-Create" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
+
+        </div>
+    </div>
+</div>
+
+<div class="joinformrigth">
     <div class="join-list">
         <form>
             <h2>Join Game</h2>
             <h3> Opened Rooms: </h3>
-            <select class="listopenedrooms" name="repeatSelect" id="repeatSelect" ng-model="roomselected" multiple>
-      		<option ng-repeat="game in $ctrl.games" value="{{game.name}}">{{game.name}}</option>
-    		</select> --{{ $ctrl.games}} --
             <ul>
-                <li ng-repeat="game in $ctrl.games">{{game}}</li>
+                <li ng-repeat="game in $ctrl.games"><a ng-click="$ctrl.joinGame(game)">{{game.name}}</a> </li>
             </ul>
-            <br>
-            <button class="submit" id="submit-Join" ui-sref="game-room">Join {{roomselected[0]}}</button>
-
         </form>
     </div>
 </div>

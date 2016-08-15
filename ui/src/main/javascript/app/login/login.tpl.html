@@ -7,7 +7,7 @@
         <div class="spanColor"></div>
         <input name="user" type="text" class="input" placeholder="Name" ng-model="user" required/>
 
-        <button class="submit" id="submit" type="submit" ng-disabled="form.user.$invalid" ui-sref="join-room" ng-click="$ctrl.doLogin()">Login</button>
+        <button class="submit" id="submit" type="submit" ng-disabled="form.user.$invalid" ng-click="$ctrl.doLogin(user)">Login</button>
     </div>
 </div>
 <div class="welcome">

@@ -12,7 +12,10 @@ angular.module("sevenWonder")
                 })
                 .otherwise('/login');
         }
-    ]);
+    ])
+    .config(['RestangularProvider', function(RestangularProvider) {
+        RestangularProvider.setBaseUrl('http://demo1701066.mockable.io');
+    }]);
 
 /*  .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/")
