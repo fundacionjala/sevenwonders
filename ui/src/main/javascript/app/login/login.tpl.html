@@ -1,13 +1,14 @@
+<div class="sw-logo"></div>
 <div class="top-image">
     <img class="image-title" ng-src="resources/images/3.png" />
 </div>
-<div class="form" name="form" novalidate>
+<div class="sw-box" name="form" novalidate>
     <div class="forceColor"></div>
     <div class="topbar">
         <div class="spanColor"></div>
-        <input name="user" type="text" class="input" placeholder="Name" ng-model="user" required/>
+        <input name="user" type="text" class="sw-input" placeholder="Name" ng-model="user" required/>
 
-        <button class="submit" id="submit" type="submit" ng-disabled="form.user.$invalid" ng-click="$ctrl.doLogin(user)">Login</button>
+        <button class="sw-button" id="submit" type="submit" ng-disabled="form.user.$invalid" ng-click="$ctrl.doLogin(user)">Login</button>
     </div>
 </div>
 <div class="welcome">

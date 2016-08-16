@@ -1,3 +1,4 @@
+@color_welcome: #9c8468;
 
 .join-list {
   height: 35%;
@@ -17,13 +18,13 @@
 	  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
 	  color: @color_welcome;
 	  opacity: 0.3;
-    font-family: @font-family_1;
+    font-family: @font-family;
   }
   h2 {
      text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
 	   color: @color_welcome;
 	   opacity: 0.3;listopenedrooms
-     font-family: @font-family_1;
+     font-family: @font-family;
   }
 }
 
@@ -40,45 +41,6 @@
   display: inline;
   margin: 3px 3px;
 }
-.form {
-  margin: 0 auto;
-  position: fixed;
-  top: 35%;
-  left: 50%;
-  -moz-transform: translate3d(-50%, 0, 0);
-  -ms-transform: translate3d(-50%, 0, 0);
-  -webkit-transform: translate3d(-50%, 0, 0);
-  transform: translate3d(-50%, 0, 0);
-  width: 350px;
-  padding: 20px;
-  overflow: hidden;
-  background-color: black;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: inherit;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-  .forceColor {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    left: 0;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  &:before {
-    content: "";
-    width: 110%;
-    height: 110%;
-    position: absolute;
-    background: inherit;
-    left: -5%;
-    right: 0;
-    bottom: 0;
-    top: -5%;
-    -webkit-filter: blur(3px);
-    filter: blur(3px);
-  }
   .topbar {
     .spanColor {
       position: absolute;
@@ -97,46 +59,7 @@
       -webkit-transition-delay: 0s, 250ms, 250ms;
       transition: width 150ms ease-in-out, background-color 150ms ease-in-out 250ms, border 150ms ease-in-out 250ms;
     }
-    .input {
-      display: block;
-      width: 87%;
-      position: relative;
-      border-top-left-radius: 6px;
-      border-bottom-left-radius: 6px;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      font-size: 1rem;
-      background: transparent;
-      border-top: 1px solid rgba(255, 255, 255, 0.4);
-      border-left: 1px solid rgba(255, 255, 255, 0.4);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-      border-right: 1px solid rgba(255, 255, 255, 0.4);
-      margin-bottom: 25px;
-      color: @color_1;
-      padding: 10px 20px;
-      &::-webkit-input-placeholder {
-        color: @color_2;
-        font-size: 1.2rem;
-        font-family: @font-family_1;
-        line-height: 1.3rem;
-        font-weight: 200;
-      }
-      &:focus {
-        outline: none;
-        color: @color_2;
-        border: 1px solid white;
-      }
-      &:hover {
-        border: 1px solid white;
-      }
-    }
-    .input.disabled {
-      &:hover {
-        border: 1px solid rgba(255, 255, 255, 0.4);
-      }
-    }
-  }
-}
+  
 .joinformleft {
   margin: 0 auto;
   position: fixed;
