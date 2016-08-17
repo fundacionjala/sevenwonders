@@ -1,33 +1,25 @@
-@color_input: rgba(255, 255, 255, 0.4);
-@color_letters: white;
-@font-family: Raleway;
-@box: black;
+@import "global.less";
 
 .sw-box {
-  position: absolute;
   background-color: @box;
-  opacity: 0.6;
   border-radius: 12px;
   border: 1px solid white;
-  padding: 20px;
+  opacity: 0.6;
   overflow: hidden;
+  padding: 20px;
+  position: absolute;
 }
 
 button.sw-button {
-  padding: 10px 20px;
-  width: 100%;
-  font-size: 1.2rem;
-  font-family: @font-family;
-  font-weight: 200;
-  display: block;
-  color: @color_letters;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.5);
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
   border-radius: 6px;
+  background: @background_button;
+  border: 1px solid @color_component;
+  color: @color_letters;
   cursor: pointer;
+  font-family: @font-family;
+  font-size: 1.2rem;
+  font-weight: 200;
+  padding: 8px 20px;
   &:focus {
     outline: none;
   }
@@ -38,41 +30,26 @@ button.sw-button {
 }
 
 input.sw-input {
-  display: block;
-  width: 92%;
-  position: relative;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
+  background: @background_input;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 6px;
+  color: @color_component;
   font-size: 1rem;
-  background: transparent;
-  border-top: 1px solid rgba(255, 255, 255, 0.4);
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  border-right: 1px solid rgba(255, 255, 255, 0.4);
   margin-bottom: 25px;
-  color: @color_input;
   padding: 10px 20px;
   &::-webkit-input-placeholder {
-    color: @color_input;
-    font-size: 1.2rem;
+    color: @color_component;
     font-family: @font-family;
-    line-height: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 200;
+    line-height: 1.3rem;
   }
   &:focus {
-    outline: none;
+    border: 1px solid white;
     color: @color_letters;
-    border: 1px solid white;
+    outline: none;
   }
   &:hover {
     border: 1px solid white;
-  }
-}
-
-.input.disabled {
-  &:hover {
-    border: 1px solid rgba(255, 255, 255, 0.4);
   }
 }
