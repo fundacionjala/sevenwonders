@@ -1,148 +1,18 @@
-@color_welcome: #9c8468;
+@import "../style/global.less";
 
-.join-list {
-  height: 35%;
-  width: 20%;
-  left: 70%;
-  top: 65%;
-}
-
-.welcome {
-  height: 35%;
-  width: 20%;
-  left: 40%;
-  top: 65%;
-  position: absolute;
+.div.login {
   text-align: center;
-  h1 {
-	  text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
-	  color: @color_welcome;
-	  opacity: 0.3;
-    font-family: @font-family;
-  }
-  h2 {
-     text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;
-	   color: @color_welcome;
-	   opacity: 0.3;listopenedrooms
-     font-family: @font-family;
-  }
-}
-
-
-.top-image {
-  height: 30%;
-  width: 30%;
-  position: absolute;
-  left: 35%;
-}
-.image-title {
-  height: 95%;
-  width: auto;
-  display: inline;
-  margin: 3px 3px;
-}
-  .topbar {
-    .spanColor {
-      position: absolute;
-      width: 0px;
-      right: 20px;
-      height: 43px;
-      opacity: 0.2;
-      background-color: white;
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
-      border-top-right-radius: 6px;
-      border-bottom-right-radius: 6px;
-      -moz-transition: width 150ms ease-in-out, background-color 150ms ease-in-out 250ms, border 150ms ease-in-out 250ms;
-      -o-transition: width 150ms ease-in-out, background-color 150ms ease-in-out 250ms, border 150ms ease-in-out 250ms;
-      -webkit-transition: width 150ms ease-in-out, background-color 150ms ease-in-out, border 150ms ease-in-out;
-      -webkit-transition-delay: 0s, 250ms, 250ms;
-      transition: width 150ms ease-in-out, background-color 150ms ease-in-out 250ms, border 150ms ease-in-out 250ms;
-    }
-  
-.joinformleft {
-  margin: 0 auto;
-  position: fixed;
-  left: 20%;
-  -moz-transform: translate3d(-50%, 0, 0);
-  -ms-transform: translate3d(-50%, 0, 0);
-  -webkit-transform: translate3d(-50%, 0, 0);
-  transform: translate3d(-50%, 0, 0);
-  width: 50%;
-  top: 20%;
-  background-color: black;
-  background: inherit;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-}
-
-.submit {
-    padding: 10px 20px;
-    width: 100%;
-    font-size: 1.2rem;
-    font-family: @font-family_1;
-    font-weight: 200;
+  display: block;
+  .top-image{
     display: block;
-    color: @color_2;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    background: rgba(255, 255, 255, 0.5);
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    cursor: pointer;
-    &:focus {
-      outline: none;
-    }
-    &:hover {
-      color: @color_2;
-      border: 1px solid white;
+    width: 100%;
+  }
+  .form {
+    display: block;
+    width: 100%;
+    .sw-box{
+      width: 370px;
+      margin: 0 auto;  
     }
   }
-.joinformrigth {
-  margin: 0 auto;
-  position: fixed;
-  left: 70%;
-  -moz-transform: translate3d(-50%, 0, 0);
-  -ms-transform: translate3d(-50%, 0, 0);
-  -webkit-transform: translate3d(-50%, 0, 0);
-  transform: translate3d(-50%, 0, 0);
-  width: 40%;
-  background-color: black;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background: inherit;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  border-radius: 12px;
-  top: 20%;
-  height: 370px;
-  h2 {
-    margin: 22%;
-    position: relative;
-    width: 200%;
-  }
-  h3 {
-    left: 33%;
-    position: relative;
-    color: rgb(51, 51, 51);
-    font-family: Raleway;
-    font-size: 24px;
-    width: 300%;
-  }
-  .submit {
-    margin: 22%;
-    width: 300%;
-  }
-}
-
-.listopenedrooms {
-  background: inherit;
-  font-family: @font-family_1;
-  color: #c99b2d;
-  font-size: 18px;
-  left: 44%;
-  position: relative;
-  margin: 10%;
-  width: 300%;
 }
