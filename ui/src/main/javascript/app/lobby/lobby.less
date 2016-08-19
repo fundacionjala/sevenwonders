@@ -2,56 +2,69 @@
 
 div.lobby-game-section{
     height: 100%;
-    width: 100%;
+    padding-top: 5%;
     text-align: center;
+    width: 100%;
     & .box {
         box-sizing: border-box;
         display: inline-block;
         height: 80%;
         width: 70%;
-        top: 15%;
-        left:15%;
       }
+    & form.sw-align-form{
+      text-align: left;
+      }
+    & .sw-box-1{
+      margin:0 20px 0;
+      width:30%; float:left; 
+      }
+    & .sw-box-2{
+      margin:0 30px 0; 
+      width: 20%; float: left; 
+      }
+
+    & .sw-box-3{
+      margin-top: 25px;
+      text-align: bottom;
+      width:20%; float: right;
+      }
+
+     & label.sw-label{
+      display: block;
+      margin: 0.5em 0 0 0;
+      }
+
+    & select.sw-players {
+      background: @background_input;
+      border-radius: 6px;
+      border: 1px solid @color_component;
+      font-color: @color_component;
+      font-family: @font-family;
+      font-size: 16px;
+      padding: 8px 20px;
+      width: 230px;
+      &:focus {
+        border: 1px solid white;
+        outline: none;
+        font-color: @color_component;
+      }
+      &:hover {
+        border: 1px solid white;
+      }
+    }
+
     & table.sw-table {
+      border-width: 2px;
+      color: @color_letters;
+      margin: 2px;
       width: 100%;
-      &.create {
-        height: 18%;
-        }
-
-      &.join {
-        height: 77%;
+        & td, th {
+          border-bottom: 2px solid white;
+          height: 50px;
         }
       }
 
-    & .sw-cell {
-      border-style: dotted;
-      border-width: 1px;
-      color: @color_letters;
+      & tr.background {
+        background: @background_button;
       }
-
-    & .title {
-      color: @color_letters;
-    }
-
-    & .sw-players {
-          background: @background_input;
-          border-radius: 6px;
-          border: 1px solid rgba(255, 255, 255, 0.4);
-          font-color: white;
-          font-family: @font-family;
-          font-size: 16px;
-          height: 38px;
-          margin-bottom: 10px;
-          width: 200px;
-          &:focus {
-            border: 1px solid white;
-            outline: none;
-          }
-          &:hover {
-            border: 1px solid white;
-          }
-      }
-    & .margin{
-      margin-top: 50px;
-    }
 }

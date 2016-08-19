@@ -1,25 +1,38 @@
 <div class="lobby-game-section">
     <div class="sw-box box">
-        <table class="sw-table create">
-        <td>
-            <h4 class= "sw-title">Game Name</h4>
-            <input class="sw-input" ng-model="gameroom.name" placeholder="Name">
-            </input>
-        </td>
-        <td>
-            <h4 class= "sw-title">Max Players</h4>
-            <select class="sw-players" ng-model="gameroom.player">
-                <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
-                </option>
-            </select>
-        </td>
-        <td>
-            <button class="sw-button margin" type="submit" id="submit-Create" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
-        </td>
-        </table>
-        <table class="sw-table sw-cell join">
-            <tr class="sw-cell" ng-repeat="game in $ctrl.games">
-                <td class="punteado" title="Name">{{game.name}}
+        <form class ="sw-align-form">
+            <div class="sw-box-1">
+                <span>
+                    <label for="name" class="sw-title sw-label">Name Game</label>
+                    <input class="sw-input" id="name" ng-model="gameroom.name" required placeholder="Name">
+                    </input>
+                </span>
+            </div>
+            <div class="sw-box-2">
+                <span>
+                    <label for="players" class="sw-title sw-label">Max Players</label>
+                    <select class="sw-players" id="players" ng-model="gameroom.player">
+                        <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
+                        </option>
+                    </select>
+                </span>
+            </div>
+            
+            <div class="sw-box-3">
+                <span>
+                    <button class="sw-button" type="submit" id="submit-Create" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
+                </span>
+            </div>
+        </form>           
+        <table class="sw-table">
+            <tr class="background">
+                <th>Name</th>
+                <th>Owner</th>
+                <th>Players</th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="game in $ctrl.games">
+                <td title="Name">{{game.name}}
                 </td>
                 <td title="Owner">{{game.owner}}
                 </td>
