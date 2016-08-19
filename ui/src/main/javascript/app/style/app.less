@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body {
+ &.sw-background {
+  height: 100%;
+  width: 100%;
+  background: url('/resources/images/background.png') no-repeat center center fixed;
+  background-size: cover;
+  background-position: 50%;
+ }
+
+ & .sw-logo {
+  background: url('/resources/images/logo.png') no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 11%;
+  height: 8%;
+  left: 2%;
+  top: 2%;
+ }
+}

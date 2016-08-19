@@ -1,0 +1,15 @@
+<div class="login">
+    <div class="top-image">
+        <img class="image-title" ng-src="resources/images/logo.png" />
+    </div>
+    <div class="form">
+        <div class="sw-box" name="form" novalidate>
+            <input name="user" type="text" class="sw-input" placeholder="Name" ng-model="user" required/>
+            <button class="sw-button" id="submit" type="submit" ng-disabled="form.user.$invalid" ng-click="$ctrl.doLogin(user)">Login</button>
+            <div class="sw-title">
+                <h1>WELCOME</h1>
+                <h2>{{user}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
