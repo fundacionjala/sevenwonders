@@ -1,27 +1,34 @@
 <div class="lobby-game-section">
     <div class="sw-box box">
-        <div class= "sw-nameRoom">
+        <table class="sw-table create">
+        <td>
             <h4 class= "sw-title">Game Name</h4>
             <input class="sw-input" ng-model="gameroom.name" placeholder="Name">
             </input>
-        </div>
-        <div class="sw-maxPlayers">
+        </td>
+        <td>
             <h4 class= "sw-title">Max Players</h4>
             <select class="sw-players" ng-model="gameroom.player">
                 <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
                 </option>
             </select>
-        </div>
-        <button class="sw-button" type="submit" id="submit-Create" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
-                
-            <h1 class="sw-title">{{gameroom.name}}</h1>
-        
-        <div>
-            <h2 class="sw-title">Join Game</h2>
-            <h3 class="sw-title"> Opened Rooms: </h3>
-            <ul>
-                <li class="sw-title" ng-repeat="game in $ctrl.games"><a ng-click="$ctrl.joinGame(game)">{{game.name}}</a> </li>
-            </ul>
-        </div>
+        </td>
+        <td>
+            <button class="sw-button margin" type="submit" id="submit-Create" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
+        </td>
+        </table>
+        <table class="sw-table sw-cell join">
+            <tr class="sw-cell" ng-repeat="game in $ctrl.games">
+                <td class="punteado" title="Name">{{game.name}}
+                </td>
+                <td title="Owner">{{game.owner}}
+                </td>
+                <td title="Players">{{game.players}}
+                </td>
+                <td>
+                    <button class="sw-button" type="submit" id="submit-join" ng-click="$ctrl.joinGame(game)">Join</button>       
+                </td>
+            </tr>
+        </table>
     </div>    
 </div>

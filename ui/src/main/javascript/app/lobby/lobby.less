@@ -3,27 +3,55 @@
 div.lobby-game-section{
     height: 100%;
     width: 100%;
-    margin: 10px;
+    text-align: center;
     & .box {
         box-sizing: border-box;
         display: inline-block;
-        height: 70%;
+        height: 80%;
         width: 70%;
         top: 15%;
         left:15%;
       }
-    & .sw-nameRoom{
+    & table.sw-table {
+      width: 100%;
+      &.create {
+        height: 18%;
+        }
 
+      &.join {
+        height: 77%;
+        }
+      }
+
+    & .sw-cell {
+      border-style: dotted;
+      border-width: 1px;
+      color: @color_letters;
+      }
+
+    & .title {
+      color: @color_letters;
     }
+
     & .sw-players {
           background: @background_input;
-          border-radius: 12px;
-          border: solid 2px #dcdcdc;
+          border-radius: 6px;
+          border: 1px solid rgba(255, 255, 255, 0.4);
           font-color: white;
           font-family: @font-family;
           font-size: 16px;
-          height: 40px;
-          text-align: center;
-          width: 150px;
+          height: 38px;
+          margin-bottom: 10px;
+          width: 200px;
+          &:focus {
+            border: 1px solid white;
+            outline: none;
+          }
+          &:hover {
+            border: 1px solid white;
+          }
       }
+    & .margin{
+      margin-top: 50px;
+    }
 }
