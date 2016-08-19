@@ -8,63 +8,64 @@ div.lobby-game-section{
     & .box {
         box-sizing: border-box;
         display: inline-block;
-        height: 80%;
+        height: 70%;
         width: 70%;
       }
     & form.sw-align-form{
-      text-align: left;
+        text-align: left;
       }
     & .sw-box-1{
-      margin:0 20px 0;
-      width:30%; float:left; 
+        margin:0 20px 0;
+        width:30%; float:left; 
       }
     & .sw-box-2{
-      margin:0 30px 0; 
-      width: 20%; float: left; 
+        margin:0 30px 0; 
+        width: 20%; float: left; 
       }
 
     & .sw-box-3{
-      margin-top: 25px;
-      text-align: bottom;
-      width:20%; float: right;
+        margin-top: 25px;
+        text-align: bottom;
+        width:20%; float: right;
       }
 
-     & label.sw-label{
-      display: block;
-      margin: 0.5em 0 0 0;
+    & label.sw-label{
+        display: block;
+        margin: 0.5em 0 0 0;
       }
 
     & select.sw-players {
-      background: @background_input;
-      border-radius: 6px;
-      border: 1px solid @color_component;
-      font-color: @color_component;
-      font-family: @font-family;
-      font-size: 16px;
-      padding: 8px 20px;
-      width: 230px;
-      &:focus {
-        border: 1px solid white;
-        outline: none;
+        background: @background_input;
+        border-radius: 6px;
+        border: 1px solid @color_component;
         font-color: @color_component;
-      }
-      &:hover {
-        border: 1px solid white;
-      }
-    }
-
-    & table.sw-table {
-      border-width: 2px;
-      color: @color_letters;
-      margin: 2px;
-      width: 100%;
-        & td, th {
-          border-bottom: 2px solid white;
-          height: 50px;
+        font-family: @font-family;
+        font-size: 16px;
+        padding: 8px 20px;
+        width: 230px;
+        &:focus {
+          border: 1px solid white;
+          outline: none;
+          font-color: @color_component;
+        }
+        &:hover {
+          border: 1px solid white;
         }
       }
 
-      & tr.background {
+    & table.sw-table {
+        border-width: 2px;
+        color: @color_letters;
+        height: 100%;
+        margin: 2px;
+        width: 100%;
+          & td, th {
+            border-bottom: 2px solid white;
+            height: 50px;
+          }
+      }
+
+    & tr.background {
         background: @background_button;
       }
-}
+  }
