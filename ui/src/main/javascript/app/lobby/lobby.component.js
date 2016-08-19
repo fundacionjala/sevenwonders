@@ -10,12 +10,13 @@ component('lobby', {
             Game.getAvailableGames().then(function(result) {
                 self.games = result;
             });
-            this.maxPlayers = 7;
+
+            this.maxPlayers = ["3", "4", "5", "6", "7"];
 
             this.createGame = function(game) {
                 var gameSettings = {
                     name: game.name,
-                    players: game.players
+                    players: game.player
                 };
                 Game.create(gameSettings);
             }

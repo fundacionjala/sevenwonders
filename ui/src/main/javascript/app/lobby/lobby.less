@@ -1,28 +1,29 @@
-@box: black;
-@form: transparent;
-@button: #B07615;
-@font-family_2: Raleway;
-@label: white;
+@import "/style/global.less";
 
-div.create-game-section{
-    text-align: center;
-    font-color: white;
+div.lobby-game-section{
+    height: 100%;
+    width: 100%;
+    margin: 10px;
+    & .box {
+        box-sizing: border-box;
+        display: inline-block;
+        height: 70%;
+        width: 70%;
+        top: 15%;
+        left:15%;
+      }
+    & .sw-nameRoom{
 
-    &.box {
-       	height: 56%;
-    	width: 40%;
-    	left: 28%;
-    	top: 20%;
     }
     & .sw-players {
-          border: solid 2px #dcdcdc;
+          background: @background_input;
           border-radius: 12px;
-          background: @form;
-          font-size: 16px;
-          font-family: @font-family_2;
+          border: solid 2px #dcdcdc;
           font-color: white;
-          height: 34px;
-          width: 100px;
+          font-family: @font-family;
+          font-size: 16px;
+          height: 40px;
           text-align: center;
+          width: 150px;
       }
 }
