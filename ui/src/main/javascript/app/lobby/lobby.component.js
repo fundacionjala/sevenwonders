@@ -19,6 +19,8 @@ component('lobby', {
                     players: game.player
                 };
                 Game.create(gameSettings);
+                console.log('create');
+                $location.path('/');
             }
 
             this.joinGame = function(game) {

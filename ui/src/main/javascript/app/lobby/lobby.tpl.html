@@ -4,14 +4,14 @@
             <div class="sw-box-1">
                 <span>
                     <label for="name" class="sw-title sw-label">Name Game</label>
-                    <input class="sw-input" id="name" ng-model="gameroom.name" required placeholder="Name">
+                    <input id="name" class="sw-input" ng-model="gameroom.name" required placeholder="Name">
                     </input>
                 </span>
             </div>
             <div class="sw-box-2">
                 <span>
                     <label for="players" class="sw-title sw-label">Max Players</label>
-                    <select class="sw-players" id="players" ng-model="gameroom.player">
+                    <select id="players" class="sw-players" ng-model="gameroom.player">
                         <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
                         </option>
                     </select>
@@ -19,7 +19,7 @@
             </div>            
             <div class="sw-box-3">
                 <span>
-                    <button class="sw-button" type="submit" id="submit-Create" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
+                    <button id="submit-Create" class="sw-button" type="submit" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
                 </span>
             </div>
         </form>           
@@ -31,14 +31,11 @@
                 <th></th>
             </tr>
             <tr ng-repeat="game in $ctrl.games">
-                <td title="Name">{{game.name}}
-                </td>
-                <td title="Owner">{{game.owner}}
-                </td>
-                <td title="Players">{{game.players}}
-                </td>
+                <td title="Name">{{game.name}}</td>
+                <td title="Owner">{{game.owner}}</td>
+                <td title="Players">{{game.players}}</td>
                 <td>
-                    <button class="sw-button" type="submit" id="submit-join" ng-click="$ctrl.joinGame(game)">Join</button>       
+                    <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>       
                 </td>
             </tr>
         </table>
