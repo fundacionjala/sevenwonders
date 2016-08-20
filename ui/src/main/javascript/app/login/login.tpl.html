@@ -4,8 +4,8 @@
     </div>
     <div class="form">
         <div class="sw-box" name="form" novalidate>
-            <input name="user" type="text" class="sw-input" placeholder="Name" ng-model="user" required/>
-            <button class="sw-button" id="submit" type="submit" ng-disabled="form.user.$invalid" ng-click="$ctrl.doLogin(user)">Login</button>
+            <input class="sw-input" name="user" type="text" placeholder="Name" ng-model="user" required/>
+            <button  id="submit" class="sw-button" ng-disabled="form.user.$invalid" ng-click="$ctrl.doLogin(user)" type="submit">Login</button>
             <div class="sw-title">
                 <h1>WELCOME</h1>
                 <h2>{{user}}</h2>
