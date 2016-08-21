@@ -5,9 +5,7 @@
   border-radius: 12px;
   border: 1px solid white;
   opacity: 0.6;
-  overflow: hidden;
-  padding: 20px;
-  position: absolute;
+  padding: 15px;
 }
 
 button.sw-button {
@@ -16,10 +14,10 @@ button.sw-button {
   border: 1px solid @color_component;
   color: @color_letters;
   cursor: pointer;
-  font-family: @font-family;
+  font-family: @font_family;
   font-size: 1.2rem;
   font-weight: 200;
-  padding: 8px 20px;
+  padding: 8px 30px;
   &:focus {
     outline: none;
   }
@@ -31,15 +29,15 @@ button.sw-button {
 
 input.sw-input {
   background: @background_input;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid @color_component;
   border-radius: 6px;
   color: @color_component;
   font-size: 1rem;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   padding: 10px 20px;
   &::-webkit-input-placeholder {
     color: @color_component;
-    font-family: @font-family;
+    font-family: @font_family;
     font-size: 1.2rem;
     font-weight: 200;
     line-height: 1.3rem;
