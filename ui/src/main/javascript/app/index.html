@@ -2,12 +2,20 @@
 <html>
 
 <head>
+<<<<<<< HEAD
     <link rel='stylesheet/less' href='style/global.less' />
     <link rel='stylesheet/less' href='style/app.less' />
     <link rel='stylesheet/less' href='style/component.less' />
     <link rel='stylesheet/less' href='core/directives/gameroom/players/players.less' />
     <link rel='stylesheet/less' href='core/directives/gameroom/user/user.less' />
     <link rel='stylesheet/less' href='gameroom/gameroom.less' />
+=======
+    <link rel='stylesheet/less' href='style/global.less' />    
+    <link rel='stylesheet/less' href='style/app.less' />
+    <link rel='stylesheet/less' href='style/component.less' />
+    <link rel='stylesheet/less' href='login/login.less' />
+    <link rel='stylesheet/less' href='lobby/lobby.less' />
+>>>>>>> 36025436ecd853aa763578a8c8f580e2fcee4b75
     <script type='text/javascript' src='vendor/less/dist/less.js'></script>
     <script type='text/javascript' src='vendor/lodash/dist/lodash.js'></script>
     <script type='text/javascript' src='vendor/angularjs/angular.js'></script>
@@ -15,7 +23,6 @@
     <script type='text/javascript' src='vendor/restangular.js'></script>
     <script type='text/javascript' src='vendor/angularjs/angular-cookies.js'></script>
     <script type='text/javascript' src='vendor/angularjs/angular-route.js'></script>
-    <!--<script type='text/javascript' src='vendor/angular-ui-router/angular-ui-router.js'></script>-->
 
     <script src="core/auth/auth.module.js"></script>
     <script src="core/auth/auth.service.js"></script>
@@ -39,9 +46,7 @@
 </head>
 
 <body class="sw-background" ng-app="sevenWonder">
-    <div class="sw-logo"></div>
     <div>
-        <!--<div ui-view></div>-->
         <div ng-view></div>
     </div>
 </body>
