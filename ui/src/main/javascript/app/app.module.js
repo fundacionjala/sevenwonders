@@ -1,12 +1,8 @@
-angular.module("sevenWonder", [
-    //    'ui.router',
+'use strict';
+angular.module('sevenWonder', [
     'ngRoute',
     'restangular',
     'ngCookies',
     'sevenWonder.login',
     'sevenWonder.lobby'
-    /*'sevenWonder.createGame',
-    'sevenWonder.joinGame',
-    'sevenWonder.lobbyGame',
-    'sevenWonder.chooseWonder'*/
 ]);

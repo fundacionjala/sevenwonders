@@ -1,90 +1,37 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.6.RELEASE")
-    }
-}
-
 plugins {
-    id 'com.craigburke.karma' version '1.4.3'
+    id "com.moowork.gulp" version "0.13"
+    id "com.moowork.node" version "0.13"
 }
 
-apply plugin: 'java'
-apply plugin: 'spring-boot'
+node {
+    // Version of node to use.
+    version = '4.4.7'
 
-repositories {
-    mavenCentral()
+    // Set the work directory for unpacking node
+    //workDir = file("${project.buildDir}/nodejs")
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${project.projectDir}")
+
+    // Enabled the automatic download. False is the default (for now).
+    download = true
 }
 
+gulp {
+    // Set the directory where gulpfile.js should be found
+    workDir = file("${project.projectDir}")
 
-karma {
-    basePath = project.getProjectDir()
+    // Whether colors should output on the terminal
     colors = true
-    logLevel = 'DEBUG'
 
-    browsers = ['PhantomJS']
-    frameworks = ['jasmine']
-    reporters = ['progress', 'junit']
-
-    profile('default')  {
-        libraryBases = ['static/vendor/']
-        libraryFiles = ['**/jquery.js', '**/angular.js',
-                        '**/angular-mocks.js',
-                        '**/bootstrap.js', '**/lodash.js', '**/less.js']
-
-        sourceBases = ['static/app/']
-        sourceFiles = ['app.js', '**/*.js']
-
-        testBases = ['static/tests/']
-        testFiles = [
-//                'controller/mock.js',
-                '**/*.spec.js'
-        ]
-    }
+    // Whether output from Gulp should be buffered - useful when running tasks in parallel
+    bufferOutput = false
 }
 
-dependencies {
-    compile 'org.webjars:bootstrap:2.1.1'
-    compile 'org.webjars:angularjs:1.5.7'
-    compile 'org.webjars.bower:less:2.7.1'
-    compile 'org.webjars.bower:lodash:4.13.1'
-    compile 'org.webjars:angular-ui-router:1.0.0-beta.1'
+// makes sure on each build that gulp is installed
+gulp_build.dependsOn 'installGulp'
 
-    compile("org.springframework.boot:spring-boot-starter-web") {
-        exclude module: "spring-boot-starter-tomcat"
-    }
-    compile("org.springframework.boot:spring-boot-starter-jetty")
+// processes your package.json before running gulp build
+gulp_build.dependsOn 'npmInstall'
 
-    testCompile("junit:junit")
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
-}
-
-task('pretest', type: Copy) {
-    configurations.compile.resolvedConfiguration.resolvedArtifacts.each { f ->
-        def identifier = f.id.componentIdentifier
-        if (identifier.group.contains("org.webjars")) {
-            copy {
-                from zipTree(f.file.toString())
-                into file("${buildDir}/webjars-content/${f.name}")
-                include "META-INF/resources/webjars/**"
-            }
-            copy {
-                from "${buildDir}/webjars-content/${f.name}/META-INF/resources/webjars/${f.name}/${identifier.version}"
-                into "static/vendor/${f.name}"
-            }
-        }
-    }
-}
-
-task karmaReload << {
-    new File("${project.buildDir}/karma.conf.js").delete()
-}
-
-karmaReload.finalizedBy karmaGenerateConfig
-
-karmaReload.shouldRunAfter karmaRun
+// runs "gulp build" as part of your gradle build
+//build.dependsOn gulp_build
