@@ -11,7 +11,7 @@ component('lobby', {
                 self.games = result;
             });
 
-            this.maxPlayers = ["3", "4", "5", "6", "7"];
+            this.maxPlayers = ['3', '4', '5', '6', '7'];
 
             this.createGame = function(game) {
                 var gameSettings = {
@@ -21,7 +21,7 @@ component('lobby', {
                 Game.create(gameSettings);
                 console.log('create');
                 $location.path('/');
-            }
+            };
 
             this.joinGame = function(game) {
                 Game.join(game)
@@ -29,7 +29,7 @@ component('lobby', {
                         console.log('join');
                         $location.path('/');
                     });
-            }
+            };
         }
     ]
 });

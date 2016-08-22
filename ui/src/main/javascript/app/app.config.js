@@ -1,8 +1,7 @@
-angular.module("sevenWonder")
+'use strict';
+angular.module('sevenWonder')
     .config(['$locationProvider', '$routeProvider',
         function config($locationProvider, $routeProvider) {
-            //      $locationProvider.hashPrefix('!');
-
             $routeProvider
                 .when('/login', {
                     template: '<login></login>'

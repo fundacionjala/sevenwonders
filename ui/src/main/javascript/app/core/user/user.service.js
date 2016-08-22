@@ -10,6 +10,6 @@ factory('User', ['Restangular',
 
                 return Login.save().$promise;
             }
-        }
+        };
     }
 ]);
