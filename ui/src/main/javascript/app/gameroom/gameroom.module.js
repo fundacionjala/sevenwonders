@@ -1,5 +1,3 @@
 'use strict';
 
-angular.module('sevenWonder.lobby', [
-    'sevenWonders.core.game'
-]);
+angular.module('sevenWonder.gameroom', []);
