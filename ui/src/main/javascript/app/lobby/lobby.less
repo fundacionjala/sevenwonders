@@ -8,10 +8,10 @@ div.lobby-game-section {
     & .box {
         box-sizing: border-box;
         display: inline-block;
-        height: 70%;
-        width: 70%;
+        max-height: 600px;
+        width: 900px;
       }
-    & form.sw-align-form {
+    & form.align-form {
         text-align: left;
       }
     & .sw-box-1 {
@@ -59,16 +59,44 @@ div.lobby-game-section {
     & table.sw-table {
         border-width: 2px;
         color: @color_letters;
-        height: 100%;
+        height: auto;
         margin: 2px;
         width: 100%;
+        display:block;
+
           & td, & th {
             border-bottom: 2px solid white;
             height: 50px;
+            max-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
+      }
+
+      & tbody.scroll{
+        width: 100%;
+        height:auto;
+        overflow-y:auto;
       }
 
     & tr.background {
         background: @background_button;
+      }
+
+    & .column-name {
+        width: 35%;
+      }
+
+    & .column-owner {
+        width: 35%;
+      }
+
+    & .column-player {
+        width: 15%;
+      }
+
+    & .column-join {
+      width: 15%;
       }
   }
