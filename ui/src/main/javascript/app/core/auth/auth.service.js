@@ -27,6 +27,6 @@ factory('Auth', ['Restangular', '$cookies', '$q',
             getLoggedUser: function() {
                 return $cookies.getObject('user');
             }
-        }
+        };
     }
 ]);

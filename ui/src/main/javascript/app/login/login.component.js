@@ -9,12 +9,12 @@ component('login', {
 
             Auth.login(user)
                 .then(function(data) {
-                    console.log("Success:" + data);
+                    console.log('Success:' + data);
                     $location.path('/lobby');
                 })
                 .catch(function(data) {
                     console.log('Fail');
                 });
-        }
+        };
     }]
 });
