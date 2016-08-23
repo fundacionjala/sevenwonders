@@ -1,11 +1,11 @@
 angular.module("sevenWonder.gameroom")
-    .directive("user", function () {
+    .directive("wonder", function () {
         return {
             restrict: 'E',
             scope: {
                 data: '='
             },
             replace: true,
-            templateUrl: 'core/directives/gameroom/user/user.html',
+            templateUrl: 'core/directives/gameroom/wonder/wonder.html',
         }
     });

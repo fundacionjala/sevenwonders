@@ -1,7 +1,7 @@
 angular.module("sevenWonder.gameroom")
     .directive("players", function () {
         return {
-            restrict: 'EA',
+            restrict: 'E',
             scope: {
                 data: '='
             },
