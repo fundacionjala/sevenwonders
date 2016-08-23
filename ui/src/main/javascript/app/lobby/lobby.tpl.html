@@ -3,14 +3,14 @@
         <form class ="align-form">
             <div class="sw-box-1">
                 <span>
-                    <label for="name" class="sw-title sw-label">Name Game</label>
+                    <label for="name" class="sw-title label-form">Name Game</label>
                     <input id="name" class="sw-input" ng-model="gameroom.name" required placeholder="Name">
                     </input>
                 </span>
             </div>
             <div class="sw-box-2">
                 <span>
-                    <label for="players" class="sw-title sw-label">Max Players</label>
+                    <label for="players" class="sw-title label-form">Max Players</label>
                     <select id="players" class="sw-players" ng-model="gameroom.player">
                         <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
                         </option>
@@ -37,16 +37,18 @@
                     <td class= "column-owner">{{game.owner}}</td>
                     <td class= "column-player">{{game.players}}</td>
                     <td class= "column-join">
-                        <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>       
+                        <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>
                     </td>
                 </tr>
             </tbody>
             </table>
         </div> 
-        <hr class="separator">
-        <div class="box-message" ng-if="$ctrl.games.length == 0">
-            <div class="message"></div>
-            <label class="sw-title sw-label">There aren't game room enabled</label>
-        </div>        
+        <div ng-if="$ctrl.games.length == 0">
+            <hr class="separator">
+            <div class="box-message">
+                <div class="img-message"></div>
+            </div>
+            <label class="sw-title message">There aren't game room enabled</label>       
+        </div>
     </div>    
 </div>

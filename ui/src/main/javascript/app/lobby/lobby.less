@@ -32,7 +32,7 @@ div.lobby-game-section {
         float: right;
       }
 
-    & label.sw-label {
+    & label.label-form {
         display: block;
         margin: 0.5em 0 0;
       }
@@ -111,25 +111,32 @@ div.lobby-game-section {
       }
 
     & .column-join {
-      width: 15%;
+        width: 15%;
       }
 
     & .box-message{
-      height: 100%;
-      width: 24%;
-      margin: 20px;
-      margin-left: 350px;
-      float: left;
-    }  
+        float: left;
+        height: 100%;
+        margin: 20px;
+      }  
 
-    & .message {
-      background: url('/resources/images/message.jpg') no-repeat;
-      background-size: cover;
-      width: 200px;
-      height: 200px;
-    }
+    & .img-message {
+        background-size: cover;
+        background: url('/resources/images/message.jpg') no-repeat;
+        height: 200px;
+        margin-left: 330px;
+        position: relative;
+        width: 200px;
+      }
+
+    & label.message{
+        font-size: 24px;
+        left: 550px;
+        margin-top: 100px;
+        position: absolute;
+      }
 
     & .separator {
-      width: 850px;
+        width: 850px;
     }
   }
