@@ -23,7 +23,7 @@
                 </span>
             </div>
         </form>
-        <div class="scroll-table">
+        <div class="scroll-table" ng-if="$ctrl.games.length != 0">
             <table class="sw-table" >
                 <tr class="background">
                     <th class= "column-name">Name</th>
@@ -40,11 +40,13 @@
                         <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>       
                     </td>
                 </tr>
-                <tr ng-if="$ctrl.games.length == 0">
-                    <td>There aren't game room enabled</td>
-                </tr>
             </tbody>
             </table>
-        </div>         
+        </div> 
+        <hr class="separator">
+        <div class="box-message" ng-if="$ctrl.games.length == 0">
+            <div class="message"></div>
+            <label class="sw-title sw-label">There aren't game room enabled</label>
+        </div>        
     </div>    
 </div>
