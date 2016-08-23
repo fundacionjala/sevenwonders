@@ -14,7 +14,7 @@ factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
                 type: data.type
             };
             $cookies.putObject('game', gameModel);
-        }
+        };
 
         return {
             getAvailableGames: function() {
@@ -30,7 +30,7 @@ factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
             },
             join: function(game) {
                 var user = Auth.getLoggedUser();
-                var defer = $q.defer();;
+                var defer = $q.defer();
 
                 var gameRest = Game.one(game.id);
                 gameRest.user = user.id;
@@ -47,6 +47,6 @@ factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
             getCurrentGame: function() {
                 return $cookies.getObject('game');
             }
-        }
+        };
     }
 ]);

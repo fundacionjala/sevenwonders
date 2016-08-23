@@ -1,5 +1,5 @@
-angular.module("sevenWonder", [
-    //    'ui.router',
+'use strict';
+angular.module('sevenWonder', [
     'ngRoute',
     'restangular',
     'ngCookies',

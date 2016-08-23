@@ -44,6 +44,7 @@ angular.
                             "avatar": ""
                         }]
 
+<<<<<<< HEAD
                 }
                 this.maxPlayers = 7;
                 this.createGame = function () {
@@ -55,3 +56,12 @@ angular.
             }
         ]
     });
+=======
+            };
+            this.joinGame = function() {
+
+            };
+        }
+    ]
+});
+>>>>>>> fc77ff7b8b69d4b1b6390cb591ab4e7b476cc980
