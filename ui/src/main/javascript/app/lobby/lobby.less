@@ -82,13 +82,13 @@ div.lobby-game-section {
         overflow-x: hidden;
         overflow-y: auto;
         width: 100%;
-          &::-webkit-scrollbar{
+          &::-webkit-scrollbar {
             width: 15px;
             border-radius: 6px;
             border: 1px solid @color_component;
           }
           &::-webkit-scrollbar-track{
-            background:@background_input;
+            background: @background_input;
             border: 1px solid white;
             border-radius: 6px;
           }
@@ -98,19 +98,11 @@ div.lobby-game-section {
           }
       }
     
-    & .column-name {
+    & .column-name, & .column-owner {
         width: 35%;
       }
 
-    & .column-owner {
-        width: 35%;
-      }
-
-    & .column-player {
-        width: 15%;
-      }
-
-    & .column-join {
+    & .column-player, & .column-join {
         width: 15%;
       }
 
