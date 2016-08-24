@@ -1,0 +1,10 @@
+<div class="user-directive">
+    <div class="no-empty-user" ng-if="data.username != ''">
+        <img ng-src="resources/images/user.png">
+        <p>{{data.username}}</p>
+    </div>
+    <div class="empty-user" ng-if="data.username == ''">
+        <img ng-src="resources/images/waiting.png">
+        <p>Waiting</p>
+    </div>
+</div>
