@@ -8,10 +8,10 @@ div.lobby-game-section {
     & .box {
         box-sizing: border-box;
         display: inline-block;
-        height: 70%;
-        width: 70%;
+        max-height: 600px;
+        width: 900px;
       }
-    & form.sw-align-form {
+    & form.align-form {
         text-align: left;
       }
     & .sw-box-1 {
@@ -32,7 +32,7 @@ div.lobby-game-section {
         float: right;
       }
 
-    & label.sw-label {
+    & label.label-form {
         display: block;
         margin: 0.5em 0 0;
       }
@@ -59,16 +59,77 @@ div.lobby-game-section {
     & table.sw-table {
         border-width: 2px;
         color: @color_letters;
-        height: 100%;
+        height: auto;
         margin: 2px;
         width: 100%;
           & td, & th {
             border-bottom: 2px solid white;
             height: 50px;
+            max-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
       }
 
     & tr.background {
         background: @background_button;
       }
+
+    & .scroll-table {
+        display: inline-block;
+        height: 448px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+          &::-webkit-scrollbar {
+            width: 15px;
+            border-radius: 6px;
+            border: 1px solid @color_component;
+          }
+          &::-webkit-scrollbar-track {
+            background: @background_input;
+            border: 1px solid white;
+            border-radius: 6px;
+          }
+          &::-webkit-scrollbar-thumb {
+            background: @background_button;
+            border-radius: 6px;
+          }
+      }
+    
+    & .column-name, & .column-owner {
+        width: 35%;
+      }
+
+    & .column-player, & .column-join {
+        width: 15%;
+      }
+
+    & .box-message {
+        float: left;
+        height: 100%;
+        width: 100%;
+        margin: 20px;
+      }  
+
+    & .img-message {
+        background-size: cover;
+        background: url('/resources/images/dove2.jpg') no-repeat;
+        height: 200px;
+        margin-left: 330px;
+        position: relative;
+        width: 200px;
+      }
+
+    & label.message {
+        font-size: 24px;
+        left: 550px;
+        margin-top: 100px;
+        position: absolute;
+      }
+
+    & .separator {
+        width: 850px;
+    }
   }

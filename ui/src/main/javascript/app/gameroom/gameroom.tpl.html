@@ -1,13 +1,4 @@
-<div class="logo"></div>
-<div class="form-1" ng-controller="gameRoomCtrl">
-    <h1>{{gameroom.name}}</h1>
-    <h3>Number players: {{gameroom.numberPlayers}}</h3>
-
-    <div class="container">
-        <div ng-repeat="player in players" class="child">
-            <img class="image-user" ng-src="{{'/resources/images/'+player.user+'.png'}}" />
-            <p>{{player.username}}</p>
-        </div>
-    </div>
+<div class="gameroom">
+    <players data=$ctrl.gameroom></players>
+    <h1 class="sw-title">{{$ctrl.gameroom.name}}</h1>
 </div>
-

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel='stylesheet/less' href='style/global.less' />
+    <link rel='stylesheet/less' href='style/app.less' />
+    <link rel='stylesheet/less' href='style/component.less' />
+    <link rel='stylesheet/less' href='core/directives/gameroom/players/players.less' />
+    <link rel='stylesheet/less' href='core/directives/gameroom/user/user.less' />
+    <link rel='stylesheet/less' href='core/directives/gameroom/wonder/wonder.less' />
+    <link rel='stylesheet/less' href='gameroom/gameroom.less' />
+    <link rel='stylesheet/less' href='style/global.less' />    
+    <link rel='stylesheet/less' href='style/app.less' />
+    <link rel='stylesheet/less' href='style/component.less' />
+    <link rel='stylesheet/less' href='login/login.less' />
+    <link rel='stylesheet/less' href='lobby/lobby.less' />
+    <script type='text/javascript' src='vendor/less/dist/less.js'></script>
+    <script type='text/javascript' src='vendor/lodash/dist/lodash.js'></script>
+    <script type='text/javascript' src='vendor/angularjs/angular.js'></script>
+    <script type='text/javascript' src='vendor/angularjs/angular-resource.js'></script>
+    <script type='text/javascript' src='vendor/restangular.js'></script>
+    <script type='text/javascript' src='vendor/angularjs/angular-cookies.js'></script>
+    <script type='text/javascript' src='vendor/angularjs/angular-route.js'></script>
+
+    <script src="core/auth/auth.module.js"></script>
+    <script src="core/auth/auth.service.js"></script>
+    <script src="core/user/user.module.js"></script>
+    <script src="core/user/user.service.js"></script>
+    <script src="core/game/game.module.js"></script>
+    <script src="core/game/game.service.js"></script>
+    <script src="login/login.module.js"></script>
+    <script src="login/login.component.js"></script>
+    <script src="lobby/lobby.module.js"></script>
+    <script src="lobby/lobby.component.js"></script>
+    <script src="gameroom/gameroom.module.js"></script>
+    <script src="gameroom/gameroom.component.js"></script>
+    
+    <script src="core/directives/gameroom/players/players.html.js"></script>
+    <script src="core/directives/gameroom/user/user.html.js"></script>
+    <script src="core/directives/gameroom/wonder/wonder.html.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+
+</head>
+
+<body class="sw-background" ng-app="sevenWonder">
+    <div>
+        <div ng-view></div>
+    </div>
+</body>
+
+</html>
