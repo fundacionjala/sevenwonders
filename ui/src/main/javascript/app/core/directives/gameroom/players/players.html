@@ -1,0 +1,8 @@
+<div class="players-directive">
+    <div class="position-{{$index + 1}}-{{data.numberPlayers}} player-thumbnail" ng-repeat="user in data.players track by $index">
+        <user data="user"></user>
+    </div>
+    <div class="world-image player-thumbnail">
+        <img ng-src="resources/images/Old-World-Map.jpg">
+    </div>
+</div>

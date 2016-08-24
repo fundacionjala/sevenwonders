@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- bower:css -->
+    <!-- bower installed css files will go here... -->
+    <!-- endinject -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/lobby/lobby.css">
+    <link rel="stylesheet" href="/login/login.css">
+    <link rel="stylesheet" href="/style/app.css">
+    <link rel="stylesheet" href="/style/component.css">
+    <link rel="stylesheet" href="/style/global.css">
+    <!-- endinject -->
+
+
+</head>
+
+<body class="sw-background" ng-app="sevenWonder">
+    <div>
+        <div ng-view></div>
+    </div>
+    <!-- bower:js -->
+    <!-- bower scripts will go here... -->
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/lib/angular-cookies/angular-cookies.js"></script>
+    <script src="/lib/lodash/lodash.js"></script>
+    <script src="/lib/restangular/dist/restangular.js"></script>
+    <script src="/core/user/user.module.js"></script>
+    <script src="/core/user/user.service.js"></script>
+    <script src="/core/gameroom/gameroom.module.js"></script>
+    <script src="/core/gameroom/gameroom.service.js"></script>
+    <script src="/core/game/game.module.js"></script>
+    <script src="/core/game/game.service.js"></script>
+    <script src="/core/auth/auth.module.js"></script>
+    <script src="/core/auth/auth.service.js"></script>
+    <script src="/login/login.module.js"></script>
+    <script src="/login/login.component.js"></script>
+    <script src="/lobby/lobby.module.js"></script>
+    <script src="/lobby/lobby.component.js"></script>
+    <script src="/gameroom/gameroom.module.js"></script>
+    <script src="/gameroom/gameroom.component.js"></script>
+    <script src="/app.module.js"></script>
+    <script src="/app.config.js"></script>
+    <!-- endinject -->
+
+</body>
+
+</html>
