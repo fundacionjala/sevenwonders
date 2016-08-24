@@ -13,10 +13,10 @@ component('gameroom', {
             this.maxPlayers = 7;
             this.createGame = function() {
 
-            }
+            };
             this.joinGame = function() {
 
-            }
+            };
         }
     ]
 });

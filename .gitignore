@@ -1,7 +1,12 @@
-*.class
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+bower_components
+node_modules
+build
+lib
+.gradle
+.idea
+*.class
+*.css
 
 # Package Files #
 *.jar
