@@ -13,14 +13,12 @@ public class GameMock {
 
     private int id;
     private String name;
-    private String type;
     private int players;
 
-    public GameMock(int id, String name, String type, int players) {
+    public GameMock(int id, String name, int players) {
         this.id = id;
         this.name = name;
         this.players = players;
-        this.type = type;
     }
 
     public GameMock() {
@@ -40,14 +38,6 @@ public class GameMock {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public int getPlayers() {
