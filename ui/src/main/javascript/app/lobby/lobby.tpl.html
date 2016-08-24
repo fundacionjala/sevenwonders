@@ -1,16 +1,16 @@
 <div class="lobby-game-section">
     <div class="sw-box box">
-        <form class ="sw-align-form">
+        <form class ="align-form">
             <div class="sw-box-1">
                 <span>
-                    <label for="name" class="sw-title sw-label">Name Game</label>
+                    <label for="name" class="sw-title label-form">Name Game</label>
                     <input id="name" class="sw-input" ng-model="gameroom.name" required placeholder="Name">
                     </input>
                 </span>
             </div>
             <div class="sw-box-2">
                 <span>
-                    <label for="players" class="sw-title sw-label">Max Players</label>
+                    <label for="players" class="sw-title label-form">Max Players</label>
                     <select id="players" class="sw-players" ng-model="gameroom.player">
                         <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
                         </option>
@@ -22,22 +22,33 @@
                     <button id="submit-Create" class="sw-button" type="submit" ng-click="$ctrl.createGame(gameroom)">Create Game</button>
                 </span>
             </div>
-        </form>           
-        <table class="sw-table">
-            <tr class="background">
-                <th>Name</th>
-                <th>Owner</th>
-                <th>Players</th>
-                <th></th>
-            </tr>
-            <tr ng-repeat="game in $ctrl.games">
-                <td title="Name">{{game.name}}</td>
-                <td title="Owner">{{game.owner}}</td>
-                <td title="Players">{{game.players}}</td>
-                <td>
-                    <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>       
-                </td>
-            </tr>
-        </table>
+        </form>
+        <div class="scroll-table" ng-if="$ctrl.games.length != 0">
+            <table class="sw-table" >
+                <tr class="background">
+                    <th class= "column-name">Name</th>
+                    <th class= "column-owner">Owner</th>
+                    <th class= "column-player">Max-Players</th>
+                    <th class= "column-join"></th>
+                </tr>
+            <tbody>
+                <tr ng-repeat="game in $ctrl.games">
+                    <td class= "column-name">{{game.name}}</td>
+                    <td class= "column-owner">{{game.owner}}</td>
+                    <td class= "column-player">{{game.players}}</td>
+                    <td class= "column-join">
+                        <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
+        </div> 
+        <div ng-if="$ctrl.games.length == 0">
+            <hr class="separator">
+            <div class="box-message">
+                <div class="img-message"></div>
+            </div>
+            <label class="sw-title message">There aren't game room enabled</label>       
+        </div>
     </div>    
 </div>
