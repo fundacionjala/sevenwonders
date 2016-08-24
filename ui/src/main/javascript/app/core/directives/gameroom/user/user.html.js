@@ -1,5 +1,6 @@
-angular.module("sevenWonder.gameroom")
-    .directive("user", function () {
+'use strict';
+angular.module('sevenWonder.gameroom')
+    .directive('user', function () {
         return {
             restrict: 'E',
             scope: {
@@ -7,5 +8,5 @@ angular.module("sevenWonder.gameroom")
             },
             replace: true,
             templateUrl: 'core/directives/gameroom/user/user.html',
-        }
+        };
     });
