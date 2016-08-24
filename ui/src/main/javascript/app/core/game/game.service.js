@@ -21,12 +21,19 @@ factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
                 return Game.getList();
             },
             create: function(gameSetting) {
-                var user = Auth.getLoggedUser();
-                gameSetting.user = user.id;
-                Game.post(gameSetting)
-                    .then(function(data) {
-                        storeGame(data);
-                    });
+                return $q(function (resolve, reject) {
+                                  Restangular.all('games/create').post({
+                                      "id": gameSetting.id,
+                                      "name": gameSetting.name,
+                                      "players": gameSetting.players
+                                  })
+                                  .then(function (data) {
+                                          resolve(data);
+                                     })
+                                  .catch(function (data) {
+                                          reject(data);
+                                    });
+                              });
             },
             join: function(game) {
                 var user = Auth.getLoggedUser();

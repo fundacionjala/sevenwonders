@@ -7,7 +7,7 @@ factory('Auth', ['Restangular', '$cookies', '$q',
         return {
             login: function(user) {
                 return $q(function(resolve, reject) {
-                    Restangular.all('login').post({ user: user })
+                    Restangular.all('login').post({ userName: user })
                         .then(function(data) {
                             var userModel = {
                                 id: data.id,
@@ -16,7 +16,7 @@ factory('Auth', ['Restangular', '$cookies', '$q',
                                 token: 'Bearer ' + data.token
                             };
                             $cookies.putObject('user', userModel);
-                            Restangular.setDefaultHeaders({ Authorization: userModel.token });
+                          //  Restangular.setDefaultHeaders({ Authorization: userModel.token });
                             resolve(data);
                         })
                         .catch(function(data) {

@@ -18,13 +18,22 @@ import org.springframework.stereotype.Component;
 public class LoginService {
 
     private LoginModel loginMockModel;
+    public LoginService(){
+        initMock();
+    }
 
     public LoginModel isLogin(UserModelService user) {
-        LoginModel temp = new LoginModel();
-        temp.setId(12);
-        temp.setLoggedIn(true);
-        temp.setUserName("luis");
-        temp.setToken("ABC123");
-        return temp;
+        if (user != null) {
+            return loginMockModel;
+        }
+        return null;
+    }
+
+    private void initMock() {
+        loginMockModel = new LoginModel();
+        loginMockModel.setId(12);
+        loginMockModel.setLoggedIn(true);
+        loginMockModel.setUserName("luis");
+        loginMockModel.setToken("ABC123");
     }
 }

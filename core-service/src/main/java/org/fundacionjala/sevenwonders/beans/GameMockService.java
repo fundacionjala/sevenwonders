@@ -17,23 +17,27 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameMockService {
 
-    private List<GameMock> list;
+    private List<GameMock> gameMockList;
+    private int autoIncrementId;
 
     public GameMockService() {
-        list = new ArrayList<>();
+        autoIncrementId = 1;
+        gameMockList = new ArrayList<>();
         init();
     }
     
     public void addGame(GameMock game) {
-        list.add(game);
+        game.setId(autoIncrementId);
+        gameMockList.add(game);
+        autoIncrementId++;
     }
 
     public List<GameMock> getGames() {
-        return list;
+        return gameMockList;
     }
     
     private void init() {
-        list.add(new GameMock(1, "ABC", "classic", 3));
-        list.add(new GameMock(2, "XGS", "classic", 7));
+        gameMockList.add(new GameMock(1, "ABC", 3));
+        gameMockList.add(new GameMock(2, "XGS", 7));
     }
 }
