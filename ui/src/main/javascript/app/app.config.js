@@ -9,6 +9,9 @@ angular.module('sevenWonder')
                 .when('/lobby', {
                     template: '<lobby></lobby>'
                 })
+                .when('/gameroom', {
+                    template: '<gameroom></gameroom>'
+                })
                 .otherwise('/login');
         }
     ])
