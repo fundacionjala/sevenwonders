@@ -7,8 +7,10 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
+    maven {
+        url 'https://repository.apache.org/content/repositories/snapshots/'
+    }
 }
-
 
 dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
@@ -16,21 +18,23 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-aop', version: '4.2.5.RELEASE'
     compile group: 'org.springframework', name: 'spring-tx', version: '4.2.5.RELEASE'
     compile group: 'org.springframework', name: 'spring-expression', version: '4.2.5.RELEASE'
-    compile group: 'org.apache.camel', name: 'camel-core', version: '2.17.2'
-    compile group: 'org.apache.camel', name: 'camel-jackson', version: '2.17.2'
-    compile group: 'org.apache.camel', name: 'camel-jetty', version: '2.17.2'
-    compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.17.2') {
+    compile group: 'org.apache.camel', name: 'camel-websocket', version: '2.18-SNAPSHOT'
+    compile group: 'org.apache.camel', name: 'camel-core', version: '2.18-SNAPSHOT'
+    compile group: 'org.apache.camel', name: 'camel-jackson', version: '2.18-SNAPSHOT'
+    compile group: 'org.apache.camel', name: 'camel-jetty', version: '2.18-SNAPSHOT'
+    compile group: 'org.apache.camel', name: 'camel-jetty-common', version: '2.18-SNAPSHOT'
+    compile(group: 'org.apache.camel', name: 'camel-spring', version: '2.18-SNAPSHOT') {
         exclude(module: 'spring-tx')
         exclude(module: 'spring-aop')
         exclude(module: 'spring-expression')
         exclude(module: 'spring-context')
     }
-    compile group: 'org.apache.camel', name: 'camel-spring-javaconfig', version: '2.17.2'
+    compile group: 'org.apache.camel', name: 'camel-spring-javaconfig', version: '2.18-SNAPSHOT'
 
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
 
-    testCompile group: 'org.apache.camel', name: 'camel-test', version: '2.17.2'
-    testCompile group: 'org.apache.camel', name: 'camel-test-spring', version: '2.17.2'
+    testCompile group: 'org.apache.camel', name: 'camel-test', version: '2.18-SNAPSHOT'
+    testCompile group: 'org.apache.camel', name: 'camel-test-spring', version: '2.18-SNAPSHOT'
     testCompile group: 'junit', name: 'junit', version: '4.11'
     testCompile "org.mockito:mockito-core:1.+"
 }
