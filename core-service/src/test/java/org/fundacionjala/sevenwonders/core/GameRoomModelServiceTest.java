@@ -4,20 +4,26 @@
  */
 package org.fundacionjala.sevenwonders.core;
 
+import org.fundacionjala.sevenwonders.beans.GameRoomService;
+import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
+import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
+import org.junit.Assert;
+import org.junit.Test;
+
 /**
  * Used to test all the functionality of the {@link org.fundacionjala.sevenwonders.beans.GameRoomService}.
  *
  * @author Juan Barahona
  */
 public class GameRoomModelServiceTest {
-/*
+
     @Test
     public void postAndGetGameRoomTest(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
 
-        player.setName("Juan");
+        player.setUserName("Juan");
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
 
@@ -31,7 +37,7 @@ public class GameRoomModelServiceTest {
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
-        player.setName("Juan");
+        player.setUserName("Juan");
 
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
@@ -39,7 +45,7 @@ public class GameRoomModelServiceTest {
         gameRoomService.createGameRoom(gameRoomModel);
 
         PlayerModel playerOne = new PlayerModel();
-        playerOne.setName("Dwits");
+        playerOne.setUserName("Dwits");
         playerOne.setRoomId(1);
 
         gameRoomService.addPlayer(playerOne);
@@ -52,7 +58,7 @@ public class GameRoomModelServiceTest {
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
-        player.setName("Juan");
+        player.setUserName("Juan");
 
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
@@ -60,7 +66,7 @@ public class GameRoomModelServiceTest {
         gameRoomService.createGameRoom(gameRoomModel);
 
         PlayerModel playerOne = new PlayerModel();
-        playerOne.setName("Dwits");
+        playerOne.setUserName("Dwits");
         playerOne.setRoomId(1);
 
         gameRoomService.addPlayer(playerOne);
@@ -68,7 +74,7 @@ public class GameRoomModelServiceTest {
         Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
 
         PlayerModel playerTwo = new PlayerModel();
-        playerTwo.setName("Lucero");
+        playerTwo.setUserName("Lucero");
         playerTwo.setRoomId(1);
 
         gameRoomService.addPlayer(playerTwo);
@@ -76,5 +82,4 @@ public class GameRoomModelServiceTest {
         Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
 
     }
-    */
 }

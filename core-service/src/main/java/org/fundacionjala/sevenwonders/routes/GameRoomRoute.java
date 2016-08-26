@@ -27,13 +27,6 @@ public class GameRoomRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
 
-
-        restConfiguration().component("jetty")
-                .bindingMode(RestBindingMode.json)
-                .dataFormatProperty("prettyPrint", "true")
-                .port(9999);
-
-
         rest("/gameRoom").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
