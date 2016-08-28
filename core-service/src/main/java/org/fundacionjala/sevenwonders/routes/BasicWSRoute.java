@@ -3,8 +3,8 @@ package org.fundacionjala.sevenwonders.routes;
 import org.apache.camel.Exchange;
 import org.apache.camel.LoggingLevel;
 import org.apache.camel.Processor;
-import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.dataformat.JsonLibrary;
+import org.apache.camel.spring.SpringRouteBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  * Created by Unkon on 8/25/2016.
  */
 @Component
-public class BasicWSRoute extends RouteBuilder {
+public class BasicWSRoute extends SpringRouteBuilder {
 
     static Logger logger = LoggerFactory.getLogger(BasicWSRoute.class);
 
@@ -22,7 +22,7 @@ public class BasicWSRoute extends RouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        from("websocket:" + CONNECTION_URI + "?enableJmx=false")
+        from("websocket:" + CONNECTION_URI)
                 .routeId("mainRoute")
                 .log(LoggingLevel.DEBUG, ">> msg recieved : ${body}")
                 // .delay(2000)
@@ -45,7 +45,7 @@ public class BasicWSRoute extends RouteBuilder {
                 })
                 .marshal().json(JsonLibrary.Jackson, WsMessage.class)
                 .log(LoggingLevel.DEBUG, ">> msg response : ${body}")
-                .to("websocket:" + CONNECTION_URI + "?sendToAll=true&enableJmx=false");
+                .to("websocket:" + CONNECTION_URI + "?sendToAll=true");
     }
 
     String getConnectionUri() {

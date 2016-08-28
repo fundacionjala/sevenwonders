@@ -6,12 +6,21 @@
     <!-- bower installed css files will go here... -->
     <!-- endinject -->
 
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/lobby/lobby.css">
-    <link rel="stylesheet" href="/login/login.css">
+    <!-- global:css -->
     <link rel="stylesheet" href="/style/app.css">
     <link rel="stylesheet" href="/style/component.css">
     <link rel="stylesheet" href="/style/global.css">
+    <!-- endinject -->
+
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app.css">
+    <link rel="stylesheet" href="/gameroom/gameroom.css">
+    <link rel="stylesheet" href="/lobby/lobby.css">
+    <link rel="stylesheet" href="/login/login.css">
+    <link rel="stylesheet" href="/core/directives/gameroom/players/players.css">
+    <link rel="stylesheet" href="/core/directives/gameroom/user/user.css">
+    <link rel="stylesheet" href="/core/directives/gameroom/wonder/wonder.css">
     <!-- endinject -->
 
 
@@ -30,10 +39,13 @@
     <script src="/lib/angular-cookies/angular-cookies.js"></script>
     <script src="/lib/lodash/lodash.js"></script>
     <script src="/lib/restangular/dist/restangular.js"></script>
+    <script src="/gameroom/gameroom.module.js"></script>
+    <script src="/core/directives/gameroom/wonder/wonder.html.js"></script>
+    <script src="/core/directives/gameroom/user/user.html.js"></script>
+    <script src="/core/directives/gameroom/players/players.html.js"></script>
     <script src="/core/user/user.module.js"></script>
     <script src="/core/user/user.service.js"></script>
-    <script src="/core/gameroom/gameroom.module.js"></script>
-    <script src="/core/gameroom/gameroom.service.js"></script>
+    <script src="/core/game/game.service.spec.js"></script>
     <script src="/core/game/game.module.js"></script>
     <script src="/core/game/game.service.js"></script>
     <script src="/core/auth/auth.module.js"></script>
@@ -42,7 +54,7 @@
     <script src="/login/login.component.js"></script>
     <script src="/lobby/lobby.module.js"></script>
     <script src="/lobby/lobby.component.js"></script>
-    <script src="/gameroom/gameroom.module.js"></script>
+    <script src="/lobby/demo.js"></script>
     <script src="/gameroom/gameroom.component.js"></script>
     <script src="/app.module.js"></script>
     <script src="/app.config.js"></script>
