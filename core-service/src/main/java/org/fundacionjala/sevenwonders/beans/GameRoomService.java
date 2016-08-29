@@ -22,10 +22,19 @@ public class GameRoomService {
     private final Map<Integer, GameRoom> gameRooms = new TreeMap<>();
     private GameService gameService;
     private int autoIncrementId;
+    private  GameRoom gameRoom;
+    private PlayerModel playerModel;
+
 
     public GameRoomService(){
         autoIncrementId = 1;
         gameService = new GameService();
+        playerModel = new PlayerModel();
+        playerModel.setuserName("luis");
+        playerModel.setRoomId(1);
+        gameRoom = new GameRoom(7);
+        gameRoom.addPlayer(playerModel);
+        gameRooms.put(autoIncrementId, gameRoom);
     }
 
 
