@@ -9,6 +9,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.spring.javaconfig.CamelConfiguration;
 import org.fundacionjala.sevenwonders.routes.AuthServiceRoute;
 import org.fundacionjala.sevenwonders.routes.GameRoomRoute;
+import org.fundacionjala.sevenwonders.routes.WSLobbyRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,6 +29,9 @@ import java.util.List;
 public class GameConfig extends CamelConfiguration {
 
     @Autowired
+    private WSLobbyRoute wsLobbyRoute;
+
+    @Autowired
     private AuthServiceRoute authServiceRoute;
 
     @Autowired
@@ -35,6 +39,6 @@ public class GameConfig extends CamelConfiguration {
 
     @Override
     public List<RouteBuilder> routes() {
-        return Arrays.asList(authServiceRoute, gameRoomRoute);
+        return Arrays.asList(wsLobbyRoute, authServiceRoute, gameRoomRoute);
     }
 }

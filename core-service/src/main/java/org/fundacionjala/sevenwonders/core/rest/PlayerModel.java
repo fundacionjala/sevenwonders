@@ -12,11 +12,18 @@ public class PlayerModel {
     private String userName;
     private int roomId;
     private String token;
-
+    private WebSocketConnection webSocketConnection;
     public int getRoomId() {
         return roomId;
     }
 
+    public WebSocketConnection getWebSocketConnection() {
+        return webSocketConnection;
+    }
+
+    public void setWebSocketConnection(WebSocketConnection webSocketConnection) {
+        this.webSocketConnection = webSocketConnection;
+    }
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
