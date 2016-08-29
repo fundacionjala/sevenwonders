@@ -1,8 +1,12 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.routes;
 
 
 /**
- * Created by Unkon on 8/25/2016.
+ * Created by Luis Gumucio on 8/25/2016.
  */
 
 public class WsMessage {

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.beans;
 
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
@@ -9,7 +13,7 @@ import java.util.TreeMap;
 import java.util.UUID;
 
 /**
- * Created by dwits on 24/08/2016.
+ * Created by Juan Manuel Barahona on 24/08/2016.
  */
 
 @Component
