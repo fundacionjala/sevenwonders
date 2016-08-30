@@ -68,7 +68,7 @@ public class GameRoom {
             StoragePoint storagePoint = new StoragePoint();
             Storage storage = new Storage();
             City city = new City(currentWonder, storagePoint, storage);
-            Player player = new Player(item.getName(), city);
+            Player player = new Player(item.getUserName(), city);
             gamePlayers.add(player);
         });
 
