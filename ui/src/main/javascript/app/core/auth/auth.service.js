@@ -16,7 +16,6 @@ factory('Auth', ['Restangular', '$cookies', '$q',
                                 token: data.token
                             };
                             $cookies.putObject('user', userModel);
-                            Restangular.setDefaultHeaders({ Authorization: userModel.token });
                             resolve(data);
                         })
                         .catch(function(data) {
