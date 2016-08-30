@@ -39,7 +39,7 @@ public class GameRoom {
     /**
      * Gets a list of rest players
      *
-     * @return list of {@link org.fundacionjala.sevenwonders.core.rest.PlayerModel}
+     * @return list of {@link org.fundacionjala.sevenwonders.core.rest.Player}
      */
     public List<PlayerModel> getPlayers(){
         return players;
@@ -68,7 +68,7 @@ public class GameRoom {
             StoragePoint storagePoint = new StoragePoint();
             Storage storage = new Storage();
             City city = new City(currentWonder, storagePoint, storage);
-            Player player = new Player(item.getuserName(), city);
+            Player player = new Player(item.getUserName(), city);
             gamePlayers.add(player);
         });
 
