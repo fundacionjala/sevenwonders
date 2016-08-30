@@ -15,13 +15,12 @@ component('lobby', {
 
             this.createGame = function(game) {
                 var gameSettings = {
-                    id:0,
                     name: game.name,
                     players: game.player
                 };
                 Game.create(gameSettings);
                 console.log('create');
-                $location.path('/');
+                $location.path('/gameroom');
             };
 
             this.joinGame = function(game) {

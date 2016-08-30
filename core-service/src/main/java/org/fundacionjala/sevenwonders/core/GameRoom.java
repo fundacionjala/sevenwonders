@@ -24,12 +24,14 @@ public class GameRoom {
     private CardProvider cardProvider;
     private List<PlayerModel> players;
     private int maxPlayers;
+    private String name;
 
-    public GameRoom(int maxPlayers) {
+    public GameRoom(String name, int maxPlayers) {
         wonderProvider = new WonderProvider();
         cardProvider = new CardProvider();
         players = new ArrayList<>();
         this.maxPlayers = maxPlayers;
+        this.name = name;
     }
 
     public int getMaxPlayers() {
@@ -87,5 +89,9 @@ public class GameRoom {
         return builder.setPlayers(initPlayers)
                       .setDeck(new Deck(cardProvider.getDefault()), NUMBER_OF_AGES)
                       .createGame();
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -31,14 +31,13 @@ public class GameRoomRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        rest("/gameRoom").description("Lobby rest service")
+        rest("/").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
-                .post().description("Create a new game room").type(GameRoomModel.class)
+                .post("games/create").description("Create a new game room").type(GameRoomModel.class)
                 .to("bean:gameRoomService?method=createGameRoom")
-                .to("websocket://localhost:9291/lobby")
 
-                .get().description("Get all gamerooms").typeList(GameRoomModel.class)
+                .get("/games").description("Get all gamerooms").typeList(GameRoomModel.class)
                 .to("bean:gameRoomService?method=listGameRooms")
 
                 .post("/player").description("Add Player to lobby game").type(PlayerModel.class)

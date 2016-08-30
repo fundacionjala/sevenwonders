@@ -16,7 +16,7 @@ angular.module('sevenWonder')
             }
         ])
         .config(['RestangularProvider', function (RestangularProvider) {
-                RestangularProvider.setBaseUrl('http://localhost:9999/gameRoom');
+                RestangularProvider.setBaseUrl('http://localhost:9999/');
                 RestangularProvider.setDefaultHeaders({
                     'Content-Type': 'application/json',
                     'X-Requested-With': 'XMLHttpRequest'

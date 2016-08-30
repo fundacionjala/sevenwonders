@@ -33,10 +33,10 @@ public class GameChannelRoute extends SpringRouteBuilder {
                         boolean isGameChannel = gameRoomService.getGameRoom(current.getRoomId())
                                 .getPlayers()
                                 .stream()
-                                .filter(b ->b.getuserName().equals(current.getuserName()))
+                                .filter(b ->b.getUserName().equals(current.getUserName()))
                                 .count() > 0;
                         if (isGameChannel){
-                            exchange.getIn().setBody(gameRoomService.getGameRoom(current.getRoomId()), GameRoomService.class);
+                            exchange.getIn().setBody(current, PlayerModel.class);
                         }
                         exchange.getIn().setBody("no access channel game", String.class);
                     }

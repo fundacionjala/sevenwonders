@@ -37,10 +37,10 @@ public class AuthServiceRoute extends SpringRouteBuilder {
                 .port(9999);
 
 
-        rest("/login").description("Login rest service")
+        rest("/").description("Login rest service")
                 .consumes("application/json").produces("application/json")
 
-                .post().description("Create a player").type(PlayerModel.class)
+                .post("/login").description("Create a player").type(PlayerModel.class)
                 .to("bean:authService?method=login")
 
                 .verb("options").route()

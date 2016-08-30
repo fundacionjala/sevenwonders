@@ -13,9 +13,10 @@ factory('Auth', ['Restangular', '$cookies', '$q',
                                 id: data.id,
                                 userName: data.userName,
                                 isLoggedIn: true,
-                                token: 'Bearer ' + data.token
+                                token: data.token
                             };
                             $cookies.putObject('user', userModel);
+                            Restangular.setDefaultHeaders({ Authorization: userModel.token });
                             resolve(data);
                         })
                         .catch(function(data) {
