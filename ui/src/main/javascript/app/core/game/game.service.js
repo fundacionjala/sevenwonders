@@ -45,16 +45,16 @@ angular.
                     var user = Auth.getLoggedUser();
                     var defer = $q.defer();
 
-                var gameRest = Game.one(game.id);
-                gameRest.user = user.id;
-                gameRest.put()
-                    .then(function(data) {
-                        storeGame(data);
-                        defer.resolve();
-                    }).catch(function() {
-                        defer.reject();
-                    });
-                return defer.promise;
+                    var gameRest = Game.one(game.id);
+                    gameRest.user = user.id;
+                    gameRest.put()
+                        .then(function (data) {
+                            storeGame(data);
+                            defer.resolve();
+                        }).catch(function () {
+                            defer.reject();
+                        });
+                    return defer.promise;
 
                 },
                 getCurrentGame: function () {
