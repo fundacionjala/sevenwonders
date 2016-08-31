@@ -4,17 +4,11 @@
  */
 package org.fundacionjala.sevenwonders.routes;
 
-import org.apache.camel.*;
-import org.apache.camel.model.dataformat.JsonLibrary;
-import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.SpringRouteBuilder;
-import org.fundacionjala.sevenwonders.beans.GameRoomService;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,15 +20,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameRoomRoute extends SpringRouteBuilder {
 
-    static Logger logger = LoggerFactory.getLogger(GameRoomRoute.class);
-
-    @BeanInject("gameRoomService")
-    GameRoomService gameRoomService;
-
     @Override
     public void configure() throws Exception {
 
-        rest("/gameRoom").description("Lobby rest service")
+        rest("/games").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
                 .post().description("Create a new game room").type(GameRoomModel.class)

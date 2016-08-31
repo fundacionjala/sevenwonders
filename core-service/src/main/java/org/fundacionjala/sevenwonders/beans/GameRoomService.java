@@ -35,7 +35,6 @@ public class GameRoomService {
      * @param restGameRoomModel
      */
     public GameRoomModel createGameRoom(GameRoomModel restGameRoomModel){
-        System.out.println("create game room");
         GameRoom gameRoom = new GameRoom(restGameRoomModel.getRoomName(),restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
         restGameRoomModel.setId(autoIncrementId);
@@ -70,6 +69,7 @@ public class GameRoomService {
         List<GameRoomModel> currentGameRoomModels = new ArrayList<>();
         gameRooms.entrySet().stream().forEach(entry -> {
             GameRoomModel room = new GameRoomModel();
+            room.setRoomName(entry.getValue().getName());
             room.setMaxPlayers(entry.getValue().getMaxPlayers());
             room.setOwner(entry.getValue().getPlayers().get(0));
             room.setPlayers(entry.getValue().getPlayers());
