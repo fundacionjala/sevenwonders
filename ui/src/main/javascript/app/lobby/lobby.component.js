@@ -11,7 +11,13 @@ component('lobby', {
                 self.games = result;
             });
 
+            Game.connectWs(self);
+
             this.maxPlayers = ['3', '4', '5', '6', '7'];
+
+            this.addGame = function(game){
+                self.games.push(game);
+            }
 
             this.createGame = function(game) {
                 var gameSettings = {
