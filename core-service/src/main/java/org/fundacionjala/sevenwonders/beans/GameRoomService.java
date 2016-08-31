@@ -22,19 +22,10 @@ public class GameRoomService {
     private final Map<Integer, GameRoom> gameRooms = new TreeMap<>();
     private GameService gameService;
     private int autoIncrementId;
-    private  GameRoom gameRoom;
-    private PlayerModel playerModel;
-
 
     public GameRoomService(){
         autoIncrementId = 1;
         gameService = new GameService();
-        playerModel = new PlayerModel();
-        playerModel.setUserName("luis");
-        playerModel.setRoomId(1);
-        gameRoom = new GameRoom("new game", 7);
-        gameRoom.addPlayer(playerModel);
-        gameRooms.put(autoIncrementId, gameRoom);
     }
 
 
@@ -43,13 +34,12 @@ public class GameRoomService {
      *
      * @param restGameRoomModel
      */
-    public void createGameRoom(GameRoomModel restGameRoomModel){
+    public void createGameRoom(GameModel restGameRoomModel){
         GameRoom gameRoom = new GameRoom(restGameRoomModel.getName(),
                 restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
-        restGameRoomModel.getOwner().setRoomId(autoIncrementId);
         autoIncrementId++;
-        gameRoom.addPlayer(restGameRoomModel.getOwner());
+        gameRoom.addPlayer(restGameRoomModel.getPlayer());
     }
 
     /**
@@ -99,12 +89,12 @@ public class GameRoomService {
     /**
      * Post: Add player to a game room
      *
-     * @param player
+     * @param gameModel
      */
 
-    public void addPlayer(PlayerModel player){
-        GameRoom current = gameRooms.get(player.getRoomId());
-        current.addPlayer(player);
+    public void addPlayerToGame(GameModel gameModel){
+        GameRoom current = gameRooms.get(gameModel.getId());
+        current.addPlayer(gameModel.getPlayer());
 
         if(current.getMaxPlayers() == current.getPlayers().size()){
             gameService.createGame(current.createGame());

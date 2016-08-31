@@ -11,6 +11,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
+import org.fundacionjala.sevenwonders.core.rest.GameModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.springframework.stereotype.Component;
 
@@ -29,14 +30,14 @@ public class GameChannelRoute extends SpringRouteBuilder {
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
-                        PlayerModel current = exchange.getIn().getBody(PlayerModel.class);
-                        boolean isGameChannel = gameRoomService.getGameRoom(current.getRoomId())
+                        GameModel current = exchange.getIn().getBody(GameModel.class);
+                        boolean isGameChannel = gameRoomService.getGameRoom(current.getId())
                                 .getPlayers()
                                 .stream()
-                                .filter(b ->b.getUserName().equals(current.getUserName()))
+                                .filter(b ->b.getUserName().equals(current.getPlayer().getUserName()))
                                 .count() > 0;
                         if (isGameChannel){
-                            exchange.getIn().setBody(current, PlayerModel.class);
+                            exchange.getIn().setBody(current.getPlayer(), PlayerModel.class);
                         }
                         exchange.getIn().setBody("no access channel game", String.class);
                     }

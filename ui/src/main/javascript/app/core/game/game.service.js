@@ -4,7 +4,7 @@ angular.
     module('sevenWonders.core.game').
     factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
         function ($cookies, Restangular, Auth, $q) {
-            var Game = Restangular.service('games');
+            var Game = Restangular.service('gameRoom');
 
             var storeGame = function (data) {
                 var gameModel = {
@@ -22,18 +22,15 @@ angular.
                 },
                 create: function (gameSetting) {
                     return $q(function (resolve, reject) {
-                        Restangular.all('games/create').post(
+                        Restangular.all('gameRoom').post(
                             {
                                 "maxPlayers": gameSetting.players,
                                 "name": gameSetting.name,
-                                "owner": {
-                                    "userName": $cookies.getObject('user').userName
-                                },
-                                "players": [
-                                    {
-                                        "userName": $cookies.getObject('user').userName
-                                    }
-                                ]
+                                "player": {
+                                    "id": $cookies.getObject('user').id,
+                                    "userName": $cookies.getObject('user').userName,
+                                    "token": $cookies.getObject('user').token
+                                }
                             }
                         )
                             .then(function (data) {
