@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.BeanInject;
@@ -27,18 +31,15 @@ public class GameRoomRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
 
-
-        restConfiguration().component("jetty")
-                .bindingMode(RestBindingMode.json)
-                .dataFormatProperty("prettyPrint", "true")
-                .port(9999);
-
-
         rest("/gameRoom").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
                 .post().description("Create a new game room").type(GameRoomModel.class)
                 .to("bean:gameRoomService?method=createGameRoom")
+                .to("websocket://localhost:9291/lobby")
+
+                .get().description("Get all gamerooms").typeList(GameRoomModel.class)
+                .to("bean:gameRoomService?method=listGameRooms")
 
                 .post("/player").description("Add Player to lobby game").type(PlayerModel.class)
                 .to("bean:gameRoomService?method=addPlayer")

@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.Exchange;
@@ -10,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by Unkon on 8/25/2016.
+ * Created by Luis Gumucio on 8/25/2016.
  */
 @Component
 public class BasicWSRoute extends SpringRouteBuilder {

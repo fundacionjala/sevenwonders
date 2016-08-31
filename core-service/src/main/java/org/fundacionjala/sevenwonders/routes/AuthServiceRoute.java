@@ -1,11 +1,19 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.BeanInject;
 import org.apache.camel.model.rest.RestBindingMode;
+import org.apache.camel.model.rest.RestPropertyDefinition;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.AuthService;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Juan Manuel Barahona on 24/08/2016.
@@ -22,7 +30,6 @@ public class AuthServiceRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
 
-
         restConfiguration().component("jetty")
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true")
@@ -37,6 +44,7 @@ public class AuthServiceRoute extends SpringRouteBuilder {
                 .to("bean:authService?method=login")
 
                 .verb("options").route()
+
                 .setHeader("Access-Control-Allow-Origin", constant("*"))
                 .setHeader("Access-Control-Allow-Methods", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"))
                 .setHeader("Access-Control-Allow-Headers", constant("Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"))
