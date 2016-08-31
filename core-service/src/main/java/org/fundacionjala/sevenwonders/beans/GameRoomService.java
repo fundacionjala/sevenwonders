@@ -34,12 +34,13 @@ public class GameRoomService {
      *
      * @param restGameRoomModel
      */
-    public void createGameRoom(GameRoomModel restGameRoomModel){
+    public GameRoomModel createGameRoom(GameRoomModel restGameRoomModel){
         GameRoom gameRoom = new GameRoom(restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
         restGameRoomModel.getOwner().setRoomId(autoIncrementId);
         autoIncrementId++;
         gameRoom.addPlayer(restGameRoomModel.getOwner());
+        return restGameRoomModel;
     }
 
     /**

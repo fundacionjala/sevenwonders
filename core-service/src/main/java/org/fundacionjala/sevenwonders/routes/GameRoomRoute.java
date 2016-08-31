@@ -5,6 +5,9 @@
 package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.BeanInject;
+import org.apache.camel.EndpointInject;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
@@ -27,7 +30,6 @@ public class GameRoomRoute extends SpringRouteBuilder {
     @BeanInject("gameRoomService")
     GameRoomService gameRoomService;
 
-
     @Override
     public void configure() throws Exception {
 
@@ -35,8 +37,8 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .consumes("application/json").produces("application/json")
 
                 .post().description("Create a new game room").type(GameRoomModel.class)
-                .to("bean:gameRoomService?method=createGameRoom")
-                .to("websocket://localhost:9291/lobby")
+                .to("bean:gameRoomService?method=createGameRoom").outType(GameRoomModel.class)
+                .to("direct:sendMessage")
 
                 .get().description("Get all gamerooms").typeList(GameRoomModel.class)
                 .to("bean:gameRoomService?method=listGameRooms")
@@ -49,5 +51,10 @@ public class GameRoomRoute extends SpringRouteBuilder {
 
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
                 .to("bean:gameRoomService?method=getGameRoom(${header.id})");
+
+        from("direct:sendMessage")
+      //          .marshal().json(JsonLibrary.Jackson, WsMessage.class)
+                .log(LoggingLevel.OFF, ">> msg response : ${body}")
+                .to("websocket://localhost:9291/lobby?sendToAll=true");
     }
 }
