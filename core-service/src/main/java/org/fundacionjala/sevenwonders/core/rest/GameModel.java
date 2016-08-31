@@ -5,6 +5,8 @@
 
 package org.fundacionjala.sevenwonders.core.rest;
 
+import java.util.List;
+
 /**
  * Created by Luis Gumucio.
  */
@@ -13,6 +15,7 @@ public class GameModel {
     private String name;
     private int maxPlayers;
     private PlayerModel player;
+    private List<PlayerModel> players;
 
     public int getId() {
         return id;
@@ -44,5 +47,13 @@ public class GameModel {
 
     public void setPlayer(PlayerModel player) {
         this.player = player;
+    }
+
+    public List<PlayerModel> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<PlayerModel> players) {
+        this.players = players;
     }
 }

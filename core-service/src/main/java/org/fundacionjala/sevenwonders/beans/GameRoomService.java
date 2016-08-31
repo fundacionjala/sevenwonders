@@ -48,10 +48,10 @@ public class GameRoomService {
      * @param id identifier of game room
      * @return game room with owner and max of players
      */
-    public GameRoomModel getGameRoom(int id){
-        GameRoomModel room = new GameRoomModel();
+    public GameModel getGameRoom(int id){
+        GameModel room = new GameModel();
         room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
-        room.setOwner(gameRooms.get(id).getPlayers().get(0));
+        room.setPlayer(gameRooms.get(id).getPlayers().get(0));
         room.setPlayers(gameRooms.get(id).getPlayers());
         return room;
     }
@@ -61,14 +61,15 @@ public class GameRoomService {
      *
      * @return GameRooms
      */
-    public Collection<GameRoomModel> listGameRooms(){
+    public Collection<GameModel> listGameRooms(){
 
-        List<GameRoomModel> currentGameRoomModels = new ArrayList<>();
+        List<GameModel> currentGameRoomModels = new ArrayList<>();
         for (int i = 1; i <= gameRooms.size(); i++) {
-            GameRoomModel room = new GameRoomModel();
+            GameModel room = new GameModel();
+            room.setId(i);
             room.setName(gameRooms.get(i).getName());
+            room.setPlayer(gameRooms.get(i).getPlayers().get(0));
             room.setMaxPlayers(gameRooms.get(i).getMaxPlayers());
-            room.setOwner(gameRooms.get(i).getPlayers().get(0));
             room.setPlayers(gameRooms.get(i).getPlayers());
             currentGameRoomModels.add(room);
         }

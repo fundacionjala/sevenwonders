@@ -34,7 +34,7 @@
             <tbody>
                 <tr ng-repeat="game in $ctrl.games">
                     <td class= "column-name">{{game.name}}</td>
-                    <td class= "column-owner">{{game.owner.userName}}</td>
+                    <td class= "column-owner">{{game.player.userName}}</td>
                     <td class= "column-player">{{game.maxPlayers}}</td>
                     <td class= "column-join">
                         <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>
