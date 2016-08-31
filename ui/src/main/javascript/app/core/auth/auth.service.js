@@ -7,7 +7,10 @@ factory('Auth', ['Restangular', '$cookies', '$q',
         return {
             login: function(user) {
                 return $q(function(resolve, reject) {
-                    Restangular.all('login').post({ user: user })
+                    var userModel = {
+                        userName : user
+                    };
+                    Restangular.all('login').post(userModel)
                         .then(function(data) {
                             var userModel = {
                                 id: data.id,

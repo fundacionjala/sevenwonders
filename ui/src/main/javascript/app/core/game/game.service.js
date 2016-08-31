@@ -5,7 +5,7 @@ angular.
     factory('Game', ['$cookies', '$websocket', 'Restangular', 'Auth', '$q',
         function ($cookies, $websocket, Restangular, Auth, $q) {
             var Game = Restangular.service('games');
-            var lobby;
+            var lobbySource = "aa";
 
             var storeGame = function (data) {
                 var gameModel = {
@@ -22,10 +22,10 @@ angular.
                     return Game.getList();
                 },
                 connectWs: function(lobby) {
-                    lobby = this.lobby;
+                    lobbySource = lobby;
                     var dataStream = $websocket('ws://localhost:9291/lobby');
                     dataStream.onMessage(function (message) {
-                        lobby.addGame(message.data);
+                        lobby.addGame(JSON.parse(message.data));
                     });
                 },
 

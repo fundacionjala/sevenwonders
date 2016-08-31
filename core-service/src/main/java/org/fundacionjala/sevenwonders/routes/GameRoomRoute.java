@@ -4,9 +4,7 @@
  */
 package org.fundacionjala.sevenwonders.routes;
 
-import org.apache.camel.BeanInject;
-import org.apache.camel.EndpointInject;
-import org.apache.camel.LoggingLevel;
+import org.apache.camel.*;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.SpringRouteBuilder;
@@ -15,6 +13,8 @@ import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,6 +26,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameRoomRoute extends SpringRouteBuilder {
 
+    static Logger logger = LoggerFactory.getLogger(GameRoomRoute.class);
 
     @BeanInject("gameRoomService")
     GameRoomService gameRoomService;
@@ -37,7 +38,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .consumes("application/json").produces("application/json")
 
                 .post().description("Create a new game room").type(GameRoomModel.class)
-                .to("bean:gameRoomService?method=createGameRoom").outType(GameRoomModel.class)
+                .to("bean:gameRoomService?method=createGameRoom").type(GameRoomModel.class)
                 .to("direct:sendMessage")
 
                 .get().description("Get all gamerooms").typeList(GameRoomModel.class)
@@ -53,8 +54,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .to("bean:gameRoomService?method=getGameRoom(${header.id})");
 
         from("direct:sendMessage")
-      //          .marshal().json(JsonLibrary.Jackson, WsMessage.class)
-                .log(LoggingLevel.OFF, ">> msg response : ${body}")
+                .marshal().json(JsonLibrary.Jackson, GameRoomModel.class)
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
     }
 }

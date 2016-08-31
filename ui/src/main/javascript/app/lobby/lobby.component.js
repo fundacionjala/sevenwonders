@@ -7,6 +7,7 @@ component('lobby', {
     controller: ['Game', '$location', '$cookies',
         function LobbyController(Game, $location, $cookies) {
             var self = this;
+            self.games = [];
             Game.getAvailableGames().then(function(result) {
                 self.games = result;
             });
