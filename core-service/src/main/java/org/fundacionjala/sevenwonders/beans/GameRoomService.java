@@ -36,7 +36,7 @@ public class GameRoomService {
      */
     public GameRoomModel createGameRoom(GameRoomModel restGameRoomModel){
         System.out.println("create game room");
-        GameRoom gameRoom = new GameRoom(restGameRoomModel.getMaxPlayers());
+        GameRoom gameRoom = new GameRoom(restGameRoomModel.getRoomName(),restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
         restGameRoomModel.setId(autoIncrementId);
         restGameRoomModel.setChannel("game-" + autoIncrementId);
