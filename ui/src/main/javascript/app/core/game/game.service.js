@@ -2,8 +2,8 @@
 
 angular.
     module('sevenWonders.core.game').
-    factory('Game', ['$cookies', '$websocket', 'Restangular', 'Auth', '$q',
-        function ($cookies, $websocket, Restangular, Auth, $q) {
+    factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
+        function ($cookies, Restangular, Auth, $q) {
             var Game = Restangular.service('games');
 
             var storeGame = function (data) {
@@ -20,29 +20,41 @@ angular.
                 getAvailableGames: function () {
                     return Game.getList();
                 },
-
                 create: function (gameSetting) {
-                    var user = Auth.getLoggedUser();
-                    gameSetting.user = user.id;
-                    Game.post(gameSetting)
-                        .then(function (data) {
-                            storeGame(data);
-                        });
+                    return $q(function (resolve, reject) {
+                        Restangular.all('games').post(
+                            {
+                                "maxPlayers": gameSetting.players,
+                                "name": gameSetting.name,
+                                "player": {
+                                    "id": $cookies.getObject('user').id,
+                                    "userName": $cookies.getObject('user').userName,
+                                    "token": $cookies.getObject('user').token
+                                }
+                            }
+                        )
+                            .then(function (data) {
+                                resolve(data);
+                            })
+                            .catch(function (data) {
+                                reject(data);
+                            });
+                    });
                 },
                 join: function (game) {
                     var user = Auth.getLoggedUser();
                     var defer = $q.defer();
 
-                    var gameRest = Game.one(game.id);
-                    gameRest.user = user.id;
-                    gameRest.put()
-                        .then(function (data) {
-                            storeGame(data);
-                            defer.resolve();
-                        }).catch(function () {
-                            defer.reject();
-                        });
-                    return defer.promise;
+                var gameRest = Game.one(game.id);
+                gameRest.user = user.id;
+                gameRest.put()
+                    .then(function(data) {
+                        storeGame(data);
+                        defer.resolve();
+                    }).catch(function() {
+                        defer.reject();
+                    });
+                return defer.promise;
 
                 },
                 getCurrentGame: function () {

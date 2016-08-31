@@ -8,6 +8,7 @@ package org.fundacionjala.sevenwonders.core.rest;
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
 public class PlayerModel {
+
     private int id;
     private String userName;
     private String token;

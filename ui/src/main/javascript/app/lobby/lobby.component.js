@@ -27,7 +27,7 @@ component('lobby', {
                 };
                 Game.create(gameSettings);
                 console.log('create');
-                $location.path('/');
+                $location.path('/gameroom');
             };
 
             this.joinGame = function(game) {
