@@ -10,10 +10,8 @@ import org.apache.camel.Processor;
 import org.apache.camel.model.dataformat.JsonLibrary;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
-import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
+import org.fundacionjala.sevenwonders.core.rest.GameModel;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * Created by Juan Manuel Barahona on 29/08/2016.
@@ -29,11 +27,11 @@ public class WSLobbyRoute extends SpringRouteBuilder {
     public void configure() throws Exception {
         from("websocket://localhost:9291/lobby")
                 .log("${body}")
-                .unmarshal().json(JsonLibrary.Jackson, GameRoomModel.class)
+                .unmarshal().json(JsonLibrary.Jackson, GameModel.class)
                 .process(new Processor() {
                     @Override
                     public void process(Exchange exchange) throws Exception {
-                        exchange.getIn().setBody(gameRoomService.listGameRooms(), GameRoomModel.class);
+                        exchange.getIn().setBody(gameRoomService.listGameRooms(), GameModel.class);
                     }
                 })
                 .to("websocket://localhost:9291/lobby?sendToAll=true");

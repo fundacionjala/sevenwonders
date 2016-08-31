@@ -5,13 +5,11 @@
 package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.BeanInject;
-import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
-import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
-import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
+import org.fundacionjala.sevenwonders.core.rest.GameModel;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,18 +29,17 @@ public class GameRoomRoute extends SpringRouteBuilder {
     @Override
     public void configure() throws Exception {
 
-        rest("/gameRoom").description("Lobby rest service")
+        rest("/games").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
-                .post().description("Create a new game room").type(GameRoomModel.class)
+                .post().description("Create a new game room").type(GameModel.class)
                 .to("bean:gameRoomService?method=createGameRoom")
-                .to("websocket://localhost:9291/lobby")
 
-                .get().description("Get all gamerooms").typeList(GameRoomModel.class)
+                .get().description("Get all gamerooms").typeList(GameModel.class)
                 .to("bean:gameRoomService?method=listGameRooms")
 
-                .post("/player").description("Add Player to lobby game").type(PlayerModel.class)
-                .to("bean:gameRoomService?method=addPlayer")
+                .put().description("Add Player to lobby game").type(GameModel.class)
+                .to("bean:gameRoomService?method=addPlayerToGame")
 
                 .get("/players/{id}").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
