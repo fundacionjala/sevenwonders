@@ -24,12 +24,14 @@ public class GameRoom {
     private CardProvider cardProvider;
     private List<PlayerModel> players;
     private int maxPlayers;
+    private String name;
 
-    public GameRoom(int maxPlayers) {
+    public GameRoom(String name, int maxPlayers) {
         wonderProvider = new WonderProvider();
         cardProvider = new CardProvider();
         players = new ArrayList<>();
         this.maxPlayers = maxPlayers;
+        this.name = name;
     }
 
     public int getMaxPlayers() {
@@ -39,7 +41,7 @@ public class GameRoom {
     /**
      * Gets a list of rest players
      *
-     * @return list of {@link org.fundacionjala.sevenwonders.core.rest.Player}
+     * @return list of {@link org.fundacionjala.sevenwonders.core.rest.PlayerModel}
      */
     public List<PlayerModel> getPlayers(){
         return players;
@@ -68,7 +70,7 @@ public class GameRoom {
             StoragePoint storagePoint = new StoragePoint();
             Storage storage = new Storage();
             City city = new City(currentWonder, storagePoint, storage);
-            Player player = new Player(item.getUserName(), city);
+            Player player = new Player(item.getuserName(), city);
             gamePlayers.add(player);
         });
 
@@ -87,5 +89,9 @@ public class GameRoom {
         return builder.setPlayers(initPlayers)
                       .setDeck(new Deck(cardProvider.getDefault()), NUMBER_OF_AGES)
                       .createGame();
+    }
+
+    public String getName() {
+        return name;
     }
 }

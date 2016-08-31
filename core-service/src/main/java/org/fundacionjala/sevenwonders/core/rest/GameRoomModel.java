@@ -10,6 +10,7 @@ import java.util.List;
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
 public class GameRoomModel {
+    private String name;
     private int maxPlayers;
     private PlayerModel owner;
     private List<PlayerModel> players;
@@ -36,5 +37,13 @@ public class GameRoomModel {
 
     public void setOwner(PlayerModel owner) {
         this.owner = owner;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

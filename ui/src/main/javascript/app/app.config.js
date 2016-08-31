@@ -12,9 +12,16 @@ angular.module('sevenWonder')
                 .when('/gameroom', {
                     template: '<gameroom></gameroom>'
                 })
+                .when('/choosewonder', {
+                    template: '<choosewonder></choosewonder>'
+                })
+                .when('/gameboard', {
+                    template: '<gameboard></gameboard>'
+                })
+
                 .otherwise('/login');
         }
     ])
     .config(['RestangularProvider', function(RestangularProvider) {
-        RestangularProvider.setBaseUrl('http://demo1701066.mockable.io');
+        RestangularProvider.setBaseUrl('http://localhost:9999');
     }]);
