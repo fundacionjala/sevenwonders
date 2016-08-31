@@ -4,6 +4,9 @@
  */
 package org.fundacionjala.sevenwonders.core.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.util.List;
 
 /**
@@ -14,6 +17,8 @@ public class GameRoomModel {
     private int maxPlayers;
     private PlayerModel owner;
     private List<PlayerModel> players;
+    private String Channel;
+    private int id;
 
     public String getRoomName() {
         return roomName;
@@ -47,5 +52,31 @@ public class GameRoomModel {
         this.owner = owner;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
+    public int getId(){
+        return this.id;
+    }
+
+    public String getChannel() {
+        return Channel;
+    }
+
+    public void setChannel(String channel) {
+        Channel = channel;
+    }
+
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return super.toString();
+    }
 }

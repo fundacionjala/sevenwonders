@@ -33,6 +33,6 @@ public class GameConfig extends CamelConfiguration {
 
     @Override
     public List<RouteBuilder> routes() {
-        return Arrays.asList(authServiceRoute, gameRoomRoute);
+        return Arrays.asList(   authServiceRoute, gameRoomRoute);
     }
 }

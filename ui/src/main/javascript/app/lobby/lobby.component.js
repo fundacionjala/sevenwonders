@@ -4,15 +4,15 @@ angular.
 module('sevenWonder.lobby').
 component('lobby', {
     templateUrl: 'lobby/lobby.tpl.html',
-    controller: ['Game', '$location', '$cookies',
-        function LobbyController(Game, $location, $cookies) {
+    controller: ['Game', 'Lobby', '$location', '$cookies',
+        function LobbyController(Game, Lobby, $location, $cookies) {
             var self = this;
             self.games = [];
             Game.getAvailableGames().then(function(result) {
                 self.games = result;
             });
 
-            Game.connectWs(self);
+            Lobby.connectWs(self); 
 
             this.maxPlayers = ['3', '4', '5', '6', '7'];
 

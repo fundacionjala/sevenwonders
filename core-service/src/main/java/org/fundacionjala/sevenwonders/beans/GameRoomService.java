@@ -35,9 +35,11 @@ public class GameRoomService {
      * @param restGameRoomModel
      */
     public GameRoomModel createGameRoom(GameRoomModel restGameRoomModel){
+        System.out.println("create game room");
         GameRoom gameRoom = new GameRoom(restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
-        restGameRoomModel.getOwner().setRoomId(autoIncrementId);
+        restGameRoomModel.setId(autoIncrementId);
+        restGameRoomModel.setChannel("game-" + autoIncrementId);
         autoIncrementId++;
         gameRoom.addPlayer(restGameRoomModel.getOwner());
         return restGameRoomModel;
@@ -54,6 +56,8 @@ public class GameRoomService {
         room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
         room.setOwner(gameRooms.get(id).getPlayers().get(0));
         room.setPlayers(gameRooms.get(id).getPlayers());
+        room.setChannel("game-" + id);
+        room.setId(id);
         return room;
     }
 
@@ -63,13 +67,13 @@ public class GameRoomService {
      * @return GameRooms
      */
     public Collection<GameRoomModel> listGameRooms(){
-
         List<GameRoomModel> currentGameRoomModels = new ArrayList<>();
-        gameRooms.values().stream().forEach(gameRoom -> {
+        gameRooms.entrySet().stream().forEach(entry -> {
             GameRoomModel room = new GameRoomModel();
-            room.setMaxPlayers(gameRoom.getMaxPlayers());
-            room.setOwner(gameRoom.getPlayers().get(1));
-            room.setPlayers(gameRoom.getPlayers());
+            room.setMaxPlayers(entry.getValue().getMaxPlayers());
+            room.setOwner(entry.getValue().getPlayers().get(0));
+            room.setPlayers(entry.getValue().getPlayers());
+            room.setChannel("game-" + entry.getKey());
             currentGameRoomModels.add(room);
         });
 
@@ -91,16 +95,14 @@ public class GameRoomService {
      *
      * @param player
      */
-
-    public void addPlayer(PlayerModel player){
-        GameRoom current = gameRooms.get(player.getRoomId());
+    public void addPlayer(int id, PlayerModel player){
+        GameRoom current = gameRooms.get(id);
         current.addPlayer(player);
 
         if(current.getMaxPlayers() == current.getPlayers().size()){
             gameService.createGame(current.createGame());
         }
     }
-
     public GameService getGameService() {
         return gameService;
     }

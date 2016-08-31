@@ -38,23 +38,24 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .consumes("application/json").produces("application/json")
 
                 .post().description("Create a new game room").type(GameRoomModel.class)
-                .to("bean:gameRoomService?method=createGameRoom").type(GameRoomModel.class)
+                .route()
+                .to("bean:gameRoomService?method=createGameRoom")
                 .to("direct:sendMessage")
+                .endRest()
 
                 .get().description("Get all gamerooms").typeList(GameRoomModel.class)
                 .to("bean:gameRoomService?method=listGameRooms")
 
-                .post("/player").description("Add Player to lobby game").type(PlayerModel.class)
-                .to("bean:gameRoomService?method=addPlayer")
+                .post("{id}/players").description("Add Player to lobby game").type(PlayerModel.class)
+                .to("bean:gameRoomService?method=addPlayer(${header.id}, ${body})")
 
-                .get("/players/{id}").description("Get list of players").outTypeList(Player.class)
+                .get("{id}/players").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
 
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
                 .to("bean:gameRoomService?method=getGameRoom(${header.id})");
 
         from("direct:sendMessage")
-                .marshal().json(JsonLibrary.Jackson, GameRoomModel.class)
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
     }
 }
