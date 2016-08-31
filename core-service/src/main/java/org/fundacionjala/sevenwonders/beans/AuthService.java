@@ -33,6 +33,7 @@ public class AuthService {
         player.setUserName(playerModel.getUserName());
         player.setToken(UUID.randomUUID().toString());
         players.put(autoIncrementId,player);
+
         autoIncrementId++;
         return player;
     }
