@@ -4,7 +4,9 @@
  */
 package org.fundacionjala.sevenwonders.routes;
 
+import org.apache.camel.BeanInject;
 import org.apache.camel.spring.SpringRouteBuilder;
+import org.fundacionjala.sevenwonders.beans.GameRoomService;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
@@ -19,10 +21,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GameRoomRoute extends SpringRouteBuilder {
-
+    
+   @BeanInject("gameRoomService")
+   GameRoomService gameRoomService;
+   
     @Override
     public void configure() throws Exception {
-
+        
         rest("/games").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
 
@@ -42,7 +47,12 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
 
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
-                .to("bean:gameRoomService?method=getGameRoom(${header.id})");
+                .to("bean:gameRoomService?method=getGameRoom(${header.id})").verb("options").route()
+
+                .setHeader("Access-Control-Allow-Origin", constant("*"))
+                .setHeader("Access-Control-Allow-Methods", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"))
+                .setHeader("Access-Control-Allow-Headers", constant("Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"))
+                .setHeader("Allow", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"));
 
         from("direct:sendMessage")
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
