@@ -34,11 +34,6 @@ public class AuthService {
         player.setToken(UUID.randomUUID().toString());
         players.put(autoIncrementId,player);
 
-        WebSocketConnection webSocketConnection = new WebSocketConnection();
-        webSocketConnection.setChannel(9292);
-        webSocketConnection.setPath("lobby");
-        player.setWebSocketConnection(webSocketConnection);
-
         autoIncrementId++;
         return player;
     }
