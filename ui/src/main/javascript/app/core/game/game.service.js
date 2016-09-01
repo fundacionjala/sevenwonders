@@ -9,9 +9,9 @@ angular.
             var storeGame = function (data) {
                 var gameModel = {
                     id: data.id,
-                    channel: data.channel,
-                    players: data.players,
-                    type: data.type
+                    numberPlayers: data.maxPlayers,
+                    name: data.roomName,
+                    player: data.owner
                 };
                 $cookies.putObject('game', gameModel);
             };
@@ -34,6 +34,7 @@ angular.
                             }
                         )
                             .then(function (data) {
+                                storeGame(data);
                                 resolve(data);
                             })
                             .catch(function (data) {

@@ -14,13 +14,13 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 import java.util.List;
+import org.fundacionjala.sevenwonders.routes.GameChannelRoute;
 
 /**
  * This contains the basic configuration for the Camel application
  *
  * @author Juan Barahona
  */
-
 @Configuration
 @ComponentScan(basePackages = "org.fundacionjala.sevenwonders")
 public class GameConfig extends CamelConfiguration {
@@ -31,8 +31,11 @@ public class GameConfig extends CamelConfiguration {
     @Autowired
     private GameRoomRoute gameRoomRoute;
 
+    @Autowired
+    private GameChannelRoute gameChannelRoute;
+
     @Override
     public List<RouteBuilder> routes() {
-        return Arrays.asList(   authServiceRoute, gameRoomRoute);
+        return Arrays.asList(authServiceRoute, gameRoomRoute, gameChannelRoute);
     }
 }
