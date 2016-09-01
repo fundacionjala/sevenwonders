@@ -25,8 +25,8 @@ angular.
                         Restangular.all('games').post(
                             {
                                 "maxPlayers": gameSetting.players,
-                                "name": gameSetting.name,
-                                "player": {
+                                "roomName": gameSetting.name,
+                                "owner": {
                                     "id": $cookies.getObject('user').id,
                                     "userName": $cookies.getObject('user').userName,
                                     "token": $cookies.getObject('user').token
