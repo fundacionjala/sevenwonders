@@ -24,7 +24,6 @@ div.lobby-game-section {
         width: 20%; 
         float: left; 
       }
-
     & .sw-box-3 {
         margin-top: 25px;
         text-align: bottom;
@@ -37,22 +36,26 @@ div.lobby-game-section {
         margin: 0.5em 0 0;
       }
 
-    & select.sw-players {
+    & select.sw-players:required {
         background: @background_input;
         border-radius: 6px;
         border: 1px solid @color_component;
-        font-color: @color_component;
+        color: @color_component;
         font-family: @font_family;
-        font-size: 16px;
-        padding: 8px 20px;
+        font-size: 1.2rem;
+        padding: 7px 20px;
         width: 230px;
-        &:focus {
+        & required:focus {
           border: 1px solid white;
           outline: none;
           font-color: @color_component;
         }
         &:hover {
           border: 1px solid white;
+        }
+        & option.number-option {
+          background-color: black;
+          color: @color_component;
         }
       }
 
@@ -115,7 +118,6 @@ div.lobby-game-section {
 
     & .img-message {
         background-size: cover;
-        background: url('/resources/images/dove2.jpg') no-repeat;
         height: 200px;
         margin-left: 330px;
         position: relative;
@@ -130,6 +132,8 @@ div.lobby-game-section {
       }
 
     & .separator {
-        width: 850px;
+        width: 865px;
+        position: absolute;
+        margin-top: 95px;
     }
   }

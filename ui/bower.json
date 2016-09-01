@@ -6,7 +6,8 @@
     "angular-route": "1.5.7",
     "angular-cookies": "1.5.7",
     "angular-websocket": "2.0.0",
-    "restangular": "1.5.2"
+    "restangular": "1.5.2",
+    "jasmine": "~2.5.2"
   },
   "devDependencies": {
     "angular-mocks": "1.5.7",

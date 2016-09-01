@@ -11,9 +11,11 @@ import java.util.List;
  * Created by Luis Gumucio.
  */
 public class GameModel {
+
     private int id;
-    private String name;
-    private int maxPlayers;
+    private String roomName;
+    private String channel;
+    private int numberPlayers;
     private PlayerModel player;
     private List<PlayerModel> players;
 
@@ -25,20 +27,28 @@ public class GameModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRoomName() {
+        return roomName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
     }
 
-    public int getMaxPlayers() {
-        return maxPlayers;
+    public String getChannel() {
+        return channel;
     }
 
-    public void setMaxPlayers(int maxPlayers) {
-        this.maxPlayers = maxPlayers;
+    public void setChannel(String channel) {
+        this.channel = channel;
+    }
+
+    public int getNumberPlayers() {
+        return numberPlayers;
+    }
+
+    public void setNumberPlayers(int numberPlayers) {
+        this.numberPlayers = numberPlayers;
     }
 
     public PlayerModel getPlayer() {
