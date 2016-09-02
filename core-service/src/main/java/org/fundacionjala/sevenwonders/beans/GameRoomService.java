@@ -112,7 +112,7 @@ public class GameRoomService {
         this.gameService = gameService;
     }
 
-    public PlayerModel isGame(int id, PlayerModel player) {
+    public PlayerModel validateGame(int id, PlayerModel player) {
         PlayerModel current = gameRooms.get(id)
                 .getPlayers().stream()
                 .filter(b -> b.getId() == player.getId())

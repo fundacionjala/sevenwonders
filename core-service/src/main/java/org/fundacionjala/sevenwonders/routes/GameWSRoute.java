@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * Created by Luis Gumucio.
  */
 @Component
-public class GameRoute extends SpringRouteBuilder {
+public class GameWSRoute extends SpringRouteBuilder {
     private GameProcessor gameProcessor = new GameProcessor();
     @Override
     public void configure() throws Exception {
@@ -28,7 +28,7 @@ public class GameRoute extends SpringRouteBuilder {
                 .to("direct:sendMessageGame");
 
         from("direct:sendMessageGame")
-                .to("bean:gameRoomService?method=isGame(${header.id}, ${body})")
+                .to("bean:gameRoomService?method=validateGame(${header.id}, ${body})")
                 .to("websocket://localhost:9295/game?sendToAll=true");
 
 
