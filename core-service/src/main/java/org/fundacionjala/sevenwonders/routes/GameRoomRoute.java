@@ -4,13 +4,14 @@
  */
 package org.fundacionjala.sevenwonders.routes;
 
-import org.apache.camel.BeanInject;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
 import org.apache.camel.spring.SpringRouteBuilder;
-import org.fundacionjala.sevenwonders.beans.GameRoomService;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
+import org.fundacionjala.sevenwonders.processors.GameProcessor;
 import org.springframework.stereotype.Component;
 
 /**
@@ -21,10 +22,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class GameRoomRoute extends SpringRouteBuilder {
-    
-   @BeanInject("gameRoomService")
-   GameRoomService gameRoomService;
-   
+
     @Override
     public void configure() throws Exception {
         
@@ -41,7 +39,10 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .to("bean:gameRoomService?method=listGameRooms")
 
                 .post("{id}/players").description("Add Player to lobby game").type(PlayerModel.class)
+                .route()
                 .to("bean:gameRoomService?method=addPlayer(${header.id}, ${body})")
+                .to("direct:sendMessageGame")
+                .endRest()
 
                 .get("{id}/players").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
