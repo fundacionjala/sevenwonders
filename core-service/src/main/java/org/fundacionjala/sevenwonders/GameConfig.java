@@ -7,6 +7,7 @@ package org.fundacionjala.sevenwonders;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.spring.javaconfig.CamelConfiguration;
 import org.fundacionjala.sevenwonders.routes.AuthServiceRoute;
+import org.fundacionjala.sevenwonders.routes.GameWSRoute;
 import org.fundacionjala.sevenwonders.routes.GameRoomRoute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,13 +15,13 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 import java.util.List;
-import org.fundacionjala.sevenwonders.routes.GameChannelRoute;
 
 /**
  * This contains the basic configuration for the Camel application
  *
  * @author Juan Barahona
  */
+
 @Configuration
 @ComponentScan(basePackages = "org.fundacionjala.sevenwonders")
 public class GameConfig extends CamelConfiguration {
@@ -32,10 +33,10 @@ public class GameConfig extends CamelConfiguration {
     private GameRoomRoute gameRoomRoute;
 
     @Autowired
-    private GameChannelRoute gameChannelRoute;
+    private GameWSRoute gameWSRoute;
 
     @Override
     public List<RouteBuilder> routes() {
-        return Arrays.asList(authServiceRoute, gameRoomRoute, gameChannelRoute);
+        return Arrays.asList(authServiceRoute, gameRoomRoute, gameWSRoute);
     }
 }

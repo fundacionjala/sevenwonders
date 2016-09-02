@@ -4,6 +4,9 @@
  */
 package org.fundacionjala.sevenwonders.core.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
@@ -35,5 +38,17 @@ public class PlayerModel {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return super.toString();
     }
 }
