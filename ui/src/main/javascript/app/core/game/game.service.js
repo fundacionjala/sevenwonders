@@ -9,9 +9,10 @@ angular.
             var storeGame = function (data) {
                 var gameModel = {
                     id: data.id,
+                    roomName: data.roomName,
                     channel: data.channel,
-                    players: data.players,
-                    type: data.type
+                    type: data.type,
+                    numberPlayers: data.maxPlayers
                 };
                 $cookies.putObject('game', gameModel);
             };
@@ -24,16 +25,17 @@ angular.
                     return $q(function (resolve, reject) {
                         Restangular.all('games').post(
                             {
-                                "maxPlayers": gameSetting.players,
-                                "roomName": gameSetting.name,
-                                "owner": {
-                                    "id": $cookies.getObject('user').id,
-                                    "userName": $cookies.getObject('user').userName,
-                                    "token": $cookies.getObject('user').token
+                                maxPlayers: gameSetting.players,
+                                roomName: gameSetting.name,
+                                owner: {
+                                    id: $cookies.getObject('user').id,
+                                    userName: $cookies.getObject('user').userName,
+                                    token: $cookies.getObject('user').token
                                 }
                             }
                         )
                             .then(function (data) {
+                                storeGame(data);
                                 resolve(data);
                             })
                             .catch(function (data) {
@@ -44,12 +46,14 @@ angular.
                 join: function (game) {
                     var user = Auth.getLoggedUser();
                     var defer = $q.defer();
-
-                    var gameRest = Game.one(game.id);
-                    gameRest.user = user.id;
-                    gameRest.put()
+                    var player = {
+                        id: user.id,
+                        userName: user.userName,
+                        token: user.token
+                    }
+                    Game.one(game.id).post('players', player)
                         .then(function (data) {
-                            storeGame(data);
+                            storeGame(game);
                             defer.resolve();
                         }).catch(function () {
                             defer.reject();

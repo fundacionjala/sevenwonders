@@ -74,6 +74,7 @@ public class GameRoomService {
             room.setOwner(entry.getValue().getPlayers().get(0));
             room.setPlayers(entry.getValue().getPlayers());
             room.setChannel("game-" + entry.getKey());
+            room.setId(entry.getKey());
             currentGameRoomModels.add(room);
         });
 

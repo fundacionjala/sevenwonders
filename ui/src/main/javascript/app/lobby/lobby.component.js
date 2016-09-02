@@ -34,7 +34,7 @@ component('lobby', {
                 Game.join(game)
                     .then(function(result) {
                         console.log('join');
-                        $location.path('/');
+                        $location.path('/gameroom');
                     });
             };
         }
