@@ -9,7 +9,7 @@ angular.
                 var self = this;
                 var tempGameRoom = GameRoom.getGameRoom();
                 var playersJoined = [];
-                GameRoom.connectWebsocket(game);
+                GameRoom.connectWebsocket(self);
                 this.addPlayer = function (player) {
                     playersJoined.push(player);
                 };
