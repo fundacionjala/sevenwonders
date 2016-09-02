@@ -18,7 +18,7 @@ public class GameRoomModelTest {
     @Test
     public void testAddPlayer(){
         int maxPlayers = 2;
-        GameRoom gameRoom = new GameRoom(maxPlayers);
+        GameRoom gameRoom = new GameRoom("new game", maxPlayers);
 
         gameRoom.addPlayer(new PlayerModel());
         gameRoom.addPlayer(new PlayerModel());
@@ -30,7 +30,7 @@ public class GameRoomModelTest {
     @Test(expected = IllegalArgumentException.class)
     public void testAddPlayerFail(){
         int maxPlayers = 2;
-        GameRoom gameRoom = new GameRoom(maxPlayers);
+        GameRoom gameRoom = new GameRoom("new game", maxPlayers);
 
         gameRoom.addPlayer(new PlayerModel());
         gameRoom.addPlayer(new PlayerModel());
@@ -41,7 +41,7 @@ public class GameRoomModelTest {
     @Test
     public void testAssignWonders(){
         int maxPlayers = 3;
-        GameRoom gameRoom = new GameRoom(maxPlayers);
+        GameRoom gameRoom = new GameRoom("new game", maxPlayers);
 
         gameRoom.addPlayer(new PlayerModel());
         gameRoom.addPlayer(new PlayerModel());

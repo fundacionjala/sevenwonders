@@ -23,7 +23,7 @@ public class GameRoomService {
     private GameService gameService;
     private int autoIncrementId;
 
-    public GameRoomService(){
+    public GameRoomService() {
         autoIncrementId = 1;
         gameService = new GameService();
     }
@@ -34,12 +34,14 @@ public class GameRoomService {
      *
      * @param restGameRoomModel
      */
-    public void createGameRoom(GameRoomModel restGameRoomModel){
-        GameRoom gameRoom = new GameRoom(restGameRoomModel.getMaxPlayers());
+    public GameRoomModel createGameRoom(GameRoomModel restGameRoomModel) {
+        GameRoom gameRoom = new GameRoom(restGameRoomModel.getRoomName(), restGameRoomModel.getMaxPlayers());
         gameRooms.put(autoIncrementId, gameRoom);
-        restGameRoomModel.getOwner().setRoomId(autoIncrementId);
+        restGameRoomModel.setId(autoIncrementId);
+        restGameRoomModel.setChannel("game-" + autoIncrementId);
         autoIncrementId++;
         gameRoom.addPlayer(restGameRoomModel.getOwner());
+        return restGameRoomModel;
     }
 
     /**
@@ -48,11 +50,13 @@ public class GameRoomService {
      * @param id identifier of game room
      * @return game room with owner and max of players
      */
-    public GameRoomModel getGameRoom(int id){
+    public GameRoomModel getGameRoom(int id) {
         GameRoomModel room = new GameRoomModel();
         room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
         room.setOwner(gameRooms.get(id).getPlayers().get(0));
         room.setPlayers(gameRooms.get(id).getPlayers());
+        room.setChannel("game-" + id);
+        room.setId(id);
         return room;
     }
 
@@ -61,14 +65,15 @@ public class GameRoomService {
      *
      * @return GameRooms
      */
-    public Collection<GameRoomModel> listGameRooms(){
-
+    public Collection<GameRoomModel> listGameRooms() {
         List<GameRoomModel> currentGameRoomModels = new ArrayList<>();
-        gameRooms.values().stream().forEach(gameRoom -> {
+        gameRooms.entrySet().stream().forEach(entry -> {
             GameRoomModel room = new GameRoomModel();
-            room.setMaxPlayers(gameRoom.getMaxPlayers());
-            room.setOwner(gameRoom.getPlayers().get(1));
-            room.setPlayers(gameRoom.getPlayers());
+            room.setRoomName(entry.getValue().getName());
+            room.setMaxPlayers(entry.getValue().getMaxPlayers());
+            room.setOwner(entry.getValue().getPlayers().get(0));
+            room.setPlayers(entry.getValue().getPlayers());
+            room.setChannel("game-" + entry.getKey());
             currentGameRoomModels.add(room);
         });
 
@@ -81,7 +86,7 @@ public class GameRoomService {
      * @param id game room identifier
      * @return player
      */
-    public Collection<PlayerModel> getPlayers(int id){
+    public Collection<PlayerModel> getPlayers(int id) {
         return gameRooms.get(id).getPlayers();
     }
 
@@ -90,12 +95,11 @@ public class GameRoomService {
      *
      * @param player
      */
-
-    public void addPlayer(PlayerModel player){
-        GameRoom current = gameRooms.get(player.getRoomId());
+    public void addPlayer(int id, PlayerModel player) {
+        GameRoom current = gameRooms.get(id);
         current.addPlayer(player);
 
-        if(current.getMaxPlayers() == current.getPlayers().size()){
+        if (current.getMaxPlayers() == current.getPlayers().size()) {
             gameService.createGame(current.createGame());
         }
     }
@@ -106,5 +110,14 @@ public class GameRoomService {
 
     public void setGameService(GameService gameService) {
         this.gameService = gameService;
+    }
+
+    public PlayerModel isGame(int id, PlayerModel player) {
+        PlayerModel current = gameRooms.get(id)
+                .getPlayers().stream()
+                .filter(b -> b.getId() == player.getId())
+                .findAny()
+                .orElse(null);
+        return current;
     }
 }

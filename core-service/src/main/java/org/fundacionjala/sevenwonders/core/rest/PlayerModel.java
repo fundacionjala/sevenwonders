@@ -4,26 +4,51 @@
  */
 package org.fundacionjala.sevenwonders.core.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 /**
  * Created by Juan Manuel Barahona on 05/08/2016.
  */
 public class PlayerModel {
-    private String name;
-    private int roomId;
 
-    public int getRoomId() {
-        return roomId;
+    private int id;
+    private String userName;
+    private String token;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public void setRoomId(int roomId) {
-        this.roomId = roomId;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    @Override
+    public String toString() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return super.toString();
     }
 }

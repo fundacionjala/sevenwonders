@@ -15,7 +15,7 @@ import org.junit.Test;
  *
  * @author Juan Barahona
  */
-public class GameRoomModelServiceTest {
+public class GameRoomServiceTest {
 
     @Test
     public void postAndGetGameRoomTest(){
@@ -23,13 +23,13 @@ public class GameRoomModelServiceTest {
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
 
-        player.setName("Juan");
+        player.setUserName("Juan");
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
 
         gameRoomService.createGameRoom(gameRoomModel);
 
-        Assert.assertEquals("1", gameRoomService.getGameRoom(1).getOwner().getRoomId());
+        Assert.assertNotNull(gameRoomService.getGameRoom(1).getOwner());
     }
 
     @Test
@@ -37,18 +37,17 @@ public class GameRoomModelServiceTest {
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
-        player.setName("Juan");
+        player.setUserName("Juan");
 
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
 
-        gameRoomService.createGameRoom(gameRoomModel);
+        gameRoomModel = gameRoomService.createGameRoom(gameRoomModel);
 
         PlayerModel playerOne = new PlayerModel();
-        playerOne.setName("Dwits");
-        playerOne.setRoomId(1);
+        playerOne.setUserName("Dwits");
 
-        gameRoomService.addPlayer(playerOne);
+        gameRoomService.addPlayer(gameRoomModel.getId(),playerOne);
 
         Assert.assertEquals(2, gameRoomService.getGameRoom(1).getPlayers().size());
     }
@@ -58,7 +57,7 @@ public class GameRoomModelServiceTest {
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
-        player.setName("Juan");
+        player.setUserName("Juan");
 
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
@@ -66,18 +65,16 @@ public class GameRoomModelServiceTest {
         gameRoomService.createGameRoom(gameRoomModel);
 
         PlayerModel playerOne = new PlayerModel();
-        playerOne.setName("Dwits");
-        playerOne.setRoomId(1);
+        playerOne.setUserName("Dwits");
 
-        gameRoomService.addPlayer(playerOne);
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerOne);
 
         Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
 
         PlayerModel playerTwo = new PlayerModel();
-        playerTwo.setName("Lucero");
-        playerTwo.setRoomId(1);
+        playerTwo.setUserName("Lucero");
 
-        gameRoomService.addPlayer(playerTwo);
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
 
         Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
 
