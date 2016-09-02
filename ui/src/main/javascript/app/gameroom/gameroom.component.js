@@ -9,7 +9,6 @@ angular.
                 var self = this;
                 var tempGameRoom = GameRoom.getGameroom();
                 GameRoom.getPlayers().then(function (data) {
-                    var tempPlayers = [];
                     if (data.length < tempGameRoom.numberPlayers) {
                         for (var index = data.length; index < tempGameRoom.numberPlayers; index++) {
                             data.push({
