@@ -7,7 +7,12 @@ angular.
         controller: ['GameRoom',
             function GameRoomController(GameRoom) {
                 var self = this;
-                var tempGameRoom = GameRoom.getGameroom();
+                var tempGameRoom = GameRoom.getGameRoom();
+                var playersJoined = [];
+                GameRoom.connectWebsocket(game);
+                this.addPlayer = function (player) {
+                    playersJoined.push(player);
+                };
                 GameRoom.getPlayers().then(function (data) {
                     if (data.length < tempGameRoom.numberPlayers) {
                         for (var index = data.length; index < tempGameRoom.numberPlayers; index++) {

@@ -12,7 +12,8 @@ angular.
                     roomName: data.roomName,
                     channel: data.channel,
                     type: data.type,
-                    numberPlayers: data.maxPlayers
+                    numberPlayers: data.maxPlayers,
+                    player: data.owner
                 };
                 $cookies.putObject('game', gameModel);
             };

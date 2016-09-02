@@ -2,10 +2,10 @@
 
 angular.
     module('sevenWonders.core.gameroom').
-    factory('GameRoom', ['$cookies', 'Restangular', '$q', 'Game',
-        function ($cookies, Restangular, $q, Game) {
+    factory('GameRoom', ['$cookies', 'Restangular', '$websocket', '$q', 'Game',
+        function ($cookies, Restangular, $q, $websocket, Game) {
             return {
-                getGameroom: function () {
+                getGameRoom: function () {
                     return Game.getCurrentGame();
                 },
                 getPlayers: function () {
@@ -17,6 +17,22 @@ angular.
                             defer.reject();
                         });
                     return defer.promise;
+                },
+                connectWebsocket: function (game) {
+                    var dataStream = $websocket('ws://localhost:9295/game');
+                    dataStream.onOpen(function () {
+                        console.log('connection open');
+                        var dataGame = {
+                            id: Game.getCurrentGame().id,
+                            player: Game.getCurrentGame().player
+                        };
+                        dataStream.send(JSON.stringify(dataGame));
+                    });
+
+                    dataStream.onMessage(function (message) {
+                        game.addPlayer(JSON.parse(message.data));
+                        console.log('joined');
+                    });
                 }
             }
         }
