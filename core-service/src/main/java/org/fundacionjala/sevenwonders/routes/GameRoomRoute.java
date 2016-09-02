@@ -1,8 +1,6 @@
 package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.BeanInject;
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.model.rest.RestBindingMode;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.beans.GameMockService;
