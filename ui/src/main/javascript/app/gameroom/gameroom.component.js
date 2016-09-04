@@ -6,21 +6,28 @@ angular.
         templateUrl: 'gameroom/gameroom.tpl.html',
         controller: ['GameRoom',
             function GameRoomController(GameRoom) {
-                var game = this;
+                var self = this;
+                var tempGameRoom = GameRoom.getGameRoom();
                 var playersJoined = [];
-                
-                GameRoom.connectWebsocket(game);
-
+                GameRoom.connectWebsocket(self);
                 this.addPlayer = function (player) {
-                     playersJoined.push(player);
+                    playersJoined.push(player);
                 };
-
-                this.gameroom = {
-                    id: GameRoom.getGameRoom().id,
-                    name: GameRoom.getGameRoom().name,
-                    numberPlayers: GameRoom.getGameRoom().numberPlayers,
-                    players: playersJoined
-                };
+                GameRoom.getPlayers().then(function (data) {
+                    if (data.length < tempGameRoom.numberPlayers) {
+                        for (var index = data.length; index < tempGameRoom.numberPlayers; index++) {
+                            data.push({
+                                userName: ''
+                            });
+                        }
+                    }
+                    self.gameroom = {
+                        roomName: tempGameRoom.roomName,
+                        players: data,
+                        numberPlayers: tempGameRoom.numberPlayers
+                    };
+                });
+                this.maxPlayers = 7;
             }
         ]
     });
