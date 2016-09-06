@@ -28,7 +28,6 @@ public class GameRoomRoute extends SpringRouteBuilder {
         
         rest("/games").description("Lobby rest service")
                 .consumes("application/json").produces("application/json")
-
                 .post().description("Create a new game room").type(GameRoomModel.class)
                 .route()
                 .to("bean:gameRoomService?method=createGameRoom")
