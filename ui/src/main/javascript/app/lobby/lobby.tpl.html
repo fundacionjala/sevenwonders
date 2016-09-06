@@ -11,7 +11,8 @@
             <div class="sw-box-2">
                 <span>
                     <label for="players" class="sw-title label-form">Max Players</label>
-                    <select id="players" class="sw-players" ng-model="gameroom.player">
+                    <select id="players" class="sw-players" ng-model="gameroom.player" required ="true">
+                        <option disabled selected value="">Please select</option>
                         <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
                         </option>
                     </select>

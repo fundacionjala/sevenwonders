@@ -24,7 +24,6 @@ div.lobby-game-section {
         width: 20%; 
         float: left; 
       }
-
     & .sw-box-3 {
         margin-top: 25px;
         text-align: bottom;
@@ -41,10 +40,10 @@ div.lobby-game-section {
         background: @background_input;
         border-radius: 6px;
         border: 1px solid @color_component;
-        font-color: @color_component;
+        color: @color_component;
         font-family: @font_family;
-        font-size: 16px;
-        padding: 8px 20px;
+        font-size: 1.2rem;
+        padding: 7px 20px;
         width: 230px;
         &:focus {
           border: 1px solid white;
@@ -53,6 +52,10 @@ div.lobby-game-section {
         }
         &:hover {
           border: 1px solid white;
+        }
+        & option.number-option {
+          background-color: black;
+          color: @color_component;
         }
       }
 
