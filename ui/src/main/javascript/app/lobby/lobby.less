@@ -36,7 +36,7 @@ div.lobby-game-section {
         margin: 0.5em 0 0;
       }
 
-    & select.sw-players {
+    & select.sw-players:required {
         background: @background_input;
         border-radius: 6px;
         border: 1px solid @color_component;
@@ -45,7 +45,7 @@ div.lobby-game-section {
         font-size: 1.2rem;
         padding: 7px 20px;
         width: 230px;
-        &:focus {
+        & required:focus {
           border: 1px solid white;
           outline: none;
           font-color: @color_component;
@@ -133,6 +133,8 @@ div.lobby-game-section {
       }
 
     & .separator {
-        width: 850px;
+        width: 865px;
+        position: absolute;
+        margin-top: 95px;
     }
   }
