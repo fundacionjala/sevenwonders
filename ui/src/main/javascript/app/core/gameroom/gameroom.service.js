@@ -2,69 +2,38 @@
 
 angular.
     module('sevenWonders.core.gameroom').
-    factory('GameRoom', ['$cookies', '$websocket', 'Game', '$q',
-        function ($cookies, $websocket, Game, $q) {
-            var dataStream = $websocket('wss://echo.websocket.org');
+    factory('GameRoom', ['$cookies', '$websocket', 'Game', 'Restangular',  '$q',
+        function ($cookies, $websocket, Game, Restangular, $q) {
+            return {
+                getGameRoom: function () {
+                    return Game.getCurrentGame();
+                },
+                getPlayers: function () {
+                    var defer = $q.defer();
+                    Restangular.one('games', Game.getCurrentGame().id).getList('players')
+                        .then(function (data) {
+                            defer.resolve(data);
+                        }).catch(function () {
+                            defer.reject();
+                        });
+                    return defer.promise;
+                },
+                connectWebsocket: function (game) {
+                    var dataStream = $websocket('ws://localhost:9295/game');
+                    dataStream.onOpen(function () {
+                        console.log('connection open');
+                        var dataGame = {
+                            id: Game.getCurrentGame().id,
+                            player: Game.getCurrentGame().player
+                        };
+                        dataStream.send(JSON.stringify(dataGame));
+                    });
 
-            var collection = [];
-
-            dataStream.onMessage(function (message) {
-                collection.push(JSON.parse(message.data));
-            });
-
-            var methods = {
-                collection: collection,
-                get: function () {
-                    dataStream.send(JSON.stringify({ action: 'get' }));
+                    dataStream.onMessage(function (message) {
+                        game.addPlayer(JSON.parse(message.data));
+                        console.log('joined');
+                    });
                 }
-            };
-             return {
-                getGame: function () {
-                    return methods;
-                }
-            };
-
-            // var game = {
-            //     'id': 7,
-            //     'name': 'Stalingrado',
-            //     'numberPlayers': 7,
-            //     'players': [{
-            //         'id': 1,
-            //         'username': 'Diego',
-            //         'avatar': 'user'
-            //     }, {
-            //             'id': 2,
-            //             'username': 'JOhx',
-            //             'avatar': 'user'
-            //         }, {
-            //             'id': 3,
-            //             'username': 'Gumu',
-            //             'avatar': 'user'
-            //         }, {
-            //             'id': 4,
-            //             'username': '',
-            //             'avatar': ''
-            //         }, {
-            //             'id': 5,
-            //             'username': '',
-            //             'avatar': ''
-            //         }, {
-            //             'id': 6,
-            //             'username': '',
-            //             'avatar': ''
-            //         }, {
-            //             'id': 7,
-            //             'username': '',
-            //             'avatar': ''
-            //         }]
-            // };
-
-
-            // var game1 = Game.getCurrentGame();
-            // return {
-            //     getGame: function () {
-            //         return game;
-            //     }
-            // };
+            }
         }
     ]);
