@@ -24,7 +24,7 @@ angular.
                 });
                 GameRoom.connectWebsocket(self);
                 this.addPlayer = function (player) {
-                    if (self.gameroom.players.length != 0) {
+                    if (typeof self.gameroom != 'undefined') {
                         if (!containsUserName(player.userName)) {
                             changeUserName('', player.userName);
                         }
