@@ -34,8 +34,8 @@ public class AuthServiceRoute extends SpringRouteBuilder {
                 .bindingMode(RestBindingMode.json)
                 .dataFormatProperty("prettyPrint", "true")
                 .enableCORS(true)
+                .corsHeaderProperty("Access-Control-Allow-Headers", "Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization")
                 .port(9999);
-
 
         rest("/login").description("Login rest service")
                 .consumes("application/json").produces("application/json")

@@ -74,6 +74,7 @@ public class GameRoomService {
             room.setOwner(entry.getValue().getPlayers().get(0));
             room.setPlayers(entry.getValue().getPlayers());
             room.setChannel("game-" + entry.getKey());
+            room.setId(entry.getKey());
             currentGameRoomModels.add(room);
         });
 
@@ -112,7 +113,7 @@ public class GameRoomService {
         this.gameService = gameService;
     }
 
-    public PlayerModel isGame(int id, PlayerModel player) {
+    public PlayerModel validateGame(int id, PlayerModel player) {
         PlayerModel current = gameRooms.get(id)
                 .getPlayers().stream()
                 .filter(b -> b.getId() == player.getId())
