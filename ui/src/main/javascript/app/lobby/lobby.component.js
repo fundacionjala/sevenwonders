@@ -25,9 +25,12 @@ component('lobby', {
                     name: game.name,
                     players: game.player
                 };
-                Game.create(gameSettings);
-                console.log('create');
-                $location.path('/gameroom');
+                Game.create(gameSettings)
+                    .then(function(result){
+                        console.log('create');
+                        $location.path('/gameroom');
+                    });
+
             };
 
             this.joinGame = function(game) {
