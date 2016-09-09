@@ -52,6 +52,7 @@ public class GameRoomService {
      */
     public GameRoomModel getGameRoom(int id) {
         GameRoomModel room = new GameRoomModel();
+        room.setRoomName(gameRooms.get(id).getName());
         room.setMaxPlayers(gameRooms.get(id).getMaxPlayers());
         room.setOwner(gameRooms.get(id).getPlayers().get(0));
         room.setPlayers(gameRooms.get(id).getPlayers());
@@ -99,10 +100,6 @@ public class GameRoomService {
     public void addPlayer(int id, PlayerModel player) {
         GameRoom current = gameRooms.get(id);
         current.addPlayer(player);
-
-        if (current.getMaxPlayers() == current.getPlayers().size()) {
-            gameService.createGame(current.createGame());
-        }
     }
 
     public GameService getGameService() {
@@ -120,5 +117,9 @@ public class GameRoomService {
                 .findAny()
                 .orElse(null);
         return current;
+    }
+
+    public boolean isCompletedPlayers(int id){
+        return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
     }
 }
