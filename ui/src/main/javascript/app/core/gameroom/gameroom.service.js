@@ -2,8 +2,8 @@
 
 angular.
     module('sevenWonders.core.gameroom').
-    factory('GameRoom', ['$cookies', '$websocket','Game', 'Restangular',  '$q', '$location',
-        function ($cookies, $websocket, Game, Restangular, $q, $location) {
+    factory('GameRoom', ['$cookies', '$websocket','Game', 'Restangular',  '$q', '$location','$timeout',
+        function ($cookies, $websocket, Game, Restangular, $q, $location, $timeout) {
             return {
                 getGameRoom: function () {
                     return Game.getCurrentGame();
@@ -39,8 +39,11 @@ angular.
                    dataRoom.onMessage(function (message) {
                         var room = JSON.parse(message.data);
                         if(room){
-                            $location.path('/choosewonder');
-                            console.log('room is complete');
+                            $timeout(function(){
+                                $location.path('/choosewonder');
+                                console.log('room is complete');
+                            }, 2000);
+
                         }
                    });
 
