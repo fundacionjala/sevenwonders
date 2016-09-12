@@ -64,7 +64,7 @@ gulp.task('buildIndex', function() {
     var global = gulp.src(['src/main/javascript/app/style/*.css'], { read: false });
     var css = gulp.src(['src/main/javascript/app/**/*.css', '!src/main/javascript/app/{lib,lib/**}', '!src/main/javascript/app/{style,style/**}'], { read: false });
     var angularjs = gulp.src([
-        '!src/main/javascript/app/{lib,lib/**}', '!**/*.spec.js}',
+        '!src/main/javascript/app/{lib,lib/**}', '!src/main/javascript/app/**/*.spec.js',
         'src/main/javascript/app/**/*.js',
     ]).pipe(angularFilesort());
     return gulp.src('src/main/javascript/app/index_base.html')

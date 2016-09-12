@@ -11,7 +11,7 @@ angular.
                     lobbySource = lobby;
                     var dataStream = $websocket('ws://localhost:9291/lobby');
                     dataStream.onMessage(function (message) {
-                        lobby.addGame(JSON.parse(message.data));
+                        lobby.validateGame(JSON.parse(message.data));
                     });
                 }
             };

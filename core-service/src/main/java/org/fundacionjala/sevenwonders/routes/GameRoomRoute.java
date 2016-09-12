@@ -41,7 +41,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .route()
                 .to("bean:gameRoomService?method=addPlayer(${header.id}, ${body})")
                 .to("direct:sendMessageGame")
-                .to("direct:sendMessageRoom")
+                .to("direct:roomCompleted")
                 .endRest()
 
                 .get("{id}/players").description("Get list of players").outTypeList(Player.class)
@@ -59,5 +59,15 @@ public class GameRoomRoute extends SpringRouteBuilder {
 
         from("direct:sendMessage")
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
+
+        from("direct:roomCompleted")
+                .choice()
+                .when(method("gameRoomService", "isCompletedPlayers(${header.id})").isEqualTo(true))
+                .to("direct:getGameRoom");
+
+        from("direct:getGameRoom")
+                .to("bean:gameRoomService?method=getGameRoom(${header.id})")
+                .to("websocket://localhost:9291/lobby?sendToAll=true");
+
     }
 }

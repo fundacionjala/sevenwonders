@@ -27,8 +27,7 @@ public class ChooseWonderWSRoute extends SpringRouteBuilder {
                 .to("direct:sendMessageRoom");
 
         from("direct:sendMessageRoom")
-                .to("bean:gameRoomService?method=roomCompleted(${header.id})")
-                .to("bean:gameRoomService?method=startGame(${header.id})")
+                .to("bean:gameRoomService?method=isCompletedPlayers(${header.id})")
                 .to("websocket://localhost:9298/choosewonder?sendToAll=true");
 
 
