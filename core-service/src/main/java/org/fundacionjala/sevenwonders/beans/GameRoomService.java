@@ -127,8 +127,4 @@ public class GameRoomService {
     public boolean isCompletedPlayers(int id){
         return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
     }
-
-    public List<PlayerModel> assigneeWonderToPlayer(int id){
-        return null;
-    }
 }

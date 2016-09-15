@@ -1,7 +1,11 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.core.rest;
 
 /**
- * Created by Dell on 9/15/2016.
+ * @author Vania Catorceno
  */
 public class WonderModel {
     private String cityName;

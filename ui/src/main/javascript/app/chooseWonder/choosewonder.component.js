@@ -6,7 +6,6 @@ angular.
         templateUrl: 'choosewonder/choosewonder.tpl.html',
         controller: ['ChooseWonder',
             function ChooseWonderController(ChooseWonder) {
-                  ChooseWonder.connectWSWonder(self);
 
             }
         ]
