@@ -119,10 +119,9 @@ public class GameRoomService {
         return current;
     }
 
-    public GameRoom startGame(int id, PlayerModel player) {
+    public void startGame(int id) {
         GameRoom current = gameRooms.get(id);
         gameService.createGame(current.createGame());
-        return current;
     }
 
     public boolean isCompletedPlayers(int id){
