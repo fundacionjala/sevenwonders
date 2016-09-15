@@ -119,6 +119,11 @@ public class GameRoomService {
         return current;
     }
 
+    public void startGame(int id) {
+        GameRoom current = gameRooms.get(id);
+        gameService.createGame(current.createGame());
+    }
+
     public boolean isCompletedPlayers(int id){
         return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
     }
