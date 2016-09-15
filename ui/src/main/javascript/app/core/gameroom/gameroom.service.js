@@ -43,7 +43,6 @@ angular.
                                 $location.path('/choosewonder');
                                 console.log('room is complete');
                             }, 2000);
-
                         }
                    });
 
