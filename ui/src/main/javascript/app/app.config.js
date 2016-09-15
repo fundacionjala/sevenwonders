@@ -12,6 +12,10 @@ angular.module('sevenWonder')
                 .when('/gameroom', {
                     template: '<gameroom></gameroom>'
                 })
+                .when('/choosewonder', {
+                    template: '<choosewonder></choosewonder>'
+                })
+
                 .otherwise('/login');
         }
     ])

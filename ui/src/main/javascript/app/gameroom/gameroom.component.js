@@ -4,9 +4,10 @@ angular.
     module('sevenWonder.gameroom').
     component('gameroom', {
         templateUrl: 'gameroom/gameroom.tpl.html',
-        controller: ['GameRoom',
-            function GameRoomController(GameRoom) {
+        controller: ['GameRoom', '$location',
+            function GameRoomController(GameRoom, $location) {
                 var self = this;
+                var isComplete = false;
                 var tempGameRoom = GameRoom.getGameRoom();           
                 GameRoom.getPlayers().then(function (data) {
                     if (data.length < tempGameRoom.numberPlayers) {
@@ -16,6 +17,7 @@ angular.
                             });
                         }
                     }
+
                     self.gameroom = {
                         roomName: tempGameRoom.roomName,
                         players: data,
@@ -23,6 +25,7 @@ angular.
                     };
                 });
                 GameRoom.connectWebsocket(self);
+
                 this.addPlayer = function (player) {
                     if (typeof self.gameroom != 'undefined') {
                         if (!containsUserName(player.userName)) {
@@ -30,6 +33,7 @@ angular.
                         }
                     }
                 };
+
                 var changeUserName = function (oldValue, newValue) {
                     for (var i in self.gameroom.players) {
                         if (self.gameroom.players[i].userName == oldValue) {
@@ -48,6 +52,9 @@ angular.
                     }
                     return found;
                 };
+
+                GameRoom.connectRoomWebsocket(self);
+
                 this.maxPlayers = 7;
             }
         ]

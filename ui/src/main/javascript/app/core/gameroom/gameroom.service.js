@@ -2,8 +2,8 @@
 
 angular.
     module('sevenWonders.core.gameroom').
-    factory('GameRoom', ['$cookies', '$websocket', 'Game', 'Restangular',  '$q',
-        function ($cookies, $websocket, Game, Restangular, $q) {
+    factory('GameRoom', ['$cookies', '$websocket', 'Game', 'Restangular', '$q', '$location', '$timeout',
+        function ($cookies, $websocket, Game, Restangular, $q, $location, $timeout) {
             return {
                 getGameRoom: function () {
                     return Game.getCurrentGame();
@@ -24,6 +24,27 @@ angular.
                         game.addPlayer(JSON.parse(message.data));
                         console.log('joined');
                     });
+                },
+
+                connectRoomWebsocket: function(game) {
+                    var dataRoom = $websocket('ws://localhost:9298/choosewonder');
+                    dataRoom.onOpen(function () {
+                        console.log('open connection at choosewonder');
+                        var dataGameModel = {
+                            id: Game.getCurrentGame().id
+                        };
+                        dataRoom.send(JSON.stringify(dataGameModel));
+                    });
+
+                   dataRoom.onMessage(function (message) {
+                        var room = JSON.parse(message.data);
+                        if (room) {
+                            $timeout(function() {
+                                $location.path('/choosewonder');
+                                console.log('room is complete');
+                            }, 2000);
+                        }
+                   });
                 }
             }
         }
