@@ -4,7 +4,7 @@ angular.
     module('sevenWonder.gameroom').
     component('gameroom', {
         templateUrl: 'gameroom/gameroom.tpl.html',
-        controller: ['GameRoom','$location',
+        controller: ['GameRoom', '$location',
             function GameRoomController(GameRoom, $location) {
                 var self = this;
                 var isComplete = false;
@@ -31,7 +31,7 @@ angular.
                         if (!containsUserName(player.userName)) {
                             changeUserName('', player.userName);
                         }
-                }
+                    }
                 };
 
                 var changeUserName = function (oldValue, newValue) {

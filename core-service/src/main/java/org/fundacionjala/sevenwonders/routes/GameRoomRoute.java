@@ -50,8 +50,6 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
                 .to("bean:gameRoomService?method=getGameRoom(${header.id})").verb("options").route()
 
-
-
                 .setHeader("Access-Control-Allow-Origin", constant("*"))
                 .setHeader("Access-Control-Allow-Methods", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"))
                 .setHeader("Access-Control-Allow-Headers", constant("Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"))
