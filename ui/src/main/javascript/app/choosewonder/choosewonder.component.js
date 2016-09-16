@@ -12,7 +12,6 @@ angular.
                        self.wonders = result;
                        console.log(self.wonders[0]);
               });
-
             }
         ]
     });
