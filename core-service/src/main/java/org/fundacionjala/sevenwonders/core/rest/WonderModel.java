@@ -9,7 +9,7 @@ package org.fundacionjala.sevenwonders.core.rest;
  */
 public class WonderModel {
     private String cityName;
-    private char CurrentSide;
+    private char currentSide;
 
     public String getCityName() {
         return cityName;
@@ -20,10 +20,10 @@ public class WonderModel {
     }
 
     public char getCurrentSide() {
-        return CurrentSide;
+        return currentSide;
     }
 
     public void setCurrentSide(char currentSide) {
-        CurrentSide = currentSide;
+        currentSide = currentSide;
     }
 }

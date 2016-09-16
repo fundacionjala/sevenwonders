@@ -27,10 +27,11 @@ public class ChooseWonderWSRoute extends SpringRouteBuilder {
                 .to("direct:sendMessageRoom");
 
         from("direct:sendMessageRoom")
-                .to("bean:gameRoomService?method=isCompletedPlayers(${header.id})")
-                .to("bean:gameRoomService?method=startGame(${header.id})")
-                .to("websocket://localhost:9298/choosewonder?sendToAll=true");
-
+                .choice()
+                    .when(method("gameRoomService", "isCompletedPlayers(${header.id})").isEqualTo(true))
+                        .to("bean:gameRoomService?method=isCompletedPlayers(${header.id})")
+                        .to("bean:gameRoomService?method=startGame(${header.id})")
+                        .to("websocket://localhost:9298/choosewonder?sendToAll=true");
 
     }
 }
