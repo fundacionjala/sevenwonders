@@ -6,5 +6,6 @@ angular.module('sevenWonder', [
     'ngWebSocket',
     'sevenWonder.login',
     'sevenWonder.lobby',
-    'sevenWonder.gameroom'
+    'sevenWonder.gameroom',
+    'sevenWonder.choosewonder'
 ]);
