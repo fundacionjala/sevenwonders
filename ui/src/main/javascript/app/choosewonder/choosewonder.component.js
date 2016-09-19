@@ -8,19 +8,19 @@ angular.
             function ChooseWonderController(ChooseWonder) {
                 var self = this;
                 var listOfWonders = [{
-                    'a': "olympia-a"
+                    'name': "olympia"
                 }, {
-                        'a': "babylon-a"
+                        'name': "babylon"
                     }, {
-                        'a': "ephesos-a"
+                        'name': "ephesos"
                     }, {
-                        'a': "alexandria-a"
+                        'name': "alexandria"
                     }, {
-                        'a': "gizah-a"
+                        'name': "gizah"
                     }, {
-                        'a': "halinarkassus-a"
+                        'name': "halinarkassus"
                     }, {
-                        'a': "rodhos-a"
+                        'name': "rodhos"
                     }];
                 self.wonders = listOfWonders;
                 this.rotate = function (data) {
