@@ -65,7 +65,8 @@ public class GameRoomRoute extends SpringRouteBuilder {
 
         from("direct:getGameRoom")
                 .to("bean:gameRoomService?method=getGameRoom(${header.id})")
-                .to("websocket://localhost:9291/lobby?sendToAll=true");
+                .to("websocket://localhost:9291/lobby?sendToAll=true")
+                .to("direct:sendMessageRoom");
 
     }
 }

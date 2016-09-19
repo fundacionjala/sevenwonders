@@ -6,7 +6,14 @@ angular.
         templateUrl: 'choosewonder/choosewonder.tpl.html',
         controller: ['ChooseWonder',
             function ChooseWonderController(ChooseWonder) {
-                var self = this;
+
+              var self = this;
+              self.wonderPlayers= [];
+              ChooseWonder.getWonderPlayers().then(function (result) {
+                       self.wonderPlayers = result;
+                       console.log(self.wonders[0]);
+              });
+
                 var listOfWonders = [{
                     'name': "olympia"
                 }, {
