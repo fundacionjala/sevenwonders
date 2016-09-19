@@ -73,6 +73,7 @@ public class GameRoom {
             City city = new City(currentWonder, storagePoint, storage);
             Player player = new Player(item.getUserName(), city);
             WonderModel wonderModel = new WonderModel();
+            wonderModel.setCurrentSide("A");
             wonderModel.setCityName(currentWonder.getName());
             item.setWonderModel(wonderModel);
             gamePlayers.add(player);
