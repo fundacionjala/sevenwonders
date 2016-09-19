@@ -1,0 +1,19 @@
+<div class="carousel-wonders-directive ">
+    <div class="left-wonder">
+        <figure class="figure-wonder">
+            <img class="img-wonder" ng-init="previous = 'previous'" ng-src="resources/images/wonders/{{wonders[0].name}}-a.png" ng-click="move({action: previous})"
+                alt="" />
+        </figure>
+    </div>
+    <div class="center-wonder">
+        <figure class="figure-wonder">
+            <img class="img-wonder" ng-src="resources/images/wonders/{{wonders[1].name}}-a.png" alt="" />
+        </figure>
+    </div>
+    <div class="right-wonder">
+        <figure class="figure-wonder">
+            <img class="img-wonder" ng-init="next = 'next'" ng-src="resources/images/wonders/{{wonders[2].name}}-a.png" ng-click="move({action: next})"
+                " alt=" " />
+        </figure>
+    </div>
+</div>
