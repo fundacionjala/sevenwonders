@@ -19,9 +19,9 @@ public class WonderProvider {
         wonders.add(new Wonder("The Statue of Zeus"));
         wonders.add(new Wonder("The Great Library"));
         wonders.add(new Wonder("The Mausoleum"));
-        wonders.add(new Wonder("Piraeus"));
-        wonders.add(new Wonder("The Pyramids"));
-        wonders.add(new Wonder("The Appian Way"));
+        wonders.add(new Wonder("Babylon"));
+        wonders.add(new Wonder("Ephesos"));
+        wonders.add(new Wonder("Rodhos"));
         return wonders;
     }
 }
