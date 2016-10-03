@@ -15,6 +15,7 @@ public class PlayerModel {
     private int id;
     private String userName;
     private String token;
+    private WonderModel wonderModel;
 
     public String getUserName() {
         return userName;
@@ -38,6 +39,14 @@ public class PlayerModel {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public WonderModel getWonderModel() {
+        return wonderModel;
+    }
+
+    public void setWonderModel(WonderModel wonderModel) {
+        this.wonderModel = wonderModel;
     }
 
     @Override
