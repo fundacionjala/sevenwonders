@@ -7,5 +7,6 @@ angular.module('sevenWonder', [
     'sevenWonder.login',
     'sevenWonder.lobby',
     'sevenWonder.gameroom',
-    'sevenWonder.choosewonder'
+    'sevenWonder.choosewonder',
+    'sevenWonder.gameboard'
 ]);
