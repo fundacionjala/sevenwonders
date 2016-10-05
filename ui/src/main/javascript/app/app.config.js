@@ -15,6 +15,9 @@ angular.module('sevenWonder')
                 .when('/choosewonder', {
                     template: '<choosewonder></choosewonder>'
                 })
+                .when('/gameboard', {
+                    template: '<gameboard></gameboard>'
+                })
 
                 .otherwise('/login');
         }
