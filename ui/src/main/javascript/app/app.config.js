@@ -7,28 +7,10 @@ angular.module('sevenWonder')
                     template: '<login></login>'
                 })
                 .when('/lobby', {
-                    template: '<lobby></lobby>',
-                    resolve:{
-                            "check":function(Auth, $location){
-                                if(Auth.getLoggedUser().userName == null){
-                                    $location.path('/login');
-                                    alert("You must't login first");
-                                }
-                            }
-                        }
+                    template: '<lobby></lobby>'
                 })
                 .when('/gameroom', {
                     template: '<gameroom></gameroom>'
-//                    ,
-//                    resolve:{
-//                            "check":function($location){
-//                                if(){
-//                                }else{
-//                                    $location.path('/login');
-//                                    alert("You must't login first");
-//                                }
-//                            }
-//                        }
                 })
                 .when('/choosewonder', {
                     template: '<choosewonder></choosewonder>'
@@ -37,6 +19,18 @@ angular.module('sevenWonder')
                 .otherwise('/login');
         }
     ])
-    .config(['RestangularProvider', function(RestangularProvider) {
+    .run(function (Auth, $rootScope, $location) {
+
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+
+            if (Auth.getLoggedUser().userName == null) {
+                if ($location.path() == "/login") {
+                } else {
+                    $location.path("/login");
+                }
+            }
+        })
+    })
+    .config(['RestangularProvider', function (RestangularProvider) {
         RestangularProvider.setBaseUrl('http://localhost:9999');
     }]);
