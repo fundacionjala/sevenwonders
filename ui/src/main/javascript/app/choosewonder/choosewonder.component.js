@@ -21,6 +21,14 @@ angular.
                         self.wonders.unshift(self.wonderPlayers.pop());
                     }
                 };
+
+                this.change = function(data){
+                    if ( data.wonderModel.currentSide == 'b') {
+                        data.wonderModel.currentSide = 'a'
+                    } else {
+                        data.wonderModel.currentSide = 'b'
+                    }
+                }
             }
         ]
     });
