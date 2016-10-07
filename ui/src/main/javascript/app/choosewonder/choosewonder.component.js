@@ -4,10 +4,13 @@ angular.
     module('sevenWonder.choosewonder').
     component('choosewonder', {
         templateUrl: 'choosewonder/choosewonder.tpl.html',
-        controller: ['ChooseWonder',
-            function ChooseWonderController(ChooseWonder) {
+        controller: ['ChooseWonder', '$cookies',
+            function ChooseWonderController(ChooseWonder, $cookies) {
                 var self = this;
+                self.owner = $cookies.getObject("user");
                 self.wonderPlayers = [];
+                self.buttonDisable = true;
+
                 ChooseWonder.getWonderPlayers().then(function (result) {
                     self.wonderPlayers = result;
                     self.wonders = self.wonderPlayers;
@@ -20,8 +23,17 @@ angular.
                         self.wonderPlayers.slice(0, 3);
                         self.wonders.unshift(self.wonderPlayers.pop());
                     }
+                    self.isOwner();
                 };
 
+                this.isOwner = function(){
+                        self.buttonDisable = self.owner.userName !== self.wonders[1].userName
+                }
+
+                this.sendSelection = function (){
+                    
+                }
+                
                 this.change = function(data){
                     if ( data.wonderModel.currentSide == 'b') {
                         data.wonderModel.currentSide = 'a'
