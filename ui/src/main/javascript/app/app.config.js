@@ -23,14 +23,9 @@ angular.module('sevenWonder')
         }
     ])
     .run(function (Auth, $rootScope, $location) {
-
         $rootScope.$on("$routeChangeStart", function (event, next, current) {
-
-            if (Auth.getLoggedUser().userName == null) {
-                if ($location.path() == "/login") {
-                } else {
-                    $location.path("/login");
-                }
+            if (Auth.getLoggedUser() == null) {
+                $location.path("/login");
             }
         })
     })
