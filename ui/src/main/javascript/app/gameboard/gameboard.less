@@ -1,6 +1,6 @@
 div.boardgame {
     position : absolute;
-    width: 99.8%;
+    width: 100%;
     height: 99%;
     & div.sw-img-wonder {
 
@@ -8,7 +8,45 @@ div.boardgame {
     & div.sw-top-board {
         width: 100%;
         height: 10%;
-        border: 1px solid black;
+        & div.sw-timeGame-board{
+            width: 100%;
+            height: 20%;
+            background: red;
+            & div.sw-progressTime-board {
+            width: 80%;
+            height: 100%;
+            background: yellow;
+            }
+        }
+        & div.sw-resourcesGame-board {
+            width: 100%;
+            height: 80%;
+            display: flex;
+            & div.sw-resourcesTypes-board {
+                width: 45%;
+                height: 100%;
+                display: flex;
+            }
+            & div.sw-effect-board {
+                 width: 10%;
+                 height: 100%;
+                 & > img {
+                     display: block;
+                     margin-left: auto;
+                     margin-right: auto;
+                     max-height: 100%;
+                     max-width: 80%;
+                     width: 75%;
+                     height: 75%;
+                 }
+            }
+            & div.sw-effectResource-board {
+                 width: 45%;
+                 height: 100%;
+                 border: 1px solid black;
+                 display: flex;
+            }
+        }
     }
     & div.sw-middle-board {
         width: 100%;
@@ -32,4 +70,36 @@ div.boardgame {
             border: 1px solid black;
         }
     }
+}
+
+div.sw-containerResources-board{
+    width: 20%;
+    height: 95%;
+    display: flex;
+    background: red;
+    border: 1px solid black;
+    padding-left: 8px;
+    padding-top: 2px;
+    & > img {
+        max-height: 80%;
+        max-width: 80%;
+        width: 50%;
+    }
+    & p {
+        text-align: center;
+        color:white;
+        width: 50%;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+}
+
+.circulo {
+     width: 80%;
+     height: 80%;
+     padding-left: 5px;
+     -moz-border-radius: 50%;
+     -webkit-border-radius: 50%;
+     border-radius: 50%;
+     background: #5cb85c;
 }
