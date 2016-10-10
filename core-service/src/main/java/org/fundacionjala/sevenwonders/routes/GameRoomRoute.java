@@ -51,6 +51,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .put("{id}/player").type(PlayerModel.class)
                 .route()
                 .to("bean:gameRoomService?method=updateWonder(${header.id}, ${body})")
+                .to("direct:wonderChosen")
                 .endRest()
 
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
@@ -61,6 +62,9 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .setHeader("Access-Control-Allow-Methods", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"))
                 .setHeader("Access-Control-Allow-Headers", constant("Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers"))
                 .setHeader("Allow", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"));
+
+        from("direct:wonderChosen")
+                .to("websocket://localhost:9291/chooseWonder?sendToAll=true");
 
         from("direct:sendMessage")
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
