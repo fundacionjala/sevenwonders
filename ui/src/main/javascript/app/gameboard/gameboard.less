@@ -2,10 +2,84 @@ div.boardgame {
     position: absolute;
     width: 99.8%;
     height: 99%;
-    & div.sw-top-board {
+ & div.sw-top-board {
         width: 100%;
         height: 10%;
-        border: 1px solid black;
+        & div.sw-timeGame-board{
+            width: 100%;
+            height: 5%;
+            background:black;
+            & div.sw-progressTime-board {
+            width: 80%;
+            height: 100%;
+            background: blue;
+            }
+        }
+        & div.sw-resourcesGame-board {
+            width: 100%;
+            height: 95%;
+            display: flex;
+            & div.sw-resourcesTypes-board {
+                width: 47.5%;
+                height: 100%;
+                display: flex;
+                & div.sw-circleResources-board {
+                    border: 2px solid darkgoldenrod;
+                    border-radius: 50%;
+                    width: 15%;
+                    height: auto;
+                    margin-left: 5px;
+                    background: #574941;
+                    text-align: center;
+                    & > img {
+                        margin-top: 2px;
+                        width: 35px;
+                        height: 30px;
+                        max-height: 100%;
+                        max-width: 100%;
+                        z-index: -1;
+                        }
+                    & > p {
+                        color: gold;
+                        margin: 0px;
+                        font-weight: bold;
+                        font-size: 20px;
+                        }
+                    }
+            }
+            & div.sw-effect-board {
+                 width: 5%;
+                 height: 100%;
+                 & > img {
+                     display: block;
+                     margin-left: auto;
+                     margin-right: auto;
+                     height: 80px;
+                     width: auto;
+                     max-height: 100%;
+                     z-index: 4;
+                 }
+            }
+            & div.sw-effectResource-board {
+                 width: 47.5%;
+                 height: 100%;
+                 display: flex;
+                 & div.sw-effectImage-board {
+                     width: 14%;
+                     height: 100;
+                     background: #574941;
+                     border: 2px solid darkgoldenrod;
+                    & >img {
+                        margin-top: 10px;
+                        width: 90px;
+                        height: 40px;
+                        max-height: 100%;
+                        max-width: 100%;
+                        z-index: -1;
+                    }
+                 }
+            }
+        }
     }
     & div.sw-middle-board {
         width: 100%;
@@ -15,7 +89,6 @@ div.boardgame {
     & div.sw-bottom-board {
         width: 100%;
         height: 45%;
-        border: 1px solid black;
         text-align: center;
         position: relative;
         & div.cards {
