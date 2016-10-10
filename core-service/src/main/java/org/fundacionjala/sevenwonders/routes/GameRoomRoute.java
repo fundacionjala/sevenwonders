@@ -47,8 +47,15 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .get("{id}/players").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
 
+
+                .put("{id}/player").type(PlayerModel.class)
+                .route()
+                .to("bean:gameRoomService?method=updateWonder(${header.id}, ${body})")
+                .endRest()
+
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
-                .to("bean:gameRoomService?method=getGameRoom(${header.id})").verb("options").route()
+                .to("bean:gameRoomService?method=getGameRoom(${header.id})").verb("options")
+                .route()
 
                 .setHeader("Access-Control-Allow-Origin", constant("*"))
                 .setHeader("Access-Control-Allow-Methods", constant("GET, HEAD, POST, PUT, DELETE, OPTIONS"))
