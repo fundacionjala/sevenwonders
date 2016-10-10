@@ -1,7 +1,11 @@
 <div class="chooseWonder">
     <div class="sw-top-container">
         <div class="icon-section"></div>
-        <div class="players-section"></div>
+        <div class="players-section">
+            <div class="sw-players-container" ng-repeat="player in $ctrl.players">
+                <player data="player" current="$ctrl.checkPlayer(player)" state="$ctrl.getState(player)" ng-click="$ctrl.clickPlayer(player)">
+            </div>
+        </div>
         <div class="time-section"></div>
     </div>
     <div class="sw-center-container">
