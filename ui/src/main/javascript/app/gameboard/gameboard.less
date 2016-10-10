@@ -1,16 +1,13 @@
 div.boardgame {
-    position : absolute;
-    width: 100%;
+    position: absolute;
+    width: 99.8%;
     height: 99%;
-    & div.sw-img-wonder {
-
-    }
-    & div.sw-top-board {
+ & div.sw-top-board {
         width: 100%;
-        height: 15%;
+        height: 10%;
         & div.sw-timeGame-board{
             width: 100%;
-            height: 10%;
+            height: 5%;
             background:black;
             & div.sw-progressTime-board {
             width: 80%;
@@ -20,7 +17,7 @@ div.boardgame {
         }
         & div.sw-resourcesGame-board {
             width: 100%;
-            height: 90%;
+            height: 95%;
             display: flex;
             & div.sw-resourcesTypes-board {
                 width: 47.5%;
@@ -36,8 +33,8 @@ div.boardgame {
                     text-align: center;
                     & > img {
                         margin-top: 2px;
-                        width: 40px;
-                        height: 45px;
+                        width: 35px;
+                        height: 30px;
                         max-height: 100%;
                         max-width: 100%;
                         z-index: -1;
@@ -46,7 +43,7 @@ div.boardgame {
                         color: gold;
                         margin: 0px;
                         font-weight: bold;
-                        font-size: 28px;
+                        font-size: 20px;
                         }
                     }
             }
@@ -73,9 +70,9 @@ div.boardgame {
                      background: #574941;
                      border: 2px solid darkgoldenrod;
                     & >img {
-                        margin-top: 18px;
+                        margin-top: 10px;
                         width: 90px;
-                        height: 50px;
+                        height: 40px;
                         max-height: 100%;
                         max-width: 100%;
                         z-index: -1;
@@ -86,24 +83,12 @@ div.boardgame {
     }
     & div.sw-middle-board {
         width: 100%;
-        height: 42.5%;
-    position: absolute;
-    width: 99.8%;
-    height: 99%;
-    & div.sw-top-board {
-        width: 100%;
-        height: 10%;
-        border: 1px solid black;
-    }
-    & div.sw-middle-board {
-        width: 100%;
         height: 45%;
         border: 1px solid black;
     }
     & div.sw-bottom-board {
         width: 100%;
         height: 45%;
-        border: 1px solid black;
         text-align: center;
         position: relative;
         & div.cards {
@@ -175,19 +160,6 @@ div.boardgame {
                     }
                 }
             }
-        height: 42.5%;
-        border: 1px solid black;
-        & div.sw-cards {
-            height: 400px;
-            margin: 5px;
-            width: 250px;
-            border: 1px solid black;
-        }
-        & div.sw-stage {
-            height: 250px;
-            width: 300px;
-            margin: 5px;
-            border: 1px solid black;
         }
     }
 }
