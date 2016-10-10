@@ -27,11 +27,13 @@ angular.
                 };
 
                 this.isOwner = function(){
-                        self.buttonDisable = self.owner.userName !== self.wonders[1].userName
+                    self.buttonDisable = self.owner.userName !== self.wonders[1].userName
                 }
 
                 this.sendSelection = function (){
-                    
+                    ChooseWonder.setWonderPlayer(self.wonders[1]).then(function (result){
+                        buttonDisable = true;
+                    });
                 }
                 
                 this.change = function(data){
