@@ -8,11 +8,11 @@ angular.
             function ChooseWonderController(ChooseWonder, $cookies, Auth) {
                 var self = this;
                 self.owner = $cookies.getObject("user");
+                self.owner = $cookies.getObject("user");
                 self.size = 0;
                 self.players = [];
                 self.wonderPlayers = [];
                 self.buttonDisable = true;
-
                 self.states = new Map();
                 self.playerId = Auth.getLoggedUser().id;
                 ChooseWonder.getWonderPlayers().then(function (result) {
@@ -57,7 +57,7 @@ angular.
                     });
                 };
 
-                
+
 
                 this.isOwner = function(){
                     self.buttonDisable = self.owner.userName !== self.wonders[1].userName
@@ -68,7 +68,23 @@ angular.
                         self.buttonDisable = true;
                     });
                 }
-                
+
+                this.change = function(data){
+                    if ( data.wonderModel.currentSide == 'b') {
+                        data.wonderModel.currentSide = 'a'
+                    } else {
+                        data.wonderModel.currentSide = 'b'
+                    }
+                }
+
+                this.isOwner = function(){
+                        self.buttonDisable = self.owner.userName !== self.wonders[1].userName
+                }
+
+                this.sendSelection = function (){
+
+                }
+
                 this.change = function(data){
                     if ( data.wonderModel.currentSide == 'b') {
                         data.wonderModel.currentSide = 'a'
