@@ -1,0 +1,38 @@
+@border_wonder: 4px solid black;
+div.container-wonders-directive {
+       height: 100%;
+       width: 100%;
+       & div.top-wonder {
+            border: @border_wonder;
+            height: 50%;
+            width: 100%;
+            display: flex;
+       }
+       & div.container-bottom {
+            display:flex;
+            height: 50%;
+            width: 100%;
+            & div.left-wonder {
+                border: @border_wonder;
+                height: 100%;;
+                width: 17%;
+                margin-left: 1%;
+                float: left;
+                display: flex;
+            }
+            & div.center-wonder {
+                border: @border_wonder;
+                height: 107%;;
+                width: 64%;
+                margin-top: -7%;
+            }
+            & div.right-wonder {
+                border: @border_wonder;
+                height: 100%;
+                width: 17%;
+                margin-right: 1%;
+                float: right;
+                display: flex;
+            }
+       }
+   }
