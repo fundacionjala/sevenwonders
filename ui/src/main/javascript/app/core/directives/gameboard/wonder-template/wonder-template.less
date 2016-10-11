@@ -1,0 +1,60 @@
+div.wonder-template-directive {
+    width: 220px;
+    height: 150px;
+    border: 1px solid black;
+    margin: auto;
+    & div.container-effects {
+          width: 100%;
+          height: 20%;
+          display: flex;
+          & div.effect-image-board {
+              border: 1px solid darkgoldenrod;
+              background: #574941;
+              width: 15%;
+              height: 70%;
+              display: flex;
+              margin: auto;
+              & img {
+                  width: 80%;
+                  height: 80%;
+              } 
+          }
+    } 
+    & div.main-effect {
+          width: 100%;
+          height: 60%;
+          display: flex;
+          & img.img-effect {
+              width: 25%;
+              height: 70%;
+              display: flex;
+              margin: auto;
+          }
+    } 
+    & div.container-resources {
+          width: 100%;
+          height: 20%;
+          display: flex;
+          & div.circle-resources-board {
+              border: 2px solid darkgoldenrod;
+              background: #574941;
+              width: 15%;
+              height: 70%;
+              display: flex;
+              border-radius: 50%;
+              margin: auto;
+              & > img {
+                  width: 60%;
+                  height: 60%;
+                  z-index: 1;
+                  margin: auto;
+              } 
+              & > p {
+                        color: gold;
+                        margin: auto;
+                        font-weight: bold;
+                        font-size: 10spx;
+              }
+          }
+    }
+}
