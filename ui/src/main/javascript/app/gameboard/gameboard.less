@@ -1,35 +1,164 @@
 div.boardgame {
-    position : absolute;
+    position: absolute;
     width: 99.8%;
     height: 99%;
-    & div.sw-img-wonder {
-
-    }
-    & div.sw-top-board {
+ & div.sw-top-board {
         width: 100%;
         height: 10%;
-        border: 1px solid black;
+        & div.sw-timeGame-board{
+            width: 100%;
+            height: 5%;
+            background:black;
+            & div.sw-progressTime-board {
+            width: 80%;
+            height: 100%;
+            background: blue;
+            }
+        }
+        & div.sw-resourcesGame-board {
+            width: 100%;
+            height: 95%;
+            display: flex;
+            & div.sw-resourcesTypes-board {
+                width: 47.5%;
+                height: 100%;
+                display: flex;
+                & div.sw-circleResources-board {
+                    border: 2px solid darkgoldenrod;
+                    border-radius: 50%;
+                    width: 15%;
+                    height: auto;
+                    margin-left: 5px;
+                    background: #574941;
+                    text-align: center;
+                    & > img {
+                        margin-top: 2px;
+                        width: 35px;
+                        height: 30px;
+                        max-height: 100%;
+                        max-width: 100%;
+                        z-index: -1;
+                        }
+                    & > p {
+                        color: gold;
+                        margin: 0px;
+                        font-weight: bold;
+                        font-size: 20px;
+                        }
+                    }
+            }
+            & div.sw-effect-board {
+                 width: 5%;
+                 height: 100%;
+                 & > img {
+                     display: block;
+                     margin-left: auto;
+                     margin-right: auto;
+                     height: 80px;
+                     width: auto;
+                     max-height: 100%;
+                     z-index: 4;
+                 }
+            }
+            & div.sw-effectResource-board {
+                 width: 47.5%;
+                 height: 100%;
+                 display: flex;
+                 & div.sw-effectImage-board {
+                     width: 14%;
+                     height: 100;
+                     background: #574941;
+                     border: 2px solid darkgoldenrod;
+                    & >img {
+                        margin-top: 10px;
+                        width: 90px;
+                        height: 40px;
+                        max-height: 100%;
+                        max-width: 100%;
+                        z-index: -1;
+                    }
+                 }
+            }
+        }
     }
     & div.sw-middle-board {
         width: 100%;
         height: 45%;
-        border: 1px solid black;
     }
     & div.sw-bottom-board {
         width: 100%;
         height: 45%;
-        border: 1px solid black;
-        & div.sw-cards {
-            height: 400px;
-            margin: 5px;
-            width: 250px;
-            border: 1px solid black;
+        text-align: center;
+        position: relative;
+        & div.cards {
+            width: 100%;
+            height: 60%;
+            z-index: 20;
+            position: absolute;
+            & figure.sw-card {
+               display: inline-block;
+               height: 200px;
+               margin: 0 5px 0 5px;
+               width: 120px;
+                 & img.image-card {
+                     box-sizing: border-box;
+                     display: block;
+                     height: 100%;
+                     width: 100%;
+                     -webkit-transition: all 0.7s ease;
+                     transition: all 0.7s ease;
+                  }
+                  &:hover {
+                     -webkit-transform: scale(1.2);
+                     transform: scale(1.2);
+                   }
+            }
         }
-        & div.sw-stage {
-            height: 250px;
-            width: 300px;
-            margin: 5px;
-            border: 1px solid black;
+        & div.stages {
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+            & div.sw-stage {
+                display: inline-block;
+                height: 90px;
+                width: 170px;
+                margin: 0 7px 0 7px;
+                background : #007191;
+                opacity: 0.4;
+                border-radius: 12px;
+                position: relative;
+                & figure.sw-effect {
+                    width: 120px;
+                    height: 75px;
+                    margin: 10px 5px 5px 40px;
+                    position: absolute;
+                    z-index: 19;
+                    & img.image-effect {
+                        box-sizing: border-box;
+                        display: block;
+                        height: 100%;
+                        width:100%;
+                    }
+                }
+                & div.sw-requirement {
+                    width: 15px;
+                    height: 80px;
+                    margin: 10px 2px 0 10px;
+                    background: #f9f3dd;
+                    position: absolute;
+                    z-index: 10;
+                    & figure.sw-resource {
+                        margin: -5px 0 0 -5px;
+                        width: 25px;
+                        height: 25px;
+                        & img.image-resource {
+                             height: 100%;
+                             width: 100%;
+
+                        }
+                    }
+                }
+            }
         }
     }
 }

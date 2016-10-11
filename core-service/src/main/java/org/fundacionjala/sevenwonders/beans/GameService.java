@@ -45,4 +45,9 @@ public class GameService {
     public Collection<Game> getGames(){
         return games.values();
     }
+
+    public Game getGame(int id){
+        return games.get(id);
+    }
+
 }

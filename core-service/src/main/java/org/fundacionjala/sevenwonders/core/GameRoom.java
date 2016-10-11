@@ -20,6 +20,7 @@ import java.util.Random;
  */
 public class GameRoom {
     public static final int NUMBER_OF_AGES = 3;
+    public static final String DEFAULT_SIDE = "a";
 
     private WonderProvider wonderProvider;
     private CardProvider cardProvider;
@@ -73,7 +74,7 @@ public class GameRoom {
             City city = new City(currentWonder, storagePoint, storage);
             Player player = new Player(item.getUserName(), city);
             WonderModel wonderModel = new WonderModel();
-            wonderModel.setCurrentSide("A");
+            wonderModel.setCurrentSide(DEFAULT_SIDE);
             wonderModel.setCityName(currentWonder.getName());
             item.setWonderModel(wonderModel);
             gamePlayers.add(player);

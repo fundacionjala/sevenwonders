@@ -9,7 +9,9 @@
         <div class="time-section"></div>
     </div>
     <div class="sw-center-container">
-        <carousel-wonders wonders="$ctrl.wonders" move="$ctrl.rotate(action)"></carousel-wonders>
+        <carousel-wonders wonders="$ctrl.wonders" move="$ctrl.rotate(action)" change="$ctrl.change(wonder)"></carousel-wonders>
     </div>
-    <div class="sw-bottom-container"></div>
+    <div class="sw-bottom-container">
+        <button class="sw-button" ng-disabled="$ctrl.buttonDisable" ng-click="$ctrl.sendSelection()" type="submit">Ready</button>
+    </div>
 </div>
