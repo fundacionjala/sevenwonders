@@ -5,7 +5,8 @@ angular.module('sevenWonder.choosewonder')
             restrict: 'E',
             scope: {
                 wonders: '=',
-                move: '&'
+                move: '&',
+                change: '&'
             },
             replace: true,
             templateUrl: 'core/directives/choosewonder/carouselwonders/carouselwonders.html',

@@ -16,6 +16,13 @@ div.chooseWonder {
            width: 75%;
            height: 100%;
            border: 1px solid black;
+           display: flex;
+           & div.sw-players-container {
+               width: 10%;
+               height: 90%;
+               position: relative;
+               margin: auto;
+           }
        }
        & div.time-section {
            width: 10%;
@@ -30,7 +37,11 @@ div.chooseWonder {
    }
    & div.sw-bottom-container {
        height: 15%;
-       width: 100%;
        border: 1px solid gray;
+       text-align: center;
    }
+}
+
+button.sw-button{
+    width: 200px;
 }

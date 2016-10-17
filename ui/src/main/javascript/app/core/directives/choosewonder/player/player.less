@@ -1,0 +1,42 @@
+@import "../../../../style/global.less";
+div.player-directive {
+    background-color: @background_button;
+    border-radius: 50%;
+    width: 90%;
+    height: auto;
+    & div.player {
+        width: 94%;
+        height: 90%;
+        border-radius: 50%;
+        & > img { 
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
+            height: 75%;
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+    & div.current {
+        filter: brightness(150%)
+    }
+    & div.no-current {
+        filter: brightness(70%)
+    }
+    & div.selected {
+        border: 6px solid blue;
+    }
+    & div.unselected {
+        border: 6px solid #4d4d4d ;
+    }
+    & > div > p {
+        text-align: center;
+        color: #4d4d4d;
+        margin: 0px;
+        font-weight: bold;
+    }
+    & div.player:hover {
+        border: 6px yellow solid
+    }
+}
