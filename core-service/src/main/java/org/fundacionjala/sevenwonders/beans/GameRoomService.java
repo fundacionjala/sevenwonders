@@ -29,6 +29,13 @@ public class GameRoomService {
         gameService = new GameService();
     }
 
+    public GameService getGameService() {
+        return gameService;
+    }
+
+    public void setGameService(GameService gameService) {
+        this.gameService = gameService;
+    }
 
     /**
      * POST: Create a game room with the information sent in post petition.
@@ -63,7 +70,7 @@ public class GameRoomService {
     }
 
     /**
-     * Get: Send a list of game rooms
+     * GET: Send a list of game rooms
      *
      * @return GameRooms
      */
@@ -95,7 +102,7 @@ public class GameRoomService {
     }
 
     /**
-     * Get: Get a player of a game room
+     * GET: Get a player of a game room
      *
      * @param id game room identifier
      * @return player
@@ -105,7 +112,7 @@ public class GameRoomService {
     }
 
     /**
-     * Post: Add player to a game room
+     * POST: Add player to a game room
      *
      * @param player
      */
@@ -114,14 +121,12 @@ public class GameRoomService {
         current.addPlayer(player);
     }
 
-    public GameService getGameService() {
-        return gameService;
-    }
-
-    public void setGameService(GameService gameService) {
-        this.gameService = gameService;
-    }
-
+    /**
+     *
+     * @param id
+     * @param player
+     * @return
+     */
     public PlayerModel validateGame(int id, PlayerModel player) {
         PlayerModel current = gameRooms.get(id)
                 .getPlayers().stream()
@@ -131,11 +136,20 @@ public class GameRoomService {
         return current;
     }
 
+    /**
+     * Method start game, creating whole necessaries for playing
+     * @param id game room
+     */
     public void startGame(int id) {
         GameRoom current = gameRooms.get(id);
         gameService.createGame(current.createGame());
     }
 
+    /**
+     * Verify if in game room the players is complete
+     * @param id game room
+     * @return value boolean
+     */
     public boolean isCompletedPlayers(int id){
         return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
     }
