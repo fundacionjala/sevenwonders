@@ -50,7 +50,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
 
                 .put("{id}/player").type(PlayerModel.class)
                 .route()
-                .to("bean:gameRoomService?method=updateWonder(${header.id}, ${body})")
+                .to("bean:gameRoomService?method=updateSideWonder(${header.id}, ${body})")
                 .to("direct:wonderChosen")
                 .endRest()
 
