@@ -53,7 +53,7 @@ public class GameRoomServiceTest {
     }
 
     @Test
-    public void automaticCreateGameWhenFullRoom(){
+    public void createGameWhenFullRoom(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
@@ -75,6 +75,8 @@ public class GameRoomServiceTest {
         playerTwo.setUserName("Lucero");
 
         gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
+
+        gameRoomService.startGame(gameRoomModel.getId());
 
         Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
 

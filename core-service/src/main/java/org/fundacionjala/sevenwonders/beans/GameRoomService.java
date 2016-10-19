@@ -125,8 +125,8 @@ public class GameRoomService {
     }
 
     /**
-     *
-     * @param id
+     * Method start game, creating whole necessaries for playing
+     * @param id game room
      */
     public void startGame(int id) {
         GameRoom current = gameRooms.get(id);
@@ -134,9 +134,9 @@ public class GameRoomService {
     }
 
     /**
-     *
-     * @param id
-     * @return
+     * Verify if in game room the players is complete
+     * @param id game room
+     * @return value boolean
      */
     public boolean isCompletedPlayers(int id){
         return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
