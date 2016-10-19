@@ -5,7 +5,6 @@
 package org.fundacionjala.sevenwonders.beans;
 
 import org.fundacionjala.sevenwonders.core.GameRoom;
-import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.*;
 import org.springframework.stereotype.Component;
 
@@ -83,17 +82,6 @@ public class GameRoomService {
         return currentGameRoomModels;
     }
 
-    public PlayerModel updateWonder(int id, PlayerModel playerModel){
-        GameRoom gameroom = gameRooms.get(id);
-        gameroom.getPlayers().forEach(player -> {
-            if(player.getId() == playerModel.getId()) {
-                player.setWonderModel(playerModel.getWonderModel());
-                return;
-            }
-        });
-        return playerModel;
-    }
-
     /**
      * Get: Get a player of a game room
      *
@@ -110,8 +98,8 @@ public class GameRoomService {
      * @param player
      */
     public void addPlayer(int id, PlayerModel player) {
-        GameRoom current = gameRooms.get(id);
-        current.addPlayer(player);
+            GameRoom current = gameRooms.get(id);
+            current.addPlayer(player);
     }
 
     public GameService getGameService() {
