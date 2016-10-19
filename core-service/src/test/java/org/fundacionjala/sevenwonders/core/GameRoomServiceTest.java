@@ -9,6 +9,7 @@ import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runners.model.TestTimedOutException;
 
 /**
  * Used to test all the functionality of the {@link org.fundacionjala.sevenwonders.beans.GameRoomService}.
@@ -52,8 +53,123 @@ public class GameRoomServiceTest {
         Assert.assertEquals(2, gameRoomService.getGameRoom(1).getPlayers().size());
     }
 
+    @Test (expected = Exception.class)
+    public void FailAddPlayerWhenMaxPlayersIsThreeGameRoomTest(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+        PlayerModel playerOwner = new PlayerModel();
+        playerOwner.setUserName("Rosario");
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(playerOwner);
+
+        gameRoomModel = gameRoomService.createGameRoom(gameRoomModel);
+
+        PlayerModel onePlayer = new PlayerModel();
+        onePlayer.setUserName("Marco");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), onePlayer);
+
+        PlayerModel secondPlayer = new PlayerModel();
+        secondPlayer.setUserName("Miguel");
+
+        PlayerModel thirdPlayer = new PlayerModel();
+        thirdPlayer.setUserName("jose");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), secondPlayer);
+        gameRoomService.addPlayer(gameRoomModel.getId(), thirdPlayer);
+
+        Assert.fail();
+    }
+
+    @Test (expected = Exception.class)
+    public void failAddNullPlayerTest(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+        PlayerModel playerOwner = new PlayerModel();
+        playerOwner.setUserName("Rosario");
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(playerOwner);
+
+        gameRoomModel = gameRoomService.createGameRoom(gameRoomModel);
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), null);
+
+        Assert.fail();
+    }
+
     @Test
-    public void createGameWhenFullRoom(){
+    public void validatePlayerIntoGameRoomWithJoin(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+        PlayerModel playerOwner = new PlayerModel();
+        playerOwner.setUserName("Rosario");
+        playerOwner.setId(2);
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(playerOwner);
+
+        gameRoomModel = gameRoomService.createGameRoom(gameRoomModel);
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerOwner);
+
+        PlayerModel onePlayer = new PlayerModel();
+        onePlayer.setUserName("Matias");
+        onePlayer.setId(3);
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), onePlayer);
+
+        Assert.assertEquals(onePlayer, gameRoomService.validateGame(gameRoomModel.getId(), onePlayer));
+    }
+
+    @Test
+    public void validatePlayerIntoRoomWithOutJoin(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+        PlayerModel playerOwner = new PlayerModel();
+        playerOwner.setUserName("Rosario");
+        playerOwner.setId(2);
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(playerOwner);
+
+        gameRoomModel = gameRoomService.createGameRoom(gameRoomModel);
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerOwner);
+
+        PlayerModel onePlayer = new PlayerModel();
+        onePlayer.setUserName("Matias");
+        onePlayer.setId(3);
+
+        Assert.assertNull(gameRoomService.validateGame(gameRoomModel.getId(), onePlayer));
+    }
+
+    @Test
+    public void updateInformationWonderForPlayer(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+
+        PlayerModel playerOwner = new PlayerModel();
+        playerOwner.setUserName("Rosario");
+        playerOwner.setId(2);
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(playerOwner);
+
+        gameRoomModel = gameRoomService.createGameRoom(gameRoomModel);
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerOwner);
+
+        PlayerModel onePlayer = new PlayerModel();
+        onePlayer.setUserName("Matias");
+        onePlayer.setId(3);
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), onePlayer);
+
+        Assert.assertEquals(onePlayer, gameRoomService.validateGame(gameRoomModel.getId(), onePlayer));
+
+    }
+
+    @Test
+    public void createGameWhenFullRoomTest(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
@@ -79,6 +195,38 @@ public class GameRoomServiceTest {
         gameRoomService.startGame(gameRoomModel.getId());
 
         Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
+    }
 
+    @Test
+    public void updateSideWonder(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+        PlayerModel player = new PlayerModel();
+        player.setUserName("Juan");
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(player);
+
+        gameRoomService.createGameRoom(gameRoomModel);
+
+        PlayerModel playerOne = new PlayerModel();
+        playerOne.setUserName("Dwits");
+        playerOne.setId(2);
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerOne);
+
+        Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
+
+        PlayerModel playerTwo = new PlayerModel();
+        playerTwo.setUserName("Lucero");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
+
+        gameRoomService.startGame(gameRoomModel.getId());
+
+        playerOne.getWonderModel().setCurrentSide("B");
+        Assert.assertEquals(playerOne.getWonderModel().getCurrentSide(),gameRoomService.
+                                                                        updateSideWonder(gameRoomModel.getId(), playerOne).
+                                                                        getWonderModel().getCurrentSide());
     }
 }
