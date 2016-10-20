@@ -47,7 +47,6 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .get("{id}/players").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
 
-
                 .put("{id}/player").type(PlayerModel.class)
                 .route()
                 .to("bean:gameRoomService?method=updateSideWonder(${header.id}, ${body})")

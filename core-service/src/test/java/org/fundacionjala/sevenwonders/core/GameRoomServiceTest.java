@@ -9,7 +9,6 @@ import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runners.model.TestTimedOutException;
 
 /**
  * Used to test all the functionality of the {@link org.fundacionjala.sevenwonders.beans.GameRoomService}.
@@ -31,6 +30,28 @@ public class GameRoomServiceTest {
         gameRoomService.createGameRoom(gameRoomModel);
 
         Assert.assertNotNull(gameRoomService.getGameRoom(1).getOwner());
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void failCreateGameRoomWhenOwnerPlayerIsNullTest(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(null);
+
+        gameRoomService.createGameRoom(gameRoomModel);
+
+        Assert.fail();
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void failedPostGameRoomModelForCreateGameRoom(){
+        GameRoomService gameRoomService = new GameRoomService();
+
+        gameRoomService.createGameRoom(null);
+
+        Assert.fail();
     }
 
     @Test
@@ -169,7 +190,7 @@ public class GameRoomServiceTest {
     }
 
     @Test
-    public void createGameWhenFullRoomTest(){
+    public void startGameWhenFullRoomTest(){
         GameRoomService gameRoomService = new GameRoomService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
@@ -228,5 +249,26 @@ public class GameRoomServiceTest {
         Assert.assertEquals(playerOne.getWonderModel().getCurrentSide(),gameRoomService.
                                                                         updateSideWonder(gameRoomModel.getId(), playerOne).
                                                                         getWonderModel().getCurrentSide());
+    }
+
+    @Test
+    public void falseIsCompletePlayerIsListPlayersIsNotComplete(){
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+
+        PlayerModel player = new PlayerModel();
+        player.setUserName("Lucero");
+
+        gameRoomModel.setMaxPlayers(3);
+        gameRoomModel.setOwner(player);
+
+        gameRoomService.createGameRoom(gameRoomModel);
+
+        PlayerModel playerOne = new PlayerModel();
+        playerOne.setUserName("Daniel");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerOne);
+
+        Assert.assertFalse(gameRoomService.isCompletedPlayers(gameRoomModel.getId()));
     }
 }
