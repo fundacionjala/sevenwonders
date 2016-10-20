@@ -76,7 +76,50 @@ public class GameRoomServiceTest {
 
         gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
 
-        Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
+        Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
+
+    }
+
+    @Test
+    public void testVerifyQuantityOfPlayers() {
+        GameRoomService gameRoomService = new GameRoomService();
+        GameRoomModel gameRoomModel = new GameRoomModel();
+        PlayerModel player = new PlayerModel();
+        player.setUserName("Diego");
+
+        gameRoomModel.setMaxPlayers(5);
+        gameRoomModel.setOwner(player);
+
+        gameRoomService.createGameRoom(gameRoomModel);
+
+        PlayerModel playerTwo = new PlayerModel();
+        playerTwo.setUserName("Dwits");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
+
+        Assert.assertFalse(gameRoomService.isCompletedPlayers(gameRoomModel.getId()));
+
+        PlayerModel playerThree = new PlayerModel();
+        playerThree.setUserName("Lucho");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerThree);
+
+        Assert.assertFalse(gameRoomService.isCompletedPlayers(gameRoomModel.getId()));
+
+        PlayerModel playerFour = new PlayerModel();
+        playerFour.setUserName("Vania");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerFour);
+
+        Assert.assertFalse(gameRoomService.isCompletedPlayers(gameRoomModel.getId()));
+
+        PlayerModel playerFive = new PlayerModel();
+        playerFive.setUserName("Ale");
+
+        gameRoomService.addPlayer(gameRoomModel.getId(), playerFive);
+
+        Assert.assertTrue(gameRoomService.isCompletedPlayers(gameRoomModel.getId()));
+
 
     }
 }

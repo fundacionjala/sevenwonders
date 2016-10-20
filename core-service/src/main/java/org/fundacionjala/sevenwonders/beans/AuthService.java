@@ -5,10 +5,8 @@
 package org.fundacionjala.sevenwonders.beans;
 
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
-import org.fundacionjala.sevenwonders.core.rest.WebSocketConnection;
 import org.springframework.stereotype.Component;
 
-import java.security.SecureRandom;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -29,12 +27,23 @@ public class AuthService {
 
     public PlayerModel login(PlayerModel playerModel){
         PlayerModel player = new PlayerModel();
-        player.setId(autoIncrementId);
-        player.setUserName(playerModel.getUserName());
-        player.setToken(UUID.randomUUID().toString());
-        players.put(autoIncrementId,player);
+        if (playerModel.getUserName() != null && !playerModel.getUserName().isEmpty()) {
+                player.setId(autoIncrementId);
+                player.setUserName(playerModel.getUserName());
+                player.setToken(UUID.randomUUID().toString());
+                players.put(autoIncrementId, player);
+                autoIncrementId++;
+                return player;
 
-        autoIncrementId++;
-        return player;
+        }
+        throw new IllegalArgumentException();
+    }
+
+    public PlayerModel getPlayerById(int id) {
+        return players.get(id);
+    }
+
+    public Map<Integer, PlayerModel> getPlayers() {
+        return players;
     }
 }
