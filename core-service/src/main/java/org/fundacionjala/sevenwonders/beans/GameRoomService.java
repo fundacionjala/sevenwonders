@@ -90,7 +90,13 @@ public class GameRoomService {
         return currentGameRoomModels;
     }
 
-    public PlayerModel updateWonder(int id, PlayerModel playerModel){
+    /**
+     * Update side wonderModel when user chose a side for playing
+     * @param id game Room
+     * @param playerModel player game
+     * @return player with update information about wonder
+     */
+    public PlayerModel updateSideWonder(int id, PlayerModel playerModel){
         GameRoom gameroom = gameRooms.get(id);
         gameroom.getPlayers().forEach(player -> {
             if(player.getId() == playerModel.getId()) {
@@ -122,10 +128,10 @@ public class GameRoomService {
     }
 
     /**
-     *
-     * @param id
-     * @param player
-     * @return
+     * Verify if player in the game room
+     * @param id game room
+     * @param player player of the game
+     * @return find player
      */
     public PlayerModel validateGame(int id, PlayerModel player) {
         PlayerModel current = gameRooms.get(id)

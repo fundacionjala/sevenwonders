@@ -56,6 +56,7 @@ public class GameRoom {
      */
     public void addPlayer(PlayerModel player) {
         Preconditions.checkArgument(maxPlayers != players.size());
+        Preconditions.checkNotNull(player);
         this.players.add(player);
     }
 
