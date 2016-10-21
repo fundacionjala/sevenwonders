@@ -40,7 +40,7 @@ public class AuthServiceTest {
 
         Assert.assertEquals(expectedPlayersQuantity, service.getPlayers().size());
     }
-    @Test (expected = IllegalArgumentException.class)
+    @Test (expected = NullPointerException.class)
     public void testAddANewPlayer() {
         AuthService service = new AuthService();
         PlayerModel playerModel = new PlayerModel();

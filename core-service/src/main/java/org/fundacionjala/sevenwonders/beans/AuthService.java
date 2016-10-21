@@ -4,6 +4,7 @@
  */
 package org.fundacionjala.sevenwonders.beans;
 
+import com.google.common.base.Preconditions;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.springframework.stereotype.Component;
 
@@ -26,17 +27,15 @@ public class AuthService {
     }
 
     public PlayerModel login(PlayerModel playerModel){
+        Preconditions.checkNotNull(playerModel.getUserName());
+        Preconditions.checkArgument(!playerModel.getUserName().isEmpty());
         PlayerModel player = new PlayerModel();
-        if (playerModel.getUserName() != null && !playerModel.getUserName().isEmpty()) {
-                player.setId(autoIncrementId);
-                player.setUserName(playerModel.getUserName());
-                player.setToken(UUID.randomUUID().toString());
-                players.put(autoIncrementId, player);
-                autoIncrementId++;
-                return player;
-
-        }
-        throw new IllegalArgumentException();
+        player.setId(autoIncrementId);
+        player.setUserName(playerModel.getUserName());
+        player.setToken(UUID.randomUUID().toString());
+        players.put(autoIncrementId, player);
+        autoIncrementId++;
+        return player;
     }
 
     public PlayerModel getPlayerById(int id) {
