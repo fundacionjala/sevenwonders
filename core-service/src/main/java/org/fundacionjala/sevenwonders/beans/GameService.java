@@ -4,6 +4,7 @@
  */
 package org.fundacionjala.sevenwonders.beans;
 
+import com.google.common.base.Preconditions;
 import org.fundacionjala.sevenwonders.core.Game;
 import org.springframework.stereotype.Component;
 
@@ -38,11 +39,26 @@ public class GameService {
      * @param game
      */
     public void createGame(Game game) {
+        Preconditions.checkNotNull(game);
         games.put(autoIncrementId, game);
         autoIncrementId++;
     }
 
+    /**
+     * Get the list games in collection
+     * @return collection of the game created
+     */
     public Collection<Game> getGames(){
         return games.values();
     }
+
+    /**
+     * Get the game by id
+     * @param id integer
+     * @return a game found by id
+     */
+    public Game getGame(int id){
+        return games.get(id);
+    }
+
 }
