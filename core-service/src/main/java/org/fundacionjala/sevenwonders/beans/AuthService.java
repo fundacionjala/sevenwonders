@@ -4,11 +4,10 @@
  */
 package org.fundacionjala.sevenwonders.beans;
 
+import com.google.common.base.Preconditions;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
-import org.fundacionjala.sevenwonders.core.rest.WebSocketConnection;
 import org.springframework.stereotype.Component;
 
-import java.security.SecureRandom;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -28,13 +27,22 @@ public class AuthService {
     }
 
     public PlayerModel login(PlayerModel playerModel){
+        Preconditions.checkNotNull(playerModel.getUserName());
+        Preconditions.checkArgument(!playerModel.getUserName().isEmpty());
         PlayerModel player = new PlayerModel();
         player.setId(autoIncrementId);
         player.setUserName(playerModel.getUserName());
         player.setToken(UUID.randomUUID().toString());
-        players.put(autoIncrementId,player);
-
+        players.put(autoIncrementId, player);
         autoIncrementId++;
         return player;
+    }
+
+    public PlayerModel getPlayerById(int id) {
+        return players.get(id);
+    }
+
+    public Map<Integer, PlayerModel> getPlayers() {
+        return players;
     }
 }

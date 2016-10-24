@@ -54,6 +54,12 @@ angular.
                     }
                     Game.one(game.id).post('players', player)
                         .then(function (data) {
+                            var playerTemp = {
+                                id: data.id,
+                                userName: data.userName,
+                                token: data.token
+                            }
+                            game.owner = playerTemp;
                             storeGame(game);
                             defer.resolve();
                         }).catch(function () {
@@ -64,6 +70,10 @@ angular.
                 },
                 getCurrentGame: function () {
                     return $cookies.getObject('game');
+                },
+
+                getUserCurrent: function () {
+                    return Auth.getLoggedUser();
                 }
             };
         }

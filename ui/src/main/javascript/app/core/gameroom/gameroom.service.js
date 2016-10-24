@@ -20,6 +20,8 @@ angular.
                 },
                 connectWebsocket: function (game) {
                     var dataStream = $websocket('ws://localhost:9295/game');
+                    var data = Game.getCurrentGame();
+                    dataStream.send(JSON.stringify(data));                  
                     dataStream.onMessage(function (message) {
                         game.addPlayer(JSON.parse(message.data));
                         console.log('joined');
