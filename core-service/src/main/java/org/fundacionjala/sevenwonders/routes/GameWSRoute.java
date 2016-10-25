@@ -28,9 +28,21 @@ public class GameWSRoute extends SpringRouteBuilder {
                 .to("direct:sendMessageGame");
 
         from("direct:sendMessageGame")
-                .to("bean:gameRoomService?method=validateGame(${header.id}, ${body})")
-                .to("websocket://localhost:9295/game?sendToAll=true");
+                .choice()
+                .when(method("gameRoomService", "validateGame(${header.id}, ${body})").isNotNull())
+                .to("websocket://localhost:9295/game?sendToAll=true")
+                .to("direct:roomCompleted")
+                .endChoice();
 
+        from("direct:roomCompleted")
+                .choice()
+                .when(method("gameRoomService", "isCompletedPlayers(${header.id})").isEqualTo(true))
+                .to("direct:getGameRoom");
+
+        from("direct:getGameRoom")
+                .to("direct:sendMessageRoom")
+                .to("bean:gameRoomService?method=getGameRoom(${header.id})")
+                .to("websocket://localhost:9291/lobby?sendToAll=true");
 
     }
 }
