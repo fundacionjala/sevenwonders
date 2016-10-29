@@ -58,8 +58,6 @@ describe('ChooseWonder service', function () {
 
     describe('.getWonderPlayers()', function () {
         it('should exist', function () {
-            // spyOn(Game, ['getCurrentGame']).and.returnValue({ gameModel });
-            // expect(ChooseWonder.setWonderPlayer(thePlayer)).toBeDefined();
             expect(ChooseWonder.getWonderPlayers).toBeDefined();
         });
     });

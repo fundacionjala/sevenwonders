@@ -23,50 +23,57 @@ angular.
                     return Game.getList();
                 },
                 create: function (gameSetting) {
-                    return $q(function (resolve, reject) {
-                        Restangular.all('games').post(
-                            {
-                                maxPlayers: gameSetting.players,
-                                roomName: gameSetting.name,
-                                owner: {
-                                    id: $cookies.getObject('user').id,
-                                    userName: $cookies.getObject('user').userName,
-                                    token: $cookies.getObject('user').token
+                    if (gameSetting == undefined) {
+                        throw 'gameSetting is not defined!!.';
+                    } else {
+                        return $q(function (resolve, reject) {
+                            Restangular.all('games').post(
+                                {
+                                    maxPlayers: gameSetting.players,
+                                    roomName: gameSetting.name,
+                                    owner: {
+                                        id: $cookies.getObject('user').id,
+                                        userName: $cookies.getObject('user').userName,
+                                        token: $cookies.getObject('user').token
+                                    }
                                 }
-                            }
-                        )
-                            .then(function (data) {
-                                storeGame(data);
-                                resolve(data);
-                            })
-                            .catch(function (data) {
-                                reject(data);
-                            });
-                    });
+                            )
+                                .then(function (data) {
+                                    storeGame(data);
+                                    resolve(data);
+                                })
+                                .catch(function (data) {
+                                    reject(data);
+                                });
+                        })
+                    };
                 },
                 join: function (game) {
-                    var user = Auth.getLoggedUser();
-                    var defer = $q.defer();
-                    var player = {
-                        id: user.id,
-                        userName: user.userName,
-                        token: user.token
+                    if (game == undefined) {
+                        throw 'game is not defined!!.';
+                    } else {
+                        var user = Auth.getLoggedUser();
+                        var defer = $q.defer();
+                        var player = {
+                            id: user.id,
+                            userName: user.userName,
+                            token: user.token
+                        }
+                        Game.one(game.id).post('players', player)
+                            .then(function (data) {
+                                var playerTemp = {
+                                    id: data.id,
+                                    userName: data.userName,
+                                    token: data.token
+                                }
+                                game.owner = playerTemp;
+                                storeGame(game);
+                                defer.resolve();
+                            }).catch(function () {
+                                defer.reject();
+                            });
+                        return defer.promise;
                     }
-                    Game.one(game.id).post('players', player)
-                        .then(function (data) {
-                            var playerTemp = {
-                                id: data.id,
-                                userName: data.userName,
-                                token: data.token
-                            }
-                            game.owner = playerTemp;
-                            storeGame(game);
-                            defer.resolve();
-                        }).catch(function () {
-                            defer.reject();
-                        });
-                    return defer.promise;
-
                 },
                 getCurrentGame: function () {
                     return $cookies.getObject('game');
