@@ -17,7 +17,6 @@ public class GameModel {
     private String channel;
     private int numberPlayers;
     private PlayerModel player;
-    private List<PlayerModel> players;
 
     public int getId() {
         return id;
@@ -57,13 +56,5 @@ public class GameModel {
 
     public void setPlayer(PlayerModel player) {
         this.player = player;
-    }
-
-    public List<PlayerModel> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<PlayerModel> players) {
-        this.players = players;
     }
 }
