@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('sevenWonders.core.lobby', ['ngCookies', 'ngWebSocket']);
+angular.module('sevenWonders.core.lobby', ['ngWebSocket']);
