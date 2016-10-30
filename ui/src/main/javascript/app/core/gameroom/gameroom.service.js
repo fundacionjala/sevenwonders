@@ -20,6 +20,8 @@ angular.
                 },
                 connectWebsocket: function (game) {
                     var dataStream = $websocket('ws://localhost:9295/game');
+                    var data = Game.getCurrentGame();
+                    dataStream.send(JSON.stringify(data));                  
                     dataStream.onMessage(function (message) {
                         game.addPlayer(JSON.parse(message.data));
                         console.log('joined');
@@ -30,20 +32,14 @@ angular.
                     var dataRoom = $websocket('ws://localhost:9298/choosewonder');
                     dataRoom.onOpen(function () {
                         console.log('open connection at choosewonder');
-                        var dataGameModel = {
-                            id: Game.getCurrentGame().id
-                        };
-                        dataRoom.send(JSON.stringify(dataGameModel));
                     });
 
                    dataRoom.onMessage(function (message) {
-                        var room = JSON.parse(message.data);
-                        if (room) {
-                            $timeout(function() {
+                       var room = JSON.parse(message.data);
+                           $timeout(function() {
                                 $location.path('/choosewonder');
                                 console.log('room is complete');
-                            }, 2000);
-                        }
+                           }, 2000);
                    });
                 }
             }

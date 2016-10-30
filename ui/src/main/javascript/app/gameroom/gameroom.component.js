@@ -8,7 +8,9 @@ angular.
             function GameRoomController(GameRoom, $location) {
                 var self = this;
                 var isComplete = false;
-                var tempGameRoom = GameRoom.getGameRoom();           
+                var tempGameRoom = GameRoom.getGameRoom();
+                GameRoom.connectWebsocket(self);
+                GameRoom.connectRoomWebsocket(self);
                 GameRoom.getPlayers().then(function (data) {
                     if (data.length < tempGameRoom.numberPlayers) {
                         for (var index = data.length; index < tempGameRoom.numberPlayers; index++) {
@@ -24,7 +26,6 @@ angular.
                         numberPlayers: tempGameRoom.numberPlayers
                     };
                 });
-                GameRoom.connectWebsocket(self);
 
                 this.addPlayer = function (player) {
                     if (typeof self.gameroom != 'undefined') {
@@ -42,6 +43,7 @@ angular.
                         }
                     }
                 };
+
                 var containsUserName = function (username) {
                     var found = false;
                     for (var i = 0; i < self.gameroom.players.length; i++) {
@@ -52,8 +54,6 @@ angular.
                     }
                     return found;
                 };
-
-                GameRoom.connectRoomWebsocket(self);
 
                 this.maxPlayers = 7;
             }
