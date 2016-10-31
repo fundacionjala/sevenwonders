@@ -22,6 +22,13 @@ angular.module('sevenWonder')
                 .otherwise('/login');
         }
     ])
-    .config(['RestangularProvider', function(RestangularProvider) {
+    .run(function (Auth, $rootScope, $location) {
+        $rootScope.$on("$routeChangeStart", function (event, next, current) {
+            if (Auth.getLoggedUser() == null) {
+                $location.path("/login");
+            }
+        })
+    })
+    .config(['RestangularProvider', function (RestangularProvider) {
         RestangularProvider.setBaseUrl('http://localhost:9999');
     }]);

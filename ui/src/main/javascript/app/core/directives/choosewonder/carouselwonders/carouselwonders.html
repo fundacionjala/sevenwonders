@@ -7,7 +7,7 @@
     </div>
     <div class="center-wonder">
         <figure class="figure-wonder">
-            <img class="img-wonder" ng-src="resources/images/wonders/{{wonders[1].wonderModel.cityName}}-a.png" alt="" />
+            <img class="img-wonder" ng-src="resources/images/wonders/{{wonders[1].wonderModel.cityName}}-{{wonders[1].wonderModel.currentSide}}.png" ng-click="change({wonder : wonders[1]})" alt="" />
         </figure>
     </div>
     <div class="right-wonder">

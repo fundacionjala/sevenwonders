@@ -11,8 +11,9 @@
             <div class="sw-box-2">
                 <span>
                     <label for="players" class="sw-title label-form">Max Players</label>
-                    <select id="players" class="sw-players" ng-model="gameroom.player">
-                        <option ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
+                    <select id="players" class="sw-players" ng-model="gameroom.player" required ="required">
+                        <option selected="selected" hidden="hidden" class="number-option" disabled selected value="">Please select</option>
+                        <option class="number-option" ng-repeat="player in $ctrl.maxPlayers" value="{{player}}">{{player}}
                         </option>
                     </select>
                 </span>
@@ -33,8 +34,8 @@
                 </tr>
             <tbody>
                 <tr ng-repeat="game in $ctrl.games">
-                    <td class= "column-name">{{game.name}}</td>
-                    <td class= "column-owner">{{game.player.userName}}</td>
+                    <td class= "column-name">{{game.roomName}}</td>
+                    <td class= "column-owner">{{game.owner.userName}}</td>
                     <td class= "column-player">{{game.maxPlayers}}</td>
                     <td class= "column-join">
                         <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>

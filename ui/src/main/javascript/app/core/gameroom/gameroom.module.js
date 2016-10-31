@@ -1,3 +1,4 @@
 'use strict';
 
-angular.module('sevenWonders.core.gameroom', ['restangular']);
+angular.module('sevenWonders.core.gameroom', ['ngCookies', 'ngWebSocket',
+    'sevenWonders.core.game']);
