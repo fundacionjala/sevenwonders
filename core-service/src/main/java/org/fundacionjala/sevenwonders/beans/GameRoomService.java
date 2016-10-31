@@ -89,6 +89,17 @@ public class GameRoomService {
         return currentGameRoomModels;
     }
 
+    public PlayerModel updateWonder(int id, PlayerModel playerModel){
+        GameRoom gameroom = gameRooms.get(id);
+        gameroom.getPlayers().forEach(player -> {
+            if(player.getId() == playerModel.getId()) {
+                player.setWonderModel(playerModel.getWonderModel());
+                return;
+            }
+        });
+        return playerModel;
+    }
+
     /**
      * Update side wonderModel when user chose a side for playing
      * @param id game Room
