@@ -31,4 +31,10 @@ angular.module('sevenWonder')
     })
     .config(['RestangularProvider', function (RestangularProvider) {
         RestangularProvider.setBaseUrl('http://localhost:9999');
-    }]);
+    }])
+    .constant('WsConfig', {
+        baseUrl: 'ws://localhost/',
+        gameUrl: 'ws://localhost:9295/',
+        chooseWonderUrl: 'ws://localhost:9298/',
+        lobbyUrl:'ws://localhost:9291/'
+    });

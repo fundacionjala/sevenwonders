@@ -1,0 +1,34 @@
+<div class="neighbor-directive" style="background-image:url(resources/images/wonders/{{side.city.cityName}}-a.png)">
+	<div class="resources-container">
+		<figure class="resource-type" ng-repeat="resource in side.city.resources">
+			<figcaption class="count">
+				<img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+			</figcaption>
+		</figure>
+	</div>
+	<div class="special-container">
+		<div class="victory-points">
+			<figure class="resource-type">
+				<figcaption class="count-point">
+					<img class="victoryPoint" src="resources/images/icons/victoryPoint.png">{{side.city.victoryPoints.count}}
+				</figcaption>
+			</figure>
+		</div>
+		<div class="card-play-container"></div>
+		<div class="attack-points">
+			<figure class="resource-type">
+				<figcaption class="count-point">
+					<img class="attack-point" src="resources/images/icons/shield.png">{{side.city.attackPoints.count}}
+					</img>
+				</figcaption>
+			</figure>
+		</div>
+	</div>
+	<div class="effects-container">
+		<figure class="effect-type" ng-repeat="resource in side.city.effects">
+			<figcaption class="count">
+				<img src="{{'resources/images/effect/'+ resource.name + '.png'}}">{{resource.count}}
+			</figcaption>
+		</figure>
+	</div>
+</div>

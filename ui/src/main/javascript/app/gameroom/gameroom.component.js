@@ -12,8 +12,8 @@ angular.
                 GameRoom.connectWebsocket(self);
                 GameRoom.connectRoomWebsocket(self);
                 GameRoom.getPlayers().then(function (data) {
-                    if (data.length < tempGameRoom.numberPlayers) {
-                        for (var index = data.length; index < tempGameRoom.numberPlayers; index++) {
+                    if (data.length < tempGameRoom.maxPlayers) {
+                        for (var index = data.length; index < tempGameRoom.maxPlayers; index++) {
                             data.push({
                                 userName: ''
                             });
@@ -23,7 +23,7 @@ angular.
                     self.gameroom = {
                         roomName: tempGameRoom.roomName,
                         players: data,
-                        numberPlayers: tempGameRoom.numberPlayers
+                        numberPlayers: tempGameRoom.maxPlayers
                     };
                 });
 
