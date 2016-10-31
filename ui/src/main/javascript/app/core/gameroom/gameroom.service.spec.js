@@ -71,12 +71,5 @@ describe('getGameRoom', function(){
         players.then(function(value){
             expect(value).toEqual(mockPlayers);
         });
-    });
-
-    
-    it('should addPlayer onMessage', () => {
-       
-    });
-        
-         
+    });       
 });
