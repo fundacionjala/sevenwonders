@@ -32,16 +32,6 @@ describe('ChooseWonder service', function () {
             expect(ChooseWonder.setWonderPlayer).toBeDefined();
         });
 
-        it('Should return exception when trying to set a undefinded player', function () {
-            expect($exceptionHandler.errors).toEqual([]);
-            try {
-                ChooseWonder.setWonderPlayer(undefined);
-            } catch (e) {
-                $exceptionHandler(e);
-            }
-            expect($exceptionHandler.errors).toEqual(['player is not defined.']);
-        });
-
         it('accept to set a valid player', function () {
             spyOn(ChooseWonder, 'setWonderPlayer').and.returnValue(deferred.promise);
             deferred.resolve([{ id: 1 }]);
