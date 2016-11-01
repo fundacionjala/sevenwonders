@@ -6,19 +6,16 @@ angular.
         function ($cookies, $websocket, Game, Restangular, $q, $location) {
             return {
                 setWonderPlayer: function (player) {
-                    if (player == undefined) {
-                        throw 'player is not defined.';
-                    } else {
-                        return $q(function (resolve, reject) {
-                            Restangular.all('games/' + Game.getCurrentGame().id + '/player').customPUT(player)
-                                .then(function (data) {
-                                    resolve(data);
-                                }).catch(function (data) {
-                                    reject(data);
-                                });
-                        });
-                    }
+                    return $q(function (resolve, reject) {
+                        Restangular.all('games/' + Game.getCurrentGame().id + '/player').customPUT(player)
+                            .then(function (data) {
+                                resolve(data);
+                            }).catch(function (data) {
+                                reject(data);
+                            });
+                    });
                 },
+
                 getWonderPlayers: function () {
                     return $q(function (resolve, reject) {
                         Restangular.one('games', Game.getCurrentGame().id).getList('players')
