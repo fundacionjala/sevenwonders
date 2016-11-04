@@ -1,6 +1,10 @@
 <div class="gameboard">
     <div class="resources">
-
+        <figure class="resource-type" ng-repeat="resource in $ctrl.storage">
+            <figcaption class="count">
+                <img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+            </figcaption>
+        </figure>
     </div>
     <div class="table">
 
@@ -11,10 +15,7 @@
     <aside class="neighbor-left">
     </aside>
     <div class="playcard">
-        <div class="">
-        <div class="cemetery">
 
-        </div>
     </div>
 
 </div>

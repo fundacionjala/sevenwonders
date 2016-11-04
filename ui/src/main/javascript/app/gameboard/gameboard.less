@@ -2,17 +2,35 @@ div.gameboard {
     display: flex;
     flex-flow: row wrap;
     text-align: center;
+    width: 99.8%;
+    height: 99%;
     >* {
         flex: 1 100%;
         }
     & .resources {
-        border: 2px solid blue;
         height: 40px;
+        background: #717171;
+        align-items: center;
+        display: flex;
+          & figure.resource-type {
+               margin: 0 1.5em 0 1.5em;
+                & figcaption.count {
+                     display: flex;
+                     color: white;
+                     font-weight: bold;
+                     font-size: 1.2em;
+                     & img {
+                       margin: 0 0.2em 0 0.2em;
+                       height: 30px;
+                       width: 30px;
+                     }
+                }
+          }
     }
 
     & .playcard {
         border: 2px solid green;
-        padding: 104px;
+        padding: 105px;
     }
 
     & .table {
