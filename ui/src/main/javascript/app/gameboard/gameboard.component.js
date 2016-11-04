@@ -7,12 +7,16 @@ angular.
         controller: ['GameBoard',
             function GameBoardController(GameBoard){
                 var self = this;
-                self.resources = [];
                 self.storage = [];
+                self.victoryPoint = [];
+                self.resources = [];
                 GameBoard.getStorage().then(function (result) {
-                                        self.resources = result;
                                         result.forEach(function (element) {
+                                            if(element.name === "victoryPoint") {
+                                                self.victoryPoint.push(element);
+                                            } else {
                                                 self.storage.push(element);
+                                            }
                                               }, this);
                                       });
             }
