@@ -33,5 +33,5 @@ angular.module('sevenWonder')
         RestangularProvider.setBaseUrl('http://localhost:9999');
     }])
     .constant('WsConfig', {
-        baseUrl: 'ws://localhost:9298/'
+        baseUrl: 'ws://localhost'
     });

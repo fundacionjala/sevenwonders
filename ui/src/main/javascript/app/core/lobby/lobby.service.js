@@ -9,7 +9,7 @@ angular.
             return {
                 connectWs: function(lobby) {
                     lobbySource = lobby;
-                    var dataStream = $websocket(WsConfig.baseUrl + 'lobby');
+                    var dataStream = $websocket(WsConfig.baseUrl + ':9291/lobby');
                     dataStream.onMessage(function (message) {
                         lobby.validateGame(JSON.parse(message.data));
                     });
