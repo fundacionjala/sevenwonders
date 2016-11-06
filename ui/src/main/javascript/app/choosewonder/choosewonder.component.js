@@ -6,15 +6,15 @@ angular.
         templateUrl: 'choosewonder/choosewonder.tpl.html',
         controller: ['ChooseWonder', '$cookies','Auth',
             function ChooseWonderController(ChooseWonder, $cookies, Auth) {
+                this.owner = $cookies.getObject("user");
+                this.size = 0;
+                this.players = [];
+                this.wonderPlayers = [];
+                this.buttonDisable = true;
+                this.states = new Map();
+                this.playerId = Auth.getLoggedUser().id;
+          
                 var self = this;
-                self.owner = $cookies.getObject("user");
-                self.owner = $cookies.getObject("user");
-                self.size = 0;
-                self.players = [];
-                self.wonderPlayers = [];
-                self.buttonDisable = true;
-                self.states = new Map();
-                self.playerId = Auth.getLoggedUser().id;
                 ChooseWonder.getWonderPlayers().then(function (result) {
                     self.wonderPlayers = result;
                     result.forEach(function (element) {
@@ -23,7 +23,9 @@ angular.
                     }, this);
                     self.wonders = self.wonderPlayers;
                     self.size = self.wonders.length;
+                    self.clickPlayer(self.owner);
                 });
+
                 this.rotate = function (data) {
                     if (data == 'next') {
                         self.wonderPlayers.slice(0, 3);
@@ -32,8 +34,11 @@ angular.
                         self.wonderPlayers.slice(0, 3);
                         self.wonders.unshift(self.wonderPlayers.pop());
                     }
+                    cleanStates();
+                    self.states.set(self.wonders[1].id, 'selected');
                     self.isOwner();
                 };
+
                 this.clickPlayer = function (data) {
                     var middleNumber = (Math.round(self.wonders.length / 2) - 1);
                     while (self.wonders[middleNumber].id !== data.id) {
@@ -41,23 +46,24 @@ angular.
                     }
                     cleanStates();
                     self.states.set(data.id, 'selected');
-                };
+                }
+
                 this.checkPlayer = function (data) {
                     if (data.id == self.playerId) {
                         return 'current';
                     }
                     return 'no-current';
                 };
+
                 this.getState = function (data) {
                     return self.states.get(data.id);
                 };
+
                 var cleanStates = function () {
                     self.states.forEach(function (state, playerId) {
                         self.states.set(playerId, 'unselected');
                     });
                 };
-
-
 
                 this.isOwner = function(){
                     self.buttonDisable = self.owner.userName !== self.wonders[1].userName
@@ -67,22 +73,6 @@ angular.
                     ChooseWonder.setWonderPlayer(self.wonders[1]).then(function (result){
                         self.buttonDisable = true;
                     });
-                }
-
-                this.change = function(data){
-                    if ( data.wonderModel.currentSide == 'b') {
-                        data.wonderModel.currentSide = 'a'
-                    } else {
-                        data.wonderModel.currentSide = 'b'
-                    }
-                }
-
-                this.isOwner = function(){
-                        self.buttonDisable = self.owner.userName !== self.wonders[1].userName
-                }
-
-                this.sendSelection = function (){
-
                 }
 
                 this.change = function(data){
