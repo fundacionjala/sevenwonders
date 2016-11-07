@@ -2,8 +2,8 @@
 
 angular.
     module('sevenWonders.core.gameroom').
-    factory('GameRoom', ['Auth', '$cookies', 'UserModel', '$websocket', 'Game', 'Restangular', '$q', '$location', '$timeout', 'WsConfig',
-        function (Auth, $cookies, UserModel, $websocket, Game, Restangular, $q, $location, $timeout, WsConfig) {
+    factory('GameRoom', ['Auth', 'UserModel', '$websocket', 'Game', 'Restangular', '$q', '$location', '$timeout', 'WsConfig',
+        function (Auth, UserModel, $websocket, Game, Restangular, $q, $location, $timeout, WsConfig) {
             return {
                 getGameRoom: function () {
                     return Game.getCurrentGame();
