@@ -2,19 +2,12 @@
 
 angular.
     module('sevenWonders.core.game').
-    factory('Game', ['$cookies', 'Restangular', 'Auth', '$q',
-        function ($cookies, Restangular, Auth, $q) {
+    factory('Game', ['$cookies', 'Restangular', 'Auth', '$q', 'GameModel', 'UserModel',
+        function ($cookies, Restangular, Auth, $q, GameModel, UserModel) {
             var Game = Restangular.service('games');
 
             var storeGame = function (data) {
-                var gameModel = {
-                    id: data.id,
-                    roomName: data.roomName,
-                    channel: data.channel,
-                    type: data.type,
-                    numberPlayers: data.maxPlayers,
-                    player: data.owner
-                };
+                var gameModel = new GameModel(data);
                 $cookies.putObject('game', gameModel);
             };
 
@@ -24,17 +17,12 @@ angular.
                 },
                 create: function (gameSetting) {
                     return $q(function (resolve, reject) {
-                        Restangular.all('games').post(
-                            {
-                                maxPlayers: gameSetting.players,
-                                roomName: gameSetting.name,
-                                owner: {
-                                    id: $cookies.getObject('user').id,
-                                    userName: $cookies.getObject('user').userName,
-                                    token: $cookies.getObject('user').token
-                                }
-                            }
-                        )
+                        var player = new UserModel(Auth.getLoggedUser());
+                        Restangular.all('games').post({
+                            maxPlayers: gameSetting.players,
+                            roomName: gameSetting.name,
+                            owner: player.getRequestModel()
+                            })
                             .then(function (data) {
                                 storeGame(data);
                                 resolve(data);

@@ -46,7 +46,7 @@ angular.
                     }
                     cleanStates();
                     self.states.set(data.id, 'selected');
-                }
+                }   
 
                 this.checkPlayer = function (data) {
                     if (data.id == self.playerId) {
