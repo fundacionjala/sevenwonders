@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('sevenWonders.core.game', ['ngCookies', 'sevenWonders.core.auth']);
+angular.module('sevenWonders.core.game', ['ngCookies', 'sevenWonders.core.auth', 'sevenWonders.core.model']);
