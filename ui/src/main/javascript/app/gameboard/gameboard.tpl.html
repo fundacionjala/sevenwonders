@@ -1,21 +1,22 @@
 <div class="gameboard">
-    <div class="resources">
-        <figure class="resource-type" ng-repeat="resource in $ctrl.storage">
-            <figcaption class="count">
-                <img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
-            </figcaption>
-        </figure>
-    </div>
-    <div class="table">
+	<div class="resources">
+		<figure class="resource-type" ng-repeat="resource in $ctrl.storage">
+			<figcaption class="count">
+				<img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+			</figcaption>
+		</figure>
+	</div>
+	<div class="table">
 
-    </div>
-    <aside class="neighbor-right">
+	</div>
+	<aside class="neighbor-right">
+		<neighbor resources="$ctrl.resource" effects="$ctrl.effects"> </neighbor>
+	</aside>
+	<aside class="neighbor-left">
+		<neighbor resources="$ctrl.resource" effects="$ctrl.effects"> </neighbor>
+	</aside>
+	<div class="playcard">
 
-    </aside>
-    <aside class="neighbor-left">
-    </aside>
-    <div class="playcard">
-
-    </div>
+	</div>
 
 </div>

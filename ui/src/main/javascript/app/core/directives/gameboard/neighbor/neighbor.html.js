@@ -4,7 +4,8 @@ angular.module('sevenWonder.gameboard')
         return {
             restrict: 'E',
             scope: {
-                data: '=',
+                resources: '=',
+                effects: '=',
                 action: '&'
             },
             replace: true,
