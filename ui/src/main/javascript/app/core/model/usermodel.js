@@ -23,6 +23,17 @@ angular
                     userName : this.userName,
                     token : this.token
                 }
+            },
+
+            getAddPlayerModel: function(gameRoomId){
+                return {
+                    id: gameRoomId,
+                    player: {
+                        id: this.id,
+                        userName: this.userName,
+                        token: this.token
+                    }
+                }
             }
         }
 

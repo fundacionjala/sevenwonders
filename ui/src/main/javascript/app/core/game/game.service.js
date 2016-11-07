@@ -33,22 +33,14 @@ angular.
                     });
                 },
                 join: function (game) {
-                    var user = Auth.getLoggedUser();
+                    var player = new UserModel(Auth.getLoggedUser());
+                    var gameModel = new GameModel(game);
                     var defer = $q.defer();
-                    var player = {
-                        id: user.id,
-                        userName: user.userName,
-                        token: user.token
-                    }
-                    Game.one(game.id).post('players', player)
+                    Game.one(game.id).post('players', player.getRequestModel())
                         .then(function (data) {
-                            var playerTemp = {
-                                id: data.id,
-                                userName: data.userName,
-                                token: data.token
-                            }
-                            game.owner = playerTemp;
-                            storeGame(game);
+                            var playerAdded = new UserModel(data);
+                            gameModel.addPlayer(playerAdded);
+                            storeGame(gameModel);
                             defer.resolve();
                         }).catch(function () {
                             defer.reject();

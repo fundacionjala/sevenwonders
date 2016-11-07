@@ -2,8 +2,8 @@
 
 angular.
     module('sevenWonders.core.gameroom').
-    factory('GameRoom', ['$cookies', '$websocket', 'Game', 'Restangular', '$q', '$location', '$timeout', 'WsConfig',
-        function ($cookies, $websocket, Game, Restangular, $q, $location, $timeout, WsConfig) {
+    factory('GameRoom', ['Auth', '$cookies', 'UserModel', '$websocket', 'Game', 'Restangular', '$q', '$location', '$timeout', 'WsConfig',
+        function (Auth, $cookies, UserModel, $websocket, Game, Restangular, $q, $location, $timeout, WsConfig) {
             return {
                 getGameRoom: function () {
                     return Game.getCurrentGame();
@@ -20,8 +20,9 @@ angular.
                 },
                 connectWebsocket: function (game) {
                     var dataStream = $websocket(WsConfig.baseUrl + ':9295/game');
-                    var data = Game.getCurrentGame(); 
-                    dataStream.send(JSON.stringify(data));
+                    var gameRoom = Game.getCurrentGame(); 
+                    var loggedPlayer = new UserModel(Auth.getLoggedUser());
+                    dataStream.send(JSON.stringify(loggedPlayer.getAddPlayerModel(gameRoom.id)));
                     dataStream.onMessage(function (message) {
                         game.addPlayer(JSON.parse(message.data));
                         console.log('joined');
