@@ -19,7 +19,7 @@ angular.
                     return defer.promise;
                 },
                 connectWebsocket: function (game) {
-                    var dataStream = $websocket(WsConfig.baseUrl + ':9295/game');
+                    var dataStream = $websocket(WsConfig.gameUrl + 'game');
                     var gameRoom = Game.getCurrentGame(); 
                     var loggedPlayer = new UserModel(Auth.getLoggedUser());
                     dataStream.send(JSON.stringify(loggedPlayer.getAddPlayerModel(gameRoom.id)));
@@ -30,7 +30,7 @@ angular.
                 },
 
                 connectRoomWebsocket: function(game) {
-                    var dataRoom = $websocket(WsConfig.baseUrl + ':9298/choosewonder');
+                    var dataRoom = $websocket(WsConfig.chooseWonderUrl + "choosewonder");
                     dataRoom.onOpen(function () {
                         console.log('open connection at choosewonder');
                     });
