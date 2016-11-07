@@ -7,7 +7,7 @@ angular.
                 return {
                   getStorage: function () {
                       var defer = $q.defer();
-                      Restangular.all('storage').getList()
+                      Restangular.allUrl('storage', 'http://demo5549833.mockable.io/storage').getList()
                                  .then(function (data) {
                                        defer.resolve(data);
                                  }).catch(function () {

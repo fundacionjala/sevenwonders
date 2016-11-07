@@ -30,6 +30,5 @@ angular.module('sevenWonder')
         })
     })
     .config(['RestangularProvider', function (RestangularProvider) {
-        //RestangularProvider.setBaseUrl('http://localhost:9999');
-        RestangularProvider.setBaseUrl('http://demo5549833.mockable.io/');
+        RestangularProvider.setBaseUrl('http://localhost:9999');
     }]);
