@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('sevenWonders.core.auth', ['restangular']);
+angular.module('sevenWonders.core.auth', ['restangular', 'sevenWonders.core.model']);

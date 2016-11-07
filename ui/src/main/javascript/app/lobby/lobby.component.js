@@ -17,37 +17,51 @@ angular.
                 this.maxPlayers = ['3', '4', '5', '6', '7'];
 
                 this.addGame = function (game) {
-                    self.games.push(game);
+                    if(game == undefined) {
+                        throw 'game is not defined.'
+                    } else {
+                        self.games.push(game);
+                    }
                 }
 
                 this.createGame = function (game) {
-                    var gameSettings = {
-                        name: game.name,
-                        players: game.player
-                    };
-                    Game.create(gameSettings)
-                        .then(function (result) {
-                            console.log('create');
-                            $location.path('/gameroom');
-                        });
-
+                    if(game == undefined) {
+                        throw 'game is not defined.'
+                    } else {
+                        var gameSettings = {
+                            name: game.name,
+                            players: game.player
+                        };
+                        Game.create(gameSettings)
+                            .then(function (result) {
+                                $location.path('/gameroom');
+                            });
+                    }
                 };
 
                 this.joinGame = function (game) {
-                    Game.join(game)
-                        .then(function (result) {
-                            console.log('join');
-                            $location.path('/gameroom');
-                        });
-                };
-                this.validateGame = function (game) {               
-                    var indexGame = self.games.findIndex(function(b){
-                            return b.roomName === game.roomName;
-                    });
-                    if (indexGame !== -1) {
-                        self.games.splice(indexGame, 1);
+                    if(game == undefined) {
+                        throw 'game is undefined'
                     } else {
-                        self.games.push(game);
+                        Game.join(game)
+                            .then(function (result) {
+                                 $location.path('/gameroom');
+                             });
+                    }
+                };
+
+                this.validateGame = function (game) {
+                    if(game == undefined) {
+                        throw 'game is undefined'
+                    } else {
+                        var indexGame = self.games.findIndex(function(b){
+                            return b.roomName === game.roomName;
+                         });
+                        if (indexGame !== -1) {
+                            self.games.splice(indexGame, 1);
+                        } else {
+                            self.games.push(game);
+                        }
                     }
                 }
             }
