@@ -10,12 +10,11 @@ div.gameboard {
     & .resources {
         height: 40px;
         background: #717171;
-        align-items: center;
-        display: flex;
         min-width:600px;
           & figure.resource-type {
-               margin: 0 1.5em 0 1.5em;
-                & figcaption.count {
+               margin: 0 0.7em 0 0.7em;
+               text-align: center;
+               & figcaption.count {
                      display: flex;
                      color: white;
                      font-weight: bold;
@@ -26,6 +25,22 @@ div.gameboard {
                        height: 30px;
                        width: 30px;
                      }
+                }
+                & figcaption.count-point {
+                      color: white;
+                      font-weight: bold;
+                      font-size: 1.4em;
+                      align-items: center;
+                      position: relative;
+                      margin: 0 1.2em 0 1.2em;
+                    & img.victoryPoint {
+                       height: 80px;
+                       width: 80px;
+                       float: left;
+                       position: absolute;
+                       left: -29px;
+                       top: -13px;
+                    }
                 }
           }
     }
