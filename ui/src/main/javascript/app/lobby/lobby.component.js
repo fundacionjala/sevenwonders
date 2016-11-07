@@ -25,19 +25,18 @@ angular.
                 }
 
                 this.createGame = function (game) {
-                if(game == undefined) {
-                    throw 'game is not defined.'
-                } else {
-                    var gameSettings = {
-                        name: game.name,
-                        players: game.player
-                    };
-                    Game.create(gameSettings)
-                        .then(function (result) {
-                            console.log('create');
-                            $location.path('/gameroom');
-                        });
-                }
+                    if(game == undefined) {
+                        throw 'game is not defined.'
+                    } else {
+                        var gameSettings = {
+                            name: game.name,
+                            players: game.player
+                        };
+                        Game.create(gameSettings)
+                            .then(function (result) {
+                                $location.path('/gameroom');
+                            });
+                    }
                 };
 
                 this.joinGame = function (game) {
@@ -46,7 +45,6 @@ angular.
                     } else {
                         Game.join(game)
                             .then(function (result) {
-                                 console.log('join');
                                  $location.path('/gameroom');
                              });
                     }
@@ -56,7 +54,6 @@ angular.
                     if(game == undefined) {
                         throw 'game is undefined'
                     } else {
-
                         var indexGame = self.games.findIndex(function(b){
                             return b.roomName === game.roomName;
                          });

@@ -19,7 +19,7 @@ describe('LobbyController', function(){
         expect(controller).toBeDefined();
     });
 
-    it('controller of lobby exist', function() {
+    it('controller of lobby exist, exceptionHandler', function() {
         expect($exceptionHandler).toBeDefined();
     });
 
@@ -30,7 +30,7 @@ describe('LobbyController', function(){
                         channel: 2,
                         type: 'Babilon',
                         numberPlayers: 3
-                    };
+                      };
 
         it('should added a game', function() {
             controller.addGame(gameModel);
