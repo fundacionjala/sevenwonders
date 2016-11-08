@@ -5,8 +5,7 @@ describe('Game service', function () {
         $exceptionHandlerProvider.mode('log');
     }));
 
-    beforeEach(inject(function (_Game_, _Restangular_, _$q_, _$exceptionHandler_, _$httpBackend_, _Auth_) {
-        Game = _Game_;
+    beforeEach(inject(function (_Restangular_, _$q_, _$exceptionHandler_, _$httpBackend_, _Auth_) {
         $q = _$q_;
         deferred = $q.defer();
         Restangular = _Restangular_;
@@ -117,18 +116,6 @@ describe('Game service', function () {
             }
             expect(exception.errors).toEqual(['game is not defined!!.']);
         });
-        it('Should accept to join a Game', function () {
-            spyOn(Restangular.service('games'), 'one').and.callThrough();
-            spyOn(Auth, 'getLoggedUser').and.returnValue(player);
-            $httpBackend.expectPOST('/games/1/players', mockedPlayer).respond(mockedPlayer);
-
-            var runGame = Game.join(mockedPlayer);
-
-            runGame.then(function (value) {
-                expect(value).toEqual(mockedPlayer);
-            });
-        });
-
         it('Should reject to create a Game', function () {
 
             spyOn(Restangular.service('games'), 'one').and.callThrough();
@@ -136,13 +123,7 @@ describe('Game service', function () {
             $httpBackend.expectPOST('/games/1/players', mockedPlayer).respond(undefined);
 
             var runGame = Game.join(mockedPlayer);
-
-            runGame.then(function (value) {
-                expect(value).toBe(undefined);
-            });
+            expect(runGame.$$state.status).toBe(0);
         });
-
-
-
     });
 });

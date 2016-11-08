@@ -2,8 +2,8 @@
 
 angular.
     module('sevenWonders.core.choosewonder').
-    factory('ChooseWonder', ['$cookies', '$websocket', 'Game', 'Restangular', '$q', '$location',
-        function ($cookies, $websocket, Game, Restangular, $q, $location) {
+    factory('ChooseWonder', ['$cookies', 'Game', 'Restangular', '$q',
+        function ($cookies, Game, Restangular, $q) {
             return {
                 setWonderPlayer: function (player) {
                     return $q(function (resolve, reject) {
