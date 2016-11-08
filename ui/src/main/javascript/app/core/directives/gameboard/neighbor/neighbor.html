@@ -1,13 +1,13 @@
 <div class="neighbor-directive" ng-style="{'background-image':'url(resources/images/wonders/Babylon-b.png)'}" >
 	<div class="resources-container">
-		<figure class="resource-type" ng-repeat="resource in resources">
+		<figure class="resource-type" ng-repeat="resource in side.city.resources">
 			<figcaption class="count">
 				<img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
 			</figcaption>
 		</figure>
 	</div>
 	<div class="effects-container">
-		<figure class="effect-type" ng-repeat="resource in effects">
+		<figure class="effect-type" ng-repeat="resource in side.city.effects">
 			<figcaption class="count">
 				<img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
 			</figcaption>
