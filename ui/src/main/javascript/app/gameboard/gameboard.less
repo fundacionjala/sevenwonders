@@ -1,3 +1,5 @@
+@import "../style/global.less";
+
 div.gameboard {
     display: flex;
     flex-flow: row wrap;
@@ -17,6 +19,7 @@ div.gameboard {
           & figure.resource-type {
                margin: 0 0.8em 0 0.7em;
                text-align: center;
+               display: inline-block;
                & figcaption.count {
                      display: flex;
                      color: white;
@@ -27,6 +30,8 @@ div.gameboard {
                        margin: 0 0.2em 0 0.2em;
                        height: 30px;
                        width: 30px;
+                       box-sizing: border-box;
+                       display: block;
                      }
                 }
                 & figcaption.count-point {
@@ -37,11 +42,11 @@ div.gameboard {
                       position: relative;
                       margin: 0 1.2em 0 1.2em;
                     & img.victoryPoint {
-                       height: 80px;
-                       width: 80px;
+                       height: 70px;
+                       width: 70px;
                        float: left;
                        position: absolute;
-                       left: -27px;
+                       left: -23px;
                        top: -13px;
                     }
                 }
@@ -55,9 +60,76 @@ div.gameboard {
     }
 
     & .table {
-        text-align: left;
-        border: 2px solid gold;
         height: 320px;
+        & .deck-cards {
+            height: 220px;
+            width: 100%;
+             & figure.sw-card {
+               display: inline-block;
+               height: 150px;
+               margin: 25px 5px 0 5px;
+               width: 90px;
+                 & img.image-card {
+                     box-sizing: border-box;
+                     display: block;
+                     height: 100%;
+                     width: 100%;
+                     -webkit-transition: all 0.7s ease;
+                     transition: all 0.7s ease;
+                  }
+                  &:hover {
+                     -webkit-transform: scale(1.2);
+                     transform: scale(1.2);
+                   }
+            }
+        }
+        & .stages {
+            width: 100%;
+            & .sw-stage {
+                display: inline-block;
+                height: 90px;
+                width: 150px;
+                margin: 0 7px 0 7px;
+                background-color : @color_component;
+                border-radius: 12px;
+                position: relative;
+              & figure.sw-effect {
+                    width: 108px;
+                    height: 70px;
+                    margin: 10px 5px 5px 35px;
+                    position: absolute;
+                    z-index: 19;
+                    & img.image-effect {
+                        box-sizing: border-box;
+                        display: block;
+                        height: 100%;
+                        width:100%;
+                    }
+                }
+                & .sw-requirement {
+                    width: 15px;
+                    height: 80px;
+                    margin: 10px 2px 0 10px;
+                    background: #f9f3dd;
+                    position: absolute;
+                    z-index: 10;
+                    & figure.sw-resource {
+                        margin: -5px 0 0 -5px;
+                        width: 25px;
+                        height: 25px;
+                        & img.image-resource {
+                             height: 100%;
+                             width: 100%;
+                        }
+                    }
+                    & figure.resource-tiny {
+                         margin: -5px 0 0 -5px;
+                         width: 15px;
+                         height: 15px;
+                    }
+                }
+            }
+        }
     }
 
     & .neighbor-right {
