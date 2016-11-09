@@ -1,54 +1,83 @@
-describe('ChooseWonder service', function () {
-    var ChooseWonder;
-    var $q;
-    var Restangular;
-    var $httpBackend;
+describe('choose wonder tests', function () {
+    var chooseWonder;
+    var game;
+    var httpBackend;
+    var restangular;
+    var websocket;
+    var cookies;
 
-
-    beforeEach(angular.mock.module('sevenWonders.core.choosewonder'));
-
-    beforeEach(module(function ($exceptionHandlerProvider) {
-        $exceptionHandlerProvider.mode('log');
-    }));
-
-    beforeEach(inject(function (_ChooseWonder_, _$q_, _Game_,_$exceptionHandler_) {
-        ChooseWonder = _ChooseWonder_;
-        $q = _$q_;
-        deferred = $q.defer();
-        Game = _Game_;
-        $exceptionHandler = _$exceptionHandler_;
-    }));
-
-    it('should exist', function () {
-        expect(ChooseWonder).toBeDefined();
-    });
-
-    describe('.setWonderPlayer()', function () {
-        var mockedPlayer = {
-            id: 1
-        };
-
-        it('should exist', function () {
-            expect(ChooseWonder.setWonderPlayer).toBeDefined();
-        });
-
-        it('accept to set a valid player', function () {
-            spyOn(ChooseWonder, 'setWonderPlayer').and.returnValue(deferred.promise);
-            deferred.resolve([{ id: 1 }]);
-            expect(ChooseWonder.setWonderPlayer(mockedPlayer).$$state.value[0]).toEqual(mockedPlayer);
-        });
-
-        it('reject to set a player', function () {
-            spyOn(ChooseWonder, 'setWonderPlayer').and.returnValue(deferred.promise);
-            deferred.reject();
-            expect(ChooseWonder.setWonderPlayer(mockedPlayer).$$state.value).toBe(undefined);
-        });
-
-    });
-
-    describe('.getWonderPlayers()', function () {
-        it('should exist', function () {
-            expect(ChooseWonder.getWonderPlayers).toBeDefined();
+    beforeEach(function() {
+        module('sevenWonders.core.choosewonder');
+        inject(function($injector, _$httpBackend_){
+            websocket = $injector.get('$websocket');
+            chooseWonder = $injector.get('ChooseWonder');
+            game = $injector.get('Game');
+            httpBackend = _$httpBackend_;
+            cookies = $injector.get('$cookies');
+            restangular = $injector.get('Restangular');
+            spyOn(game, 'getCurrentGame').and.returnValue({
+                    id: 1,
+                    roomName: "Tu",
+                    channel: 2,
+                    type: "Normal",
+                    numberPlayers: 5,
+                    player: {
+                        name: "Juan"
+                    }
+            });
         });
     });
+
+    
+    it('should set wonder giving a player', () => {
+
+        var mockPlayer = {
+            name : "Juan",
+            token : "ASDCG554",
+            wonder: ""
+        }
+
+        spyOn(restangular, 'all').and.callThrough();
+        
+        httpBackend.expectPUT('/games/1/player', mockPlayer)
+        .respond(mockPlayer);
+        
+        var chooseWonderRun = chooseWonder.setWonderPlayer(mockPlayer);
+        expect(restangular.all).toHaveBeenCalledWith('games/1/player');
+        httpBackend.flush(); 
+
+        chooseWonderRun.then(function(value){
+            expect(value).toEqual(mockPlayer);
+        });
+    });
+    
+    
+    it('should get wonder players', () => {
+        var mockPlayers = [
+                {
+                name:"juan",
+                token:"asdasdasd"
+                },
+                {
+                name:"dwtis",
+                token:"asd"
+                }
+        ];
+
+            
+        spyOn(restangular, 'one').and.callThrough(); 
+        spyOn(cookies, 'putObject').and.callThrough();      
+        httpBackend.expectPUT('games/1/players').respond(mockPlayers);
+        
+        var chooseWonderRun = chooseWonder.getWonderPlayers();
+        expect(restangular.one).toHaveBeenCalledWith('games', 1);
+
+        chooseWonderRun.then(function(value){
+            expect(cookies.putObject).toHaveBeenCalled();
+            expect(value).toEqual(mockPlayers);
+        });
+
+
+    });
+        
 });
