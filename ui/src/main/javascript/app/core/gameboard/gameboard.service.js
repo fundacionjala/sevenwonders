@@ -4,18 +4,18 @@ angular.
     module('sevenWonders.core.gameboard').
     factory('GameBoard', ['Game', '$cookies', '$websocket', 'Restangular', '$q',
         function (Game, $cookies, $websocket, Restangular, $q) {
-            return {
-                getStorage: function () {
-                    var defer = $q.defer();
-                    Restangular.all('storage').getList()
-                        .then(function (data) {
-                            defer.resolve(data);
-                        }).catch(function () {
-                            defer.reject();
-                        });
-                    return defer.promise;
-                },
-                getGamePlayers: function () {
+                return {
+                  getStorage: function () {
+                      var defer = $q.defer();
+                      Restangular.allUrl('storage', 'http://demo5549833.mockable.io/storage').getList()
+                                 .then(function (data) {
+                                       defer.resolve(data);
+                                 }).catch(function () {
+                                       defer.reject();
+                                 });
+                         return defer.promise;
+                   },
+                  getGamePlayers: function () {
                     var players = [
                         {
                             id: 1,
@@ -197,6 +197,6 @@ angular.
                     ];
                     return players;
                 }
-            }
+                }
         }
     ]);

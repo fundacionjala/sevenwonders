@@ -1,12 +1,15 @@
 <div class="gameboard">
-	<div class="resources">
-		<figure class="resource-type" ng-repeat="resource in $ctrl.storage">
-			<figcaption class="count">
-				<img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
-			</figcaption>
-		</figure>
-	</div>
-	<div class="table">
+    <div class="resources">
+        <figure class="resource-type" ng-repeat="resource in $ctrl.storage">
+            <figcaption class="count" ng-if="resource.name !== 'victoryPoint'">
+                <img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+            </figcaption>
+            <figcaption class="count-point" ng-if="resource.name == 'victoryPoint'">
+                <img class="victoryPoint" src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+            </figcaption>
+        </figure>
+    </div>
+    <div class="table">
 
 	</div>
 	<aside class="neighbor-right">

@@ -4,11 +4,16 @@ angular.
     module('sevenWonder.gameboard').
     component('gameboard', {
         templateUrl: 'gameboard/gameboard.tpl.html',
-        controller: ['GameBoard', 'Auth',
-            function GameBoardController(GameBoard, Auth) {
+        controller: ['GameBoard', 'Auth'
+            function GameBoardController(GameBoard, Auth){
                 var self = this;
                 self.resources = [];
                 self.storage = [];
+                GameBoard.getStorage().then(function (result) {
+                                        result.forEach(function (element) {
+                                                self.storage.push(element);
+                                              }, this);
+                                      });
                 self.gamePlayers = [];
                 self.nearestNeighbors = [];
                 var currentUser = Auth.getLoggedUser();
@@ -19,6 +24,7 @@ angular.
                 //         self.players.push(element);
                 //     }, this);
                 // });
+
                 GameBoard.getStorage().then(function (result) {
                     self.resources = result;
                     result.forEach(function (element) {
@@ -50,6 +56,6 @@ angular.
                     }
                     return 0;
                 };
-            }
+	    }
         ]
     });
