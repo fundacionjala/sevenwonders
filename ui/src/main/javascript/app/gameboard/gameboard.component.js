@@ -10,6 +10,7 @@ angular.
                 self.resources = [];
                 self.storage = [];
                 self.gamePlayers = [];
+                self.nearestNeighbors = [];
                 var currentUser = Auth.getLoggedUser();
                 self.players = GameBoard.getGamePlayers();
                 // GameBoard.getGamePlayers().then(function (result) {
@@ -23,32 +24,32 @@ angular.
                     result.forEach(function (element) {
                         self.storage.push(element);
                     }, this);
+                    self.nearestNeighbors = getNearestNeighbors();
                 });
-                self.nearestNeighbors = self.getNearestNeighbors;
-                this.getNearestNeighbors = function () {
-                    var left1, right1;
-                    var locationOfUser = self.locationOfUser1;
-                    if ((locationOfUser < self.players.length - 1) && (locationOfUser > 1)) {
-                        left1 = self.players[locationOfUser - 1];
-                        right1 = self.players[locationOfUser + 1];
-                    } else if (locationOfUser == 0) {
-                        left1 = self.players[self.players.length - 1];
-                        right1 = self.players[locationOfUser + 1];
-                    } else if (locationOfUser == self.players.length - 1) {
-                        left1 = self.players[locationOfUser - 1];
-                        right1 = self.players[0];
+                var getNearestNeighbors = function () {
+                    var neighborLeft, neighborRight;
+                    var indexOfUser = locationOfUser();
+                    if ((indexOfUser < self.players.length - 1) && (indexOfUser > 1)) {
+                        neighborLeft = self.players[indexOfUser - 1];
+                        neighborRight = self.players[indexOfUser + 1];
+                    } else if (indexOfUser == 0) {
+                        neighborLeft = self.players[self.players.length - 1];
+                        neighborRight = self.players[1];
+                    } else if (indexOfUser == self.players.length - 1) {
+                        neighborLeft = self.players[indexOfUser - 1];
+                        neighborRight = self.players[0];
                     }
-                    var neighbors = { left: left1, right: right1 }; 
-                    return neighbors; 
-                }
-                this.locationOfUser1 = function () {
+                    return { left: neighborLeft, right: neighborRight };
+                };
+                var locationOfUser = function () {
                     for (var i in self.players) {
                         if (self.players[i].userName == currentUser.userName) {
+                            console.log(i);
                             return i;
                         }
                     }
                     return 0;
-                }
+                };
             }
         ]
     });
