@@ -51,6 +51,10 @@ describe('Tests Auth service', function () {
     describe('.getLoggedUser()', function () {
 
         it('should get the value stored in the cookies', function () {
+            var player = {
+                userName: 'JOhx'
+            }   
+            spyOn(Auth, 'getLoggedUser').and.returnValue(player);
             var userModel = Auth.getLoggedUser();
             expect(userModel.userName).toBe(userData.userName);
         });

@@ -1,11 +1,12 @@
 describe('Game service', function () {
     beforeEach(angular.mock.module('sevenWonders.core.game'));
+    beforeEach(angular.mock.module('sevenWonders.core.model'));
 
     beforeEach(module(function ($exceptionHandlerProvider) {
         $exceptionHandlerProvider.mode('log');
     }));
 
-    beforeEach(inject(function (_Restangular_, _$q_, _$exceptionHandler_, _$httpBackend_, _Auth_) {
+    beforeEach(inject(function (_UserModel_,_Game_, _Restangular_, _$q_, _$exceptionHandler_, _$httpBackend_, _Auth_) {
         $q = _$q_;
         deferred = $q.defer();
         Restangular = _Restangular_;
@@ -13,6 +14,8 @@ describe('Game service', function () {
         exception = _$exceptionHandler_;
         $httpBackend = _$httpBackend_;
         Auth = _Auth_;
+        Game = _Game_;
+        UserModel = _UserModel_;
     }));
     it('Should exist', function () {
         expect(Game).toBeDefined();
