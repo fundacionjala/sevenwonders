@@ -7,44 +7,53 @@ package org.fundacionjala.sevenwonders.core;
 
 import com.google.common.base.Preconditions;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import org.fundacionjala.sevenwonders.core.effect.Effect;
 
 /**
  * Created by Vania Catorceno on 6/2/2016.
  */
 public class Wonder {
-    private List<Stage> stages;
-    private Effect effect;
+    private Side sideA;
+    private Side sideB;
     private String name;
 
-    public Wonder(List<Stage> stages) {
-        Preconditions.checkNotNull(stages, "The stages is null");
-        this.stages = stages;
-    }
-
-    public Wonder(String name ){
+    public Wonder(String name) {
         this.name = name;
     }
 
-    public Effect getEffect() {
-        return effect;
+    public Wonder(String name, Side sideA, Side sideB) {
+        Preconditions.checkNotNull(name, "The stages is null");
+        Preconditions.checkNotNull(sideA, "The stages is null");
+        Preconditions.checkNotNull(sideB, "The stages is null");
+        this.name = name;
+        this.sideA = sideA;
+        this.sideB = sideB;
+
     }
 
     public String getName() {
         return name;
     }
 
-    public List<Stage> getStages() {
-        return stages;
+    public Side getSideA() {
+        return sideA;
     }
 
-    /**
-     * filter stages constructed
-     * @return List of stages contructed
-     */
-    public List<Stage> getBuildingsStages() {
-        return stages.stream().
-                filter(s -> s.isBuilt()).collect(Collectors.toList());
+    public Side getSideB() {
+        return sideB;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Wonder)) return false;
+        Wonder wonder = (Wonder) o;
+        return Objects.equals(getName(), wonder.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName());
     }
 }
