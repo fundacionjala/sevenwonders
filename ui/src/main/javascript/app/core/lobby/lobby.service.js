@@ -8,6 +8,7 @@ angular.
 
             return {
                 connectWs: function(lobby) {
+                    if(lobby === undefined) throw 'Lobby is not defined';
                     lobbySource = lobby;
                     var dataStream = $websocket(WsConfig.lobbyUrl + 'lobby');
                     dataStream.onMessage(function (message) {

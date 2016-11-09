@@ -6,14 +6,8 @@ describe('Tests Lobby service', function () {
     var $websocket;
     var $exceptionHandler;
 
-    beforeEach(function () {
-        module(function ($provide) {
-            $provide.service('$websocket', function (data) {
-                var url = data;
-            });
-        });
-        module('sevenWonders.core.lobby');
-    });
+    beforeEach(angular.mock.module('sevenWonder'));
+
     beforeEach(module(function ($exceptionHandlerProvider) {
         $exceptionHandlerProvider.mode('log');
     }));
