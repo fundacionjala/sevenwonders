@@ -4,34 +4,27 @@ angular.
     module('sevenWonder.gameboard').
     component('gameboard', {
         templateUrl: 'gameboard/gameboard.tpl.html',
-        controller: ['GameBoard', 'Auth'
-            function GameBoardController(GameBoard, Auth){
+        controller: ['GameBoard', 'Auth',
+            function GameBoardController(GameBoard, Auth) {
                 var self = this;
+                var currentUser = Auth.getLoggedUser();
                 self.resources = [];
                 self.storage = [];
-                GameBoard.getStorage().then(function (result) {
-                                        result.forEach(function (element) {
-                                                self.storage.push(element);
-                                              }, this);
-                                      });
-                self.gamePlayers = [];
+                self.players = [];
                 self.nearestNeighbors = [];
-                var currentUser = Auth.getLoggedUser();
-                self.players = GameBoard.getGamePlayers();
-                // GameBoard.getGamePlayers().then(function (result) {
-                //     self.gamePlayers = result;
-                //     result.forEach(function (element) {
-                //         self.players.push(element);
-                //     }, this);
-                // });
-
                 GameBoard.getStorage().then(function (result) {
-                    self.resources = result;
                     result.forEach(function (element) {
                         self.storage.push(element);
                     }, this);
+                });
+
+                GameBoard.getGamePlayers().then(function (result) {
+                    result.forEach(function (element) {
+                        self.players.push(element);
+                    }, this);
                     self.nearestNeighbors = getNearestNeighbors();
                 });
+
                 var getNearestNeighbors = function () {
                     var neighborLeft, neighborRight;
                     var indexOfUser = locationOfUser();
@@ -49,13 +42,13 @@ angular.
                 };
                 var locationOfUser = function () {
                     for (var i in self.players) {
-                        if (self.players[i].userName == currentUser.userName) {
+                        if (self.players[i].id == currentUser.id) {
                             console.log(i);
                             return i;
                         }
                     }
                     return 0;
                 };
-	    }
+            }
         ]
     });
