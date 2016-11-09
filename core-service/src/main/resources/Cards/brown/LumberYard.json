@@ -1,0 +1,14 @@
+{
+  "name": "Lumber Yard",
+  "requierements": [],
+  "age": "FIRST",
+  "effects": [
+    {
+      "type": "PRODUCTION",
+      "data": {
+        "type": "LUMBER",
+        "quantity": 1
+      }
+    }
+  ]
+}
