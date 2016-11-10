@@ -64,37 +64,65 @@ div.gameboard {
         & .deck-cards {
             height: 220px;
             width: 100%;
-             & figure.sw-card {
-               display: inline-block;
-               height: 150px;
-               margin: 25px 5px 0 5px;
-               width: 90px;
-                 & img.image-card {
-                     box-sizing: border-box;
-                     display: block;
-                     height: 100%;
-                     width: 100%;
-                     -webkit-transition: all 0.7s ease;
-                     transition: all 0.7s ease;
+            position: relative;
+            z-index: 30;
+             & .brown {
+                  padding:0;
+                  margin-top:25px;
+                  list-style-type:none;
+                  width:160px;
+                  height:312px;
+                  display: inline-block;
+                  & li > a {
+                      height:30px;
+                      width: 100px;
+                      float:left;
+                      overflow: hidden;
+                       & img{
+                        height:150px;
+                        width: 100px;
+                       }
+                       &:hover {
+                          box-sizing: border-box;
+                          display: block;
+                          height:145px;
+                       }
                   }
-                  &:hover {
-                     -webkit-transform: scale(1.2);
-                     transform: scale(1.2);
-                   }
-            }
+             }
+
+ & figure.sw-card {
+                                      display: inline-block;
+                                      height: 150px;
+                                      margin: 25px 5px 0 5px;
+                                      width: 90px;
+                                        & img.image-card {
+                                            box-sizing: border-box;
+                                            display: block;
+                                            height: 100%;
+                                            width: 100%;
+                                            -webkit-transition: all 0.7s ease;
+                                            transition: all 0.7s ease;
+                                         }
+                                         &:hover {
+                                            -webkit-transform: scale(1.2);
+                                            transform: scale(1.2);
+                                          }
+                                   }
+
         }
         & .stages {
             width: 100%;
+            z-index: 1;
             & .sw-stage {
                 display: inline-block;
                 height: 90px;
-                width: 150px;
+                width: 165px;
                 margin: 0 7px 0 7px;
                 background-color : @color_component;
                 border-radius: 12px;
                 position: relative;
               & figure.sw-effect {
-                    width: 108px;
+                    width: 125px;
                     height: 70px;
                     margin: 10px 5px 5px 35px;
                     position: absolute;
