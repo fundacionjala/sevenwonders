@@ -23,9 +23,9 @@ public class Wonder {
     }
 
     public Wonder(String name, Side sideA, Side sideB) {
-        Preconditions.checkNotNull(name, "The stages is null");
-        Preconditions.checkNotNull(sideA, "The stages is null");
-        Preconditions.checkNotNull(sideB, "The stages is null");
+        Preconditions.checkNotNull(name, "The name is null");
+        Preconditions.checkNotNull(sideA, "The sideA is null");
+        Preconditions.checkNotNull(sideB, "The sideB is null");
         this.name = name;
         this.sideA = sideA;
         this.sideB = sideB;

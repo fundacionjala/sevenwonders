@@ -16,6 +16,9 @@ public class Side {
     private List<Stage> stages;
 
     public Side(String nameSide, Effect effect, List<Stage> stages) {
+        Preconditions.checkNotNull(nameSide, "The nameSide is null");
+        Preconditions.checkNotNull(effect, "The effect is null");
+        Preconditions.checkNotNull(stages, "The stages is null");
         this.nameSide = nameSide;
         this.effect = effect;
         this.stages = stages;
