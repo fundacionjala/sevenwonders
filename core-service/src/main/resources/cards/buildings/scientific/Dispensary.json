@@ -1,0 +1,33 @@
+{
+    "name": "Dispensary",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "APOTHECARY"
+        }
+    ], 
+    "age": 2,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "COMPASS"
+            }
+        }
+    ]
+}

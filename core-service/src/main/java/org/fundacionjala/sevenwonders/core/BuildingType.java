@@ -15,5 +15,4 @@ public enum BuildingType {
     RESOURCE,
     WAR,
     GUILD,
-
 }

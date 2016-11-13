@@ -1,0 +1,25 @@
+{
+    "name": "Scriptorium",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ], 
+    "age": 1,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "TABLE"
+            }
+        }
+    ]
+}

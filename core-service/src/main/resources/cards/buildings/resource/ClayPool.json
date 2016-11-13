@@ -1,0 +1,26 @@
+{
+    "name": "Claypool",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "COIN",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 4,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "PRODUCTION",
+            "data": {
+                "type": "STONE",
+                "quantity": 2
+            }
+        }
+    ]
+}

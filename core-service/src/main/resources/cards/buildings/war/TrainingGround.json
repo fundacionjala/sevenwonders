@@ -1,0 +1,29 @@
+{
+    "name": "TrainningGround",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "LUMBER",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 2
+            }
+        }
+    ]
+}

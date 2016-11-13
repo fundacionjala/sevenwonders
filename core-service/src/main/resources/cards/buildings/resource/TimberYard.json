@@ -1,0 +1,26 @@
+{
+    "name": "TimberYard",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "COIN",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "CHOOSEONE",
+            "data": [
+                "LUMBER",
+                "STONE"
+            ]
+        }
+    ]
+}

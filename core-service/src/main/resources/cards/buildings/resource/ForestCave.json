@@ -1,0 +1,26 @@
+{
+    "name": "ForestCave",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "COIN",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 5,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "CHOOSEONE",
+            "data": [
+                "LUMBER",
+                "ORE"
+            ]
+        }
+    ]
+}

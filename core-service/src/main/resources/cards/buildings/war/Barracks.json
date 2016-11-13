@@ -1,0 +1,25 @@
+{
+    "name": "Barracks",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LUMBER",
+                    "quantity": 2
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 5,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 1
+            }
+        }
+    ]
+}

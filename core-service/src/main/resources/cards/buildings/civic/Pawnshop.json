@@ -1,0 +1,19 @@
+{
+    "name": "Pawnshop",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 3
+            }
+        }
+    ]
+}

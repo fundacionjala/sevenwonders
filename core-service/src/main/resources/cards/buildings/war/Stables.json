@@ -1,0 +1,37 @@
+{
+    "name": "Stables",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 1
+                },
+                {
+                    "type": "LUMBER",
+                    "quantity": 1
+                },
+                {
+                    "type": "ORE",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "APOTHECARY"
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 5,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 2
+            }
+        }
+    ]
+}
