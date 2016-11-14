@@ -1,0 +1,24 @@
+{
+    "name": "Marketplace",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 6,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "DISCOUNT",
+            "data": {
+                "direction": "BOTH",
+                "resources": [
+                    "GLASS",
+                    "PAPYRUS",
+                    "TEXTILE"
+                ]
+            }
+        }
+    ]
+}

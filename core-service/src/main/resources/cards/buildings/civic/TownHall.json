@@ -1,0 +1,33 @@
+{
+    "name": "Palace",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 1
+                },
+                {
+                    "type": "ORE",
+                    "quantity": 1
+                },
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ], 
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 6
+            }
+        }
+    ]
+}

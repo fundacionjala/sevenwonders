@@ -1,0 +1,20 @@
+{
+    "name": "Press",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 6,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "PRODUCTION",
+            "data": {
+                "type": "PAPYRUS",
+                "quantity": 1
+            }
+        }
+    ]
+}
