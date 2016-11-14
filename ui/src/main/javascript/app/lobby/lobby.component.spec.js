@@ -1,5 +1,6 @@
 describe('LobbyController', function(){
 	beforeEach(angular.mock.module('sevenWonder.lobby'));
+    beforeEach(angular.mock.module('sevenWonder'));
 
     var game;
     var controller;
@@ -9,10 +10,11 @@ describe('LobbyController', function(){
             $exceptionHandlerProvider.mode('log');
      }));
 
-    beforeEach(inject(function(_Game_, _$exceptionHandler_, $componentController) {
+    beforeEach(inject(function(_Auth_, _Game_, _$exceptionHandler_, $componentController) {
         game = _Game_;
         $exceptionHandler = _$exceptionHandler_;
         controller = $componentController('lobby');
+        Auth = _Auth_;
     }));
 
     it('controller of lobby exist', function() {
@@ -50,13 +52,20 @@ describe('LobbyController', function(){
 
         describe('createGame', function() {
           it('should create a game', function() {
-          var gameSettings = {
+            var player = {
+                id: 4,
+                userName: 'fpfo',
+                token: 896
+            } 
+
+            spyOn(Auth, 'getLoggedUser').and.returnValue(player);
+            spyOn(game, 'create').and.callThrough();
+            var gameSettings = {
                                   name: 'blood',
-                                  players: 3
+                                  player: 3
                               };
-              controller.createGame(gameSettings);
-              expect(game.getCurrentGame()).toBeDefined();
-              expect(game.getCurrentGame().roomName).toBe('blood');
+            controller.createGame(gameSettings);
+            expect(game.create).toHaveBeenCalled();
           });
 
           it('failed create with undefined game then exception', function() {

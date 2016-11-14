@@ -1,6 +1,7 @@
 div.neighbor-directive {
        height: 90%;
        width: 99%;
+       display: flex;
        position: relative;
        top: 50%;
        transform: translateY(-50%);
@@ -9,13 +10,12 @@ div.neighbor-directive {
        background-size: 100% 130%;
        border-radius: 7px;
        box-shadow: 0 0 10px 5px white;
-       & div.resources-container {
-           float: left;
+       & section.resources-container {
            width: 20%;
            height: 100%;
            display: flex;
            flex-direction: column;
-           background-color: rgba(113, 113, 113, 0.5);
+           background-color: rgba(113, 113, 113, 0.7);
            & figure.resource-type {
                margin: auto;
                 & figcaption.count {
@@ -31,14 +31,72 @@ div.neighbor-directive {
                 }
           }
        };
-        
-       & div.effects-container {
-           float: right;
-           width: 20%;
+       & div.special-container {
+           display: flex;
+           flex-direction: column;
+           width: 54%;
+           height: 100%;
+           & section.victory-points {
+               display: flex;
+               width: 100%;
+               height: 20%;
+               & figure.resource-type {
+                    margin: 0 0.8em 0 0.7em;
+                    text-align: center;
+                    margin: auto;
+                    & figcaption.count-point {
+                      color: white;
+                      font-weight: bold;
+                      font-size: 1.4em;
+                      align-items: center;
+                      position: relative;
+                    & img.victoryPoint {
+                       height: 60px;
+                       width: 60px;
+                       position: absolute;
+                       margin: -15px;
+                       z-index: -1;
+                    }
+                  }
+                }
+              };
+           & div.card-play-container  {
+               display: flex;
+               width: 100%;
+               height: 60%;
+           };
+           & section.attack-points {
+               display: flex;
+               width: 100%;
+               height: 20%;
+               & figure.resource-type {
+                    margin: 0 0.8em 0 0.7em;
+                    text-align: center;
+                    margin: auto;
+                    & figcaption.count-point {
+                      color: black;
+                      font-weight: bold;
+                      font-size: 1.4em;
+                      align-items:
+                       center;
+                      position: relative;
+                    & img.attack-point {
+                       height: 60px;
+                       width: 60px;
+                       position: absolute;
+                       margin: -21px;
+                       z-index: -1;
+                    }
+                  }
+                }
+          }
+       };
+       & section.effects-container {
+           width: 26%;
            height: 100%;
            display: flex;
            flex-direction: column;
-           background-color: rgba(113, 113, 113, 0.5);
+           background-color: rgba(113, 113, 113, 0.7);
            & figure.effect-type {
                margin: auto;
                 & figcaption.count {
@@ -48,10 +106,10 @@ div.neighbor-directive {
                      font-size: 0.9em;
                      & img {
                        margin: 0 0.2em 0 0.2em;
-                       height: 30px;
-                       width: 30px;
+                       height: 32px;
+                       width: 64px;
                      }
                 }
           }
-       }
+       };
    }

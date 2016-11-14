@@ -18,7 +18,10 @@ angular
                     this.channel = data.channel;
                     this.type = data.type;
                     this.maxPlayers = data.maxPlayers;
-                    this.owner = new UserModel(data.owner);
+
+                    if(data.owner !== undefined)
+                        this.owner = new UserModel(data.owner);
+                        
                     this.players = data.players || [];
         }  
 

@@ -27,8 +27,8 @@ angular.
 
                 var getNearestNeighbors = function () {
                     var neighborLeft, neighborRight;
-                    var indexOfUser = locationOfUser();
-                    if ((indexOfUser < self.players.length - 1) && (indexOfUser > 1)) {
+                    var indexOfUser = parseInt(locationOfUser());
+                    if ((indexOfUser < self.players.length - 1) && (indexOfUser > 0)) {
                         neighborLeft = self.players[indexOfUser - 1];
                         neighborRight = self.players[indexOfUser + 1];
                     } else if (indexOfUser == 0) {
@@ -47,7 +47,7 @@ angular.
                             return i;
                         }
                     }
-                    return 0;
+                    return -1;
                 };
             }
         ]
