@@ -32,11 +32,14 @@ public class WonderCalculatorTest {
 
     @Before
     public void setUp() {
+
         Effect effect = new VictoryPointEffect(4, CalculatorType.WONDER);
         effects = new ArrayList<>();
         effects.add(effect);
         storagePoints = new StoragePoint();
-        city = new City(new Wonder(new ArrayList<>()), storagePoints, new Storage());
+        Side sideA = new Side("A", effect, null);
+        Side sideB = new Side("B", effect, null);
+        city = new City(new Wonder("Babylon", sideA, sideB), storagePoints, new Storage());
         cardManager = new CardManager(city);
         requirements = new ArrayList<>();
         stage = new Stage(requirements, effects);
@@ -75,10 +78,12 @@ public class WonderCalculatorTest {
         stages.add(stage);
         stages.add(stage);
         stages.add(stage);
+        Effect effect = mock(Effect.class);
+        Side sideA = new Side("A", effect, stages);
+        Side sideB = new Side("B", effect, stages);
+        Wonder wonder = new Wonder("Babylon", sideA, sideB);
 
-        Wonder wonder = new Wonder(stages);
-
-        cardManager.calculateCards(new ArrayList<>(wonder.getBuildingsStages()),
+        cardManager.calculateCards(new ArrayList<>(wonder.getSideA().getBuildingsStages()),
                 CalculatorType.WONDER);
 
         assertEquals(12, city.getStoragePoint().getPoint(CalculatorType.WONDER));

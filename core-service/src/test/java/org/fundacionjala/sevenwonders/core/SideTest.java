@@ -2,29 +2,27 @@
  * Copyright (c) Fundacion Jala. All rights reserved.
  * Licensed under the MIT license. See LICENSE file in the project root for full license information.
  */
+
 package org.fundacionjala.sevenwonders.core;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
 import org.fundacionjala.sevenwonders.core.effect.Effect;
 import org.fundacionjala.sevenwonders.core.effect.VictoryPointEffect;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 
 /**
- *
- * @author alexander castro
+ * Created Luis Gumucio.
  */
-public class WonderTest {
-    
-    private Wonder wonder;
-    
+public class SideTest {
+
     @Test
-    public void testGetSidesWonder() {
+    public void testGetBuildingsStagesOfSide() {
 
         Effect effect = new VictoryPointEffect(4, CalculatorType.WONDER);
         List<Effect> effects = new ArrayList<>();
@@ -39,26 +37,21 @@ public class WonderTest {
         stage4.setBuildState(true);
         List<Stage> stagesSideA = new ArrayList();
         stagesSideA.add(stage1);
-        stagesSideA.add(stage2);
-        List<Stage> stagesSideB = new ArrayList<>();
+        stagesSideA.add(stage4);
 
         Side sideA = new Side("A", effect, stagesSideA);
-        Side sideB = new Side("B", effect, stagesSideB);
-        wonder = new Wonder("Babylon", sideA, sideB);
 
-        Side actualA = new Side("A", effect, stagesSideA);
-        
-        assertEquals(sideA.getNameSide(), actualA.getNameSide());
-        assertNotEquals(sideB.getNameSide(), actualA.getNameSide());
+        List<Stage> result = sideA.getBuildingsStages();
+
+        assertEquals(2, result.size());
+        assertEquals(stage1, result.get(0));
+        assertEquals(stage4, result.get(1));
     }
-    
-    @Test(expected = NullPointerException.class)
-    public void testIfSadesIsNull() {
-        Effect effect = mock(Effect.class);
-        List<Stage> stages =mock(List.class);
-        Side sideB = new Side("B", effect, stages);
-        wonder = new Wonder("A",null, sideB);
 
-        wonder.getSideA();
+    @Test(expected = NullPointerException.class)
+    public void testIfSadeListStageIsNull() {
+        Effect effect = mock(Effect.class);
+        Side sideA = new Side("A", effect, null);
+        List<Stage> result = sideA.getBuildingsStages();
     }
 }
