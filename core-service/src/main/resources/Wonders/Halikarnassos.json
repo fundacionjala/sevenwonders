@@ -1,0 +1,135 @@
+{
+    "name": "Halikarnassos",
+    "sides": [
+        {
+            "a": {
+                "effect": {
+                    "type": "PRODUCTION",
+                    "data": {
+                        "type": "TEXTILE",
+                        "quantity": 1
+                    }
+                },
+                "stages": [
+                    {
+                        "requierements": [
+                            {
+                                "type": "BRICK",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 3
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "ORE",
+                                "quantity": 3
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "PLAYGRAVEYARDCARD"
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "TEXTILE",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 7
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "b": {
+                "effect": {
+                    "type": "PRODUCTION",
+                    "data": {
+                        "type": "TEXTILE",
+                        "quantity": 1
+                    }
+                },
+                "stages": [
+                    {
+                        "requierements": [
+                            {
+                                "type": "ORE",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 2
+                                }
+                            },
+                            {
+                                "type": "PLAYGRAVEYARDCARD"
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "BRICK",
+                                "quantity": 3
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 1
+                                }
+                            },
+                            {
+                                "type": "PLAYGRAVEYARDCARD"
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "GLASS",
+                                "quantity": 1
+                            },
+                            {
+                                "type": "PAPYRUS",
+                                "quantity": 1
+                            },
+                            {
+                                "type": "TEXTILE",
+                                "quantity": 1
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "PLAYGRAVEYARDCARD"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

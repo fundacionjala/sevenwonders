@@ -1,0 +1,30 @@
+{
+    "name": "SpiesGuild",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 3
+                },
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,   
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WARVICTORY",
+            "data": {
+                "ammount": 1,
+                "direction": "BOTH"
+            }
+        }
+    ]
+}

@@ -1,0 +1,137 @@
+{
+    "name": "Rhodos",
+    "sides": [
+        {
+            "a": {
+                "effect": {
+                    "type": "PRODUCTION",
+                    "data": {
+                        "type": "ORE",
+                        "quantity": 1
+                    }
+                },
+                "stages": [
+                    {
+                        "requierements": [
+                            {
+                                "type": "LUMBER",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 3
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "BRICK",
+                                "quantity": 3
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "WAR",
+                                "data": {
+                                    "points": 2
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "ORE",
+                                "quantity": 4
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 7
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "b": {
+                "effect": {
+                    "type": "PRODUCTION",
+                    "data": {
+                        "type": "ORE",
+                        "quantity": 1
+                    }
+                },
+                "stages": [
+                    {
+                        "requierements": [
+                            {
+                                "type": "STONE",
+                                "quantity": 3
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "WAR",
+                                "data": {
+                                    "points": 1
+                                }
+                            },
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 3
+                                }
+                            },
+                            {
+                                "type": "RESOURCE",
+                                "data": {
+                                    "type": "COIN",
+                                    "quantity": 3
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "ORE",
+                                "quantity": 4
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "WAR",
+                                "data": {
+                                    "points": 1
+                                }
+                            },
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 4
+                                }
+                            },
+                            {
+                                "type": "RESOURCE",
+                                "data": {
+                                    "type": "COIN",
+                                    "quantity": 4
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

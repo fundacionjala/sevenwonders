@@ -1,4 +1,3 @@
 'use strict';
 
-angular.module('sevenWonders.core.choosewonder', ['ngCookies', 'ngWebSocket',
-    'sevenWonders.core.gameroom']);
+angular.module('sevenWonders.core.choosewonder', ['ngCookies', 'sevenWonders.core.gameroom']);

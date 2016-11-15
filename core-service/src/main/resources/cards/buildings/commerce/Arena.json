@@ -1,0 +1,34 @@
+{
+    "name": "Arena",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 2
+                },
+                {
+                    "type": "ORE",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "DISPENSARY"
+        }
+    ], 
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WONDEROREVICTORY",
+            "data": {
+                "coin" : 3,
+                "value": 1
+            }
+        }
+    ]
+}

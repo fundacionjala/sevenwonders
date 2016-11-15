@@ -1,0 +1,38 @@
+{
+    "name": "Lodge",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 2
+                },
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                },
+                
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "DISPENSARY"
+        }
+    ], 
+    "age": 2,
+    "playersNeeded": 6,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "COMPASS"
+            }
+        }
+    ]
+}

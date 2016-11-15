@@ -1,0 +1,37 @@
+{
+    "name": "Scriptorium",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LODGE",
+                    "quantity": 1
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                },
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                }
+            ]
+        },
+         {
+            "type": "BUILDING",
+            "data": "SCHOOL"
+        }
+    ], 
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "SCREW"
+            }
+        }
+    ]
+}

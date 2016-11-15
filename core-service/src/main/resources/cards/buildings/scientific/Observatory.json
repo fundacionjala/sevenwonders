@@ -1,0 +1,38 @@
+{
+    "name": "Observatory",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                },
+                
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "DISPENSARY"
+        }
+    ], 
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "SCREW"
+            }
+        }
+    ]
+}

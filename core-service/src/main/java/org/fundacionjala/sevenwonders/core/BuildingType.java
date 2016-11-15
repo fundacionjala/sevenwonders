@@ -12,5 +12,7 @@ public enum BuildingType {
     CIVIC,
     SCIENTIFIC,
     COMMERCE,
-    RESOURCE
+    RESOURCE,
+    WAR,
+    GUILD,
 }

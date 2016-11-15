@@ -1,0 +1,20 @@
+{
+    "name": "StonePit",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "PRODUCTION",
+            "data": {
+                "type": "STONE",
+                "quantity": 1
+            }
+        }
+    ]
+}

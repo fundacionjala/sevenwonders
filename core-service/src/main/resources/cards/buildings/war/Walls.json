@@ -1,0 +1,25 @@
+{
+    "name": "Walls",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 3
+                }
+            ]
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 2
+            }
+        }
+    ]
+}

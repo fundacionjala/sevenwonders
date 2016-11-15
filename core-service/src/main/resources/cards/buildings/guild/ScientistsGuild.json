@@ -1,0 +1,30 @@
+{
+    "name": "ScientistsGuild",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LUMBER",
+                    "quantity": 2
+                },
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SSCIENCE"
+        }
+    ]
+}

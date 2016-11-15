@@ -1,0 +1,20 @@
+{
+    "name": "OreVein",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 4,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "PRODUCTION",
+            "data": {
+                "type": "ORE",
+                "quantity": 1
+            }
+        }
+    ]
+}
