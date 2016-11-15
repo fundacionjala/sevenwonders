@@ -14,5 +14,6 @@ public class GameProviderTest {
     public void testTreeIsNotEmpty() throws IOException {
         GameProvider gameProvider = new GameProvider();
         gameProvider.readWonders();
+        gameProvider.readCards();
     }
 }
