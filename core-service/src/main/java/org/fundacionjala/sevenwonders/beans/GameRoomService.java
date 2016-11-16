@@ -6,6 +6,7 @@ package org.fundacionjala.sevenwonders.beans;
 
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.rest.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -19,13 +20,14 @@ import java.util.*;
 
 @Component
 public class GameRoomService {
-    private final Map<Integer, GameRoom> gameRooms = new TreeMap<>();
+    @Autowired
     private GameService gameService;
+
+    private final Map<Integer, GameRoom> gameRooms = new TreeMap<>();
     private int autoIncrementId;
 
     public GameRoomService() {
         autoIncrementId = 1;
-        gameService = new GameService();
     }
 
     public GameService getGameService() {
@@ -111,6 +113,7 @@ public class GameRoomService {
         gameroom.getPlayers().forEach(player -> {
             if(player.getId() == playerModel.getId()) {
                 player.setWonderModel(playerModel.getWonderModel());
+                player.setIsReady(true);
                 return;
             }
         });
@@ -158,7 +161,7 @@ public class GameRoomService {
      */
     public void startGame(int id) {
         GameRoom current = gameRooms.get(id);
-        gameService.createGame(current.createGame());
+        current.createGame();
     }
 
     /**
@@ -168,5 +171,15 @@ public class GameRoomService {
      */
     public boolean isCompletedPlayers(int id){
         return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
+    }
+
+
+    public boolean isGameReady(int id){
+        GameRoom gameRoom = gameRooms.get(id);
+        for (PlayerModel player: gameRoom.getPlayers()) {
+            if(!player.getIsReady()) return false;
+        }
+        gameService.createGame(gameRoom.createGame());
+        return true;
     }
 }
