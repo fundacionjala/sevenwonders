@@ -16,6 +16,20 @@ public class PlayerModel {
     private String userName;
     private String token;
     private WonderModel wonderModel;
+    private boolean isReady = false;
+    private DeckModel deck;
+
+    public DeckModel getDeck() {
+        return deck;
+    }
+
+    public void setDeck(DeckModel deck) {
+        this.deck = deck;
+    }
+
+    public boolean getIsReady(){ return isReady; }
+
+    public void setIsReady(boolean isReady){ this.isReady = isReady; }
 
     public String getUserName() {
         return userName;
