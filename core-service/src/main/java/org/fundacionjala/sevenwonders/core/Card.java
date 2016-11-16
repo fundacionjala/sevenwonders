@@ -12,12 +12,14 @@ import org.fundacionjala.sevenwonders.core.effect.Effect;
  */
 public class Card {
 
+    private String name;
     private List<Requirement> requirements;
     private List<Effect> effects;
 
-    public Card(List<Requirement> requirements, List<Effect> effects) {
+    public Card(List<Requirement> requirements, List<Effect> effects, String name) {
         this.requirements = requirements;
         this.effects = effects;
+        this.name = name;
     }
 
     /**
@@ -36,5 +38,9 @@ public class Card {
      */
     public List<Effect> getEffects() {
         return effects;
+    }
+
+    public String getName() {
+        return name;
     }
 }

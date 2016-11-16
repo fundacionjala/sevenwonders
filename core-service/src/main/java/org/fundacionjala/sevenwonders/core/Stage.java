@@ -16,7 +16,7 @@ public class Stage extends Card {
     private boolean built;
 
     public Stage(List<Requirement> requirements, List<Effect> effects) {
-        super(requirements, effects);
+        super(requirements, effects, "");
     }
 
     public boolean isBuilt() {
