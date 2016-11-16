@@ -1,0 +1,26 @@
+{
+    "name": "Foundry",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "COIN",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "PRODUCTION",
+            "data": {
+                "type": "ORE",
+                "quantity": 2
+            }
+        }
+    ]
+}

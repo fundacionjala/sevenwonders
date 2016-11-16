@@ -1,0 +1,33 @@
+{
+    "name": "Courthouse",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 2
+                },
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "SCRIPTORIUM"
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 5,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 4
+            }
+        }
+    ]
+}

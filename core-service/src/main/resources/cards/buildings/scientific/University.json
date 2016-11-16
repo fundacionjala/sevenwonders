@@ -1,0 +1,37 @@
+{
+    "name": "University",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LODGE",
+                    "quantity": 2
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                },
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                }
+            ]
+        },
+         {
+            "type": "BUILDING",
+            "data": "LIBRARY"
+        }
+    ], 
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "TABLE"
+            }
+        }
+    ]
+}

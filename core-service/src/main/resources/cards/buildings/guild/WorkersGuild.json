@@ -1,0 +1,38 @@
+{
+    "name": "TradersGuild",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "BRICK",
+                    "quantity": 1
+                },
+                {
+                    "type": "STONE",
+                    "quantity": 1
+                },
+                {
+                    "type": "LUMBER",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,   
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "RESOURCEVICTORY",
+            "data": {
+                "ammount": 1,
+                "direction": "BOTH"
+            }
+        }
+    ]
+}

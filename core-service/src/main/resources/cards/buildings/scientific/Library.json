@@ -1,0 +1,33 @@
+{
+    "name": "Library",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 2
+                },
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "SCRIPTORIUM"
+        }
+    ], 
+    "age": 2,
+    "playersNeeded": 6,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "TABLET"
+            }
+        }
+    ]
+}

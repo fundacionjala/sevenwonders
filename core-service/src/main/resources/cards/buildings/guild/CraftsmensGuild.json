@@ -1,0 +1,30 @@
+{
+    "name": "ChamberOfCommerce",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "STONE",
+                    "quantity": 2
+                }
+            ]
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SRESOURCEVICTORY",
+            "data": {
+                "ammount": 2,
+                "direction": "BOTH"
+            }
+        }
+    ]
+}

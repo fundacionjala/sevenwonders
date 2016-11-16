@@ -1,0 +1,20 @@
+{
+    "name": "Tavern",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "RESOURCE",
+            "data": {
+                "type": "COIN",
+                "quantity": 5
+            }
+        }
+    ]
+}

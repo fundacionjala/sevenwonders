@@ -26,6 +26,8 @@
     transition-duration: @seg;
 }
 
+@height_neighbor:380px;
+@width_neighbor:2%;
 div.gameboard {
     display: flex;
     flex-flow: row wrap;
@@ -102,7 +104,7 @@ div.gameboard {
             & .deck {
                 display: flex;
                 flex-direction: row;
-                .cardPosition(-0deg, 0px, 20px);     
+                .cardPosition(-0deg, 0px, 20px);
             }
 
             & .card {
@@ -118,27 +120,27 @@ div.gameboard {
             }
 
             & .card-1{
-                .cardPosition(-15deg, 25px, 45px);    
+                .cardPosition(-15deg, 25px, 45px);
             }
 
-            & .card-2{   
-                .cardPosition(-10deg, 20px, 20px);           
+            & .card-2{
+                .cardPosition(-10deg, 20px, 20px);
             }
 
             & .card-3{
-                .cardPosition(-5deg, 10px, 5px);             
+                .cardPosition(-5deg, 10px, 5px);
             }
 
             & .card-5{
-                .cardPosition(5deg, -10px, 5px);      
+                .cardPosition(5deg, -10px, 5px);
             }
 
-            & .card-6{   
-                .cardPosition(10deg, -20px, 20px);          
+            & .card-6{
+                .cardPosition(10deg, -20px, 20px);
             }
 
             & .card-7{
-                .cardPosition(15deg, -25px, 45px);                 
+                .cardPosition(15deg, -25px, 45px);
             }
 
             & .card img{
@@ -154,18 +156,17 @@ div.gameboard {
 
     & .table {
         text-align: left;
-        border: 2px solid gold;
         height: 320px;
     }
 
     & .neighbor-right {
-        border: 2px solid pink;
-        height: 320px;
+        height: @height_neighbor;
+        width: @width_neighbor;
     }
 
     & .neighbor-left {
-        border: 2px solid pink;
-        height: 320px;
+        height: @height_neighbor;
+        width: @width_neighbor;
     }
 
     @media all and (min-width:600px) {
