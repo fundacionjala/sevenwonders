@@ -1,0 +1,34 @@
+{
+    "name": "PhilosophersGuild",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 3
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                },
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENTIFICVICTORY",
+            "data": {
+                "ammount": 1,
+                "direction": "BOTH"
+            }
+        }
+    ]
+}

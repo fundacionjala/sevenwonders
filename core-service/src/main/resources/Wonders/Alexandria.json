@@ -1,0 +1,135 @@
+{
+    "name": "Alexandria",
+    "sides": [
+        {
+            "a": {
+                "effect": {
+                    "type": "PRODUCTION",
+                    "data": {
+                        "type": "GLASS",
+                        "quantity": 1
+                    }
+                },
+                "stages": [
+                    {
+                        "requierements": [
+                            {
+                                "type": "STONE",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 3
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "ORE",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "CHOOSEONE",
+                                "data": [
+                                    "BRICK",
+                                    "ORE",
+                                    "LUMBER",
+                                    "STONE"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "GLASS",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 7
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "b": {
+                "effect": {
+                    "type": "PRODUCTION",
+                    "data": {
+                        "type": "GLASS",
+                        "quantity": 1
+                    }
+                },
+                "stages": [
+                    {
+                        "requierements": [
+                            {
+                                "type": "BRICK",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "CHOOSEONE",
+                                "data": [
+                                    "LUMBER",
+                                    "STONE",
+                                    "ORE",
+                                    "BRICK"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "LUMBER",
+                                "quantity": 2
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "CHOOSEONE",
+                                "data": [
+                                    "GLASS",
+                                    "TEXTILE",
+                                    "PAPYRUS"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "requierements": [
+                            {
+                                "type": "STONE",
+                                "quantity": 3
+                            }
+                        ],
+                        "effects": [
+                            {
+                                "type": "VICTORY",
+                                "data": {
+                                    "points": 7
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

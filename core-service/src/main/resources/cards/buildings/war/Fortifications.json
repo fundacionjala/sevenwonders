@@ -1,0 +1,33 @@
+{
+    "name": "Fortifications",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 3
+                },
+                {
+                    "type": "STONE",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "WALL"
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 3
+            }
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "name": "Stockade",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LUMBER",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 1
+            }
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "name": "ChamberOfCommerce",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 2
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 4,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SRESOURCECOIN",
+            "data": {
+                "ammount": 2,
+                "sides": [
+                    "LEFT",
+                    "RIGHT",
+                    "SELF"
+                ]
+            }
+        }
+    ]
+}

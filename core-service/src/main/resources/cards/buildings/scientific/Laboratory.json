@@ -1,0 +1,33 @@
+{
+    "name": "Laboratory",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "BRICK",
+                    "quantity": 2
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "WORKSHOP"
+        }
+    ], 
+    "age": 2,
+    "playersNeeded": 5,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "SCREW"
+            }
+        }
+    ]
+}

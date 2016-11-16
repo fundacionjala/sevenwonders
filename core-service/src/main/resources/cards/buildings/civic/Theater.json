@@ -1,0 +1,19 @@
+{
+    "name": "Theater",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 6,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 2
+            }
+        }
+    ]
+}

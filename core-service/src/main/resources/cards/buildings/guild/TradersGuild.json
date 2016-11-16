@@ -1,0 +1,34 @@
+{
+    "name": "TradersGuild",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                },
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,   
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "COMMERCEVICTORY",
+            "data": {
+                "ammount": 1,
+                "direction": "BOTH"
+            }
+        }
+    ]
+}

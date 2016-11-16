@@ -1,0 +1,32 @@
+{
+    "name": "Caravansery",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LUMBER",
+                    "quantity": 2
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "MARKETPLACE"
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 6,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "CHOOSEONE",
+            "data": [
+                "LUMBER",
+                "ORE",
+                "STONE",
+                "BRICK"
+            ]
+        }
+    ]
+}

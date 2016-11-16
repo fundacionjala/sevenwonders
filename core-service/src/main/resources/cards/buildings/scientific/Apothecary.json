@@ -1,0 +1,25 @@
+{
+    "name": "Apothecary",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "TEXTILE",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 5,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "COMPASS"
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "name": "Statue",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "ORE",
+                    "quantity": 2
+                },
+                {
+                    "type": "LUMBER",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "THEATER"
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 7  ,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 4
+            }
+        }
+    ]
+}

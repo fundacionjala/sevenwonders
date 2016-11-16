@@ -1,0 +1,25 @@
+{
+    "name": "Baths",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 3
+            }
+        }
+    ]
+}

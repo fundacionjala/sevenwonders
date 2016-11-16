@@ -1,0 +1,15 @@
+{
+  "name": "Lumber Yard",
+  "requierements": [],
+  "age": 1,
+  "effects": [
+    {
+      "type": "PRODUCTION",
+      "data": {
+        "type": "LUMBER",
+        "quantity": 1
+      }
+    }
+  ],
+  "playersNeeded": 2
+}
