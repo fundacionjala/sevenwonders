@@ -1,3 +1,31 @@
+@card-width: 100px;
+@margin-adjustment: 10px;
+@reset: 0;
+@cards-area: 50%;
+@actions-area: 100% - @cards-area;
+
+.cardPosition (@deg, @x, @y) {
+    -webkit-transform: rotate(@deg) translate(@x, @y);
+    -moz-transform: rotate(@deg) translate(@x, @y);
+    -o-transform: rotate(@deg) translate(@x, @y);
+    -ms-transform: rotate(@deg) translate(@x, @y);
+    transform: rotate(@deg) translate(@x, @y)
+}
+
+
+.cardHover (@y, @seg){
+    -webkit-transform: translateY(@y);
+    -moz-transform: translateY(@y);
+    -o-transform: translateY(@y);
+    -ms-transform: translateY(@y);
+    transform: translateY(@y);
+    -webkit-transition-duration: @seg;
+    -moz-transition-duration: @seg;
+    -o-transition-duration: @seg;
+    -ms-transition-duration: @seg;
+    transition-duration: @seg;
+}
+
 div.gameboard {
     display: flex;
     flex-flow: row wrap;
@@ -49,9 +77,79 @@ div.gameboard {
     }
 
     & .playcard {
-        border: 2px solid green;
-        height: 208px;
-        max-height: 300px;
+        border-top: 20px solid;
+        border-color: rgba(0,0,0,0.1);
+        position: absolute;
+        width: 100%;
+        height: 35%;
+        background-image: url('../resources/images/bkgd-gris.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+
+        & .cards{
+            width: @cards-area;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-end;
+
+            overflow: hidden;
+
+            & .deck {
+                display: flex;
+                flex-direction: row;
+                .cardPosition(-0deg, 0px, 20px);     
+            }
+
+            & .card {
+                margin: @reset;
+                padding: @reset;
+                width: @card-width;
+                margin-right: @margin-adjustment;
+            }
+
+            & .card:hover{
+                .cardHover(-30px, 600ms);
+                z-index: 100;
+            }
+
+            & .card-1{
+                .cardPosition(-15deg, 25px, 45px);    
+            }
+
+            & .card-2{   
+                .cardPosition(-10deg, 20px, 20px);           
+            }
+
+            & .card-3{
+                .cardPosition(-5deg, 10px, 5px);             
+            }
+
+            & .card-5{
+                .cardPosition(5deg, -10px, 5px);      
+            }
+
+            & .card-6{   
+                .cardPosition(10deg, -20px, 20px);          
+            }
+
+            & .card-7{
+                .cardPosition(15deg, -25px, 45px);                 
+            }
+
+            & .card img{
+               width: @card-width;
+            }
+        }
+
+        & .actions{
+            width: @actions-area;
+        }
+
     }
 
     & .table {

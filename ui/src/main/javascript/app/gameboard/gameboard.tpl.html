@@ -9,16 +9,24 @@
             </figcaption>
         </figure>
     </div>
-    <div class="table">
 
-    </div>
-    <aside class="neighbor-right">
+        <div class="table">
 
-    </aside>
-    <aside class="neighbor-left">
-    </aside>
+        </div>
+        <aside class="neighbor-right">
+
+        </aside>
+        <aside class="neighbor-left">
+        </aside>
     <div class="playcard">
-
+        <div class="cards">
+            <div class="deck">
+                <figure class="card-{{card.position}} card" ng-repeat="card in $ctrl.cards" class="card"><img src="../resources/images/cards/{{card.card}}.jpg" alt=""></figure>
+            </div>
+        </div>
+        <div class="actions">
+            
+        </div>
     </div>
 
-</div>
+</div>   
