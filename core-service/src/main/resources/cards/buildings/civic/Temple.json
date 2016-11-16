@@ -1,0 +1,37 @@
+{
+    "name": "Temple",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                },
+                {
+                    "type": "LUMBER",
+                    "quantity": 1
+                },
+                {
+                    "type": "BRICK",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "ALTAR"
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "VICTORY",
+            "data": {
+                "points": 3
+            }
+        }
+    ]
+}

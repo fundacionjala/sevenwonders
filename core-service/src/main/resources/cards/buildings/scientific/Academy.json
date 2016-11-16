@@ -1,0 +1,29 @@
+{
+    "name": "Academy",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 3
+                },
+                {
+                    "type": "GLASS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ], 
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "COMPASS"
+            }
+        }
+    ]
+}

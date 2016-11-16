@@ -10,7 +10,10 @@ import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
 import org.fundacionjala.sevenwonders.core.effect.Effect;
 import org.fundacionjala.sevenwonders.core.effect.VictoryPointEffect;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import org.junit.Test;
+import static org.mockito.Mockito.mock;
 
 /**
  *
@@ -21,7 +24,8 @@ public class WonderTest {
     private Wonder wonder;
     
     @Test
-    public void testGetBuildingsStages() {
+    public void testGetSidesWonder() {
+
         Effect effect = new VictoryPointEffect(4, CalculatorType.WONDER);
         List<Effect> effects = new ArrayList<>();
         effects.add(effect);
@@ -33,24 +37,28 @@ public class WonderTest {
         stage3.setBuildState(false);
         Stage stage4 = new Stage(new ArrayList<Requirement>(), effects);
         stage4.setBuildState(true);
-        List<Stage> stages = new ArrayList();
-        stages.add(stage1);
-        stages.add(stage2);
-        stages.add(stage3);
-        stages.add(stage4);
+        List<Stage> stagesSideA = new ArrayList();
+        stagesSideA.add(stage1);
+        stagesSideA.add(stage2);
+        List<Stage> stagesSideB = new ArrayList<>();
+
+        Side sideA = new Side("A", effect, stagesSideA);
+        Side sideB = new Side("B", effect, stagesSideB);
+        wonder = new Wonder("Babylon", sideA, sideB);
+
+        Side actualA = new Side("A", effect, stagesSideA);
         
-        wonder = new Wonder(stages);
-        
-        List<Stage> result = wonder.getBuildingsStages();
-        
-        assertEquals(2, result.size());
-        assertEquals(stage1, result.get(0));
-        assertEquals(stage4, result.get(1));
+        assertEquals(sideA.getNameSide(), actualA.getNameSide());
+        assertNotEquals(sideB.getNameSide(), actualA.getNameSide());
     }
     
     @Test(expected = NullPointerException.class)
-    public void testIfListStageIsNull() {
-        wonder = new Wonder("");
-        List<Stage> result = wonder.getBuildingsStages();
+    public void testIfSadesIsNull() {
+        Effect effect = mock(Effect.class);
+        List<Stage> stages =mock(List.class);
+        Side sideB = new Side("B", effect, stages);
+        wonder = new Wonder("A",null, sideB);
+
+        wonder.getSideA();
     }
 }

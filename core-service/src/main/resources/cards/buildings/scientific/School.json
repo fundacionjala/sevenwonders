@@ -1,0 +1,29 @@
+{
+    "name": "School",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LODGE",
+                    "quantity": 1
+                },
+                {
+                    "type": "PAPYRUS",
+                    "quantity": 1
+                }
+            ]
+        }
+    ], 
+    "age": 2,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SCIENCE",
+            "data": {
+                "type": "TABLE"
+            }
+        }
+    ]
+}

@@ -1,0 +1,34 @@
+{
+    "name": "MagistratesGuild",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "LUMBER",
+                    "quantity": 3
+                },
+                {
+                    "type": "STONE",
+                    "quantity": 1
+                },
+                {
+                    "type": "TEXTILE ",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 3,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "CIVICVICTORY",
+            "data": {
+                "ammount": 1,
+                "direction": "BOTH"
+            }
+        }
+    ]
+}

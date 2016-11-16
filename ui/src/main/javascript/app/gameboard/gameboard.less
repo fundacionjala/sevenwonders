@@ -1,5 +1,8 @@
 @import "../style/global.less";
 
+@height_neighbor:380px;
+@width_neighbor:2%;
+
 div.gameboard {
     display: flex;
     flex-flow: row wrap;
@@ -141,13 +144,13 @@ div.gameboard {
     }
 
     & .neighbor-right {
-        border: 2px solid pink;
-        height: 320px;
+        height: @height_neighbor;
+        width: @width_neighbor;
     }
 
     & .neighbor-left {
-        border: 2px solid pink;
-        height: 320px;
+        height: @height_neighbor;
+        width: @width_neighbor;
     }
 
     @media all and (min-width:600px) {

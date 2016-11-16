@@ -1,0 +1,33 @@
+{
+    "name": "Circus",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "STONE",
+                    "quantity": 3
+                },
+                {
+                    "type": "ORE",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "type": "BUILDING",
+            "data": "TRAININGGROUND"
+        }
+    ],
+    "age": 3,
+    "playersNeeded": 4,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "WAR",
+            "data": {
+                "points": 3
+            }
+        }
+    ]
+}

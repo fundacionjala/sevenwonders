@@ -1,0 +1,26 @@
+{
+    "name": "Brickyard",
+    "requierements": [
+        {
+            "type": "RESOURCE",
+            "data": [
+                {
+                    "type": "COIN",
+                    "quantity": 1
+                }
+            ]
+        }
+    ],
+    "age": 1,
+    "playersNeeded": 4,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "PRODUCTION",
+            "data": {
+                "type": "BRICK",
+                "quantity": 2
+            }
+        }
+    ]
+}

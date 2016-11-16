@@ -1,0 +1,24 @@
+{
+    "name": "Bazar",
+    "requierements": [
+        {
+            "type": "NONE"
+        }
+    ],
+    "age": 2,
+    "playersNeeded": 7,
+    "quantity": 1,
+    "effects": [
+        {
+            "type": "SRESOURCECOIN",
+            "data": {
+                "ammount": 2,
+                "sides": [
+                    "LEFT",
+                    "RIGHT",
+                    "SELF"
+                ]
+            }
+        }
+    ]
+}

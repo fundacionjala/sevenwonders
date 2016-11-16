@@ -16,6 +16,7 @@ angular.
                     return Game.getList();
                 },
                 create: function (gameSetting) {
+                    if(gameSetting === undefined) throw 'gameSetting is not defined!!.';
                     return $q(function (resolve, reject) {
                         var player = new UserModel(Auth.getLoggedUser());
                         Restangular.all('games').post({
@@ -33,6 +34,7 @@ angular.
                     });
                 },
                 join: function (game) {
+                    if(game === undefined) throw 'game is not defined!!.';
                     var player = new UserModel(Auth.getLoggedUser());
                     var gameModel = new GameModel(game);
                     var defer = $q.defer();
