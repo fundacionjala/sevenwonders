@@ -13,15 +13,20 @@ public class Side {
 
     private String nameSide;
     private Effect effect;
-    private List<Stage> stages;
+    private List<StageType> stages;
 
-    public Side(String nameSide, Effect effect, List<Stage> stages) {
+    public Side(String nameSide, Effect effect, List<StageType> stages) {
         Preconditions.checkNotNull(nameSide, "The nameSide is null");
         Preconditions.checkNotNull(effect, "The effect is null");
         Preconditions.checkNotNull(stages, "The stages is null");
         this.nameSide = nameSide;
         this.effect = effect;
         this.stages = stages;
+    }
+
+    public Side(List<StageType> stages, Effect effect) {
+        this.stages = stages;
+        this.effect = effect;
     }
 
     public String getNameSide() {
@@ -32,16 +37,8 @@ public class Side {
         return effect;
     }
 
-    public List<Stage> getStages() {
+    public List<StageType> getStages() {
         return stages;
     }
 
-    /**
-     * filter stages constructed
-     * @return List of stages contructed
-     */
-    public List<Stage> getBuildingsStages() {
-        return stages.stream().
-                filter(s -> s.isBuilt()).collect(Collectors.toList());
-    }
 }
