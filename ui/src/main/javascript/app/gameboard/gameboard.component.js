@@ -43,7 +43,6 @@ angular.
                 var locationOfUser = function () {
                     for (var i in self.players) {
                         if (self.players[i].id == currentUser.id) {
-                            console.log(i);
                             return i;
                         }
                     }

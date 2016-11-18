@@ -2,7 +2,7 @@
 	<section class="resources-container">
 		<figure class="resource-type" ng-repeat="resource in side.city.resources">
 			<figcaption class="count">
-				<img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+				<img ng-src="resources/images/icons/{{resource.name}}.png">{{resource.count}}
 			</figcaption>
 		</figure>
 	</section>
@@ -27,7 +27,7 @@
 	<section class="effects-container">
 		<figure class="effect-type" ng-repeat="resource in side.city.effects">
 			<figcaption class="count">
-				<img src="{{'resources/images/effect/'+ resource.name + '.png'}}">
+				<img ng-src="resources/images/effect/{{resource.name}}.png">
 			</figcaption>
 		</figure>
 	</section>
