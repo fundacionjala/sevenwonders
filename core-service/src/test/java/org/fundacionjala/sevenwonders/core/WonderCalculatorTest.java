@@ -37,8 +37,6 @@ public class WonderCalculatorTest {
         effects.add(effect);
         storagePoints = new StoragePoint();
         List<StageType> stageList = mock(List.class);
-        Side sideA = new Side(stageList, effect);
-        Side sideB = new Side(stageList, effect);
         city = new City(mock(Wonder.class), storagePoints, new Storage());
         cardManager = new CardManager(city);
         requirements = new ArrayList<>();

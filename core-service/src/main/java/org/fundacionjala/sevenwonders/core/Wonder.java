@@ -24,7 +24,7 @@ public class Wonder {
     public Wonder(String name) {
         Preconditions.checkNotNull(name, "The name is null");
         this.name = name;
-        sides = new HashMap<String, Side>();
+        sides = new HashMap<>();
     }
 
     public Side getSide(String key){

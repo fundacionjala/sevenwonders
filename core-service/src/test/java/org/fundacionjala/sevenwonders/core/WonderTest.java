@@ -24,7 +24,6 @@ import static org.mockito.Mockito.mockingDetails;
  * @author alexander castro
  */
 public class WonderTest {
-    
     private Wonder wonder;
 
     @Test
@@ -49,7 +48,7 @@ public class WonderTest {
         Effect effect = mock(Effect.class);
         List<StageType> stages =mock(List.class);
         Side sideA = new Side(stages, effect);
-        
+
         wonder.setSide("a", sideA);
         wonder.setSide("b", null);
     }
