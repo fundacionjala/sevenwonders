@@ -4,9 +4,8 @@
  */
 package org.fundacionjala.sevenwonders.core;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
@@ -37,9 +36,9 @@ public class WonderCalculatorTest {
         effects = new ArrayList<>();
         effects.add(effect);
         storagePoints = new StoragePoint();
-        List<Stage> stageList = mock(List.class);
-        Side sideA = new Side("A", effect, stageList);
-        Side sideB = new Side("B", effect, stageList);
+        List<StageType> stageList = mock(List.class);
+        Side sideA = new Side(stageList, effect);
+        Side sideB = new Side(stageList, effect);
         city = new City(mock(Wonder.class), storagePoints, new Storage());
         cardManager = new CardManager(city);
         requirements = new ArrayList<>();
@@ -72,23 +71,6 @@ public class WonderCalculatorTest {
         assertEquals(expectedPoints,
                 city.getStoragePoint().getPoint(CalculatorType.WONDER));
     }
-
-//    @Test
-//    public void testCalculatorIfObtainStagesFromWonder() {
-//        List<Stage> stages = new ArrayList();
-//        stages.add(stage);
-//        stages.add(stage);
-//        stages.add(stage);
-//        Effect effect = mock(Effect.class);
-//        Side sideA = new Side("A", effect, stages);
-//        Side sideB = new Side("B", effect, stages);
-//        Wonder wonder = new Wonder("Babylon", sideA, sideB);
-//
-//        cardManager.calculateCards(new ArrayList<>(wonder.getSideA().getBuildingsStages()),
-//                CalculatorType.WONDER);
-//
-//        assertEquals(12, city.getStoragePoint().getPoint(CalculatorType.WONDER));
-//    }
 
     @Test
     public void testIfTheStageNotHaveVictoryPoint() {

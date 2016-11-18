@@ -58,4 +58,14 @@ public class City {
     public Storage getStorage() {
         return storage;
     }
+
+    public void setSide(String side){
+        selectedSide = side;
+    }
+
+
+    public String getSelectedSide() {
+        return selectedSide;
+    }
+
 }
