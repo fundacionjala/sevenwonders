@@ -4,8 +4,8 @@ angular.
     module('sevenWonder.gameboard').
     component('gameboard', {
         templateUrl: 'gameboard/gameboard.tpl.html',
-        controller: ['GameBoard',
-            function GameBoardController(GameBoard){
+        controller: ['GameBoard', 'Auth',
+            function GameBoardController(GameBoard, Auth){
                 var self = this;
                 var currentUser = Auth.getLoggedUser();
                 self.resources = [];
@@ -24,7 +24,7 @@ angular.
                     var cardsFinal = [];
                     var isPair = cards.length % 2 == 0 
                     var adjustment = isPair ? cards.length + 1 : cards.length;
-                    var pos = Math.abs(Math.floor(-(maxCards/adjustment)));
+                    var pos = Math.ceil(maxCards/adjustment);
 
                     for(var i = 0; i< cards.length; i++){
                         var cardWithPos = {
