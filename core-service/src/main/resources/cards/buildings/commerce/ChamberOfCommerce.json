@@ -17,7 +17,7 @@
     ],
     "age": 3,
     "playersNeeded": 4,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "SRESOURCECOIN",

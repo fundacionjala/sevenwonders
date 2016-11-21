@@ -21,7 +21,7 @@
     ], 
     "age": 2,
     "playersNeeded": 6,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "SCIENCE",
