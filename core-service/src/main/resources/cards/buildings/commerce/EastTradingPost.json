@@ -7,7 +7,7 @@
     ],
     "age": 1,
     "playersNeeded": 7,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "DISCOUNT",
@@ -16,7 +16,7 @@
                 "resources": [
                     "BRICK",
                     "STONE",
-                    "LUMBER",
+                    "WOOD",
                     "ORE"
                 ]
             }
