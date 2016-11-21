@@ -36,5 +36,6 @@ angular.module('sevenWonder')
         baseUrl: 'ws://localhost/',
         gameUrl: 'ws://localhost:9295/',
         chooseWonderUrl: 'ws://localhost:9298/',
-        lobbyUrl:'ws://localhost:9291/'
+        lobbyUrl:'ws://localhost:9291/',
+        gameReady: 'ws://localhost:9090/'
     });

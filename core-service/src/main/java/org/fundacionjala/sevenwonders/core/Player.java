@@ -63,4 +63,10 @@ public class Player {
     public City getCity() {
         return city;
     }
+
+
+    public String getName() {
+        return name;
+    }
+
 }

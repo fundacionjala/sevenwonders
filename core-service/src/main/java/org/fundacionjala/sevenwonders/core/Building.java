@@ -15,15 +15,13 @@ public class Building extends Card {
 
     private int playersNeeded;
     private int age;
-    private String name;
     private BuildingType buildingType;
 
     public Building(List<Requirement> requirements, List<Effect> effects, int playersNeeded,
             int age, String name, BuildingType buildingType) {
-        super(requirements, effects);
+        super(requirements, effects, name);
         this.playersNeeded = playersNeeded;
         this.age = age;
-        this.name = name;
         this.buildingType = buildingType;
     }
 
@@ -33,10 +31,6 @@ public class Building extends Card {
 
     public int getAge() {
         return age;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public BuildingType getBuildingType() {

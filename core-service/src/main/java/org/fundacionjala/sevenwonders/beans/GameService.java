@@ -6,11 +6,13 @@ package org.fundacionjala.sevenwonders.beans;
 
 import com.google.common.base.Preconditions;
 import org.fundacionjala.sevenwonders.core.Game;
+import org.fundacionjala.sevenwonders.core.rest.CardModel;
+import org.fundacionjala.sevenwonders.core.rest.DeckModel;
+import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
+import org.fundacionjala.sevenwonders.core.rest.PrincipalGameModel;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Has the basic functionality that permit to rest service access and generate
@@ -42,6 +44,41 @@ public class GameService {
         Preconditions.checkNotNull(game);
         games.put(autoIncrementId, game);
         autoIncrementId++;
+    }
+
+    public PrincipalGameModel getLastCreated(){
+        int id = autoIncrementId - 1;
+        Game game = games.get(id);
+        return convertToGameModel(game, id);
+    }
+
+    public List<PlayerModel> getPlayers(int id){
+        Game game = games.get(id);
+        return convertToGameModel(game, id).getPlayers();
+    }
+
+    private PrincipalGameModel convertToGameModel(Game game, int id){
+        List<PlayerModel> players = new ArrayList<>();
+
+        PrincipalGameModel gameModel = new PrincipalGameModel();
+        gameModel.setId(id);
+        game.getPlayers().forEach(player -> {
+            PlayerModel playerModel = new PlayerModel();
+            List<CardModel> cards = new ArrayList<CardModel>();
+            player.getDeck().getCards().stream().forEach( card -> {
+                CardModel cardModel = new CardModel();
+                cardModel.setName(card.getName());
+                cards.add(cardModel);
+            });
+            DeckModel deckModel = new DeckModel();
+            deckModel.setCards(cards);
+            playerModel.setDeck(deckModel);
+            playerModel.setUserName(player.getName());
+            players.add(playerModel);
+        });
+
+        gameModel.setPlayers(players);
+        return gameModel;
     }
 
     /**
