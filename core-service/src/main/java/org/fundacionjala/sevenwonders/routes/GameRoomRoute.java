@@ -40,6 +40,9 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .post("{id}/players").description("Add Player to lobby game").type(PlayerModel.class)
                 .to("bean:gameRoomService?method=addPlayer(${header.id}, ${body})")
 
+                .post("test").description("Add Player to lobby game")
+                .to("bean:gameRoomService?method=addPlayer1(${body})")
+
                 .get("{id}/players").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")
 

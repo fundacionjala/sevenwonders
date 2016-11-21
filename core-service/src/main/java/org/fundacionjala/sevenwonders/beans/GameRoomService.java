@@ -83,7 +83,9 @@ public class GameRoomService {
             room.setPlayers(entry.getValue().getPlayers());
             room.setChannel("game-" + entry.getKey());
             room.setId(entry.getKey());
-            currentGameRoomModels.add(room);
+            if (!entry.getValue().isRun()) {
+                currentGameRoomModels.add(room);
+            }
         });
 
         return currentGameRoomModels;
@@ -168,5 +170,9 @@ public class GameRoomService {
      */
     public boolean isCompletedPlayers(int id){
         return gameRooms.get(id).getMaxPlayers() == gameRooms.get(id).getPlayers().size();
+    }
+
+    public void updateGameRoom(int id){
+        gameRooms.get(id).setRun(true);
     }
 }

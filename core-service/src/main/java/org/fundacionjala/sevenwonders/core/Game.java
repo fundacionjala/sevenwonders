@@ -15,6 +15,8 @@ public class Game {
 
     private final List<Age> ages;
     private final List<Player> players;
+    private List<ChooseCard>chooseCards;
+    private int contChooseCard;
 
     /**
      * Initialize a new instance of {@link Game}, assigned a {@link Age}.
@@ -44,4 +46,18 @@ public class Game {
     public List<Player> getPlayers() {
         return players;
     }
+
+    public int getContChooseCard() {
+        return contChooseCard;
+    }
+
+    public void setContChooseCard(int contChooseCard) {
+        this.contChooseCard = contChooseCard;
+    }
+
+    public void addChooseCard(ChooseCard chooseCard){
+        contChooseCard++;
+        chooseCards.add(chooseCard);
+    }
+
 }
