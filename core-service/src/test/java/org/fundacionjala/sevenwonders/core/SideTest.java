@@ -5,9 +5,8 @@
 
 package org.fundacionjala.sevenwonders.core;
 
-import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
 import org.fundacionjala.sevenwonders.core.effect.Effect;
-import org.fundacionjala.sevenwonders.core.effect.VictoryPointEffect;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -20,38 +19,44 @@ import static org.mockito.Mockito.mock;
  * Created Luis Gumucio.
  */
 public class SideTest {
+    private List<Effect> effects;
+    private List<Requirement> requirements;
+    private List<StageType> stageTypes;
+    private Effect effect;
+    private StageType stageType;
+    private Side side;
+
+    @Before
+    public void setUp() {
+        effects = mock(List.class);
+        requirements = mock(List.class);
+        effect = mock(Effect.class);
+        stageType = new StageType(requirements, effects);
+        stageTypes = new ArrayList<>();
+    }
 
     @Test
-    public void testGetBuildingsStagesOfSide() {
+    public void testContainsStageType(){
+        stageTypes.add(stageType);
+        side = new Side(stageTypes, effect);
 
-        Effect effect = new VictoryPointEffect(4, CalculatorType.WONDER);
-        List<Effect> effects = new ArrayList<>();
-        effects.add(effect);
-        Stage stage1 = new Stage(new ArrayList<Requirement>(), effects);
-        stage1.setBuildState(true);
-        Stage stage2 = new Stage(new ArrayList<Requirement>(), effects);
-        stage2.setBuildState(false);
-        Stage stage3 = new Stage(new ArrayList<Requirement>(), effects);
-        stage3.setBuildState(false);
-        Stage stage4 = new Stage(new ArrayList<Requirement>(), effects);
-        stage4.setBuildState(true);
-        List<Stage> stagesSideA = new ArrayList();
-        stagesSideA.add(stage1);
-        stagesSideA.add(stage4);
-
-        Side sideA = new Side("A", effect, stagesSideA);
-
-        List<Stage> result = sideA.getBuildingsStages();
-
-        assertEquals(2, result.size());
-        assertEquals(stage1, result.get(0));
-        assertEquals(stage4, result.get(1));
+        assertEquals(1, side.getStages().size());
     }
 
     @Test(expected = NullPointerException.class)
-    public void testIfSadeListStageIsNull() {
-        Effect effect = mock(Effect.class);
-        Side sideA = new Side("A", effect, null);
-        List<Stage> result = sideA.getBuildingsStages();
+    public void testIfStagesIsNull(){
+        stageTypes = null;
+        side = new Side(stageTypes, effect);
+
+        side.getStages();
     }
+
+    @Test(expected = NullPointerException.class)
+    public void testIfEffectIsNull(){
+        effect = null;
+        side = new Side(stageTypes, effect);
+
+        side.getStages();
+    }
+
 }

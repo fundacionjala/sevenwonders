@@ -1,157 +1,164 @@
 {
-      "name": "Ephesos",
-      "sides": [
+  "name": "Ephesos",
+  "sides": [
+    {
+      "name": "a",
+      "effect": [
         {
-          "a": {
-            "effect": {
-              "type": "PRODUCTION",
-              "data": {
-                "type": "PAPYRUS",
-                "quantity": 1
-              }
-            },
-            "stages": [
-              {
-                "requierements": [
-                  {
-                    "type": "STONE",
-                    "quantity": 2
-                  }
-                ],
-                "effects": [
-                  {
-                    "type": "VICTORY",
-                    "data": {
-                      "points": 3
-                    }
-                  }
-                ]
-              },
-              {
-                "requierements": [
-                  {
-                    "type": "LUMBER",
-                    "quantity": 2
-                  }
-                ],
-                "effects": [
-                  {
-                    "type": "RESOURCE",
-                    "data": {
-                      "type": "COIN",
-                      "quantity": 9
-                    }
-                  }
-                ]
-              },
-              {
-                "requierements": [
-                  {
-                    "type": "PAPYRUS",
-                    "quantity": 2
-                  }
-                ],
-                "effects": [
-                  {
-                    "type": "VICTORY",
-                    "data": {
-                      "points": 7
-                    }
-                  }
-                ]
-              }
-            ]
+          "type": "PRODUCTION",
+          "data": {
+            "type": "PAPYRUS",
+            "quantity": 1
           }
+        }
+      ],
+      "stages": [
+        {
+          "requierements": [
+            {
+              "type": "STONE",
+              "quantity": 2
+            }
+          ],
+          "effects": [
+            {
+              "type": "VICTORY",
+              "data": {
+                "points": 3,
+                "type": "WONDER"
+              }
+            }
+          ]
         },
         {
-          "b": {
-            "effect": {
-              "type": "PRODUCTION",
+          "requierements": [
+            {
+              "type": "WOOD",
+              "quantity": 2
+            }
+          ],
+          "effects": [
+            {
+              "type": "RESOURCE",
               "data": {
-                "type": "PAPYRUS",
-                "quantity": 1
+                "type": "COIN",
+                "quantity": 9
+              }
+            }
+          ]
+        },
+        {
+          "requierements": [
+            {
+              "type": "PAPYRUS",
+              "quantity": 2
+            }
+          ],
+          "effects": [
+            {
+              "type": "VICTORY",
+              "data": {
+                "points": 7,
+                "type": "WONDER"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "b",
+      "effect": [
+        {
+          "type": "PRODUCTION",
+          "data": {
+            "type": "PAPYRUS",
+            "quantity": 1
+          }
+        }
+      ],
+      "stages": [
+        {
+          "requierements": [
+            {
+              "type": "STONE",
+              "quantity": 2
+            }
+          ],
+          "effects": [
+            {
+              "type": "VICTORY",
+              "data": {
+                "points": 2,
+                "type": "WONDER"
               }
             },
-            "stages": [
-              {
-                "requierements": [
-                  {
-                    "type": "STONE",
-                    "quantity": 2
-                  }
-                ],
-                "effects": [
-                  {
-                    "type": "VICTORY",
-                    "data": {
-                      "points": 2
-                    }
-                  },
-                  {
-                    "type": "RESOURCE",
-                    "data": {
-                      "type": "COIN",
-                      "quantity": 4
-                    }
-                  }
-                ]
-              },
-              {
-                "requierements": [
-                  {
-                    "type": "LUMBER",
-                    "quantity": 2
-                  }
-                ],
-                "effects": [
-                  {
-                    "type": "VICTORY",
-                    "data": {
-                      "points": 3
-                    }
-                  },
-                  {
-                    "type": "RESOURCE",
-                    "data": {
-                      "type": "COIN",
-                      "quantity": 4
-                    }
-                  }
-                ]
-              },
-              {
-                "requierements": [
-                  {
-                    "type": "PAPYRUS",
-                    "quantity": 1
-                  },
-                  {
-                    "type": "TEXTILE",
-                    "quantity": 1
-                  },
-                  {
-                    "type": "GLASS",
-                    "quantity": 1
-                  }
-                ],
-                "effects": [
-                  {
-                    "type": "VICTORY",
-                    "data": {
-                      "points": 5
-                    }
-                  },
-                  {
-                    "type": "RESOURCE",
-                    "data": {
-                      "type": "COIN",
-                      "quantity": 4
-                    }
-                  }
-                ]
+            {
+              "type": "RESOURCE",
+              "data": {
+                "type": "COIN",
+                "quantity": 4
               }
-            ]
-          }
+            }
+          ]
+        },
+        {
+          "requierements": [
+            {
+              "type": "WOOD",
+              "quantity": 2
+            }
+          ],
+          "effects": [
+            {
+              "type": "VICTORY",
+              "data": {
+                "points": 3,
+                "type": "WONDER"
+              }
+            },
+            {
+              "type": "RESOURCE",
+              "data": {
+                "type": "COIN",
+                "quantity": 4
+              }
+            }
+          ]
+        },
+        {
+          "requierements": [
+            {
+              "type": "PAPYRUS",
+              "quantity": 1
+            },
+            {
+              "type": "TEXTILE",
+              "quantity": 1
+            },
+            {
+              "type": "GLASS",
+              "quantity": 1
+            }
+          ],
+          "effects": [
+            {
+              "type": "VICTORY",
+              "data": {
+                "points": 5,
+                "type": "WONDER"
+              }
+            },
+            {
+              "type": "RESOURCE",
+              "data": {
+                "type": "COIN",
+                "quantity": 4
+              }
+            }
+          ]
         }
       ]
     }
+  ]
+}

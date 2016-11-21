@@ -9,7 +9,7 @@
                     "quantity": 2
                 },
                 {
-                    "type": "LUMBER",
+                    "type": "WOOD",
                     "quantity": 1
                 }
             ]
@@ -17,7 +17,7 @@
     ],
     "age": 2,
     "playersNeeded": 7,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "WAR",

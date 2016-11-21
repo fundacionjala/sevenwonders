@@ -5,7 +5,7 @@
             "type": "RESOURCE",
             "data": [
                 {
-                    "type": "LUMBER",
+                    "type": "WOOD",
                     "quantity": 1
                 }
             ]
@@ -13,7 +13,7 @@
     ],
     "age": 1,
     "playersNeeded": 7,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "WAR",

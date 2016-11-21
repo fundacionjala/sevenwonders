@@ -15,7 +15,7 @@ public class CardProvider {
     public List<Card> getDefault() {
         cards = new ArrayList<>();
         for (int i = 0; i < 70; i++) {
-            cards.add(new Building(new ArrayList<Requirement>(), new ArrayList<Effect>(), 2, 1, "Card_" + i, BuildingType.CIVIC));
+            cards.add(new Building(new ArrayList<Requirement>(), new ArrayList<Effect>(), 2, 1, "" + i, BuildingType.CIVIC));
         }
         return cards;
     }
