@@ -13,7 +13,7 @@
     ],
     "age": 1,
     "playersNeeded": 4,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "PRODUCTION",

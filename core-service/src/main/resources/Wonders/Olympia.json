@@ -2,133 +2,138 @@
     "name": "Olympia",
     "sides": [
         {
-            "a": {
-                "effect": {
+            "name": "a",
+            "effect": [
+                {
                     "type": "PRODUCTION",
                     "data": {
-                        "type": "LUMBER",
+                        "type": "WOOD",
                         "quantity": 1
                     }
+                }
+            ],
+            "stages": [
+                {
+                    "requierements": [
+                        {
+                            "type": "WOOD",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 3,
+                                "type": "WONDER"
+                            }
+                        }
+                    ]
                 },
-                "stages": [
-                    {
-                        "requierements": [
-                            {
-                                "type": "LUMBER",
-                                "quantity": 2
+                {
+                    "requierements": [
+                        {
+                            "type": "STONE",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "PLAYANYHANDCARD"
+                        }
+                    ]
+                },
+                {
+                    "requierements": [
+                        {
+                            "type": "ORE",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 7,
+                                "type": "WONDER"
                             }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 3
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "STONE",
-                                "quantity": 2
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "PLAYANYHANDCARD"
-                            }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "ORE",
-                                "quantity": 2
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 7
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
+                        }
+                    ]
+                }
+            ]
         },
         {
-            "b": {
-                "effect": {
+            "name": "b",
+            "effect": [
+                {
                     "type": "PRODUCTION",
                     "data": {
-                        "type": "LUMBER",
+                        "type": "WOOD",
                         "quantity": 1
                     }
+                }
+            ],
+            "stages": [
+                {
+                    "requierements": [
+                        {
+                            "type": "WOOD",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "DISCOUNT",
+                            "data": {
+                                "direction": "BOTH",
+                                "resources": [
+                                    "BRICK",
+                                    "STONE",
+                                    "WOOD",
+                                    "ORE"
+                                ]
+                            }
+                        }
+                    ]
                 },
-                "stages": [
-                    {
-                        "requierements": [
-                            {
-                                "type": "LUMBER",
-                                "quantity": 2
+                {
+                    "requierements": [
+                        {
+                            "type": "STONE",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 5,
+                                "type": "WONDER"
                             }
-                        ],
-                        "effects": [
-                            {
-                                "type": "DISCOUNT",
-                                "data": {
-                                    "direction": "BOTH",
-                                    "resources": [
-                                        "BRICK",
-                                        "STONE",
-                                        "LUMBER",
-                                        "ORE"
-                                    ]
-                                }
+                        }
+                    ]
+                },
+                {
+                    "requierements": [
+                        {
+                            "type": "TEXTILE",
+                            "quantity": 1
+                        },
+                        {
+                            "type": "ORE",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "COPYCARD",
+                            "data": {
+                                "type": "GUILD"
                             }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "STONE",
-                                "quantity": 2
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 5
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "TEXTILE",
-                                "quantity": 1
-                            },
-                            {
-                                "type": "ORE",
-                                "quantity": 2
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "COPYCARD",
-                                "data": {
-                                    "type": "GUILD"
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
