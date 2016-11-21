@@ -6,11 +6,14 @@ package org.fundacionjala.sevenwonders.routes;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
+import org.apache.camel.model.dataformat.JsonLibrary;
+import org.apache.camel.spi.DataFormat;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
+import org.fundacionjala.sevenwonders.core.rest.PrincipalGameModel;
 import org.fundacionjala.sevenwonders.processors.GameProcessor;
 import org.springframework.stereotype.Component;
 
@@ -47,6 +50,7 @@ public class GameRoomRoute extends SpringRouteBuilder {
                 .route()
                 .to("bean:gameRoomService?method=updateSideWonder(${header.id}, ${body})")
                 .to("direct:wonderChosen")
+                .to("direct:isReady")
                 .endRest()
 
                 .get("/{id}").description("Get a game room").type(GameRoom.class)
@@ -63,6 +67,11 @@ public class GameRoomRoute extends SpringRouteBuilder {
 
         from("direct:sendMessage")
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
+
+        from("direct:isReady")
+                .choice()
+                .when(method("gameRoomService", "isGameReady(${header.id})").isEqualTo(true))
+                .to("websocket://localhost:9090/gameReady?sendToAll=true");
 
     }
 }
