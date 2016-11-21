@@ -26,7 +26,6 @@ public class GameRoom {
     private int maxPlayers;
     private String name;
     private boolean isRun;
-    private Map<Player, Card> chooseCards;
 
     public GameRoom(String name, int maxPlayers) {
         wonderProvider = new WonderProvider();
@@ -34,7 +33,6 @@ public class GameRoom {
         players = new ArrayList<>();
         this.maxPlayers = maxPlayers;
         this.name = name;
-        chooseCards = new HashMap<>();
     }
 
     public int getMaxPlayers() {
@@ -109,9 +107,5 @@ public class GameRoom {
 
     public void setRun(boolean run) {
         isRun = run;
-    }
-
-    public void setChooseCards(Player player, Card card){
-        chooseCards.put(player, card);
     }
 }
