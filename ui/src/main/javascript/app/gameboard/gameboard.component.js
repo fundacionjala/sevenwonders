@@ -58,7 +58,7 @@ angular.
                      return new Array(requirement.quantity);
                 };
 
-                self.addClassCss = function(requirements){
+                self.CountQuantityOfRequirements = function(requirements){
                 var result = 0;
                     requirements.forEach(function(element){
                         result += element.quantity;
