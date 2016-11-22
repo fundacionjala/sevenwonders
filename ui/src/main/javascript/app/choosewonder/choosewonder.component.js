@@ -13,6 +13,7 @@ angular.
                 this.buttonDisable = true;
                 this.states = new Map();
                 this.playerId = Auth.getLoggedUser().id;
+                this.end = false;
           
                 var self = this;
                 ChooseWonder.getWonderPlayers().then(function (result) {
@@ -25,6 +26,8 @@ angular.
                     self.size = self.wonders.length;
                     self.clickPlayer(self.owner);
                 });
+
+                ChooseWonder.ConnectWsReady();
 
                 this.rotate = function (data) {
                     if (data == 'next') {
@@ -66,7 +69,9 @@ angular.
                 };
 
                 this.isOwner = function(){
-                    self.buttonDisable = self.owner.userName !== self.wonders[1].userName
+                    if(!self.end){
+                        self.buttonDisable = self.owner.userName !== self.wonders[1].userName
+                    }
                 }
 
                 this.sendSelection = function (){

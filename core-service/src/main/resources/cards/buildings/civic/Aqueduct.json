@@ -17,12 +17,13 @@
     ],
     "age": 2,
     "playersNeeded": 7,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "VICTORY",
             "data": {
-                "points": 5
+                "points": 5,
+                "type": "CIVIC"
             }
         }
     ]

@@ -5,11 +5,12 @@ angular.
     component('gameboard', {
         templateUrl: 'gameboard/gameboard.tpl.html',
         controller: ['GameBoard', 'Auth',
-            function GameBoardController(GameBoard, Auth) {
+            function GameBoardController(GameBoard, Auth){
                 var self = this;
                 var currentUser = Auth.getLoggedUser();
                 self.resources = [];
                 self.storage = [];
+                self.players = [];
                 self.nearestNeighbors = [];
                 self.wonder = {};
 
@@ -17,6 +18,29 @@ angular.
                     result.forEach(function (element) {
                         self.storage.push(element);
                     }, this);
+                });
+
+                this.calculatePosition = function (cards){
+                    var maxCards = 7;
+                    var cardsFinal = [];
+                    var isPair = cards.length % 2 == 0
+                    var adjustment = isPair ? cards.length + 1 : cards.length;
+                    var pos = Math.ceil(maxCards/adjustment);
+
+                    for(var i = 0; i< cards.length; i++){
+                        var cardWithPos = {
+                            card : cards[i],
+                            position : pos
+                        }
+                        cardsFinal.push(cardWithPos);
+                        pos = isPair && pos == 3 ? pos + 2 : pos + 1;
+                    }
+
+                    return cardsFinal;
+                }
+
+                GameBoard.getPlayerCards().then(function(result){
+                    self.cards = self.calculatePosition(result);
                 });
 
                 GameBoard.getGamePlayers().then(function (result) {
@@ -48,6 +72,7 @@ angular.
                 var locationOfUser = function () {
                     for (var i in self.players) {
                         if (self.players[i].id == currentUser.id) {
+                            console.log(i);
                             return i;
                         }
                     }

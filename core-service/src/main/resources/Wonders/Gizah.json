@@ -2,146 +2,155 @@
     "name": "Gizah",
     "sides": [
         {
-            "a": {
-                "effect": {
+            "name": "a",
+            "effect": [
+                {
                     "type": "PRODUCTION",
                     "data": {
                         "type": "STONE",
                         "quantity": 1
                     }
+                }
+            ],
+            "stages": [
+                {
+                    "requierements": [
+                        {
+                            "type": "STONE",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 3,
+                                "type": "WONDER"
+                            }
+                        }
+                    ]
                 },
-                "stages": [
-                    {
-                        "requierements": [
-                            {
-                                "type": "STONE",
-                                "quantity": 2
+                {
+                    "requierements": [
+                        {
+                            "type": "WOOD",
+                            "quantity": 3
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 5,
+                                "type": "WONDER"
                             }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 3
-                                }
+                        }
+                    ]
+                },
+                {
+                    "requierements": [
+                        {
+                            "type": "STONE",
+                            "quantity": 4
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 7,
+                                "type": "WONDER"
                             }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "LUMBER",
-                                "quantity": 3
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 5
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "STONE",
-                                "quantity": 4
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 7
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
+                        }
+                    ]
+                }
+            ]
         },
         {
-            "b": {
-                "effect": {
+            "name": "b",
+            "effect": [
+                {
                     "type": "PRODUCTION",
                     "data": {
                         "type": "STONE",
                         "quantity": 1
                     }
+                }
+            ],
+            "stages": [
+                {
+                    "requierements": [
+                        {
+                            "type": "WOOD",
+                            "quantity": 2
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 3,
+                                "type": "WONDER"
+                            }
+                        }
+                    ]
                 },
-                "stages": [
-                    {
-                        "requierements": [
-                            {
-                                "type": "LUMBER",
-                                "quantity": 2
+                {
+                    "requierements": [
+                        {
+                            "type": "STONE",
+                            "quantity": 3
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 5,
+                                "type": "WONDER"
                             }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 3
-                                }
+                        }
+                    ]
+                },
+                {
+                    "requierements": [
+                        {
+                            "type": "BRICK",
+                            "quantity": 3
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 5,
+                                "type": "WONDER"
                             }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "STONE",
-                                "quantity": 3
+                        }
+                    ]
+                },
+                {
+                    "requierements": [
+                        {
+                            "type": "STONE",
+                            "quantity": 4
+                        },
+                        {
+                            "type": "PAPYRUS",
+                            "quantity": 1
+                        }
+                    ],
+                    "effects": [
+                        {
+                            "type": "VICTORY",
+                            "data": {
+                                "points": 7,
+                                "type": "WONDER"
                             }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 5
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "BRICK",
-                                "quantity": 3
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 5
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "requierements": [
-                            {
-                                "type": "STONE",
-                                "quantity": 4
-                            },
-                            {
-                                "type": "PAPYRUS",
-                                "quantity": 1
-                            }
-                        ],
-                        "effects": [
-                            {
-                                "type": "VICTORY",
-                                "data": {
-                                    "points": 7
-                                }
-                            }
-                        ]
-                    }
-                ]
-            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

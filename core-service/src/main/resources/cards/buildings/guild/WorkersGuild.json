@@ -17,7 +17,7 @@
                     "quantity": 1
                 },
                 {
-                    "type": "LUMBER",
+                    "type": "WOOD",
                     "quantity": 1
                 }
             ]
@@ -25,7 +25,7 @@
     ],
     "age": 3,   
     "playersNeeded": 3,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "RESOURCEVICTORY",

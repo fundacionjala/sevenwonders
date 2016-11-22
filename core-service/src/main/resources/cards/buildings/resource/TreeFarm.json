@@ -13,12 +13,12 @@
     ],
     "age": 1,
     "playersNeeded": 6,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "CHOOSEONE",
             "data": [
-                "LUMBER",
+                "WOOD",
                 "BRICK"
             ]
         }

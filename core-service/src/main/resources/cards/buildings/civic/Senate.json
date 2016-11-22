@@ -5,7 +5,7 @@
             "type": "RESOURCE",
             "data": [
                 {
-                    "type": "LUMBER",
+                    "type": "WOOD",
                     "quantity": 2
                 },
                 {
@@ -25,12 +25,13 @@
     ],
     "age": 3,
     "playersNeeded": 3,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "VICTORY",
             "data": {
-                "points": 6
+                "points": 6,
+                "type": "CIVIC"
             }
         }
     ]

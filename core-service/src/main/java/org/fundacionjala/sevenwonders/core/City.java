@@ -5,9 +5,11 @@
 package org.fundacionjala.sevenwonders.core;
 
 import com.google.common.base.Preconditions;
+import com.google.common.primitives.Booleans;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Juan Barahona on 22/04/2016.
@@ -15,9 +17,11 @@ import java.util.List;
 public class City {
 
     private Wonder wonder;
+    private String selectedSide;
     private Storage storage;
     private StoragePoint storagePoint;
     private List<Building> buildings;
+    private Map<Stage, Boolean> stageStatus;
 
     public City(Wonder wonder, StoragePoint storagePoint, Storage storage) {
         this.storage = storage;
@@ -54,4 +58,14 @@ public class City {
     public Storage getStorage() {
         return storage;
     }
+
+    public void setSide(String side){
+        selectedSide = side;
+    }
+
+
+    public String getSelectedSide() {
+        return selectedSide;
+    }
+
 }

@@ -7,7 +7,7 @@
     ],
     "age": 1,
     "playersNeeded": 7,
-    "quantity": 1,
+     
     "effects": [
         {
             "type": "RESOURCE",
