@@ -10,8 +10,9 @@ angular.
                 var currentUser = Auth.getLoggedUser();
                 self.resources = [];
                 self.storage = [];
-                self.players = [];
                 self.nearestNeighbors = [];
+                self.wonder = {};
+
                 GameBoard.getStorage().then(function (result) {
                     result.forEach(function (element) {
                         self.storage.push(element);
@@ -23,6 +24,10 @@ angular.
                         self.players.push(element);
                     }, this);
                     self.nearestNeighbors = getNearestNeighbors();
+                });
+
+                GameBoard.getWonder().then(function (result) {
+                     self.wonder = result;
                 });
 
                 var getNearestNeighbors = function () {
@@ -48,6 +53,19 @@ angular.
                     }
                     return -1;
                 };
+
+                self.getRequirements = function(requirement){
+                     return new Array(requirement.quantity);
+                };
+
+                self.addClassCss = function(requirements){
+                var result = 0;
+                    requirements.forEach(function(element){
+                        result += element.quantity;
+                    }, this);
+                    console.log(result);
+                    return result;
+                }
             }
         ]
     });

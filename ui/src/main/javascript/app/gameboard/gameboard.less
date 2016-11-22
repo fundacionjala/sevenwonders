@@ -68,14 +68,17 @@ div.gameboard {
              & .brown {
                   padding:0;
                   list-style-type:none;
-                  width:160px;
-                  height:312px;
+                  width:130px;
+                  height: 180px;
                   display: inline-block;
+                  order:2;
                   & li > a {
                       height:30px;
                       width: 100px;
                       float:left;
                       overflow: hidden;
+                      align-self: flex-end;
+
                        & img{
                         height:150px;
                         width: 100px;
@@ -86,6 +89,11 @@ div.gameboard {
                           height:145px;
                        }
                   }
+             }
+             & label.count-cards {
+                font-weight: bold;
+                font-size: 1.4em;
+                order: 1;
              }
         }
         & .stages {
@@ -112,6 +120,20 @@ div.gameboard {
                         width:100%;
                     }
                 }
+
+                & figcaption.effect-point {
+                       font-weight: bold;
+                       font-size: 1.5em;
+                       position: relative;
+                       top: 15px;
+                     & img.victory-effect {
+                        height: 70px;
+                        width: 70px;
+                        position: absolute;
+                        left: 27px;
+                        top: -15px;
+                     }
+                 }
                 & .sw-requirement {
                     width: 15px;
                     height: 80px;
@@ -120,14 +142,23 @@ div.gameboard {
                     position: absolute;
                     z-index: 10;
                     & figure.sw-resource {
-                        margin: -5px 0 0 -5px;
-                        width: 25px;
-                        height: 25px;
                         & img.image-resource {
                              height: 100%;
                              width: 100%;
                         }
                     }
+                    & .size-items-big {
+                        margin: -5px 0 8px -5px;
+                        width: 25px;
+                        height: 25px;
+                    }
+                    & .size-items-small {
+                        margin: -8px 0 9px -3px;
+                        width: 21px;
+                        height: 21px;
+
+                    }
+
                     & figure.resource-tiny {
                          margin: -5px 0 0 -5px;
                          width: 15px;
