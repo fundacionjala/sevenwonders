@@ -5,5 +5,8 @@ package org.fundacionjala.sevenwonders.core.effect;
  */
 public enum EffectType {
     PRODUCTION,
-    VICTORY
+    VICTORY,
+    CHOOSEONE,
+    PLAYTWOLASTCARDS,
+    SSCIENCE
 }

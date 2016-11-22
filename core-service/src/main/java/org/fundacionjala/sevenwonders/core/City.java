@@ -5,7 +5,6 @@
 package org.fundacionjala.sevenwonders.core;
 
 import com.google.common.base.Preconditions;
-import com.google.common.primitives.Booleans;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +65,17 @@ public class City {
 
     public String getSelectedSide() {
         return selectedSide;
+    }
+
+    public boolean playCard(Card card) {
+        Preconditions.checkNotNull(Card.class, "Card is null");
+        return card.getRequirements().stream()
+                .filter(requirement -> requirement.validate(this))
+                .count() > 0;
+    }
+
+    public void addBuilding(Building building) {
+        buildings.add(building);
     }
 
 }

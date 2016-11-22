@@ -1,12 +1,11 @@
 package org.fundacionjala.sevenwonders.core.factory;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import org.fundacionjala.sevenwonders.core.ResourceType;
 import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
-import org.fundacionjala.sevenwonders.core.effect.Effect;
-import org.fundacionjala.sevenwonders.core.effect.EffectType;
-import org.fundacionjala.sevenwonders.core.effect.ResourceEffect;
-import org.fundacionjala.sevenwonders.core.effect.VictoryPointEffect;
+import org.fundacionjala.sevenwonders.core.effect.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,12 +13,28 @@ import java.util.List;
  */
 public class EffectFactory {
 
-    public Effect getEffect(EffectType type, List<Object> data) {
+    public Effect getEffect(EffectType type, JsonNode dataNode) {
+        ResourceType resourceType;
         switch (type) {
             case PRODUCTION:
-                return new ResourceEffect((ResourceType) data.get(0), (int) data.get(1));
+                resourceType = ResourceType.valueOf(dataNode.path("type").textValue());
+                int quantity = dataNode.path("quantity").intValue();
+                return new ResourceEffect(resourceType, quantity);
             case VICTORY:
-                return new VictoryPointEffect((int) data.get(0), (CalculatorType) data.get(1));
+                int points = dataNode.path("points").intValue();
+                CalculatorType calculatorType = CalculatorType.valueOf(dataNode.path("type").textValue());
+                return new VictoryPointEffect(points, calculatorType);
+            case CHOOSEONE:
+                List<ResourceType> resourceTypes = new ArrayList<>();
+                for (JsonNode current : dataNode) {
+                    resourceType = ResourceType.valueOf(current.textValue());
+                    resourceTypes.add(resourceType);
+                }
+                return new ChooseOneEffect(resourceTypes);
+            case PLAYTWOLASTCARDS:
+                return new PlayTwoLastCardsEffect();
+            case SSCIENCE:
+                return new SScienceEffect();
             default:
                 throw new EnumConstantNotPresentException(EffectType.class, "No supported enum");
         }
