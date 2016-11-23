@@ -88,7 +88,6 @@ angular.
                     requirements.forEach(function(element){
                         result += element.quantity;
                     }, this);
-                    console.log(result);
                     return result;
                 }
             }
