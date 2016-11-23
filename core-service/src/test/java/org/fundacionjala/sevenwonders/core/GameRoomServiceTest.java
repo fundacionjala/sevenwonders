@@ -5,6 +5,7 @@
 package org.fundacionjala.sevenwonders.core;
 
 import org.fundacionjala.sevenwonders.beans.GameRoomService;
+import org.fundacionjala.sevenwonders.beans.GameService;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.junit.Assert;
@@ -195,6 +196,7 @@ public class GameRoomServiceTest {
         GameRoomModel gameRoomModel = new GameRoomModel();
         PlayerModel player = new PlayerModel();
         player.setUserName("Juan");
+        player.setIsReady(true);
 
         gameRoomModel.setMaxPlayers(3);
         gameRoomModel.setOwner(player);
@@ -203,17 +205,20 @@ public class GameRoomServiceTest {
 
         PlayerModel playerOne = new PlayerModel();
         playerOne.setUserName("Dwits");
+        playerOne.setIsReady(true);
 
         gameRoomService.addPlayer(gameRoomModel.getId(), playerOne);
-
+        gameRoomService.setGameService(new GameService());
         Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
 
         PlayerModel playerTwo = new PlayerModel();
         playerTwo.setUserName("Lucero");
+        playerTwo.setIsReady(true);
 
         gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
 
         gameRoomService.startGame(gameRoomModel.getId());
+        gameRoomService.isGameReady(gameRoomModel.getId());
 
         Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
     }
@@ -235,7 +240,7 @@ public class GameRoomServiceTest {
         playerOne.setId(2);
 
         gameRoomService.addPlayer(gameRoomModel.getId(), playerOne);
-
+        gameRoomService.setGameService(new GameService());
         Assert.assertEquals(0, gameRoomService.getGameService().getGames().size());
 
         PlayerModel playerTwo = new PlayerModel();
