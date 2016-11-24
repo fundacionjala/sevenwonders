@@ -10,10 +10,11 @@ angular.
                 var currentUser = Auth.getLoggedUser();
                 self.resources = [];
                 self.storage = [];
-                               
                 self.players = [];
                 self.nearestNeighbors = [];
-                GameBoard.getStorage().then(function (result) {
+                self.wonder = {};
+
+                GameBoard.getStorage().then(function (result){
                     result.forEach(function (element) {
                         self.storage.push(element);
                     }, this);
@@ -22,7 +23,7 @@ angular.
                 this.calculatePosition = function (cards){
                     var maxCards = 7;
                     var cardsFinal = [];
-                    var isPair = cards.length % 2 == 0 
+                    var isPair = cards.length % 2 == 0;
                     var adjustment = isPair ? cards.length + 1 : cards.length;
                     var pos = Math.ceil(maxCards/adjustment);
 
@@ -34,21 +35,22 @@ angular.
                         cardsFinal.push(cardWithPos);
                         pos = isPair && pos == 3 ? pos + 2 : pos + 1;
                     }
-
                     return cardsFinal;
                 }
-
-            
 
                 GameBoard.getPlayerCards().then(function(result){
                     self.cards = self.calculatePosition(result);
                 });
 
-                GameBoard.getGamePlayers().then(function (result) {
+                GameBoard.getGamePlayers().then(function (result){
                     result.forEach(function (element) {
                         self.players.push(element);
                     }, this);
                     self.nearestNeighbors = getNearestNeighbors();
+                });
+
+                GameBoard.getWonder().then(function (result) {
+                     self.wonder = result;
                 });
 
                 var getNearestNeighbors = function () {
@@ -66,6 +68,7 @@ angular.
                     }
                     return { left: neighborLeft, right: neighborRight };
                 };
+
                 var locationOfUser = function () {
                     for (var i in self.players) {
                         if (self.players[i].id == currentUser.id) {
@@ -75,7 +78,18 @@ angular.
                     }
                     return -1;
                 };
-                
+
+                self.getRequirements = function(requirement){
+                     return new Array(requirement.quantity);
+                };
+
+                self.CountQuantityOfRequirements = function(requirements){
+                     var result = 0;
+                     requirements.forEach(function(element) {
+                        result += element.quantity;
+                     }, this);
+                     return result;
+                }
             }
         ]
     });

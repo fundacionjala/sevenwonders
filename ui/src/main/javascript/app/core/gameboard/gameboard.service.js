@@ -29,7 +29,7 @@ angular.
                                             return;
                                         }
                                     });
-                
+
                                     currentPlayer.deck.cards.forEach(function(data){
                                         cards.push(data.name);
                                     })
@@ -38,9 +38,9 @@ angular.
 
                                 }).catch(function () {
                                     defer.reject();
-                                });     
+                                });
                     return defer.promise;
-                 }, 
+                 },
                  getGamePlayers: function () {
                      var defer = $q.defer();
                      Restangular.allUrl('players', 'http://demo9730175.mockable.io/players').getList()
@@ -50,7 +50,17 @@ angular.
                             defer.reject();
                         });
                      return defer.promise;
-                    }
-               }
+                    },
+                getWonder: function () {
+                       var defer = $q.defer();
+                       Restangular.oneUrl('wonder', ' http://demo5549833.mockable.io/player/1/game/1/wonder').get()
+                           .then(function (data) {
+                               defer.resolve(data);
+                           }).catch(function () {
+                               defer.reject();
+                           });
+                       return defer.promise;
+                }
+            }
         }
     ]);

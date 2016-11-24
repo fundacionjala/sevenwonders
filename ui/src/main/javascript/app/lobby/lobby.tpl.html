@@ -27,17 +27,17 @@
         <div class="scroll-table" ng-if="$ctrl.games.length != 0">
             <table class="sw-table" >
                 <tr class="background">
-                    <th class= "column-name">Name</th>
-                    <th class= "column-owner">Owner</th>
-                    <th class= "column-player">Max-Players</th>
-                    <th class= "column-join"></th>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th>Max-Players</th>
+                    <th></th>
                 </tr>
             <tbody>
                 <tr ng-repeat="game in $ctrl.games">
-                    <td class= "column-name">{{game.roomName}}</td>
-                    <td class= "column-owner">{{game.owner.userName}}</td>
-                    <td class= "column-player">{{game.maxPlayers}}</td>
-                    <td class= "column-join">
+                    <td>{{game.roomName}}</td>
+                    <td>{{game.owner.userName}}</td>
+                    <td>{{game.maxPlayers}}</td>
+                    <td>
                         <button id="submit-join" class="sw-button" type="submit" ng-click="$ctrl.joinGame(game)">Join</button>
                     </td>
                 </tr>
