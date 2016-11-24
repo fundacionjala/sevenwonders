@@ -9,18 +9,18 @@ import java.util.List;
  * Created by Luis Gumucio
  */
 public class Side {
-    private Effect effect;
+    private List<Effect> effects;
     private List<StageType> stages;
 
-    public Side(List<StageType> stages, Effect effect) {
+    public Side(List<StageType> stages, List<Effect> effects) {
         Preconditions.checkNotNull(stages, "the stages is null");
-        Preconditions.checkNotNull(effect, "the effect is null");
+        Preconditions.checkNotNull(effects, "the effect is null");
         this.stages = stages;
-        this.effect = effect;
+        this.effects = effects;
     }
 
-    public Effect getEffect() {
-        return effect;
+    public List<Effect> getEffects() {
+        return effects;
     }
 
     public List<StageType> getStages() {
