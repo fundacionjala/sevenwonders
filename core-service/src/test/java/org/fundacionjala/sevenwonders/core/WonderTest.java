@@ -4,20 +4,13 @@
  */
 package org.fundacionjala.sevenwonders.core;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
 import org.fundacionjala.sevenwonders.core.effect.Effect;
-import org.fundacionjala.sevenwonders.core.effect.VictoryPointEffect;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.mockingDetails;
 
 /**
  *
@@ -31,9 +24,9 @@ public class WonderTest {
         StoragePoint storagePoint = mock(StoragePoint.class);
         Storage storage = mock(Storage.class);
 
-        Effect effect = mock(Effect.class);
+        List<Effect> effects = mock(List.class);
         List<StageType>stages = mock(List.class);
-        Side sideA = new Side(stages, effect);
+        Side sideA = new Side(stages, effects);
 
         wonder  = new Wonder("Babylon");
         wonder.setSide("a", sideA);
@@ -45,9 +38,9 @@ public class WonderTest {
 
     @Test(expected = NullPointerException.class)
     public void testIfSadeIsNull(){
-        Effect effect = mock(Effect.class);
+        List<Effect> effects = mock(List.class);
         List<StageType> stages =mock(List.class);
-        Side sideA = new Side(stages, effect);
+        Side sideA = new Side(stages, effects);
 
         wonder.setSide("a", sideA);
         wonder.setSide("b", null);

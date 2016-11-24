@@ -1,0 +1,19 @@
+{
+  "name": "Altar",
+  "requierements": [
+    {
+      "type": "NONE"
+    }
+  ],
+  "age": 1,
+  "playersNeeded": 5,
+  "effects": [
+    {
+      "type": "VICTORY",
+      "data": {
+        "points": 2,
+        "type": "CIVIC"
+      }
+    }
+  ]
+}

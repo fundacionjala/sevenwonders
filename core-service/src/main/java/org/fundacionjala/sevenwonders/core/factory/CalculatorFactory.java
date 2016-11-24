@@ -9,6 +9,7 @@ package org.fundacionjala.sevenwonders.core.factory;
 import org.fundacionjala.sevenwonders.core.City;
 import org.fundacionjala.sevenwonders.core.calculator.Calculable;
 import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
+import org.fundacionjala.sevenwonders.core.calculator.ScientificCardCalculator;
 import org.fundacionjala.sevenwonders.core.calculator.VictoryPointCalculator;
 
 /**
@@ -33,6 +34,8 @@ public class CalculatorFactory {
                 return new VictoryPointCalculator(city);
             case WONDER:
                 return new VictoryPointCalculator(city);
+            case SCIENTIFIC:
+                return new ScientificCardCalculator(city);
             default:
                 throw new EnumConstantNotPresentException(CalculatorType.class, "No supported enum");
         }

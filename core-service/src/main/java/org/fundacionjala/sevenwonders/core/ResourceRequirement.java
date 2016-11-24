@@ -19,6 +19,7 @@ public class ResourceRequirement implements Requirement {
         this.resourceRequirements = resourceRequirements;
     }
 
+    @Override
     public Map<ResourceType, Integer> getRequirements() {
         return resourceRequirements;
     }
