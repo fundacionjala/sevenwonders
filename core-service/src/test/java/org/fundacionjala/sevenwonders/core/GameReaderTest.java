@@ -1,7 +1,7 @@
 package org.fundacionjala.sevenwonders.core;
 
 import org.fundacionjala.sevenwonders.core.reader.GameReader;
-import org.junit.Assert;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 import java.io.File;
@@ -23,7 +23,7 @@ public class GameReaderTest {
         GameReader gameReader = new GameReader();
         Wonder wonder = gameReader.readWonder(file);
 
-        Assert.assertNotNull(wonder);
+        assertNotNull(wonder);
     }
 
     @Test
@@ -33,14 +33,14 @@ public class GameReaderTest {
         Wonder wonder = gameReader.readWonder(file);
 
         String expecteName = "Alexandria";
-        Assert.assertEquals(expecteName, wonder.getName());
+        assertEquals(expecteName, wonder.getName());
 
         //Sides comparison
         Side sideA = wonder.getSide("a");
-        Assert.assertNotNull(sideA);
+        assertNotNull(sideA);
 
         Side sideB = wonder.getSide("b");
-        Assert.assertNotNull(sideB);
+        assertNotNull(sideB);
     }
 
     @Test
@@ -49,6 +49,6 @@ public class GameReaderTest {
         GameReader gameReader = new GameReader();
         Building building = gameReader.readBuilding(file, "RESOURCE");
 
-        Assert.assertNotNull(building);
+        assertNotNull(building);
     }
 }

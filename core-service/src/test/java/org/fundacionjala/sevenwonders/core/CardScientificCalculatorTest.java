@@ -39,7 +39,6 @@ public class CardScientificCalculatorTest {
     private List<Card> listBuilding;
     private CardManager calculator;
 
-
     @Before
     public void setUp() {
         listBuilding = new ArrayList<>();
@@ -89,10 +88,10 @@ public class CardScientificCalculatorTest {
     @Test
     public void testCalculateAScientificCard() {
         int expected = 4;
-
         listBuilding.add(buildingOne);
         listBuilding.add(buildingFour);
         calculator.calculateCards(listBuilding, CalculatorType.SCIENTIFIC);
+
         assertEquals(expected, city.getStoragePoint().getPoint(CalculatorType.SCIENTIFIC));
     }
 
@@ -103,39 +102,37 @@ public class CardScientificCalculatorTest {
         listBuilding.add(buildingOne);
         listBuilding.add(buildingTwo);
         calculator.calculateCards(listBuilding, CalculatorType.SCIENTIFIC);
+
         assertEquals(expected, city.getStoragePoint().getPoint(CalculatorType.SCIENTIFIC));
     }
 
     @Test
     public void testCalculateAdditionalPointsScientific() {
         int expected = 10;
-
         listBuilding.add(buildingOne);
         listBuilding.add(buildingTwo);
         listBuilding.add(buildingThree);
         calculator.calculateCards(listBuilding, CalculatorType.SCIENTIFIC);
+
         assertEquals(expected, city.getStoragePoint().getPoint(CalculatorType.SCIENTIFIC));
     }
 
     @Test
     public void testEmptyList() {
         int expected = 0;
-
         calculator.calculateCards(listBuilding, CalculatorType.SCIENTIFIC);
-
+        
         assertEquals(expected, city.getStoragePoint().getPoint(CalculatorType.CIVIC));
     }
 
     @Test(expected = NullPointerException.class)
     public void testNullCardList() {
         calculator.calculateCards(null, CalculatorType.SCIENTIFIC);
-
         fail();
     }
 
     @Test(expected = AssertionError.class)
     public void testDifferentEffectCard() {
-
         listBuilding.add(buildingOne);
         listBuilding.add(buildingTwo);
         calculator.calculateCards(listBuilding, CalculatorType.CIVIC);
