@@ -14,7 +14,7 @@ angular.
                 self.nearestNeighbors = [];
                 self.wonder = {};
 
-                GameBoard.getStorage().then(function (result) {
+                GameBoard.getStorage().then(function (result){
                     result.forEach(function (element) {
                         self.storage.push(element);
                     }, this);
@@ -23,7 +23,7 @@ angular.
                 this.calculatePosition = function (cards){
                     var maxCards = 7;
                     var cardsFinal = [];
-                    var isPair = cards.length % 2 == 0
+                    var isPair = cards.length % 2 == 0;
                     var adjustment = isPair ? cards.length + 1 : cards.length;
                     var pos = Math.ceil(maxCards/adjustment);
 
@@ -35,7 +35,6 @@ angular.
                         cardsFinal.push(cardWithPos);
                         pos = isPair && pos == 3 ? pos + 2 : pos + 1;
                     }
-
                     return cardsFinal;
                 }
 
@@ -43,7 +42,7 @@ angular.
                     self.cards = self.calculatePosition(result);
                 });
 
-                GameBoard.getGamePlayers().then(function (result) {
+                GameBoard.getGamePlayers().then(function (result){
                     result.forEach(function (element) {
                         self.players.push(element);
                     }, this);
@@ -69,6 +68,7 @@ angular.
                     }
                     return { left: neighborLeft, right: neighborRight };
                 };
+
                 var locationOfUser = function () {
                     for (var i in self.players) {
                         if (self.players[i].id == currentUser.id) {
@@ -84,11 +84,11 @@ angular.
                 };
 
                 self.CountQuantityOfRequirements = function(requirements){
-                var result = 0;
-                    requirements.forEach(function(element){
+                     var result = 0;
+                     requirements.forEach(function(element) {
                         result += element.quantity;
-                    }, this);
-                    return result;
+                     }, this);
+                     return result;
                 }
             }
         ]
