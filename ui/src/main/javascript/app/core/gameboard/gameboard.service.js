@@ -70,7 +70,7 @@ angular.
                 },
                 notifiedChooseCard: function (item, event) {
                     var chooseModel = {
-                        id: 1,
+                        id: $cookies.getObject("game").id,
                         namePlayer: $cookies.getObject('user').userName,
                         nameCard: item.card,
                         age: ""
