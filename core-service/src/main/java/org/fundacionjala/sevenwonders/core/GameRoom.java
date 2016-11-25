@@ -5,6 +5,7 @@
 package org.fundacionjala.sevenwonders.core;
 
 import com.google.common.base.Preconditions;
+import org.fundacionjala.sevenwonders.core.rest.ChooseCardModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.fundacionjala.sevenwonders.core.rest.WonderModel;
 
@@ -108,4 +109,5 @@ public class GameRoom {
     public void setRun(boolean run) {
         isRun = run;
     }
+
 }

@@ -7,6 +7,7 @@ package org.fundacionjala.sevenwonders.core;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Adds player, ages and initializes the game.
@@ -17,7 +18,7 @@ public class Game {
 
     private final List<Age> ages;
     private final List<Player> players;
-    private Map<Player, Card> chooseCard;
+    private final Map<String, Card>  chooseCard = new TreeMap<>();
 
     /**
      * Initialize a new instance of {@link Game}, assigned a {@link Age}.
@@ -28,7 +29,6 @@ public class Game {
     public Game(List<Player> players, List<Age> ages) {
         this.ages = ages;
         this.players = players;
-        chooseCard = new HashMap<>();
     }
 
     /**
@@ -50,10 +50,10 @@ public class Game {
     }
 
     public void addChooseCard(Player player, Card card){
-        chooseCard.put(player, card);
+        chooseCard.put(player.getName(), card);
     }
 
-    public Map<Player, Card> getChooseCard() {
+    public Map<String, Card> getChooseCard() {
         return chooseCard;
     }
 }

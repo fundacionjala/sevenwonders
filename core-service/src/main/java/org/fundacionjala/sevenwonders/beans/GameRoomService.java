@@ -4,9 +4,7 @@
  */
 package org.fundacionjala.sevenwonders.beans;
 
-import org.fundacionjala.sevenwonders.core.Card;
 import org.fundacionjala.sevenwonders.core.GameRoom;
-import org.fundacionjala.sevenwonders.core.Player;
 import org.fundacionjala.sevenwonders.core.rest.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -185,10 +183,14 @@ public class GameRoomService {
         return gameService.getGame(id).getChooseCard().size() == gameRooms.get(id).getPlayers().size();
     }
 
-    public void addChooseCard(int id, Player player, Card card){
-        gameService.getGame(id).addChooseCard(player, card);
+    public ChooseCardModel getChooseCardModel(ChooseCardModel chooseCardModel){
+        chooseCardModel.setAge(gameService.getAgeCard());
+        return chooseCardModel;
     }
 
+    public void addChooseCard(ChooseCardModel chooseCardModel){
+        gameService.addChooseCard(chooseCardModel);
+    }
 
     public boolean isGameReady(int id){
         GameRoom gameRoom = gameRooms.get(id);
