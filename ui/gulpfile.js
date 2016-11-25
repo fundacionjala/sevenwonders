@@ -77,6 +77,11 @@ gulp.task('buildIndex', function() {
 
 gulp.task('browser-sync', function() {
     bs.init({
+    ghostMode:{
+        clicks:false,
+        forms:false,
+        scroll:false
+    },
     proxy:"",
         server: {
             baseDir: "./src/main/javascript/app"
