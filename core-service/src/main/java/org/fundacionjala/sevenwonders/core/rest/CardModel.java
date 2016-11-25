@@ -3,7 +3,7 @@ package org.fundacionjala.sevenwonders.core.rest;
 /**
  * Created by dwits on 16/11/2016.
  */
-public class CardModel {
+public class  CardModel {
     private String name;
 
     public String getName() {

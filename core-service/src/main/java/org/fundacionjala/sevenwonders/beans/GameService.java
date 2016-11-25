@@ -6,10 +6,8 @@ package org.fundacionjala.sevenwonders.beans;
 
 import com.google.common.base.Preconditions;
 import org.fundacionjala.sevenwonders.core.Game;
-import org.fundacionjala.sevenwonders.core.rest.CardModel;
-import org.fundacionjala.sevenwonders.core.rest.DeckModel;
-import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
-import org.fundacionjala.sevenwonders.core.rest.PrincipalGameModel;
+import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
+import org.fundacionjala.sevenwonders.core.rest.*;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -73,6 +71,14 @@ public class GameService {
             DeckModel deckModel = new DeckModel();
             deckModel.setCards(cards);
             playerModel.setDeck(deckModel);
+
+            CityModel city = new CityModel();
+            WonderModel wonder = playerModel.getWonderModel();
+            city.setName(wonder.getCityName());
+            city.setWonder(wonder);
+            city.setStoragePoint(new StoragePointModel());
+            playerModel.setCity(city);
+
             playerModel.setUserName(player.getName());
             players.add(playerModel);
         });
@@ -98,4 +104,14 @@ public class GameService {
         return games.get(id);
     }
 
+    /**
+     * Get the points to according to calculator type of an player and game.
+     * @param points {@link PointsModel}
+     * @return points found by id of the player and game.
+     */
+    public int getPoints(PointsModel points) {
+        Preconditions.checkNotNull(points);
+        return  getPlayers(points.getGameId()).stream().filter(b -> b.getId() == points.getPlayerId()).findAny().orElse(null)
+                .getCity().getStoragePoint().getPoint((points.convertCalculator()));
+    }
 }
