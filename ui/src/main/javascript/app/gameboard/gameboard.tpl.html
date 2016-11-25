@@ -13,8 +13,8 @@
         <div class="deck-cards">
             <span ng-repeat="typeCard in $ctrl.cardsPlayed.deck">
             <label class="count-cards">{{typeCard.cards.length}}</label>
-            <ul class="type-card" ng-repeat="card in typeCards.cards">
-                <li><a><img class="image-card" ng-src="/resources/images/cards/{{card.name}}.jpg"/></a></li>
+            <ul class="type-card" >
+                <li ng-repeat="card in typeCard.cards"><a><img class="image-card" ng-src="/resources/images/cards/{{card.name}}.png"/></a></li>
             </ul>
             </span>
         </div>

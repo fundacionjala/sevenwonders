@@ -94,6 +94,7 @@ angular.
 
                GameBoard.getCardsPlayed().then(function (result) {
                       self.cardsPlayed = result;
-            }
+               });
+           }
         ]
     });
