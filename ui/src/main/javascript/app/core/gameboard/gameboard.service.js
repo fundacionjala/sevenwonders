@@ -40,23 +40,23 @@ angular.
                                 }
                             });
 
-                            currentPlayer.deck.cards.forEach(function (data) {
-                                cards.push(data.name);
-                            })
+                                    currentPlayer.deck.cards.forEach(function(data){
+                                        cards.push(data.name);
+                                    })
 
-                            defer.resolve(cards);
+                                    defer.resolve(cards);
 
-                        }).catch(function () {
-                            defer.reject();
-                        });
+                                }).catch(function () {
+                                    defer.reject();
+                                });
                     return defer.promise;
-                },
-                getGamePlayers: function () {
-                    var defer = $q.defer();
-                    Restangular.allUrl('players', 'http://demo9730175.mockable.io/players').getList()
-                        .then(function (data) {
+                 },
+                 getGamePlayers: function () {
+                     var defer = $q.defer();
+                     Restangular.allUrl('players', 'http://demo9730175.mockable.io/players').getList()
+                         .then(function (data) {
                             defer.resolve(data);
-                        }).catch(function () {
+                         }).catch(function () {
                             defer.reject();
                         });
                     return defer.promise;
@@ -83,14 +83,24 @@ angular.
                         });
                 },
                 getWonder: function () {
-                    var defer = $q.defer();
-                    Restangular.oneUrl('wonder', ' http://demo5549833.mockable.io/player/1/game/1/wonder').get()
-                        .then(function (data) {
-                            defer.resolve(data);
-                        }).catch(function () {
-                            defer.reject();
-                        });
-                    return defer.promise;
+                       var defer = $q.defer();
+                       Restangular.oneUrl('wonder', ' http://demo5549833.mockable.io/player/1/game/1/wonder').get()
+                           .then(function (data) {
+                               defer.resolve(data);
+                           }).catch(function () {
+                               defer.reject();
+                           });
+                       return defer.promise;
+                },
+                getCardsPlayed: function (){
+                       var defer = $q.defer();
+                           Restangular.oneUrl('cards', '  http://demo5549833.mockable.io/player/1/game/1/cards').get()
+                               .then(function (data) {
+                                   defer.resolve(data);
+                               }).catch(function () {
+                                   defer.reject();
+                               });
+                           return defer.promise;
                 }
             }
         }
