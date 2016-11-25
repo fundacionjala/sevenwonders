@@ -1,23 +1,76 @@
 <div class="gameboard">
     <div class="resources">
         <figure class="resource-type" ng-repeat="resource in $ctrl.storage">
-            <figcaption class="count" ng-if="resource.name !== 'victoryPoint'">
-                <img src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+            <figcaption class="count" ng-if="resource.name !== 'VICTORY'">
+                <img ng-src="resources/images/icons/{{resource.name}}.png">{{resource.count}}
             </figcaption>
-            <figcaption class="count-point" ng-if="resource.name == 'victoryPoint'">
-                <img class="victoryPoint" src="{{'resources/images/icons/'+ resource.name + '.png'}}">{{resource.count}}
+            <figcaption class="count-point" ng-if="resource.name == 'VICTORY'">
+                <img class="victoryPoint" ng-src="resources/images/icons/{{resource.name}}.png">{{resource.count}}
             </figcaption>
         </figure>
     </div>
-        <div class="table">
-
+    <div class="table">
+        <div class="deck-cards">
+            <span>
+            <label class="count-cards">4</label>
+            <ul class="type-card" >
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/5.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/61.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+            </ul>
+            </span>
+            <span>
+            <label class="count-cards">4</label>
+            <ul class="type-card">
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/40.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+            </ul>
+                </span>
+            <span>
+            <label class="count-cards">4</label>
+            <ul class="type-card">
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/50.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+            </ul>
+                </span>
+            <span>
+            <label class="count-cards">4</label>
+            <ul class="type-card" reversed>
+                <li><a><img class="image-card" src="/resources/images/cards/1.jpg"/></a></li>
+                <li><a><img class="image-card" src="/resources/images/cards/50.jpg"/></a></li>
+            </ul>
+            </span>
         </div>
-        <aside class="neighbor-right">
-            <neighbor side="$ctrl.nearestNeighbors.right"> </neighbor>
-        </aside>
-        <aside class="neighbor-left">
-            <neighbor side="$ctrl.nearestNeighbors.left"> </neighbor>
-        </aside>
+        <div class="stages">
+            <div class="sw-stage" ng-repeat="stage in $ctrl.wonder.stages">
+                <div class="sw-requirement" ng-repeat="requirement in stage.requirements">
+                    <figure class="sw-resource" ng-class= "$ctrl.CountQuantityOfRequirements(stage.requirements) <= 3 ? 'size-items-big': 'size-items-small'" ng-repeat="i in $ctrl.getRequirements(requirement) track by $index">
+                        <img class="image-resource" ng-src="/resources/images/icons/{{requirement.type}}.png"/>
+                    </figure>
+                </div>
+                <figure class="sw-effect" ng-repeat="effect in stage.effects">
+                    <img class="image-effect" ng-if="effect.type != 'VICTORY'" ng-src="/resources/images/effect/{{effect.type}}.png"/>
+                    <figcaption class="effect-point" ng-if="effect.type == 'VICTORY'">
+                        <img class="victory-effect" ng-src="resources/images/icons/{{effect.type}}.png">{{effect.data.points}}
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <aside class="neighbor-right">
+         <neighbor side="$ctrl.nearestNeighbors.right"> </neighbor>
+    </aside>
+    <aside class="neighbor-left">
+         <neighbor side="$ctrl.nearestNeighbors.left"> </neighbor>
+    </aside>
     <div class="playcard">
         <div class="cards">
             <div class="deck">

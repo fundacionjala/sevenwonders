@@ -1,3 +1,7 @@
+@import "../style/global.less";
+
+@height_neighbor:380px;
+@width_neighbor:2%;
 @card-width: 100px;
 @margin-adjustment: 10px;
 @reset: 0;
@@ -26,8 +30,6 @@
     transition-duration: @seg;
 }
 
-@height_neighbor:380px;
-@width_neighbor:2%;
 div.gameboard {
     display: flex;
     flex-flow: row wrap;
@@ -45,8 +47,8 @@ div.gameboard {
         align-items: center;
         text-align: center;
           & figure.resource-type {
-               margin: 0 0.8em 0 0.7em;
-               text-align: center;
+               margin: 0.3em 0.8em 0 0.7em;
+               display: inline-block;
                & figcaption.count {
                      display: flex;
                      color: white;
@@ -57,6 +59,9 @@ div.gameboard {
                        margin: 0 0.2em 0 0.2em;
                        height: 30px;
                        width: 30px;
+                       height: 30px;
+                       box-sizing: border-box;
+                       display: block;
                      }
                 }
                 & figcaption.count-point {
@@ -67,12 +72,12 @@ div.gameboard {
                       position: relative;
                       margin: 0 1.2em 0 1.2em;
                     & img.victoryPoint {
-                       height: 80px;
-                       width: 80px;
+                       height: 70px;
+                       width: 70px;
                        float: left;
                        position: absolute;
-                       left: -27px;
-                       top: -13px;
+                       left: -23px;
+                       top: -18px;
                     }
                 }
           }
@@ -92,7 +97,7 @@ div.gameboard {
         flex-direction: row;
         align-items: stretch;
 
-        & .cards{
+        & .cards {
             width: @cards-area;
             display: flex;
             flex-direction: row;
@@ -151,12 +156,122 @@ div.gameboard {
         & .actions{
             width: @actions-area;
         }
-
     }
 
     & .table {
-        text-align: left;
-        height: 320px;
+        text-align: center;
+        height: 235px;
+        & .deck-cards {
+            height: 235px;
+            width: 100%;
+            position: relative;
+            z-index: 30;
+            display: flex;
+            justify-content: center;
+             & .type-card {
+                  padding: 0;
+                  list-style-type: none;
+                  height: 180px;
+                  margin: 8px 0 0 8px;
+                  & li > a {
+                      height: 30px;
+                      width: 100px;
+                      float: left;
+                      overflow: hidden;
+                       & img{
+                        height: 150px;
+                        width: 100px;
+                       }
+                       &:hover {
+                          box-sizing: border-box;
+                          display: block;
+                          height: 145px;
+                       }
+                  }
+                  & li:nth-of-type(1n+7) {
+                       display: none;
+                  }
+
+             }
+             & label.count-cards {
+                font-weight: bold;
+                color: white;
+                font-size: 1.4em;
+                margin-top: 21px;
+                display: block;
+             }
+        }
+        & .stages {
+            width: 100%;
+            z-index: 1;
+            & .sw-stage {
+                display: inline-block;
+                height: 90px;
+                width: 165px;
+                margin: 0 7px 0 7px;
+                background-color : @color_component;
+                border-radius: 12px;
+                position: relative;
+
+              & figure.sw-effect {
+                    width: 125px;
+                    height: 70px;
+                    margin: 10px 5px 5px 35px;
+                    position: absolute;
+                    z-index: 19;
+                    & img.image-effect {
+                        box-sizing: border-box;
+                        display: block;
+                        height: 100%;
+                        width:100%;
+                    }
+                }
+
+                & figcaption.effect-point {
+                       font-weight: bold;
+                       font-size: 1.5em;
+                       position: relative;
+                       top: 15px;
+                     & img.victory-effect {
+                        height: 70px;
+                        width: 70px;
+                        position: absolute;
+                        left: 27px;
+                        top: -15px;
+                     }
+                 }
+                & .sw-requirement {
+                    width: 15px;
+                    height: 80px;
+                    margin: 10px 2px 0 10px;
+                    background: #f9f3dd;
+                    position: absolute;
+                    z-index: 10;
+                    & figure.sw-resource {
+                        & img.image-resource {
+                             height: 100%;
+                             width: 100%;
+                        }
+                    }
+                    & .size-items-big {
+                        margin: -5px 0 8px -5px;
+                        width: 25px;
+                        height: 25px;
+                    }
+                    & .size-items-small {
+                        margin: -8px 0 9px -3px;
+                        width: 21px;
+                        height: 21px;
+                    }
+
+                    & figure.resource-tiny {
+                         margin: -5px 0 0 -5px;
+                         width: 15px;
+                         height: 15px;
+                    }
+                }
+            }
+        }
     }
 
     & .neighbor-right {

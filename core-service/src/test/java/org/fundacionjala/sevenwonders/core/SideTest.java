@@ -22,7 +22,6 @@ public class SideTest {
     private List<Effect> effects;
     private List<Requirement> requirements;
     private List<StageType> stageTypes;
-    private Effect effect;
     private StageType stageType;
     private Side side;
 
@@ -30,7 +29,6 @@ public class SideTest {
     public void setUp() {
         effects = mock(List.class);
         requirements = mock(List.class);
-        effect = mock(Effect.class);
         stageType = new StageType(requirements, effects);
         stageTypes = new ArrayList<>();
     }
@@ -38,7 +36,7 @@ public class SideTest {
     @Test
     public void testContainsStageType(){
         stageTypes.add(stageType);
-        side = new Side(stageTypes, effect);
+        side = new Side(stageTypes, effects);
 
         assertEquals(1, side.getStages().size());
     }
@@ -46,15 +44,15 @@ public class SideTest {
     @Test(expected = NullPointerException.class)
     public void testIfStagesIsNull(){
         stageTypes = null;
-        side = new Side(stageTypes, effect);
+        side = new Side(stageTypes, effects);
 
         side.getStages();
     }
 
     @Test(expected = NullPointerException.class)
     public void testIfEffectIsNull(){
-        effect = null;
-        side = new Side(stageTypes, effect);
+        effects = null;
+        side = new Side(stageTypes, effects);
 
         side.getStages();
     }

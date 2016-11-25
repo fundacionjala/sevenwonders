@@ -83,5 +83,18 @@ angular.
                         });
                 }
             }
+                     return defer.promise;
+                    },
+                getWonder: function () {
+                       var defer = $q.defer();
+                       Restangular.oneUrl('wonder', ' http://demo5549833.mockable.io/player/1/game/1/wonder').get()
+                           .then(function (data) {
+                               defer.resolve(data);
+                           }).catch(function () {
+                               defer.reject();
+                           });
+                       return defer.promise;
+                }
+            }
         }
     ]);

@@ -5,32 +5,33 @@ angular.
     component('gameboard', {
         templateUrl: 'gameboard/gameboard.tpl.html',
         controller: ['GameBoard', 'Auth',
-            function GameBoardController(GameBoard, Auth) {
+            function GameBoardController(GameBoard, Auth){
                 var self = this;
                 var currentUser = Auth.getLoggedUser();
                 GameBoard.connectWebsocket();
                 self.resources = [];
                 self.storage = [];
-
                 self.players = [];
                 self.nearestNeighbors = [];
-                GameBoard.getStorage().then(function (result) {
+                self.wonder = {};
+
+                GameBoard.getStorage().then(function (result){
                     result.forEach(function (element) {
                         self.storage.push(element);
                     }, this);
                 });
 
-                this.calculatePosition = function (cards) {
+                this.calculatePosition = function (cards){
                     var maxCards = 7;
                     var cardsFinal = [];
-                    var isPair = cards.length % 2 == 0
+                    var isPair = cards.length % 2 == 0;
                     var adjustment = isPair ? cards.length + 1 : cards.length;
-                    var pos = Math.ceil(maxCards / adjustment);
+                    var pos = Math.ceil(maxCards/adjustment);
 
-                    for (var i = 0; i < cards.length; i++) {
+                    for(var i = 0; i< cards.length; i++){
                         var cardWithPos = {
-                            card: cards[i],
-                            position: pos
+                            card : cards[i],
+                            position : pos
                         }
                         cardsFinal.push(cardWithPos);
                         pos = isPair && pos == 3 ? pos + 2 : pos + 1;
@@ -52,6 +53,10 @@ angular.
                         self.players.push(element);
                     }, this);
                     self.nearestNeighbors = getNearestNeighbors();
+                });
+
+                GameBoard.getWonder().then(function (result) {
+                     self.wonder = result;
                 });
 
                 var getNearestNeighbors = function () {
@@ -79,6 +84,17 @@ angular.
                     return -1;
                 };
 
+                self.getRequirements = function(requirement){
+                     return new Array(requirement.quantity);
+                };
+
+                self.CountQuantityOfRequirements = function(requirements){
+                     var result = 0;
+                     requirements.forEach(function(element) {
+                        result += element.quantity;
+                     }, this);
+                     return result;
+                }
             }
         ]
     });

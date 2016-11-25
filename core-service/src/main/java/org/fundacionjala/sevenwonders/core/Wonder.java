@@ -6,13 +6,9 @@
 package org.fundacionjala.sevenwonders.core;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.HashBiMap;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * Created by Vania Catorceno on 6/2/2016.
