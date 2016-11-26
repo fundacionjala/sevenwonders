@@ -60,6 +60,16 @@ angular.
                                defer.reject();
                            });
                        return defer.promise;
+                },
+                getCardsPlayed: function (){
+                       var defer = $q.defer();
+                           Restangular.oneUrl('cards', '  http://demo5549833.mockable.io/player/1/game/1/cards').get()
+                               .then(function (data) {
+                                   defer.resolve(data);
+                               }).catch(function () {
+                                   defer.reject();
+                               });
+                           return defer.promise;
                 }
             }
         }

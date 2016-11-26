@@ -13,6 +13,7 @@ angular.
                 self.players = [];
                 self.nearestNeighbors = [];
                 self.wonder = {};
+                self.cardsPlayed = {};
 
                 GameBoard.getStorage().then(function (result){
                     result.forEach(function (element) {
@@ -90,6 +91,10 @@ angular.
                      }, this);
                      return result;
                 }
-            }
+
+               GameBoard.getCardsPlayed().then(function (result) {
+                      self.cardsPlayed = result;
+               });
+           }
         ]
     });
