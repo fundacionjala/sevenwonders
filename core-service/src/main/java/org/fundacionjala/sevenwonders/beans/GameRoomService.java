@@ -163,7 +163,6 @@ public class GameRoomService {
     public void startGame(int id) {
         GameRoom current = gameRooms.get(id);
         current.createGame();
-        gameService.createGame(current.createGame());
     }
 
     /**
