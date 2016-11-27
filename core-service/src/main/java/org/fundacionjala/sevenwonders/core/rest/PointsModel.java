@@ -1,11 +1,18 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.core.rest;
 
 import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
 
 /**
- * Created by ubuntu on 25-11-16.
+ * Builds a Points model according to the {@link CalculatorType}, id of {@link PlayerModel} and {@link GameModel}.
+ *
+ * @author Jhonatan Mamani
  */
 public class PointsModel {
+
     private int playerId;
     private int gameId;
     private int calculatorType;
@@ -33,7 +40,13 @@ public class PointsModel {
     public void setCalculatorType(int calculatorType) {
         this.calculatorType = calculatorType;
     }
-    public CalculatorType convertCalculator() {
-         return  CalculatorType.values()[calculatorType];
+
+    /**
+     * It converts an integer to an enum class called {@link CalculatorType}.
+     *
+     * @return a value of the CalculatorType
+     */
+    public CalculatorType convertCalculatorType() {
+        return CalculatorType.values()[calculatorType];
     }
 }

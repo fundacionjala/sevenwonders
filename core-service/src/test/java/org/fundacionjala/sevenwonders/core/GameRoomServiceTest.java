@@ -218,7 +218,6 @@ public class GameRoomServiceTest {
         gameRoomService.addPlayer(gameRoomModel.getId(), playerTwo);
 
         gameRoomService.startGame(gameRoomModel.getId());
-        gameRoomService.isGameReady(gameRoomModel.getId());
 
         Assert.assertEquals(1, gameRoomService.getGameService().getGames().size());
     }

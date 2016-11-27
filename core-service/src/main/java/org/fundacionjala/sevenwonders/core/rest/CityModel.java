@@ -1,14 +1,23 @@
+/*
+ * Copyright (c) Fundacion Jala. All rights reserved.
+ * Licensed under the MIT license. See LICENSE file in the project root for full license information.
+ */
 package org.fundacionjala.sevenwonders.core.rest;
 
 /**
- * Created by ubuntu on 25-11-16.
+ * Generates a City model according to the name, {@link WonderModel} and {@link StoragePointModel}.
+ *
+ * @author Jhonatan Mamani
  */
 public class CityModel {
+
     private String name;
     private WonderModel wonder;
     private StoragePointModel storagePoint;
 
-    public CityModel() {}
+    public CityModel() {
+    }
+
     public String getName() {
         return name;
     }
