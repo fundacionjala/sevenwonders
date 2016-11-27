@@ -1,23 +1,22 @@
 package org.fundacionjala.sevenwonders.core;
 
 import org.fundacionjala.sevenwonders.beans.GameService;
-import org.fundacionjala.sevenwonders.core.calculator.CalculatorType;
 import org.fundacionjala.sevenwonders.core.rest.*;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
 
 /**
  * Used to test all the functionality of the {@link org.fundacionjala.sevenwonders.beans.GameService}.
+ *
  * @Author: Vania Catorceno
  */
 public class GameServiceTest {
     @Test
-    public void createGameRoomAndCompareWithTotallyGameInTheListTest(){
+    public void createGameRoomAndCompareWithTotallyGameInTheListTest() {
         GameService gameService = new GameService();
 
         Game game = new Game(mock(List.class), mock(List.class));
@@ -29,8 +28,8 @@ public class GameServiceTest {
         Assert.assertEquals(2, gameService.getGames().size());
     }
 
-    @Test (expected = NullPointerException.class)
-    public void failCreateGameRoomSendingNullGameTest(){
+    @Test(expected = NullPointerException.class)
+    public void failCreateGameRoomSendingNullGameTest() {
         GameService gameService = new GameService();
 
         Game game = null;
@@ -40,7 +39,7 @@ public class GameServiceTest {
     }
 
     @Test
-    public void getGameByIdTest(){
+    public void getGameByIdTest() {
         GameService gameService = new GameService();
         GameRoomModel gameRoomModel = new GameRoomModel();
         gameRoomModel.setId(2);
@@ -55,7 +54,7 @@ public class GameServiceTest {
     }
 
     @Test
-    public void failGetGameByIdTest(){
+    public void failGetGameByIdTest() {
         GameService gameService = new GameService();
 
         Game game = new Game(mock(List.class), mock(List.class));
@@ -67,8 +66,8 @@ public class GameServiceTest {
     /**
      * It tests when the {@link PointsModel} is null an exception {@link NullPointerException} is thrown.
      */
-    @Test (expected = NullPointerException.class)
-    public void testFailToTheGetPointsOfANullPointsModel(){
+    @Test(expected = NullPointerException.class)
+    public void testFailToTheGetPointsOfANullPointsModel() {
         GameService gameService = new GameService();
 
         PointsModel points = null;
@@ -78,66 +77,61 @@ public class GameServiceTest {
     }
 
     /**
-     *
+     * It tests to get by default points by calculator type.
      */
     @Test
     public void testGetPointsByCalculatorTypeByDefault_0() {
         GameService gameService = new GameService();
-        Wonder wonder = new Wonder("Rhodos");
-        Player player = new Player("Johx", new City(wonder, new StoragePoint(), new Storage()));
-        List<Player> players = new ArrayList<>();
-        Game game= new Game(players, new ArrayList<>());
-
         GameRoom room = new GameRoom("None", 3);
 
-        WonderModel wonderModel = new WonderModel();
-        wonderModel.setCityName("Babylon");
-        wonderModel.setCurrentSide("a");
+        WonderModel firstWonderModel = new WonderModel();
+        firstWonderModel.setCityName("Babylon");
+        firstWonderModel.setCurrentSide("a");
 
-        CityModel cityModel = new CityModel();
-        cityModel.setName(wonderModel.getCityName());
-        cityModel.setWonder(wonderModel);
-        cityModel.setStoragePoint(new StoragePointModel());
+        CityModel firsCityModel = new CityModel();
+        firsCityModel.setName(firstWonderModel.getCityName());
+        firsCityModel.setWonder(firstWonderModel);
+        firsCityModel.setStoragePoint(new StoragePointModel());
 
-        PlayerModel playerModel = new PlayerModel();
-        playerModel.setId(1);
-        playerModel.setUserName("Johx");
-        playerModel.setWonderModel(wonderModel);
-        playerModel.setCity(cityModel);
+        PlayerModel firstPlayerModel = new PlayerModel();
+        firstPlayerModel.setId(1);
+        firstPlayerModel.setUserName("Johx");
+        firstPlayerModel.setWonderModel(firstWonderModel);
+        firstPlayerModel.setCity(firsCityModel);
 
-        WonderModel wonderModel1 = new WonderModel();
-        wonderModel1.setCityName("Efhesos");
-        wonderModel1.setCurrentSide("a");
+        WonderModel secondWonderModel = new WonderModel();
+        secondWonderModel.setCityName("Efhesos");
+        secondWonderModel.setCurrentSide("a");
 
-        CityModel cityModel1= new CityModel();
-        cityModel1.setName(wonderModel.getCityName());
-        cityModel1.setWonder(wonderModel);
-        cityModel1.setStoragePoint(new StoragePointModel());
+        CityModel secondCityModel = new CityModel();
+        secondCityModel.setName(secondWonderModel.getCityName());
+        secondCityModel.setWonder(secondWonderModel);
+        secondCityModel.setStoragePoint(new StoragePointModel());
 
-        PlayerModel playerModel1 = new PlayerModel();
-        playerModel1.setId(2);
-        playerModel1.setUserName("Johx1");
-        playerModel1.setWonderModel(wonderModel);
-        playerModel1.setCity(cityModel);
+        PlayerModel secondPlayerModel = new PlayerModel();
+        secondPlayerModel.setId(2);
+        secondPlayerModel.setUserName("Johx1");
+        secondPlayerModel.setWonderModel(secondWonderModel);
+        secondPlayerModel.setCity(secondCityModel);
 
-        WonderModel wonderModel2 = new WonderModel();
-        wonderModel2.setCityName("Rhodos");
-        wonderModel2.setCurrentSide("a");
+        WonderModel thirdWonderModel = new WonderModel();
+        thirdWonderModel.setCityName("Rhodos");
+        thirdWonderModel.setCurrentSide("a");
 
-        CityModel cityModel2 = new CityModel();
-        cityModel2.setName(wonderModel.getCityName());
-        cityModel2.setWonder(wonderModel);
-        cityModel2.setStoragePoint(new StoragePointModel());
+        CityModel thirdCityModel = new CityModel();
+        thirdCityModel.setName(thirdWonderModel.getCityName());
+        thirdCityModel.setWonder(thirdWonderModel);
+        thirdCityModel.setStoragePoint(new StoragePointModel());
 
-        PlayerModel playerModel2 = new PlayerModel();
-        playerModel2.setId(3);
-        playerModel2.setUserName("Johx3");
-        playerModel2.setWonderModel(wonderModel);
-        playerModel2.setCity(cityModel);
+        PlayerModel thirdPlayerModel = new PlayerModel();
+        thirdPlayerModel.setId(3);
+        thirdPlayerModel.setUserName("Johx3");
+        thirdPlayerModel.setWonderModel(thirdWonderModel);
+        thirdPlayerModel.setCity(thirdCityModel);
 
-        room.addPlayer(playerModel);
-        room.addPlayer(playerModel1);
-        room.addPlayer(playerModel2);
+        room.addPlayer(firstPlayerModel);
+        room.addPlayer(secondPlayerModel);
+        room.addPlayer(thirdPlayerModel);
         gameService.createGame(room.createGame());
 
         PointsModel points = new PointsModel();
@@ -148,45 +142,7 @@ public class GameServiceTest {
         int expectedPoints = 0;
         int currentPoints = gameService.getPoints(points);
 
-        Assert.assertEquals("The points do not match" ,expectedPoints, currentPoints);
-
-    }
-    /**
-     *of points when added by a type.
-     */
-    public void testGetPointsWhenAddedByCalculatorTypeInStoragePoints() {
-        GameService gameService = new GameService();
-
-        GameRoom gameRoom = new GameRoom("Battle wonders", 3);
-        Game game = gameRoom.createGame();
-        gameService.createGame(game);
-
-        PrincipalGameModel gameModel = gameService.getLastCreated();
-        List<PlayerModel> players = new ArrayList<>();
-        PlayerModel player = new PlayerModel();
-
-        CityModel city = new CityModel();
-        city.setWonder(new WonderModel());
-
-        StoragePointModel storage = new StoragePointModel();
-        storage.addPointsType(CalculatorType.CIVIC, 5);
-
-        city.setStoragePoint(storage);
-
-        player.setCity(city);
-        players.add(1, player);
-
-        gameModel.setPlayers(players);
-
-        PointsModel points = new PointsModel();
-        points.setPlayerId(1);
-        points.setGameId(1);
-        points.setCalculatorType(1);
-
-        int expectedPoints = 0;
-        int currentPoints = gameService.getPoints(points);
-
-        Assert.assertEquals("The points do not match" ,expectedPoints, currentPoints);
+        Assert.assertEquals("The points do not match", expectedPoints, currentPoints);
 
     }
 }
