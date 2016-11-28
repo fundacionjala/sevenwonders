@@ -147,6 +147,9 @@ public class GameServiceTest {
 
     }
 
+    /**
+     * When {@link PlayerModel} is null it throws an exception
+     */
     @Test(expected = NullPointerException.class)
     public void FailToGetDeckFromPlayerTest() {
 
@@ -155,13 +158,13 @@ public class GameServiceTest {
         PlayerModel playerModel = null;
         int gameNumber = 4;
 
-        gameService.getPlayer(gameNumber,playerModel);
+        gameService.getPlayer(gameNumber, playerModel);
 
         Assert.assertEquals(0, gameService.getGames().size());
     }
 
-    /*
-     * Checks if the decks form each player in game has a deck instatiated
+    /**
+     * Checks if the deck form each player in game has a deck instatiated
      */
     @Test
     public void getDeckFromPlayersTest() {
@@ -195,13 +198,13 @@ public class GameServiceTest {
 
         gameService.createGame(gameRoom.createGame());
 
-        for (PlayerModel current: gameService.getPlayers(1)) {
+        for (PlayerModel current : gameService.getPlayers(1)) {
             Assert.assertTrue(current.getDeck() != null);
         }
     }
 
-//    @Test
-    public void getDeckFromAsinglePlayerTest(){
+    //    @Test
+    public void getDeckFromAsinglePlayerTest() {
         GameService gameService = new GameService();
         GameRoom gameRoom = new GameRoom("Battle", 3);
 
