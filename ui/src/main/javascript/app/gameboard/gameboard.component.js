@@ -8,6 +8,7 @@ angular.
             function GameBoardController(GameBoard, Auth){
                 var self = this;
                 var currentUser = Auth.getLoggedUser();
+                GameBoard.connectWebsocket();
                 self.resources = [];
                 self.storage = [];
                 self.players = [];
@@ -36,14 +37,19 @@ angular.
                         cardsFinal.push(cardWithPos);
                         pos = isPair && pos == 3 ? pos + 2 : pos + 1;
                     }
+
                     return cardsFinal;
                 }
 
-                GameBoard.getPlayerCards().then(function(result){
+                this.chooseCard = function (item) {
+                    GameBoard.notifiedChooseCard(item);
+                }
+
+                GameBoard.getPlayerCards().then(function (result) {
                     self.cards = self.calculatePosition(result);
                 });
 
-                GameBoard.getGamePlayers().then(function (result){
+                GameBoard.getGamePlayers().then(function (result) {
                     result.forEach(function (element) {
                         self.players.push(element);
                     }, this);
@@ -69,7 +75,6 @@ angular.
                     }
                     return { left: neighborLeft, right: neighborRight };
                 };
-
                 var locationOfUser = function () {
                     for (var i in self.players) {
                         if (self.players[i].id == currentUser.id) {

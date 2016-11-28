@@ -4,7 +4,12 @@
  */
 package org.fundacionjala.sevenwonders.core;
 
+import com.google.common.base.Preconditions;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Adds player, ages and initializes the game.
@@ -15,6 +20,7 @@ public class Game {
 
     private final List<Age> ages;
     private final List<Player> players;
+    private final Map<String, Card>  chooseCard = new TreeMap<>();
 
     /**
      * Initialize a new instance of {@link Game}, assigned a {@link Age}.
@@ -43,5 +49,15 @@ public class Game {
      */
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public void addChooseCard(Player player, Card card){
+        Preconditions.checkNotNull(player, "The player is null");
+        Preconditions.checkNotNull(card, "The card is null");
+        chooseCard.put(player.getName(), card);
+    }
+
+    public Map<String, Card> getChooseCard() {
+        return chooseCard;
     }
 }

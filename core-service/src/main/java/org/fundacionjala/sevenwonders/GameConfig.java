@@ -23,6 +23,8 @@ import java.util.List;
 @Configuration
 @ComponentScan(basePackages = "org.fundacionjala.sevenwonders")
 public class GameConfig extends CamelConfiguration {
+    @Autowired
+    private NotifiedChooseCardWSRoute notifiedChooseCardWSRoute;
 
     @Autowired
     private AuthServiceRoute authServiceRoute;
@@ -42,6 +44,7 @@ public class GameConfig extends CamelConfiguration {
 
     @Override
     public List<RouteBuilder> routes() {
-        return Arrays.asList(authServiceRoute, gameRoomRoute, gameWSRoute, chooseWonderWSRoute, gameRoute);
+        return Arrays.asList(authServiceRoute, gameRoomRoute, gameWSRoute, chooseWonderWSRoute, gameRoute,
+                notifiedChooseCardWSRoute);
     }
 }

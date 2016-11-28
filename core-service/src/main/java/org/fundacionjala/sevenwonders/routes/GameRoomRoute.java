@@ -11,6 +11,7 @@ import org.apache.camel.spi.DataFormat;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
+import org.fundacionjala.sevenwonders.core.rest.ChooseCardModel;
 import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.fundacionjala.sevenwonders.core.rest.PrincipalGameModel;
@@ -42,6 +43,13 @@ public class GameRoomRoute extends SpringRouteBuilder {
 
                 .post("{id}/players").description("Add Player to lobby game").type(PlayerModel.class)
                 .to("bean:gameRoomService?method=addPlayer(${header.id}, ${body})")
+
+                .post("chooseCard").description("when select card a player")
+                .type(ChooseCardModel.class)
+                .route()
+                .to("bean:gameRoomService?method=addChooseCard")
+                .to("direct:isFullCard")
+                .endRest()
 
                 .get("{id}/players").description("Get list of players").outTypeList(Player.class)
                 .to("bean:gameRoomService?method=getPlayers(${header.id})")

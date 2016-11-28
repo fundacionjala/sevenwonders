@@ -42,6 +42,7 @@ public class GameWSRoute extends SpringRouteBuilder {
         from("direct:getGameRoom")
                 .to("direct:sendMessageRoom")
                 .to("bean:gameRoomService?method=getGameRoom(${header.id})")
+                .to("bean:gameRoomService?method=updateGameRoom(${header.id})")
                 .to("websocket://localhost:9291/lobby?sendToAll=true");
 
     }
