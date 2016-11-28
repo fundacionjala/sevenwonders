@@ -136,10 +136,10 @@ public class GameService {
      * @return points found by id of the player and game.
      */
     public int getPoints(PointsModel points) {
-        Preconditions.checkNotNull(points, "The Points model is null");
+        Preconditions.checkNotNull(points, "The Points model is null"); 
         return getPlayers(points.getGameId()).stream()
                 .filter(player -> player.getId() == points.getPlayerId())
-                .findAny().orElse(null)
+                .findAny()
                 .getCity().getStoragePoint().getPoint((points.convertCalculatorType()));
     }
 }
