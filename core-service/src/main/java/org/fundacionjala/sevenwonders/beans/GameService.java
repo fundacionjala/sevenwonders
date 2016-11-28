@@ -147,6 +147,7 @@ public class GameService {
         for (PlayerModel player : getPlayers(points.getGameId())) {
             if (player.getId() == points.getPlayerId()) {
                 point = player.getCity().getStoragePoint().getPoint(points.convertCalculatorType());
+                break;
             }
         }
         return point;
