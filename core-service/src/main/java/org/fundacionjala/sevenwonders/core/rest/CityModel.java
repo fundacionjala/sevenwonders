@@ -4,6 +4,10 @@
  */
 package org.fundacionjala.sevenwonders.core.rest;
 
+import org.fundacionjala.sevenwonders.core.Building;
+
+import java.util.List;
+
 /**
  * Generates a City model according to the name, {@link WonderModel} and {@link StoragePointModel}.
  *
@@ -14,6 +18,7 @@ public class CityModel {
     private String name;
     private WonderModel wonder;
     private StoragePointModel storagePoint;
+    private List<BuildingModel> buildings;
 
     public CityModel() {
     }

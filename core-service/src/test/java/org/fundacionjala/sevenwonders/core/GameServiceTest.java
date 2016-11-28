@@ -160,7 +160,11 @@ public class GameServiceTest {
         Assert.assertEquals(0, gameService.getGames().size());
     }
 
-    public void getDeckFromASinglePlayerTest() {
+    /*
+     * Checks if the decks form each player in game has a deck instatiated
+     */
+    @Test
+    public void getDeckFromPlayersTest() {
         GameService gameService = new GameService();
         GameRoom gameRoom = new GameRoom("Battle", 3);
 
@@ -191,10 +195,64 @@ public class GameServiceTest {
 
         gameService.createGame(gameRoom.createGame());
 
-        gameService.getPlayers(1);
-
         for (PlayerModel current: gameService.getPlayers(1)) {
             Assert.assertTrue(current.getDeck() != null);
         }
+    }
+
+//    @Test
+    public void getDeckFromAsinglePlayerTest(){
+        GameService gameService = new GameService();
+        GameRoom gameRoom = new GameRoom("Battle", 3);
+
+        PlayerModel firstPlayer = new PlayerModel();
+        firstPlayer.setId(1);
+        firstPlayer.setUserName("Gicck");
+        firstPlayer.setCity(mock(CityModel.class));
+        firstPlayer.setWonderModel(mock(WonderModel.class));
+
+        DeckModel deckModel = new DeckModel();
+
+        CardModel civicCard = new CardModel();
+        civicCard.setName("it's a civic Card");
+        CardModel resourceCard = new CardModel();
+        resourceCard.setName("it's a resource Card");
+        CardModel scientificCard = new CardModel();
+        scientificCard.setName("it's a scientific Card");
+
+        List<CardModel> cardModels = new ArrayList<>();
+        cardModels.add(civicCard);
+        cardModels.add(resourceCard);
+        cardModels.add(scientificCard);
+
+        deckModel.setCards(cardModels);
+
+        firstPlayer.getDeck();
+        firstPlayer.setDeck(deckModel);
+
+        PlayerModel secondPlayer = new PlayerModel();
+        secondPlayer.setId(2);
+        secondPlayer.setUserName("Richi");
+        secondPlayer.setCity(mock(CityModel.class));
+        secondPlayer.setWonderModel(mock(WonderModel.class));
+        secondPlayer.setDeck(new DeckModel());
+
+        PlayerModel thirdPlayer = new PlayerModel();
+        thirdPlayer.setId(3);
+        thirdPlayer.setUserName("Gumu");
+        thirdPlayer.setCity(mock(CityModel.class));
+        thirdPlayer.setWonderModel(mock(WonderModel.class));
+        thirdPlayer.setDeck(new DeckModel());
+
+        gameRoom.addPlayer(firstPlayer);
+        gameRoom.addPlayer(secondPlayer);
+        gameRoom.addPlayer(thirdPlayer);
+
+        gameService.createGame(gameRoom.createGame());
+
+//        Assert.assertTrue(gameService.getPlayers(1).get(1).getDeck().equals(deckModel));
+        DeckModel expected = gameService.getPlayers(1).get(0).getDeck();
+//        Assert.assertEquals(expected, deckModel);
+
     }
 }
