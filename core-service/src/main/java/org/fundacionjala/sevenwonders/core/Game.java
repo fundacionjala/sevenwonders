@@ -4,6 +4,8 @@
  */
 package org.fundacionjala.sevenwonders.core;
 
+import com.google.common.base.Preconditions;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +52,8 @@ public class Game {
     }
 
     public void addChooseCard(Player player, Card card){
+        Preconditions.checkNotNull(player, "The player is null");
+        Preconditions.checkNotNull(card, "The card is null");
         chooseCard.put(player.getName(), card);
     }
 

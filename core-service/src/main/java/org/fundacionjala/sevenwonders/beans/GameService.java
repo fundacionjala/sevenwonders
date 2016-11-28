@@ -102,14 +102,13 @@ public class GameService {
     }
 
     public void addChooseCard(ChooseCardModel chooseCardModel) {
-        Game game = getGame(chooseCardModel.getId());
-        List<Player> currentList = new ArrayList();
-        currentList = game.getPlayers();
+        List<Player> currentList = getGame(chooseCardModel.getId()).getPlayers();
         Player current = currentList.stream()
-                .filter(b ->b.getName().equals(chooseCardModel.getNamePlayer())).findAny()									// If 'findAny' then return found
-                .orElse(null);
-        Card cards = current.getDeck().getCards().stream().filter(b -> b.getName().equals(chooseCardModel.getNameCard()))
-                .findAny().orElse(null);
+                .filter(itemPlayer ->itemPlayer.getName().equals(chooseCardModel.getNamePlayer()))
+                .findAny().get();
+        Card cards = current.getDeck().getCards().stream()
+                .filter(itemCard -> itemCard.getName().equals(chooseCardModel.getNameCard()))
+                .findAny().get();
         currentAge = ((Building) cards).getAge();
         games.get(chooseCardModel.getId()).addChooseCard(current, cards);
     }

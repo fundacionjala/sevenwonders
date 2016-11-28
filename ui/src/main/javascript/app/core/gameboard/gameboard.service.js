@@ -9,8 +9,8 @@ angular.
             var time;
             var GameService = Restangular.service('games');
             var timerComplete = function () {
-                document.getElementById($cookies.getObject('chooseCard').nameCard)
-                    .src = "http://localhost:3000/resources/images/cards/Age" +
+                var imgCard = document.getElementById($cookies.getObject('chooseCard').nameCard);
+                    imgCard.src = "http://localhost:3000/resources/images/cards/Age" +
                     $cookies.getObject('chooseCard').age + ".png";
                 $interval.cancel(time);
             };
