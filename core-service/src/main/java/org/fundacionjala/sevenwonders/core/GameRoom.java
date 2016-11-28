@@ -5,12 +5,11 @@
 package org.fundacionjala.sevenwonders.core;
 
 import com.google.common.base.Preconditions;
+import org.fundacionjala.sevenwonders.core.rest.ChooseCardModel;
 import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
 import org.fundacionjala.sevenwonders.core.rest.WonderModel;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Has the basic functionality for add players, set some settings and start the game when
@@ -27,6 +26,7 @@ public class GameRoom {
     private List<PlayerModel> players;
     private int maxPlayers;
     private String name;
+    private boolean isRun;
 
     public GameRoom(String name, int maxPlayers) {
         wonderProvider = new WonderProvider();
@@ -102,4 +102,13 @@ public class GameRoom {
     public String getName() {
         return name;
     }
+
+    public boolean isRun() {
+        return isRun;
+    }
+
+    public void setRun(boolean run) {
+        isRun = run;
+    }
+
 }

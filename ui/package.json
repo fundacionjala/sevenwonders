@@ -15,7 +15,6 @@
         "gulp-util": "3.0.7",
         "gulp-debug": "2.1.2",
         "gulp-ng-html2js": "0.2.2",
-        "gulp-rename": "1.2.2",
         "gulp-ngmin": "0.3.0",
         "gulp-htmlmin": "2.0.0",
         "gulp-replace": "0.5.4",
@@ -28,6 +27,9 @@
         "gulp-cssmin": "^0.1.7",
         "gulp-livereload": "3.8.1",
         "gulp-watch": "4.3.9",
+        "gulp-rename": "1.2.2",
+        "connect": "3.4.1",
+        "connect-livereload": "0.5.4",
         "proxy-middleware": "^0.5.0",
         "map-stream": "^0.0.6",
         "event-stream": "3.3.4",
@@ -48,7 +50,7 @@
         "gulp-angular-filesort": "1.1.1",
         "main-bower-files": "2.13.1",
         "phantomjs-prebuilt": "2.1.12",
-        "gulp-webserver": "0.9.1",
+        "browser-sync": "2.14.0",
         "stream-series": "0.1.1"
     },
     "engines": {

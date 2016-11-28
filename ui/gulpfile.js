@@ -25,7 +25,7 @@ var lazypipe = require('lazypipe');
 var path = require('path');
 var fs = require('fs');
 var es = require('event-stream');
-var webserver = require('gulp-webserver');
+var bs = require('browser-sync').create();
 var series = require('stream-series');
 
 var bowerFiles = require('main-bower-files'),
@@ -75,15 +75,22 @@ gulp.task('buildIndex', function() {
         .pipe(gulp.dest('src/main/javascript/app'));
 });
 
-gulp.task('webserver', function() {
-  gulp.src('C:\\things\\projects\\jala\\fundacion\\softure\\sevenwonders-fork\\ui\\src\\main\\javascript\\app')
-    .pipe(webserver({
-      livereload: true,
-      directoryListing: { path: 'src/main/javascript/app' },
-      open: true,
-      port: 3000,
-      fallback: 'index.html'
-    }));
+gulp.task('browser-sync', function() {
+    bs.init({
+    ghostMode:{
+        clicks:false,
+        forms:false,
+        scroll:false
+    },
+    proxy:"",
+        server: {
+            baseDir: "./src/main/javascript/app"
+        }
+    });
 });
 
-gulp.task('watch', ['generateCSS', 'buildIndex', 'webserver']);
+gulp.task('watch', ['generateCSS', 'buildIndex', 'browser-sync'], function() {
+    gulp.watch("./src/main/javascript/app/**/*.less", ['generateCSS']);
+    gulp.watch("./src/main/javascript/app/**/*.html").on('change', bs.reload);
+    gulp.watch("./src/main/javascript/app/**/*.js").on('change', bs.reload);
+});

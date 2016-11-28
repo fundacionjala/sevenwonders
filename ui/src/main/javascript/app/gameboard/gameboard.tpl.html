@@ -43,7 +43,10 @@
     <div class="playcard">
         <div class="cards">
             <div class="deck">
-                <figure class="card-{{card.position}} card" ng-repeat="card in $ctrl.cards" class="card"><img src="../resources/images/cards/{{card.card}}.jpg" alt=""></figure>
+                <figure class="card-{{card.position}} card" ng-repeat="card in $ctrl.cards" class="card">
+                    <img src="../resources/images/cards/{{card.card}}.png" id="{{card.card}}" ng-click="$ctrl.chooseCard(card)"
+                    ng-disable ="$ctrl."/>
+                </figure>
             </div>
         </div>
         <div class="actions">
