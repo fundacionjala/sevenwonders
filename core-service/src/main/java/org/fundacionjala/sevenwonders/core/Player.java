@@ -16,6 +16,15 @@ public class Player {
     private String name;
     private Deck deck;
     private City city;
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     /**
      * Initialize a new instance of {@link Player}, assigned a {@link City}.

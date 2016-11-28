@@ -4,7 +4,7 @@
  */
 package org.fundacionjala.sevenwonders.beans;
 
-import org.fundacionjala.sevenwonders.core.GameRoom;
+import org.fundacionjala.sevenwonders.core.*;
 import org.fundacionjala.sevenwonders.core.rest.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,6 +28,7 @@ public class GameRoomService {
 
     public GameRoomService() {
         autoIncrementId = 1;
+        gameService = new GameService();
     }
 
     public GameService getGameService() {

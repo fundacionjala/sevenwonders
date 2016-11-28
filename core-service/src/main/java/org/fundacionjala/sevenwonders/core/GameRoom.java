@@ -78,6 +78,7 @@ public class GameRoom {
             wonderModel.setCurrentSide(DEFAULT_SIDE);
             wonderModel.setCityName(currentWonder.getName());
             item.setWonderModel(wonderModel);
+            player.setId(item.getId());
             gamePlayers.add(player);
         });
 

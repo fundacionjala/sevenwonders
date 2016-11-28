@@ -18,6 +18,7 @@ public class PlayerModel {
     private WonderModel wonderModel;
     private boolean isReady = false;
     private DeckModel deck;
+    private CityModel cityModel;
 
     public DeckModel getDeck() {
         return deck;
@@ -62,6 +63,10 @@ public class PlayerModel {
     public void setWonderModel(WonderModel wonderModel) {
         this.wonderModel = wonderModel;
     }
+
+    public CityModel getCity() { return cityModel; }
+
+    public void setCity(CityModel cityModel) { this.cityModel = cityModel; }
 
     @Override
     public String toString() {
