@@ -5,6 +5,7 @@ import org.fundacionjala.sevenwonders.core.rest.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.Mockito.mock;
@@ -144,5 +145,56 @@ public class GameServiceTest {
 
         Assert.assertEquals("The points do not match", expectedPoints, currentPoints);
 
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void FailToGetDeckFromPlayerTest() {
+
+        GameService gameService = new GameService();
+
+        PlayerModel playerModel = null;
+        int gameNumber = 4;
+
+        gameService.getPlayer(gameNumber,playerModel);
+
+        Assert.assertEquals(0, gameService.getGames().size());
+    }
+
+    public void getDeckFromASinglePlayerTest() {
+        GameService gameService = new GameService();
+        GameRoom gameRoom = new GameRoom("Battle", 3);
+
+        PlayerModel firstPlayer = new PlayerModel();
+        firstPlayer.setId(1);
+        firstPlayer.setUserName("Gicck");
+        firstPlayer.setCity(mock(CityModel.class));
+        firstPlayer.setWonderModel(mock(WonderModel.class));
+        firstPlayer.setDeck(new DeckModel());
+
+        PlayerModel secondPlayer = new PlayerModel();
+        secondPlayer.setId(2);
+        secondPlayer.setUserName("Richi");
+        secondPlayer.setCity(mock(CityModel.class));
+        secondPlayer.setWonderModel(mock(WonderModel.class));
+        secondPlayer.setDeck(new DeckModel());
+
+        PlayerModel thirdPlayer = new PlayerModel();
+        thirdPlayer.setId(3);
+        thirdPlayer.setUserName("Gumu");
+        thirdPlayer.setCity(mock(CityModel.class));
+        thirdPlayer.setWonderModel(mock(WonderModel.class));
+        thirdPlayer.setDeck(new DeckModel());
+
+        gameRoom.addPlayer(firstPlayer);
+        gameRoom.addPlayer(secondPlayer);
+        gameRoom.addPlayer(thirdPlayer);
+
+        gameService.createGame(gameRoom.createGame());
+
+        gameService.getPlayers(1);
+
+        for (PlayerModel current: gameService.getPlayers(1)) {
+            Assert.assertTrue(current.getDeck() != null);
+        }
     }
 }
