@@ -147,8 +147,11 @@ public class GameServiceTest {
 
     }
 
+    /**
+     * Tests the creation of {@Link PlayerModel} from a initialization of a {@Link GameService}
+     */
     @Test
-    public void getPlayerModelsTest(){
+    public void getPlayerModelsTest() {
         GameService gameService = new GameService();
         GameRoom room = new GameRoom("Battle", 3);
 
@@ -160,13 +163,16 @@ public class GameServiceTest {
 
         List<PlayerModel> expected = gameService.getPlayers(gameService.getLastCreated().getId());
         Assert.assertNotNull(expected);
-        for (PlayerModel expectedCurrent: expected) {
+        for (PlayerModel expectedCurrent : expected) {
             Assert.assertNotNull(expectedCurrent);
         }
     }
 
+    /**
+     * Tests the creation of {@Link PlayerModel} by its Id from a initialization of a {@Link GameService}
+     */
     @Test
-    public void getPlayerModelById(){
+    public void getPlayerModelById() {
         GameService gameService = new GameService();
         GameRoom room = new GameRoom("Battle", 3);
 
@@ -178,13 +184,16 @@ public class GameServiceTest {
 
         gameService.createGame(room.createGame());
 
-        int expected = gameService.getPlayerModelById(1,45).getId();
+        int expected = gameService.getPlayerModelById(1, 45).getId();
         int result = firstPlayerModel.getId();
         Assert.assertEquals(expected, result);
     }
 
+    /**
+     * Tests the creation of {@Link PlayerModel} with a {@Link CityModel} by its Id.
+     */
     @Test
-    public void getCityFromPlayerModelTest(){
+    public void getCityFromPlayerModelTest() {
         GameService gameService = new GameService();
         GameRoom room = new GameRoom("Battle", 3);
 
@@ -193,17 +202,12 @@ public class GameServiceTest {
         firstPlayerModel.setId(45);
         firstPlayerModel.setUserName("Gicck");
 
-        CityModel cityModel = new CityModel();
-        WonderModel wonder = new WonderModel();
-
-        cityModel.setWonder(wonder);
-        firstPlayerModel.setCity(cityModel);
         room.addPlayer(mock(PlayerModel.class));
         room.addPlayer(firstPlayerModel);
 
         gameService.createGame(room.createGame());
 
-        CityModel expected = gameService.getPlayerModelById(1,45).getCity();
+        CityModel expected = gameService.getPlayerModelById(1, 45).getCity();
 
         Assert.assertTrue(expected instanceof CityModel);
         Assert.assertNotNull(expected.getName());
@@ -211,6 +215,57 @@ public class GameServiceTest {
         Assert.assertNotNull(expected.getStoragePoint());
     }
 
+    /**
+     * Tests the creation of {@Link PlayerModel} with a {@Link CityModel} with a {@Link BuildingModel}.
+     */
+    @Test
+    public void getBuildingsFromPlayerModelTest() {
+        GameService gameService = new GameService();
+        GameRoom room = new GameRoom("Battle", 3);
+
+        room.addPlayer(mock(PlayerModel.class));
+        PlayerModel firstPlayerModel = new PlayerModel();
+        firstPlayerModel.setId(45);
+        firstPlayerModel.setUserName("Gicck");
+
+        WonderModel wonder = new WonderModel();
+
+        room.addPlayer(mock(PlayerModel.class));
+        room.addPlayer(firstPlayerModel);
+
+        gameService.createGame(room.createGame());
+
+        CityModel cityModel = new CityModel();
+        List<BuildingModel> buildings = new ArrayList<>();
+
+        BuildingModel civicBuildingModel = new BuildingModel();
+        civicBuildingModel.setName("Civic Building");
+        civicBuildingModel.setBuildingType(BuildingType.CIVIC);
+
+        BuildingModel resourceBuildingModel = new BuildingModel();
+        resourceBuildingModel.setName("Resource Building");
+        resourceBuildingModel.setBuildingType(BuildingType.RESOURCE);
+
+        BuildingModel scientificBuildingModel = new BuildingModel();
+        scientificBuildingModel.setName("Scientific Building");
+        scientificBuildingModel.setBuildingType(BuildingType.SCIENTIFIC);
+
+        buildings.add(civicBuildingModel);
+        buildings.add(resourceBuildingModel);
+        buildings.add(scientificBuildingModel);
+
+        cityModel.setBuildings(buildings);
+        PlayerModel currentPlayerModel = gameService.getPlayerModelById(1, 45);
+        currentPlayerModel.setCity(cityModel);
+
+        CityModel expected = currentPlayerModel.getCity();
+
+        Assert.assertTrue(expected != null);
+        Assert.assertNotNull(expected.getBuildings());
+        Assert.assertTrue(expected.getBuildingsAsEnumMap().containsKey(BuildingType.CIVIC));
+        Assert.assertTrue(expected.getBuildingsAsEnumMap().containsKey(BuildingType.RESOURCE));
+        Assert.assertTrue(expected.getBuildingsAsEnumMap().containsKey(BuildingType.SCIENTIFIC));
+    }
 
 
     @Test(expected = NullPointerException.class)

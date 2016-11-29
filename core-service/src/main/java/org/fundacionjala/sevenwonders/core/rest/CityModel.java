@@ -53,6 +53,10 @@ public class CityModel {
         this.wonder = wonder;
     }
 
+    /**
+     * Converts the {@Link List<BuildingModel>} to a enum map with key as {@Link BuildingType}
+     * and data as {@Link BuildingModel} itself.
+     */
     public EnumMap<BuildingType, BuildingModel> getBuildingsAsEnumMap() {
         EnumMap<BuildingType, BuildingModel> map = new EnumMap<BuildingType, BuildingModel>(BuildingType.class);
         for (BuildingModel current : buildings) {

@@ -9,10 +9,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.spring.SpringRouteBuilder;
 import org.fundacionjala.sevenwonders.core.GameRoom;
 import org.fundacionjala.sevenwonders.core.Player;
-import org.fundacionjala.sevenwonders.core.rest.GameRoomModel;
-import org.fundacionjala.sevenwonders.core.rest.PlayerModel;
-import org.fundacionjala.sevenwonders.core.rest.PointsModel;
-import org.fundacionjala.sevenwonders.core.rest.PrincipalGameModel;
+import org.fundacionjala.sevenwonders.core.rest.*;
 import org.fundacionjala.sevenwonders.processors.GameProcessor;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +36,9 @@ public class GameRoute extends SpringRouteBuilder {
 
                 .get("/points").description("Get points of a player").type(PointsModel.class)
                 .to("bean:gameService?method=getPoints(${body})")
+
+                .get("{gameId}/buildings/{playerId}").description("Get buildings of a player").type(BuildingModel.class)
+                .to("bean:gameService?method=getPlayerModelById(${gameId},${playerId})")
 
                 .verb("options")
                 .route()
