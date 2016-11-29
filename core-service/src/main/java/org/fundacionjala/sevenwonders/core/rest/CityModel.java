@@ -4,9 +4,15 @@
  */
 package org.fundacionjala.sevenwonders.core.rest;
 
+import com.google.common.base.Preconditions;
 import org.fundacionjala.sevenwonders.core.Building;
+import org.fundacionjala.sevenwonders.core.BuildingType;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Generates a City model according to the name, {@link WonderModel} and {@link StoragePointModel}.
@@ -45,5 +51,21 @@ public class CityModel {
 
     public void setWonder(WonderModel wonder) {
         this.wonder = wonder;
+    }
+
+    public EnumMap<BuildingType, BuildingModel> getBuildingsAsEnumMap() {
+        EnumMap<BuildingType, BuildingModel> map = new EnumMap<BuildingType, BuildingModel>(BuildingType.class);
+        for (BuildingModel current : buildings) {
+            map.put(current.getBuildingType(), current);
+        }
+        return map;
+    }
+
+    public List<BuildingModel> getBuildings() {
+        return buildings;
+    }
+
+    public void setBuildings(List<BuildingModel> buildings) {
+        this.buildings = buildings;
     }
 }

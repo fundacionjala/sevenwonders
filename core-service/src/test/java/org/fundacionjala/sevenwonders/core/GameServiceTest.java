@@ -147,11 +147,89 @@ public class GameServiceTest {
 
     }
 
+    @Test
+    public void getPlayerModelsTest(){
+        GameService gameService = new GameService();
+        GameRoom room = new GameRoom("Battle", 3);
+
+        room.addPlayer(mock(PlayerModel.class));
+        room.addPlayer(mock(PlayerModel.class));
+        room.addPlayer(mock(PlayerModel.class));
+
+        gameService.createGame(room.createGame());
+
+        List<PlayerModel> expected = gameService.getPlayers(gameService.getLastCreated().getId());
+        Assert.assertNotNull(expected);
+        for (PlayerModel expectedCurrent: expected) {
+            Assert.assertNotNull(expectedCurrent);
+        }
+    }
+
+    @Test
+    public void getPlayerModelById(){
+        GameService gameService = new GameService();
+        GameRoom room = new GameRoom("Battle", 3);
+
+        room.addPlayer(mock(PlayerModel.class));
+        room.addPlayer(mock(PlayerModel.class));
+        PlayerModel firstPlayerModel = new PlayerModel();
+        firstPlayerModel.setId(45);
+        room.addPlayer(firstPlayerModel);
+
+        gameService.createGame(room.createGame());
+
+        int expected = gameService.getPlayerModelById(1,45).getId();
+        int result = firstPlayerModel.getId();
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void getCityFromPlayerModelTest(){
+        GameService gameService = new GameService();
+        GameRoom room = new GameRoom("Battle", 3);
+
+        room.addPlayer(mock(PlayerModel.class));
+        PlayerModel firstPlayerModel = new PlayerModel();
+        firstPlayerModel.setId(45);
+        firstPlayerModel.setUserName("Gicck");
+
+        CityModel cityModel = new CityModel();
+        WonderModel wonder = new WonderModel();
+
+        cityModel.setWonder(wonder);
+        firstPlayerModel.setCity(cityModel);
+        room.addPlayer(mock(PlayerModel.class));
+        room.addPlayer(firstPlayerModel);
+
+        gameService.createGame(room.createGame());
+
+        CityModel expected = gameService.getPlayerModelById(1,45).getCity();
+
+        Assert.assertTrue(expected instanceof CityModel);
+        Assert.assertNotNull(expected.getName());
+        Assert.assertNotNull(expected.getWonder());
+        Assert.assertNotNull(expected.getStoragePoint());
+    }
+
+
+
+    @Test(expected = NullPointerException.class)
+    public void failToGetCityFromPlayerTest() {
+
+        GameService gameService = new GameService();
+
+        PlayerModel playerModel = mock(PlayerModel.class);
+        int gameNumber = 4;
+
+
+        Assert.assertEquals(0, gameService.getPlayer(gameNumber, playerModel));
+    }
+
     /**
      * When {@link PlayerModel} is null it throws an exception
      */
     @Test(expected = NullPointerException.class)
-    public void FailToGetDeckFromPlayerTest() {
+    public void failToGetDeckFromPlayerTest() {
 
         GameService gameService = new GameService();
 
@@ -164,7 +242,7 @@ public class GameServiceTest {
     }
 
     /**
-     * Checks if the deck form each player in game has a deck instatiated
+     * Checks if the deck form each player in game has a deck instantiated
      */
     @Test
     public void getDeckFromPlayersTest() {
@@ -203,59 +281,4 @@ public class GameServiceTest {
         }
     }
 
-    //    @Test
-    public void getDeckFromAsinglePlayerTest() {
-        GameService gameService = new GameService();
-        GameRoom gameRoom = new GameRoom("Battle", 3);
-
-        PlayerModel firstPlayer = new PlayerModel();
-        firstPlayer.setId(1);
-        firstPlayer.setUserName("Gicck");
-        firstPlayer.setCity(mock(CityModel.class));
-        firstPlayer.setWonderModel(mock(WonderModel.class));
-
-        DeckModel deckModel = new DeckModel();
-
-        CardModel civicCard = new CardModel();
-        civicCard.setName("it's a civic Card");
-        CardModel resourceCard = new CardModel();
-        resourceCard.setName("it's a resource Card");
-        CardModel scientificCard = new CardModel();
-        scientificCard.setName("it's a scientific Card");
-
-        List<CardModel> cardModels = new ArrayList<>();
-        cardModels.add(civicCard);
-        cardModels.add(resourceCard);
-        cardModels.add(scientificCard);
-
-        deckModel.setCards(cardModels);
-
-        firstPlayer.getDeck();
-        firstPlayer.setDeck(deckModel);
-
-        PlayerModel secondPlayer = new PlayerModel();
-        secondPlayer.setId(2);
-        secondPlayer.setUserName("Richi");
-        secondPlayer.setCity(mock(CityModel.class));
-        secondPlayer.setWonderModel(mock(WonderModel.class));
-        secondPlayer.setDeck(new DeckModel());
-
-        PlayerModel thirdPlayer = new PlayerModel();
-        thirdPlayer.setId(3);
-        thirdPlayer.setUserName("Gumu");
-        thirdPlayer.setCity(mock(CityModel.class));
-        thirdPlayer.setWonderModel(mock(WonderModel.class));
-        thirdPlayer.setDeck(new DeckModel());
-
-        gameRoom.addPlayer(firstPlayer);
-        gameRoom.addPlayer(secondPlayer);
-        gameRoom.addPlayer(thirdPlayer);
-
-        gameService.createGame(gameRoom.createGame());
-
-//        Assert.assertTrue(gameService.getPlayers(1).get(1).getDeck().equals(deckModel));
-        DeckModel expected = gameService.getPlayers(1).get(0).getDeck();
-//        Assert.assertEquals(expected, deckModel);
-
-    }
 }

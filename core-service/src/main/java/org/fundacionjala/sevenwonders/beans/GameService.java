@@ -117,6 +117,18 @@ public class GameService {
                 .orElse(null);
     }
 
+    public PlayerModel getPlayerModelById(int gameId, int playerId){
+        Preconditions.checkNotNull(playerId);
+        List<PlayerModel> playerModels = this.getPlayers(gameId);
+        PlayerModel result = null;
+        for (PlayerModel current : playerModels)
+        {
+            if(current.getId() == playerId)
+                result = current;
+        }
+        return result;
+    }
+
     public void addChooseCard(ChooseCardModel chooseCardModel) {
         List<Player> currentList = getGame(chooseCardModel.getId()).getPlayers();
         Player current = currentList.stream()
