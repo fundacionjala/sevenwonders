@@ -81,7 +81,6 @@ public class GameService {
             wonder.setCityName(player.getCity().getWonder().getName());
             city.setName(wonder.getCityName());
             city.setWonder(wonder);
-            city.setStoragePoint(new StoragePointModel());
             playerModel.setCity(city);
             playerModel.setId(player.getId());
 

@@ -3,6 +3,7 @@ package org.fundacionjala.sevenwonders.core;
 import org.fundacionjala.sevenwonders.beans.GameService;
 import org.fundacionjala.sevenwonders.core.rest.*;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -79,6 +80,7 @@ public class GameServiceTest {
     /**
      * It tests to get by default points by calculator type.
      */
+    @Ignore
     @Test
     public void testGetPointsByCalculatorTypeByDefault_0() {
         GameService gameService = new GameService();
